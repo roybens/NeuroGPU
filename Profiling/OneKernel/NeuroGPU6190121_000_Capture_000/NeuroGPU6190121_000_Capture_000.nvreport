@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AnalysisReport Version="1.0">
+  <ProcessId>31024</ProcessId>
+  <ReportCreationTime>2019-01-21T10:18:05.0906610-08:00</ReportCreationTime>
+  <ReportDirectory>c:\temp\NeuroGPU6190121_000\NeuroGPU6190121_000_Capture_000</ReportDirectory>
+  <ReportFile>c:\temp\NeuroGPU6190121_000\NeuroGPU6190121_000_Capture_000\NeuroGPU6190121_000_Capture_000.nvreport</ReportFile>
+  <CaptureStartQpcTimestamp>10191659153285</CaptureStartQpcTimestamp>
+  <CaptureStartNveTimestamp>4280837545296338</CaptureStartNveTimestamp>
+  <CaptureStartNveFrequency>4200000000</CaptureStartNveFrequency>
+  <CaptureEndQpcTimestamp>10202582563782</CaptureEndQpcTimestamp>
+  <CaptureEndNveTimestamp>4285425376209342</CaptureEndNveTimestamp>
+  <CaptureStartRdtscTimestamp>4280837545296692</CaptureStartRdtscTimestamp>
+  <CaptureEndRdtscTimestamp>4285425376209738</CaptureEndRdtscTimestamp>
+  <CaptureStartFileTimeTimestamp>131925682853875308</CaptureStartFileTimeTimestamp>
+  <CaptureEndFileTimeTimestamp>131925693777316845</CaptureEndFileTimeTimestamp>
+</AnalysisReport>
