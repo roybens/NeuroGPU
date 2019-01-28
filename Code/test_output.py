@@ -5,7 +5,7 @@ with file(params_fn, 'r') as original:
     data = original.read()
 splitted = data.split('\n')
 psize = int(splitted[0][:-1])
-psize = 3000
+
 N = timestep*psize
 
 a = array.array('d')
