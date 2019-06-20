@@ -7,7 +7,7 @@ int main()
 	int num_devices;
 
 	cudaGetDeviceCount(&num_devices);
-	num_devices = 2;
+	//num_devices = 4;
 	for (int i = 0; i < num_devices; i++) {
 		cudaDeviceProp prop;
 		cudaGetDeviceProperties(&prop, i);
