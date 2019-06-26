@@ -1,0 +1,19 @@
+#define __NV_MODULE_ID _17_CudaStuff_cpp1_ii_1abe6ff8
+#define __NV_CUBIN_HANDLE_STORAGE__ extern
+#include "crt/host_runtime.h"
+#include "CudaStuff.fatbin.c"
+extern void __device_stub__Z14NeuroGPUKernel4StimPf3Sim4HMatS0_S0_tt(Stim&, float *, Sim&, HMat&, float *, float *, unsigned short, unsigned short);
+static void __nv_cudaEntityRegisterCallback(void **);
+static void __sti____cudaRegisterAll_17_CudaStuff_cpp1_ii_1abe6ff8(void);
+#pragma section(".CRT$XCU",read,write)
+__declspec(allocate(".CRT$XCU"))static void (*__dummy_static_init__sti____cudaRegisterAll_17_CudaStuff_cpp1_ii_1abe6ff8[])(void) = {__sti____cudaRegisterAll_17_CudaStuff_cpp1_ii_1abe6ff8};
+void __device_stub__Z14NeuroGPUKernel4StimPf3Sim4HMatS0_S0_tt(Stim&__par0, float *__par1, Sim&__par2, HMat&__par3, float *__par4, float *__par5, unsigned short __par6, unsigned short __par7){__cudaSetupArg(__par0, 0U);__cudaSetupArgSimple(__par1, 32U);__cudaSetupArg(__par2, 36U);__cudaSetupArg(__par3, 60U);__cudaSetupArgSimple(__par4, 168U);__cudaSetupArgSimple(__par5, 172U);__cudaSetupArgSimple(__par6, 176U);__cudaSetupArgSimple(__par7, 178U);__cudaLaunch(((char *)((void ( *)(Stim, float *, Sim, HMat, float *, float *, unsigned short, unsigned short))NeuroGPUKernel)));}
+#line 476 "c:/pyNeuroGPU_win/NeuroGPU6/CudaStuff.cu"
+void NeuroGPUKernel( Stim __cuda_0,float *__cuda_1,Sim __cuda_2,HMat __cuda_3,float *__cuda_4,float *__cuda_5,unsigned short __cuda_6,unsigned short __cuda_7)
+#line 477 "c:/pyNeuroGPU_win/NeuroGPU6/CudaStuff.cu"
+{__device_stub__Z14NeuroGPUKernel4StimPf3Sim4HMatS0_S0_tt( __cuda_0,__cuda_1,__cuda_2,__cuda_3,__cuda_4,__cuda_5,__cuda_6,__cuda_7);
+#line 486 "c:/pyNeuroGPU_win/NeuroGPU6/CudaStuff.cu"
+}
+#line 1 "Debug/CudaStuff.cudafe1.stub.c"
+static void __nv_cudaEntityRegisterCallback( void **__T23) {  __nv_dummy_param_ref(__T23); __nv_save_fatbinhandle_for_managed_rt(__T23); __cudaRegisterEntry(__T23, ((void ( *)(Stim, float *, Sim, HMat, float *, float *, unsigned short, unsigned short))NeuroGPUKernel), _Z14NeuroGPUKernel4StimPf3Sim4HMatS0_S0_tt, (-1)); __cudaRegisterVariable(__T23, __shadow_var(cCm,::cCm), 0, 1536, 1, 0); __cudaRegisterVariable(__T23, __shadow_var(cE,::cE), 0, 3072, 1, 0); __cudaRegisterVariable(__T23, __shadow_var(cF,::cF), 0, 3072, 1, 0); __cudaRegisterVariable(__T23, __shadow_var(cFIdxs,::cFIdxs), 0, 4608, 1, 0); __cudaRegisterVariable(__T23, __shadow_var(cKs,::cKs), 0, 768, 1, 0); __cudaRegisterVariable(__T23, __shadow_var(cSegToComp,::cSegToComp), 0, 768, 1, 0); __cudaRegisterVariable(__T23, __shadow_var(cBoolModel,::cBoolModel), 0, 4608, 1, 0); __cudaRegisterVariable(__T23, __shadow_var(cRelStarts,::cRelStarts), 0, 198, 1, 0); __cudaRegisterVariable(__T23, __shadow_var(cRelEnds,::cRelEnds), 0, 198, 1, 0); __cudaRegisterVariable(__T23, __shadow_var(cFathers,::cFathers), 0, 198, 1, 0); __cudaRegisterVariable(__T23, __shadow_var(cRelVec,::cRelVec), 0, 372, 1, 0); __cudaRegisterVariable(__T23, __shadow_var(cSegStartI,::cSegStartI), 0, 374, 1, 0); __cudaRegisterVariable(__T23, __shadow_var(cSegEndI,::cSegEndI), 0, 374, 1, 0); __cudaRegisterVariable(__T23, __shadow_var(cCompByLevel32,::cCompByLevel32), 0, 1792, 1, 0); __cudaRegisterVariable(__T23, __shadow_var(cCompByFLevel32,::cCompByFLevel32), 0, 1792, 1, 0); __cudaRegisterVariable(__T23, __shadow_var(cLRelStarts,::cLRelStarts), 0, 48, 1, 0); __cudaRegisterVariable(__T23, __shadow_var(cLRelEnds,::cLRelEnds), 0, 48, 1, 0); __cudaRegisterVariable(__T23, __shadow_var(cFLRelStarts,::cFLRelStarts), 0, 46, 1, 0); __cudaRegisterVariable(__T23, __shadow_var(cFLRelEnds,::cFLRelEnds), 0, 46, 1, 0); __cudaRegisterVariable(__T23, __shadow_var(cSonNoVec,::cSonNoVec), 0, 768, 1, 0); }
+static void __sti____cudaRegisterAll_17_CudaStuff_cpp1_ii_1abe6ff8(void) {  ____cudaRegisterLinkedBinary(__nv_cudaEntityRegisterCallback);  }
