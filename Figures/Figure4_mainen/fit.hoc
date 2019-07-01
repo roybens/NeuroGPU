@@ -1,0 +1,78 @@
+
+objref transvec
+transvec = new Vector(12)
+celsius   = 37
+Ek=-90
+Ena=60
+Eca=140
+vshift_na=-5
+v_init=-70
+proc tfunc(){
+c_m=0.75 //transvec.x(0)
+cm_myelin=0.04 //transvec.x(1)
+g_pas2_node=0.02 //transvec.x(2)
+ra= 150//transvec.x(3)
+rm= 30000//transvec.x(4)
+gna_dend=transvec.x(0)
+gna_node=transvec.x(1)
+gna_soma=transvec.x(2)
+gkv_axon=transvec.x(3)
+gkv_soma=transvec.x(4)
+gca_dend=transvec.x(5)
+gkm_dend=transvec.x(6)
+gkca_dend=transvec.x(7)
+gca_soma=transvec.x(8)
+gkm_soma=transvec.x(9)
+gkca_soma=transvec.x(10)
+depth_cad=transvec.x(11)
+
+//gna_dend=0
+//gna_node=0
+//gna_soma=0
+//gkv_axon=0
+//gkv_soma=0
+//gca_dend=0
+//gkm_dend=0
+//gkca_dend=0
+//gca_soma=0
+//gkm_soma=00
+//gkca_soma=0
+
+g_pas_node = 0.02
+
+
+init_cell()
+//forall g_pasx = 0
+
+
+global_ra = ra
+/*	rm=transvec.x(1)// 30000
+	c_m       =transvec.x(2) //0.75
+	cm_myelin = transvec.x(3)//0.04
+	g_pas_node = 0//transvec.x(4)//0.02
+
+
+
+	gna_dend = transvec.x(5)//20
+	gna_node = transvec.x(6)//30000
+	gna_soma = transvec.x(7)//gna_dend
+
+	gkv_axon = transvec.x(8)//2000
+	gkv_soma = transvec.x(9)//200
+
+	gca = 0//transvec.x(10)//.3
+	gkm = 0//transvec.x(11)//.1
+	gkca = 0//transvec.x(12)//3
+	
+	
+	vshift_na = -5//transvec.x(13)
+	gca_soma = gca
+	gkm_soma = gkm
+	gkca_soma = gkca
+	gca_dend = .3
+	forall g_pasx = 0
+gkm_dend = .1
+gkca_dend = 3*/
+//mul32()
+		  
+}
