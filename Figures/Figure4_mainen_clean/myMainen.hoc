@@ -31,13 +31,13 @@ proc create_axon() {
 
   iseg {                // initial segment between hillock + myelin
      L = 15
-     nseg = 3
+     nseg = 1
      diam = equiv_diam/10        // see Sloper and Powell 1982, Fig.71
   }
 
   hill {                
     L = 10
-    nseg = 3
+    nseg = 1
     diam(0:1) = 4*iseg.diam:iseg.diam
   }
 
@@ -45,12 +45,12 @@ proc create_axon() {
 
   for i=0,n_axon_seg-1 {
     myelin[i] {         // myelin element
-      nseg = 3
+      nseg = 1
       L = 100
       diam = iseg.diam         
     }
     node[i] {           // nodes of Ranvier
-      nseg = 3
+      nseg = 1
       L = 1.0           
       diam = iseg.diam*.75       // nodes are thinner than axon
     }
@@ -98,27 +98,27 @@ proc add_spines() { local a
 proc init_cell() {
   // pas2sive
  forall {
-    insert pasx
+    insert pas
     Ra = ra 
     cm = c_m 
-    g_pasx = 1/rm
-   e_pasx = v_init
+    g_pas = 1/rm
+   e_pas = v_init
   }
-forsec "node" g_pasx = g_pas2_node
+forsec "node" g_pas = g_pas2_node
 
 
  forsec "dend" {
-    insert pasx
+    insert pas
     Ra = ra 
     cm = c_m 
     g_pax = 1/rm
-    e_pasx = v_init
+    e_pas = v_init
   }
 
 
   // exceptions along the axon
   forsec "myelin" cm = cm_myelin
- forsec "node" g_pasx = g_pas2_node
+ forsec "node" g_pas = g_pas2_node
 
   // na+ channels
     forall insert na
