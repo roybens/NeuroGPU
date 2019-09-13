@@ -1,4 +1,4 @@
-// Automatically generated C for E:\GitHub\NeuroGPU\Figures\Figure3_passive./runModel.hoc
+// Automatically generated C for C:\Users\Maxwell Chen\Desktop\NeuroGPU\Figures\Figure3_passive./runModel.hoc
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>

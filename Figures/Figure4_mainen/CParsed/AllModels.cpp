@@ -1,4 +1,4 @@
-// Automatically generated C for E:\GitHub\NeuroGPU\Figures\Figure4_mainen./runModel.hoc
+// Automatically generated C for C:\Users\Maxwell Chen\Desktop\NeuroGPU\Figures\Figure4_mainen./runModel.hoc
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -11,16 +11,16 @@
 #define ktf (1000.*8.3134*(celsius + 273.15)/FARADAY)
 
 // Reversals:
-#define ena (60.0f)
 #define ek (-90.0f)
 #define DEF_cai		5.e-5	   /* mM */
 #define DEF_cao		2.	   /* mM */
+#define ena (60.0f)
 
 // Locals:
 MYFTYPE a,b,drive_channel,gca,gk,gna,hinf,htau,minf,mtau,ninf,ntau,vi;
 
 // Ion currents as Locals:
-MYFTYPE ik,ica,ina;
+MYFTYPE ica,ik,ina;
 
 // NGlobals:
 #define q10_ca (2.3)

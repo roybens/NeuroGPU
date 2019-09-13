@@ -1,4 +1,4 @@
-// Automatically generated CU for E:\GitHub\NeuroGPU\Figures\Figure4_mainen./runModel.hoc
+// Automatically generated CU for C:\Users\Maxwell Chen\Desktop\NeuroGPU\Figures\Figure4_mainen./runModel.hoc
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -61,9 +61,9 @@
 #define vmax_na (100.0)
 #define vshift_na (-5.0)
 // Reversals:
-#define ena (60.0f)
 #define ek (-90.0f)
 #define DEF_eca2 (140.0f)
+#define ena (60.0f)
 
 // Declarations:
 __device__ void Cutrates_ca(MYFTYPE v ,MYFTYPE gbar_ca,MYFTYPE cao_ca,MYFTYPE &hinf,MYFTYPE &htau,MYFTYPE &minf,MYFTYPE &mtau);
@@ -293,7 +293,7 @@ Cutrates_na (   v + vshift_na,gbar_na,tha_na,qa_na,Ra_na,Rb_na,thi1_na,thi2_na,q
 
 
 __device__ void CuBreakpointModel_ca(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gbar_ca,MYFTYPE cao_ca, MYFTYPE cai, MYFTYPE &ica,MYFTYPE &eca) {
-MYFTYPE hinf, htau, minf, gca, mtau;
+MYFTYPE hinf, htau, gca, minf, mtau;
 MYFTYPE ;
 MYFTYPE ica_ca;
 
@@ -313,7 +313,7 @@ MYFTYPE ;
 
 
 __device__ void CuBreakpointModel_kca(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &n,MYFTYPE gbar_kca,MYFTYPE caix_kca,MYFTYPE Ra_kca,MYFTYPE Rb_kca, MYFTYPE cai,MYFTYPE &eca) {
-MYFTYPE gk, ninf, ntau, gca;
+MYFTYPE gca, gk, ninf, ntau;
 MYFTYPE ik;
    gk = tadj_kca * gbar_kca * n ;
    ik = ( 1e-4 ) * gk * ( v - ek ) ;
@@ -343,7 +343,7 @@ sumConductivity+= gk;
 
 
 __device__ void CuBreakpointModel_na(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gbar_na,MYFTYPE tha_na,MYFTYPE qa_na,MYFTYPE Ra_na,MYFTYPE Rb_na,MYFTYPE thi1_na,MYFTYPE thi2_na,MYFTYPE qi_na,MYFTYPE thinf_na,MYFTYPE qinf_na,MYFTYPE Rg_na,MYFTYPE Rd_na) {
-MYFTYPE hinf, htau, minf, gna, mtau;
+MYFTYPE hinf, htau, gna, minf, mtau;
 MYFTYPE ina;
    gna = tadj_na * gbar_na * m * m * m * h ;
    ina = ( 1e-4 ) * gna * ( v - ena ) ;

@@ -1,4 +1,4 @@
-/* Created by Language version: 7.5.0 */
+/* Created by Language version: 7.7.0 */
 /* VECTORIZED */
 #define NRN_VECTORIZED 1
 #include <stdio.h>
@@ -95,6 +95,15 @@ extern void hoc_register_limits(int, HocParmLimits*);
 extern void hoc_register_units(int, HocParmUnits*);
 extern void nrn_promote(Prop*, int, int);
 extern Memb_func* memb_func;
+ 
+#define NMODL_TEXT 1
+#if NMODL_TEXT
+static const char* nmodl_file_text;
+static const char* nmodl_filename;
+extern void hoc_reg_nmodl_text(int, const char*);
+extern void hoc_reg_nmodl_filename(int, const char*);
+#endif
+
  extern void _nrn_setdata_reg(int, void(*)(Prop*));
  static void _setdata(Prop* _prop) {
  _extcall_prop = _prop;
@@ -191,7 +200,7 @@ static void _ode_matsol(_NrnThread*, _Memb_list*, int);
  static void _ode_matsol_instance1(_threadargsproto_);
  /* connect range variables in _p that hoc is supposed to know about */
  static const char *_mechanism[] = {
- "7.5.0",
+ "7.7.0",
 "ca",
  "gbar_ca",
  0,
@@ -258,6 +267,10 @@ extern void _cvode_abstol( Symbol**, double*, int);
      _nrn_thread_reg(_mechtype, 0, _thread_cleanup);
      _nrn_thread_reg(_mechtype, 2, _update_ion_pointer);
      _nrn_thread_table_reg(_mechtype, _check_table_thread);
+ #if NMODL_TEXT
+  hoc_reg_nmodl_text(_mechtype, nmodl_file_text);
+  hoc_reg_nmodl_filename(_mechtype, nmodl_filename);
+#endif
   hoc_register_prop_size(_mechtype, 15, 5);
   hoc_register_dparam_semantics(_mechtype, 0, "ca_ion");
   hoc_register_dparam_semantics(_mechtype, 1, "ca_ion");
@@ -267,7 +280,7 @@ extern void _cvode_abstol( Symbol**, double*, int);
  	hoc_register_cvode(_mechtype, _ode_count, _ode_map, _ode_spec, _ode_matsol);
  	hoc_register_tolerance(_mechtype, _hoc_state_tol, &_atollist);
  	hoc_register_var(hoc_scdoub, hoc_vdoub, hoc_intfunc);
- 	ivoc_help("help ?1 ca E:/GitHub/NeuroGPU/Figures/Figure4_mainen/ca.mod\n");
+ 	ivoc_help("help ?1 ca C:/Users/Maxwell Chen/Desktop/NeuroGPU/Figures/Figure4_mainen/ca.mod\n");
  hoc_register_limits(_mechtype, _hoc_parm_limits);
  hoc_register_units(_mechtype, _hoc_parm_units);
  }
@@ -680,4 +693,182 @@ _first = 0;
 
 #if defined(__cplusplus)
 } /* extern "C" */
+#endif
+
+#if NMODL_TEXT
+static const char* nmodl_filename = "ca.mod";
+static const char* nmodl_file_text = 
+  "COMMENT\n"
+  "ca.mod\n"
+  "Uses fixed eca instead of GHK eqn\n"
+  "\n"
+  "HVA Ca current\n"
+  "Based on Reuveni, Friedman, Amitai and Gutnick (1993)\n"
+  "J. Neurosci. 13:4609-4621.\n"
+  "\n"
+  "Author: Zach Mainen, Salk Institute, 1994, zach@salk.edu\n"
+  "\n"
+  "26 Ago 2002 Modification of original channel to allow \n"
+  "variable time step and to correct an initialization error.\n"
+  "Done by Michael Hines(michael.hines@yale.e) and \n"
+  "Ruggero Scorcioni(rscorcio@gmu.edu) at EU Advance Course \n"
+  "in Computational Neuroscience. Obidos, Portugal\n"
+  "\n"
+  "20110202 made threadsafe by Ted Carnevale\n"
+  "20120514 fixed singularity in PROCEDURE rates\n"
+  "\n"
+  "Special comment:\n"
+  "\n"
+  "This mechanism was designed to be run at a single operating \n"
+  "temperature--37 deg C--which can be specified by the hoc \n"
+  "assignment statement\n"
+  "celsius = 37\n"
+  "This mechanism is not intended to be used at other temperatures, \n"
+  "or to investigate the effects of temperature changes.\n"
+  "\n"
+  "Zach Mainen created this particular model by adapting conductances \n"
+  "from lower temperature to run at higher temperature, and found it \n"
+  "necessary to reduce the temperature sensitivity of spike amplitude \n"
+  "and time course.  He accomplished this by increasing the net ionic \n"
+  "conductance through the heuristic of changing the standard HH \n"
+  "formula\n"
+  "  g = gbar*product_of_gating_variables\n"
+  "to\n"
+  "  g = tadj*gbar*product_of_gating_variables\n"
+  "where\n"
+  "  tadj = q10^((celsius - temp)/10)\n"
+  "  temp is the \"reference temperature\" (at which the gating variable\n"
+  "    time constants were originally determined)\n"
+  "  celsius is the \"operating temperature\"\n"
+  "\n"
+  "Users should note that this is equivalent to changing the channel \n"
+  "density from gbar at the \"reference temperature\" temp (the \n"
+  "temperature at which the at which the gating variable time \n"
+  "constants were originally determined) to tadj*gbar at the \n"
+  "\"operating temperature\" celsius.\n"
+  "ENDCOMMENT\n"
+  "\n"
+  "NEURON {\n"
+  "    THREADSAFE\n"
+  "	SUFFIX ca\n"
+  "	USEION ca READ eca,cai WRITE ica\n"
+  "	RANGE m, h, gca, gbar\n"
+  "	RANGE minf, hinf, mtau, htau\n"
+  "	GLOBAL q10, temp, tadj, vmin, vmax, vshift\n"
+  "}\n"
+  "\n"
+  "UNITS {\n"
+  "	(mA) = (milliamp)\n"
+  "	(mV) = (millivolt)\n"
+  "	(pS) = (picosiemens)\n"
+  "	(um) = (micron)\n"
+  "    (mM) = (milli/liter)\n"
+  "	FARADAY = (faraday) (coulomb)\n"
+  "	R = (k-mole) (joule/degC)\n"
+  "	PI	= (pi) (1)\n"
+  "} \n"
+  "\n"
+  "PARAMETER {\n"
+  "	gbar = 0.1   	(pS/um2)	: 0.12 mho/cm2\n"
+  "	vshift = 0	(mV)		: voltage shift (affects all)\n"
+  "	cao  = 2.5	(mM)	        : external ca concentration\n"
+  "	cai		(mM)\n"
+  "	temp = 23	(degC)		: original temp \n"
+  "	q10  = 2.3			: temperature sensitivity\n"
+  "	vmin = -120	(mV)\n"
+  "	vmax = 100	(mV)\n"
+  "}\n"
+  "\n"
+  "ASSIGNED {\n"
+  "	v 		(mV)\n"
+  "	celsius		(degC)\n"
+  "	ica 		(mA/cm2)\n"
+  "	gca		(pS/um2)\n"
+  "	eca		(mV)\n"
+  "	minf 		hinf\n"
+  "	mtau (ms)	htau (ms)\n"
+  "	tadj\n"
+  "}\n"
+  " \n"
+  "STATE { m h }\n"
+  "\n"
+  "INITIAL {\n"
+  "    tadj = q10^((celsius - temp)/(10 (degC))) : make all threads calculate tadj at initialization\n"
+  "\n"
+  "	trates(v+vshift)\n"
+  "	m = minf\n"
+  "	h = hinf\n"
+  "}\n"
+  "\n"
+  "BREAKPOINT {\n"
+  "    SOLVE states METHOD cnexp\n"
+  "    gca = tadj*gbar*m*m*h\n"
+  "    ica = (1e-4) * gca * (v - eca)\n"
+  "} \n"
+  "\n"
+  ": LOCAL mexp, hexp\n"
+  "\n"
+  ":PROCEDURE states() {\n"
+  ":        trates(v+vshift)      \n"
+  ":        m = m + mexp*(minf-m)\n"
+  ":        h = h + hexp*(hinf-h)\n"
+  ":	VERBATIM\n"
+  ":	return 0;\n"
+  ":	ENDVERBATIM\n"
+  ":}\n"
+  "\n"
+  "DERIVATIVE states {\n"
+  "        trates(v+vshift)      \n"
+  "        m' =  (minf-m)/mtau\n"
+  "        h' =  (hinf-h)/htau\n"
+  "}\n"
+  "\n"
+  "PROCEDURE trates(v (mV)) {  \n"
+  "    TABLE minf, hinf, mtau, htau\n"
+  "    DEPEND celsius, temp\n"
+  "    FROM vmin TO vmax WITH 199\n"
+  "\n"
+  "	rates(v): not consistently executed from here if usetable == 1\n"
+  "\n"
+  ":        tinc = -dt * tadj\n"
+  ":        mexp = 1 - exp(tinc/mtau)\n"
+  ":        hexp = 1 - exp(tinc/htau)\n"
+  "}\n"
+  "\n"
+  "\n"
+  "UNITSOFF\n"
+  "PROCEDURE rates(vm (mV)) {  \n"
+  "        LOCAL  a, b\n"
+  "\n"
+  "    tadj = q10^((celsius - temp)/(10 (degC)))\n"
+  "\n"
+  ":   a = 0.055*(-27 - vm)/(exp((-27-vm)/3.8) - 1)\n"
+  ": singular at vm = -27\n"
+  ":   a = 0.055*3.8*(-27 - vm)/3.8)/(exp((-27-vm)/3.8) - 1)\n"
+  ": let z = (-27 - vm)/3.8\n"
+  ":   a = 0.055*3.8*z/(exp(z) - 1)\n"
+  "    a = 0.209*efun(-(27+vm)/3.8)\n"
+  "	b = 0.94*exp((-75-vm)/17)\n"
+  "	\n"
+  "	mtau = 1/tadj/(a+b)\n"
+  "	minf = a/(a+b)\n"
+  "\n"
+  "		:\"h\" inactivation \n"
+  "\n"
+  "	a = 0.000457*exp((-13-vm)/50)\n"
+  "	b = 0.0065/(exp((-vm-15)/28) + 1)\n"
+  "\n"
+  "	htau = 1/tadj/(a+b)\n"
+  "	hinf = a/(a+b)\n"
+  "}\n"
+  "UNITSON\n"
+  "\n"
+  "FUNCTION efun(z) {\n"
+  "	if (fabs(z) < 1e-4) {\n"
+  "		efun = 1 - z/2\n"
+  "	}else{\n"
+  "		efun = z/(exp(z) - 1)\n"
+  "	}\n"
+  "}\n"
+  ;
 #endif

@@ -1,4 +1,4 @@
-/* Created by Language version: 7.5.0 */
+/* Created by Language version: 7.7.0 */
 /* VECTORIZED */
 #define NRN_VECTORIZED 1
 #include <stdio.h>
@@ -73,6 +73,15 @@ extern void hoc_register_limits(int, HocParmLimits*);
 extern void hoc_register_units(int, HocParmUnits*);
 extern void nrn_promote(Prop*, int, int);
 extern Memb_func* memb_func;
+ 
+#define NMODL_TEXT 1
+#if NMODL_TEXT
+static const char* nmodl_file_text;
+static const char* nmodl_filename;
+extern void hoc_reg_nmodl_text(int, const char*);
+extern void hoc_reg_nmodl_filename(int, const char*);
+#endif
+
  extern void _nrn_setdata_reg(int, void(*)(Prop*));
  static void _setdata(Prop* _prop) {
  _extcall_prop = _prop;
@@ -115,7 +124,7 @@ static void nrn_state(_NrnThread*, _Memb_list*, int);
 static void  nrn_jacob(_NrnThread*, _Memb_list*, int);
  /* connect range variables in _p that hoc is supposed to know about */
  static const char *_mechanism[] = {
- "7.5.0",
+ "7.7.0",
 "pas2",
  "g_pas2",
  "e_pas2",
@@ -151,9 +160,13 @@ extern void _cvode_abstol( Symbol**, double*, int);
  	register_mech(_mechanism, nrn_alloc,nrn_cur, nrn_jacob, nrn_state, nrn_init, hoc_nrnpointerindex, 1);
  _mechtype = nrn_get_mechtype(_mechanism[1]);
      _nrn_setdata_reg(_mechtype, _setdata);
+ #if NMODL_TEXT
+  hoc_reg_nmodl_text(_mechtype, nmodl_file_text);
+  hoc_reg_nmodl_filename(_mechtype, nmodl_filename);
+#endif
   hoc_register_prop_size(_mechtype, 5, 0);
  	hoc_register_var(hoc_scdoub, hoc_vdoub, hoc_intfunc);
- 	ivoc_help("help ?1 pas2 E:/GitHub/NeuroGPU/Figures/Figure4_mainen/passive.mod\n");
+ 	ivoc_help("help ?1 pas2 C:/Users/Maxwell Chen/Desktop/NeuroGPU/Figures/Figure4_mainen/passive.mod\n");
  hoc_register_limits(_mechtype, _hoc_parm_limits);
  hoc_register_units(_mechtype, _hoc_parm_units);
  }
@@ -278,4 +291,37 @@ _first = 0;
 
 #if defined(__cplusplus)
 } /* extern "C" */
+#endif
+
+#if NMODL_TEXT
+static const char* nmodl_filename = "passive.mod";
+static const char* nmodl_file_text = 
+  "TITLE passive membrane channel\n"
+  "\n"
+  "UNITS {\n"
+  "	(mV) = (millivolt)\n"
+  "	(mA) = (milliamp)\n"
+  "	(S) = (siemens)\n"
+  "}\n"
+  "\n"
+  "NEURON {\n"
+  "	SUFFIX pas2\n"
+  "	NONSPECIFIC_CURRENT i\n"
+  "	RANGE g, e\n"
+  "}\n"
+  "\n"
+  "PARAMETER {\n"
+  "	g = .001	(S/cm2)	<0,1e9>\n"
+  "	e = -70	(mV)\n"
+  "}\n"
+  "\n"
+  "ASSIGNED {\n"
+  "	v (mV)  \n"
+  "	i (mA/cm2)\n"
+  "	}\n"
+  "\n"
+  "BREAKPOINT {\n"
+  "	i = g*(v - e)\n"
+  "}\n"
+  ;
 #endif
