@@ -177,7 +177,7 @@ def proc_add_param_to_hoc_for_opt(all_parameters_non_global_c, hoc_base_fn, base
     funcs.append('proc ' + func_name + '{')
     print("len(comp_names): %s" % len(comp_names))
 
-    param_mappings = {}
+    param_mappings = [{}]
     mapping_counter = 1
 
     for c in range(1, len(comp_names) + 1):                                         # Starts line 431. Creates numbered procs (e.g. proc proc0() {...})
@@ -198,10 +198,10 @@ def proc_add_param_to_hoc_for_opt(all_parameters_non_global_c, hoc_base_fn, base
             cur_mech_params = all_parameters_non_global_c[F[0][m - 1]]                            # determine number of parameters to write into file
             curr_mech_states = all_states[F[0][m-1]]
             for p in range(1, len(cur_mech_params) + 1):
-                if (cur_mech_params[p - 1] not in param_mappings.keys()):
-                    param_mappings[cur_mech_params[p - 1]] = mapping_counter
+                if (cur_mech_params[p - 1] not in param_mappings[proc_counter].keys()):
+                    param_mappings[proc_counter][cur_mech_params[p - 1]] = mapping_counter
                     mapping_counter += 1
-                funcs.append('a=' + str(param_mappings.get(cur_mech_params[p - 1])))
+                funcs.append('a=' + str(param_mappings[proc_counter].get(cur_mech_params[p - 1])))
                 # funcs.append('a=' + cur_mech_params[p - 1])
                 funcs.append('fn.vwrite(&a)')
                 counter += 2
