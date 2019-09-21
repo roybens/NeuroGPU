@@ -2832,7 +2832,7 @@ def linux_packing():
     os.makedirs(src_loc)
     for fn in file_for_linux:
         fn = vs_root + '/NeuroGPU6/' +fn
-        print(fn)
+        # print(fn)
         shutil.copy(fn, src_loc)
     if (os.path.exists(unix_dir + "/Data")):
         shutil.rmtree(unix_dir + "/Data")
@@ -2870,11 +2870,11 @@ def main():
     baseDir = nrn.h.base
     vs_root = baseDir + '/VS/pyNeuroGPU_win/'
 
-    print("nrn.h: \t\t", nrn.h)
-    print("nrn.h.base: \t", nrn.h.base)
-    print("vs_dir: \t", vs_dir)
-    print("data_dir: \t", data_dir)
-    print("unix_dir: \t", unix_dir)
+    # print("nrn.h: \t\t", nrn.h)
+    # print("nrn.h.base: \t", nrn.h.base)
+    # print("vs_dir: \t", vs_dir)
+    # print("data_dir: \t", data_dir)
+    # print("unix_dir: \t", unix_dir)
 
     # thread = nrn_dll_sym('nrn_threads', ctypes.POINTER(NrnThread))
     sec_list = create_sec_list()

@@ -177,7 +177,7 @@ def proc_add_param_to_hoc_for_opt(all_parameters_non_global_c, hoc_base_fn, base
     funcs.append('proc ' + func_name + '{')
     print("len(comp_names): %s" % len(comp_names))
 
-    param_mappings = [{}]
+    param_mappings = {}
     mapping_counter = 1
 
     for c in range(1, len(comp_names) + 1):                                         # Starts line 431. Creates numbered procs (e.g. proc proc0() {...})
@@ -193,15 +193,19 @@ def proc_add_param_to_hoc_for_opt(all_parameters_non_global_c, hoc_base_fn, base
             F.append(i in comp_mechanisms[c - 1])
         F = np.where(np.array(F))
         funcs.append('access ' + comp_names[c - 1][1:])                                           # in Neuron, access specific section
+        print(proc_counter)
+        print(comp_names[c-1][1:])
         counter += 1
         for m in range(1, len(F[0]) + 1):
             cur_mech_params = all_parameters_non_global_c[F[0][m - 1]]                            # determine number of parameters to write into file
             curr_mech_states = all_states[F[0][m-1]]
             for p in range(1, len(cur_mech_params) + 1):
-                if (cur_mech_params[p - 1] not in param_mappings[proc_counter].keys()):
-                    param_mappings[proc_counter][cur_mech_params[p - 1]] = mapping_counter
+                if (comp_names[c-1][1:] not in param_mappings):
+                    param_mappings[comp_names[c-1][1:]] = {}
+                if (cur_mech_params[p - 1] not in param_mappings[comp_names[c-1][1:]].keys()):
+                    param_mappings[comp_names[c-1][1:]][cur_mech_params[p - 1]] = mapping_counter
                     mapping_counter += 1
-                funcs.append('a=' + str(param_mappings[proc_counter].get(cur_mech_params[p - 1])))
+                funcs.append('a=' + str(param_mappings.get(comp_names[c-1][1:]).get(cur_mech_params[p - 1])))
                 # funcs.append('a=' + cur_mech_params[p - 1])
                 funcs.append('fn.vwrite(&a)')
                 counter += 2
@@ -215,6 +219,10 @@ def proc_add_param_to_hoc_for_opt(all_parameters_non_global_c, hoc_base_fn, base
 
 
     print(param_mappings)
+
+    # f = open(data_dir + '/param_mappings.txt', 'w')
+    # f.write(param_mappings)
+    # f.close()
 
 
     if counter > 0:
@@ -264,7 +272,8 @@ def proc_add_param_to_hoc_for_opt(all_parameters_non_global_c, hoc_base_fn, base
     all_params = np.zeros((n_sets[0], len(comp_names) * int(param_start_i[-1])))
     all_states_vals = np.zeros((n_sets[0], len(comp_names) * int(state_start_i[-1])))
     first_param_m = None
-    for kk in range(1, n_sets[0] + 1):
+    # for kk in range(1, n_sets[0] + 1):
+    for kk in range(1, 2):
         if kk % 8 == 0:
             print("%d / %d" % (kk, n_sets[0] + 1))
         param_m = np.zeros((len(comp_names), int(param_start_i[-1])))
@@ -307,16 +316,26 @@ def proc_add_param_to_hoc_for_opt(all_parameters_non_global_c, hoc_base_fn, base
     f = open(data_dir + 'ParamTemplate.csv', 'w')
 
     n_sets_s = StringIO()                                                               # Read/write strings as files
-    np.savetxt(n_sets_s, np.array(n_sets), fmt='%5.d', newline=',')                     # Save array (np.array(n_sets)) to text file (n_sets_s); val. separated by commas
+    # np.savetxt(n_sets_s, np.array(n_sets), fmt='%5.d', newline=',')                     # State at top of .csv file the number of models
+    np.savetxt(n_sets_s, [1], fmt='%5.d', newline=',')
     n_sets_st = n_sets_s.getvalue()                                                     # retrieve contents of file
     all_params_s = StringIO()
-    np.savetxt(all_params_s, all_params, fmt='%.5e,', newline='\n')                     # Same but using all_params; val. separated by \n
+    # np.savetxt(all_params_s, all_params, fmt='%.5e,', newline='\n')                     # Same but using all_params; val. separated by \n
+    np.savetxt(all_params_s, all_params, fmt='%.5d,', newline='\n')
     all_params_st = all_params_s.getvalue()
+
     print("n_sets:", len(n_sets))
     print("n_sets_st:", len(n_sets_st))
     print("all_params:", len(all_params))
     print("all_params_st:", len(all_params_st))
-    f.write('%s\n%s\n' % (n_sets_st, all_params_st))
+
+    num_models = len(all_params);
+    total_vals = len(all_params_st);
+    num_params = (int) (total_vals/num_models)
+
+
+    # f.write('%s\n%s\n' % (n_sets_st, all_params_st))
+    f.write('%s\n%s\n' % (n_sets_st, all_params_st[:num_params]))
     f.close()
 
 
@@ -336,24 +355,5 @@ def proc_add_param_to_hoc_for_opt(all_parameters_non_global_c, hoc_base_fn, base
     first_param_m_st = first_param_m_s.getvalue()
     f.write('%s\n' % first_param_m_st)                                                  # write .getvalue() of first_param_m_s
     f.close()
+
     return first_param_m, runModel_hoc_object
-
-
-    # def find_indices_in_template(data_dir, param):
-    #     f = open(data_dir + '/AllParams.dat', 'rb')
-    #     contents = f.read()
-    #     indices = []
-    #     for i in range(len(contents)):
-    #         if contents[i] == param:
-    #             indices += i
-    #     return indices
-    #
-    # def insert_values(data_dir, indices, param):
-    #     f = open(data_dir + '/AllParams.dat', 'rb')
-    #     contents = f.read()
-    #     for i in indices:
-    #         contents[i] = param
-    #     f = open(data_dir + '/AllParams.dat', 'wb')
-    #     f.write(contents)
-    #
-    #     # need to access/loop through all sections and find indices that have parameter value; record index and return list
