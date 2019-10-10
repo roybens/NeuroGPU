@@ -2892,7 +2892,6 @@ def main():
     seg_start = mechanisms[-2]
     seg_end = mechanisms[-1]
 
-
     write_stim(rec_sites,seg_start,seg_end)
     # print ("done with parse_models")
 

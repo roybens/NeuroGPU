@@ -7,56 +7,55 @@ import numpy as np
 from cell import cell_numel
 import subprocess
 
+import csv
+import json
+
 data_dir = './Data/'
+param_list = ['gna_dend', 'gna_node', 'gna_soma', 'gkv_axon',
+                'gkv_soma', 'gca_dend', 'gkm_dend', 'gkca_dend',
+                    'gca_soma', 'gkm_soma', 'gkca_soma', 'depth_cad']
+
 
 def main():
-    print(find_indices_in_template(data_dir, 200))
-
-def find_indices_in_template(data_dir,  param):
-    f = open(data_dir + 'ParamTemplate.csv', 'r')
-    if f.mode != "r":
-        print("Error: Could not read file.");
-        return;
-
-    contents = f.readlines()
-    # print("length:", len(contents))                                          # 1st line = # models
-    # for i in contents:                                                       # 2nd line = symbols
-    #     print("line:", i)                                                    # 3rd line = empty \n
-    print(contents[1])
-
-    print(contents[1].index("2031"))
-    print(list(np.where(contents[1] == "2")))
-    index = contents.index("2031");
-    for i in range(10):
-        print("val", i,":\"", contents[i], "\"");
-
+    f = open(data_dir + '/ParamMappings.txt', 'r')
+    param_mappings = json.load(f)
     f.close()
+
+    param_name = "pas"
+    indices = find_indices_in_template(data_dir, param_name, param_mappings)
+    # print(indices)
+    print("Num indices found for", param_name, ":", len(indices))
+    new_value = 3
+    insert_values(data_dir, indices, new_value, param_mappings)
+
+def find_indices_in_template(data_dir, param, param_mappings):
     indices = []
-    for i in range(len(contents)):
-        if contents[i] == param:
-            contents[i] == "CHANGED"
-            print("Changed val at ", i)
-            indices.append(i)
-
-    # f2 = open(data_dir + 'ParamTemplate.csv', 'wb')
-    # f2.write(contents)
-    # f2.close()
-
-    # f = open(data_dir + '/AllParams.dat', 'w')
-    # symbol = param_mappings.get(section).get(param)
+    for i in param_mappings.keys():
+        for j in param_mappings[i].keys():
+            if j.find(param) != -1:
+                indices.append(param_mappings[i][j])
     return indices
 
+def insert_values(data_dir, indices, new_value, param_mappings):
+        f = open(data_dir + 'ParamTemplate.csv', 'r')
+        if f.mode != "r":
+            print("Error: Could not read file.");
+            return;
+        template = list(csv.reader(f))[1];
+        print(list(np.where(template == "2")))
+        index = template.index("2031");
+        for i in range(10):
+            print("val", i,":\"", template[i], "\"");
 
-def insert_values(data_dir, indices, param):
-    f = open(data_dir + '/AllParams.dat', 'rb')
-    contents = f.read()
-    for i in indices:
-        contents[i] = param
-    f = open(data_dir + '/AllParams.dat', 'wb')
-    f.write(contents)
+        f.close()
+        indices = []
+        for i in range(len(template)):
+            if template[i] == param:
+                template[i] == "CHANGED"
+                print("Changed val at ", i)
+                indices.append(i)
 
-    # need to access/loop through all sections and find indices that have parameter value; record index and return list
-
+        return indices
 
 if __name__ == '__main__':
     main()

@@ -1,20 +1,20 @@
 strdef fitFile,timesFile,paramsFile,stimFile,outFile,modelFile,outFPre,base
 objref st,stims,fin,fout,pmat,matOut,stimtime,somaref,secref,extVec,strFunc,most,root,transvec
 
-ntimestep = 3168 
-nparams = 12 
-psize = 1023 
-ntraces = 1 
-v_init = -80 
-calc_eca = 0 
+ntimestep = 3168
+nparams = 12
+psize = 1023
+ntraces = 1
+v_init = -80
+calc_eca = 0
 
 
-   stLoc = 0.28 
-base = "E:/GitHub/NeuroGPU/NeuroGPU_Base" 
-paramsFile = "./params/params.csv" 
-stimFile = "./Stims/Step_8_.csv" 
-modelFile = ".//myMainen.hoc" 
-timesFile = "./Stims/times.csv" 
+   stLoc = 0.28
+base = "E:/GitHub/NeuroGPU/NeuroGPU_Base"
+paramsFile = "./params/params.csv"
+stimFile = "./Stims/Step_8_.csv"
+modelFile = ".//myMainen.hoc"
+timesFile = "./Stims/times.csv"
 
 transvec = new Vector(nparams)
 
@@ -40,14 +40,14 @@ print secname()
 root.sec recSites.append()
 
 
- 
+
 secondorder=0
 proc runMatrix(){
 
 	//access dend[1]
 	sprint(outFile,"%s_%s.dat",outFPre,secname())
 
-	st.del=0 
+	st.del=0
 	st.dur=1e9
 	//printf ("$o1.nrow,$o2.nrow,$o2.ncol,%d,%d,%d",$o1.nrow,$o2.nrow,$o2.ncol)
 	matOut = new Matrix($o1.nrow,($o2.nrow*$o2.ncol))
@@ -66,7 +66,7 @@ proc runMatrix(){
 				matOut.x(sim,counter)=v(0.5)
 				counter+=1
 				fadvance()
-				
+
 			}
 		}
 	}
@@ -107,11 +107,11 @@ proc writeMatrix(){localobj temp
 }
 proc mul32(){localobj thisone
 	countSegs()
-	segsMat = segs+comps+1 
+	segsMat = segs+comps+1
 	//printf("1we have a matrix in the size of %d \n",segsMat )
 	segsToAdd = 32-segsMat%32
 	forall {
-		thisone = new SectionRef()   
+		thisone = new SectionRef()
 		if (thisone.nchild == 0 ) {
 			break
 			}
@@ -121,13 +121,13 @@ proc mul32(){localobj thisone
 	fcurrent()
 	countSegs()
 	//printf("we have a matrix in the size of %d \n",segs+comps+1 )
-	
+
 }
 proc writeVector(){
 	fout.aopen($s1)
 	$o2.vwrite(fout,3)
 	fout.close()
-	
+
 }
 proc printChildren(){localobj sl
 	sl = new SectionList()
@@ -138,12 +138,12 @@ proc printChildren(){localobj sl
 	u+=1
 	}
 	print u
-}	
+}
 proc printparent(){localobj sref
 	sref = new SectionRef()
 	sref.parent
 	print secname()
-}		
+}
 
 
 proc countSegs(){
@@ -154,73 +154,73 @@ comps=0
 		comps+=1
 	}
 }
-create Exts[1]		
-proc hinesDisperseBranching(){local i localobj sl,secRef, clist, avec, bvec		
-	counter = 0		
-	forsec most{		
-		secRef = new SectionRef()		
-		if(secRef.nchild>2){		
-clist = new List()		
-  for i=0, secRef.nchild-1 {		
-    secRef.child[i] clist.append(new SectionRef())		
-  }		
-			Exts[counter]{		
-				L = 1e-9		
-				diam = 1		
-				Ra = secRef.sec.Ra		
-				cm = secRef.sec.cm	
-				nseg = secRef.nchild-1		
-			}		
-			i=0		
-			Exts[counter]{		
-				for(x){ 		
-					if (x > 0) {		
-						avec =new Vector()		
-						bvec =new Vector()		
-						//printf("x is %f i is %d\n",x,i)		
-						clist.o(i).sec{		
-							avec =new Vector()		
-							bvec =new Vector()		
-							for(y){		
-								avec.append(GetA(y))		
-								bvec.append(GetB(y))		
-							}		
-						}		
-						connect clist.o(i).sec(0), x		
-						 k=0		
-					  clist.o(i).sec{		
-							for(y){		
-								SetA(y,avec.x(k))		
-								SetB(y,bvec.x(k))		
-							}		
-						}		
-						i +=1		
-							
-					}		
-							
-							
-				}		
-						
-			}		
-			fcurrent()		
-			secRef {		
-				connect Exts[counter](0), 1		
-			}		
-			Exts[counter]{		
-				for(x){ 		
-			//printf("x is %f and sec is %s\n",x,secname())		
-					SetA(x,0)		
-					SetB(x,0)		
-					}		
-				}		
-					
-	counter+=1				
-		}		
+create Exts[1]
+proc hinesDisperseBranching(){local i localobj sl,secRef, clist, avec, bvec
+	counter = 0
+	forsec most{
+		secRef = new SectionRef()
+		if(secRef.nchild>2){
+clist = new List()
+  for i=0, secRef.nchild-1 {
+    secRef.child[i] clist.append(new SectionRef())
+  }
+			Exts[counter]{
+				L = 1e-9
+				diam = 1
+				Ra = secRef.sec.Ra
+				cm = secRef.sec.cm
+				nseg = secRef.nchild-1
+			}
+			i=0
+			Exts[counter]{
+				for(x){
+					if (x > 0) {
+						avec =new Vector()
+						bvec =new Vector()
+						//printf("x is %f i is %d\n",x,i)
+						clist.o(i).sec{
+							avec =new Vector()
+							bvec =new Vector()
+							for(y){
+								avec.append(GetA(y))
+								bvec.append(GetB(y))
+							}
+						}
+						connect clist.o(i).sec(0), x
+						 k=0
+					  clist.o(i).sec{
+							for(y){
+								SetA(y,avec.x(k))
+								SetB(y,bvec.x(k))
+							}
+						}
+						i +=1
+
+					}
+
+
+				}
+
+			}
+			fcurrent()
+			secRef {
+				connect Exts[counter](0), 1
+			}
+			Exts[counter]{
+				for(x){
+			//printf("x is %f and sec is %s\n",x,secname())
+					SetA(x,0)
+					SetB(x,0)
+					}
+				}
+
+	counter+=1
+		}
 	}
 		//print "printing counter"
 		//print counter
-		
-		
+
+
 }
 
 proc countExts(){
@@ -231,7 +231,7 @@ forsec most {
 		ext_num+=1
 	}
 	}
-	
+
 	//printf("ext_num is %d", ext_num)
 }
 
@@ -239,7 +239,7 @@ forsec most {
 
 proc PrintRecSites(){localobj sref
 	recSites.printnames()
-}	
+}
 stimtime = new Matrix(1,ntimestep)
 readMatrix(timesFile,stimtime)
 pmat = new Matrix(psize,nparams)
@@ -248,7 +248,7 @@ stims = new Matrix(ntraces,ntimestep)
 readCSVMatrix(stimFile,stims)
 forsec "dend" nseg=1
 forsec "apic" nseg=1
-	
+
 //topology()
 most = new SectionList()
 forall most.append()
@@ -276,7 +276,7 @@ st = new IClamp(0.5)
 
 
 
- 
+
 finitialize(v_init)
 
 
@@ -9742,4 +9742,3 @@ MyPrintMatrix3()
 PrintRecSites()
 
 quit()
-

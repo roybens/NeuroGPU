@@ -7,6 +7,8 @@ import numpy as np
 from cell import cell_numel
 import subprocess
 
+import json
+
 
 
 def get_comp_index(types, compt_name):
@@ -200,6 +202,7 @@ def proc_add_param_to_hoc_for_opt(all_parameters_non_global_c, hoc_base_fn, base
             cur_mech_params = all_parameters_non_global_c[F[0][m - 1]]                            # determine number of parameters to write into file
             curr_mech_states = all_states[F[0][m-1]]
             for p in range(1, len(cur_mech_params) + 1):
+                # param_name = comp_names[c-1][1:]
                 if (comp_names[c-1][1:] not in param_mappings):
                     param_mappings[comp_names[c-1][1:]] = {}
                 if (cur_mech_params[p - 1] not in param_mappings[comp_names[c-1][1:]].keys()):
@@ -216,14 +219,11 @@ def proc_add_param_to_hoc_for_opt(all_parameters_non_global_c, hoc_base_fn, base
                         funcs.append('a=' + curr_mech_states[p - 1])
                         funcs.append('fn2.vwrite(&a)')
                         counter += 2
-
-
-    print(param_mappings)
+    # print(param_mappings)
 
     # f = open(data_dir + '/param_mappings.txt', 'w')
     # f.write(param_mappings)
     # f.close()
-
 
     if counter > 0:
         funcs.append('}')
@@ -355,5 +355,10 @@ def proc_add_param_to_hoc_for_opt(all_parameters_non_global_c, hoc_base_fn, base
     first_param_m_st = first_param_m_s.getvalue()
     f.write('%s\n' % first_param_m_st)                                                  # write .getvalue() of first_param_m_s
     f.close()
+
+
+    f3 = open(data_dir + '/ParamMappings.txt', 'w')
+    json.dump(param_mappings, f3);
+    f3.close()
 
     return first_param_m, runModel_hoc_object
