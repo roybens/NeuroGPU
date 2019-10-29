@@ -272,8 +272,8 @@ def proc_add_param_to_hoc_for_opt(all_parameters_non_global_c, hoc_base_fn, base
     all_params = np.zeros((n_sets[0], len(comp_names) * int(param_start_i[-1])))
     all_states_vals = np.zeros((n_sets[0], len(comp_names) * int(state_start_i[-1])))
     first_param_m = None
-    # for kk in range(1, n_sets[0] + 1):
-    for kk in range(1, 2):
+    for kk in range(1, n_sets[0] + 1):
+    # for kk in range(1, 2):
         if kk % 8 == 0:
             print("%d / %d" % (kk, n_sets[0] + 1))
         param_m = np.zeros((len(comp_names), int(param_start_i[-1])))
@@ -348,6 +348,20 @@ def proc_add_param_to_hoc_for_opt(all_parameters_non_global_c, hoc_base_fn, base
     f.write(np.array(n_sets).astype(np.uint16))
     f.write(all_params.astype(np.float32))
     f.close()
+    #
+    f = open(data_dir + '/AllParams.csv', 'w')
+    n_sets_s = StringIO()
+    np.savetxt(n_sets_s, np.array(n_sets), fmt='%5.d', newline=',')
+    n_sets_st = n_sets_s.getvalue()
+    all_params_s = StringIO()
+    print('HELLO')
+    print(all_params)
+    print('HELLO')
+    np.savetxt(all_params_s, all_params, fmt='%.5e,', newline='\n')
+    all_params_st = all_params_s.getvalue()
+    f.write('%s\n%s\n' % (n_sets_st, all_params_st))
+    f.close()
+    #
     f = open(data_dir + '/ParamsM.csv', 'w')
     first_param_m_s = StringIO()
     np.savetxt(first_param_m_s, first_param_m.reshape((first_param_m.shape[0] * first_param_m.shape[1],)), fmt='%f',

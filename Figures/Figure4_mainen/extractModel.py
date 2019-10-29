@@ -1068,7 +1068,7 @@ def expand_ilp_macros(file_name, other_file_names, ilpn, out_file_name):
     for i in range(1, len(all_in_macros) + 1):
         curr_line_i_tmp = [1 if re.search('#define.*' + all_in_macros[i - 1], line) else 0 for line in all_lines]
         #print 'tmp'
-
+        # print(curr_line_i_tmp)
         tmp1 = list(filter(lambda x: x != 0, curr_line_i_tmp))
         if (len(tmp1) > 0):
             tmp2 = curr_line_i_tmp.index(tmp1[0])
@@ -2810,7 +2810,7 @@ def runPyNeuroGPU():
     for file in glob.glob(temp):
         # print(file)
         shutil.copy(file, run_dir + "/Data/")
-    # shutil.copy(data_dir + 'AllParams.csv', run_dir + "/Data/")                     # shutil.copy(src, dst) copy file src to file/directory dst
+    shutil.copy(data_dir + 'AllParams.csv', run_dir + "/Data/")                     # shutil.copy(src, dst) copy file src to file/directory dst
     shutil.copy(data_dir + 'ParamTemplate.csv', run_dir + "/Data/")                     # shutil.copy(src, dst) copy file src to file/directory dst
     shutil.copy(data_dir + 'AllStates.csv', run_dir + "/Data/")
     shutil.copy(data_dir + "/Sim.csv", run_dir + "/Data/")
@@ -2842,7 +2842,7 @@ def linux_packing():
     for file in glob.glob(temp):
         # print(file)
         shutil.copy(file, unix_dir + "/Data/")
-    # shutil.copy(data_dir + 'AllParams.csv', unix_dir + "/Data/")
+    shutil.copy(data_dir + 'AllParams.csv', unix_dir + "/Data/")
     shutil.copy(data_dir + 'ParamTemplate.csv', unix_dir + "/Data/")
     shutil.copy(data_dir + 'AllStates.csv', unix_dir + "/Data/")
 
@@ -2864,7 +2864,8 @@ def main():
     nrn.h.load_file(1, modelFile)
     if not os.path.exists(data_dir):
         os.makedirs(data_dir)
-    nrn.h.base = "C:\\Users\\Maxwell Chen\\Desktop\\NeuroGPU\\NeuroGPU_Base"                                # Changed path to work on my computer; will revert later
+    # nrn.h.base = "C:\\Users\\Maxwell Chen\\Desktop\\NeuroGPU\\NeuroGPU_Base"                                # Changed path to work on my computer; will revert later
+    nrn.h.base = "C:/Users/mdera/OneDrive/Desktop/Neuro/NeuroGPU_Base"
     vs_dir = nrn.h.base + '/VS/pyNeuroGPU_win/NeuroGPU6'
     vs_root = nrn.h.base + '/VS/pyNeuroGPU_win/'
     baseDir = nrn.h.base
