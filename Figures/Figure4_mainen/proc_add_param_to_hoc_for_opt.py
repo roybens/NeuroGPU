@@ -316,11 +316,11 @@ def proc_add_param_to_hoc_for_opt(all_parameters_non_global_c, hoc_base_fn, base
     f = open(data_dir + 'ParamTemplate.csv', 'w')
 
     n_sets_s = StringIO()                                                               # Read/write strings as files
-    # np.savetxt(n_sets_s, np.array(n_sets), fmt='%5.d', newline=',')                     # State at top of .csv file the number of models
+    np.savetxt(n_sets_s, np.array(n_sets), fmt='%5.d', newline=',')                     # State at top of .csv file the number of models
     np.savetxt(n_sets_s, [1], fmt='%5.d', newline=',')
     n_sets_st = n_sets_s.getvalue()                                                     # retrieve contents of file
     all_params_s = StringIO()
-    # np.savetxt(all_params_s, all_params, fmt='%.5e,', newline='\n')                     # Same but using all_params; val. separated by \n
+    np.savetxt(all_params_s, all_params, fmt='%.5e,', newline='\n')                     # Same but using all_params; val. separated by \n
     np.savetxt(all_params_s, all_params, fmt='%.5d,', newline='\n')
     all_params_st = all_params_s.getvalue()
 
