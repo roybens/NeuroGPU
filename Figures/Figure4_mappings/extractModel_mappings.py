@@ -24,6 +24,14 @@ def flatten_dict(dct):
     return dct
 
 
+def format_value(num):
+    if type(num) == str:
+        return format_value(float(num))
+    else:
+        return '%.5E' % num
+    
+
+
 def parse_model(model_file):
     with open(model_file, 'r') as mdl:
         model_raw = [m[0] for m in list(reader(mdl))]
@@ -105,8 +113,9 @@ def main():
     )
 
     # write allparams to csv
-    with open('AllParams.csv', 'w') as ap:
+    with open('AllParams.csv', 'w', newline='') as ap:
         wr = writer(ap)
+        wr.writerow(['1023'])
         for row in allparams:
             wr.writerow(row)
     
