@@ -29,7 +29,6 @@ def format_value(num):
         return format_value(float(num))
     else:
         return '%.5E' % num
-    
 
 
 def parse_model(model_file):
@@ -117,7 +116,7 @@ def main():
         wr = writer(ap)
         wr.writerow(['1023'])
         for row in allparams:
-            wr.writerow(row)
+            wr.writerow(list(map(format_value, row)))
     
     return allparams
 
