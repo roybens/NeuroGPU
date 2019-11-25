@@ -31,6 +31,17 @@ def format_value(num):
         return '%.5E' % num
 
 
+def check_allparams(allparams_file, reference_file):
+    with open(allparams_file, 'r') as af:
+        allparams_matrix = list(reader(af))
+    with open(reference_file, 'r') as rf:
+        reference_matrix = list(reader(rf))
+    for row_a, row_r in zip(allparams_matrix, reference_matrix):
+        for elem_a, elem_r in zip(row_a, row_r):
+            if float(elem_a) != float(elem_r):
+                print(f'Got {elem_a}, but expected {elem_r}')
+
+
 def parse_model(model_file):
     with open(model_file, 'r') as mdl:
         model_raw = [m[0] for m in list(reader(mdl))]
@@ -85,7 +96,7 @@ def assemble_allparams(allparams_template, params, param_to_allparam, param_mapp
     return template
 
 
-def main():
+def allparams_from_mapping():
     global template, params_file, allparam_map, model_data
     # get raw allparams template
     with open(template, 'r') as ap:
@@ -122,9 +133,8 @@ def main():
 
 
 if __name__ == "__main__":
-    allparams = main()
+    allparams = allparams_from_mapping()
     # check allparams 
     # get reference for correct output
-    with open(reference, 'r') as ap:
-        allparams_ref = [list(map(float, p[:-1])) for p in list(reader(ap))][1:-1]
+    # check_allparams('AllParams.csv', 'reference/AllParams.csv')
     # need to fill this in, need to go but will fill in later
