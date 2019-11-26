@@ -1,4 +1,4 @@
-// Automatically generated C for C:\L5_TTPC1_cADpyr232_1./runModel.hoc
+// Automatically generated C for C:\BBP_newforML./runModel.hoc
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -11,16 +11,16 @@
 #define ktf (1000.*8.3134*(celsius + 273.15)/FARADAY)
 
 // Reversals:
-#define ena (50.0f)
-#define ek (-85.0f)
 #define DEF_cai		5.e-5	   /* mM */
 #define DEF_cao		2.	   /* mM */
+#define ena (50.0f)
+#define ek (-85.0f)
 
 // Locals:
-MYFTYPE gCa,gCa_LVAst,gIh,gIm,gK_Pst,gK_Tst,gNaTa_t,gNaTs2_t,gNap_Et2,gSK_E2,gSKv3_1,hAlpha,hBeta,hInf,hTau,ihcn,mAlpha,mBeta,mInf,mTau,vi,zInf;
+MYFTYPE gCa,gCa_LVAst,gIh,gIm,gK_Pst,gK_Tst,gNaTa_t,gNaTs2_t,gNap_Et2,gSK_E2,gSKv3_1,hAlpha,hBeta,hInf,hTau,ihcn,mAlpha,mBeta,mInf,mTau,zInf;
 
 // Ion currents as Locals:
-MYFTYPE ina,ica,ik;
+MYFTYPE ica,ik,ina;
 
 // NGlobals:
 
@@ -34,7 +34,7 @@ void rates_K_Tst(MYFTYPE v,MYFTYPE gK_Tstbar_K_Tst);
 void rates_Nap_Et2(MYFTYPE v,MYFTYPE gNap_Et2bar_Nap_Et2);
 void rates_NaTa_t(MYFTYPE v,MYFTYPE gNaTa_tbar_NaTa_t);
 void rates_NaTs2_t(MYFTYPE v,MYFTYPE gNaTs2_tbar_NaTs2_t);
-void rates_SK_E2(MYFTYPE v,MYFTYPE gSK_E2bar_SK_E2,MYFTYPE zTau_SK_E2);
+void rates_SK_E2(MYFTYPE ca,MYFTYPE gSK_E2bar_SK_E2,MYFTYPE zTau_SK_E2);
 void rates_SKv3_1(MYFTYPE v,MYFTYPE gSKv3_1bar_SKv3_1);
 
 // Functions:
@@ -42,21 +42,25 @@ void rates_SKv3_1(MYFTYPE v,MYFTYPE gSKv3_1bar_SKv3_1);
 // Inits:
 
 
-void InitModel_Ca_HVA(MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gCa_HVAbar_Ca_HVA, MYFTYPE &ica){
+void InitModel_Ca_HVA(MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gCa_HVAbar_Ca_HVA, MYFTYPE &ica,MYFTYPE &eca, MYFTYPE &cai){
+eca = ktf/2 *log(DEF_cao / cai);
 	rates_Ca_HVA(,gCa_HVAbar_Ca_HVA);
 	m = mInf;
 	h = hInf;
 };
 
 
-void InitModel_Ca_LVAst(MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gCa_LVAstbar_Ca_LVAst, MYFTYPE &ica){
+void InitModel_Ca_LVAst(MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gCa_LVAstbar_Ca_LVAst, MYFTYPE &ica,MYFTYPE &eca, MYFTYPE &cai){
+eca = ktf/2 *log(DEF_cao / cai);
 	rates_Ca_LVAst(,gCa_LVAstbar_Ca_LVAst);
 	m = mInf;
 	h = hInf;
 };
 
 
-void InitModel_CaDynamics_E2(MYFTYPE v,MYFTYPE &cai,MYFTYPE gamma_CaDynamics_E2,MYFTYPE decay_CaDynamics_E2,MYFTYPE depth_CaDynamics_E2,MYFTYPE minCai_CaDynamics_E2, MYFTYPE ica){
+void InitModel_CaDynamics_E2(MYFTYPE v,MYFTYPE &cai,MYFTYPE gamma_CaDynamics_E2,MYFTYPE decay_CaDynamics_E2,MYFTYPE depth_CaDynamics_E2,MYFTYPE minCai_CaDynamics_E2, MYFTYPE ica,MYFTYPE &eca){
+cai = DEF_cai;
+eca = ktf/2 *log(DEF_cao / cai);
 };
 
 
@@ -111,7 +115,8 @@ void InitModel_pas(MYFTYPE v,MYFTYPE g_pas,MYFTYPE e_pas){
 };
 
 
-void InitModel_SK_E2(MYFTYPE v,MYFTYPE &z,MYFTYPE gSK_E2bar_SK_E2,MYFTYPE zTau_SK_E2, MYFTYPE cai){
+void InitModel_SK_E2(MYFTYPE v,MYFTYPE &z,MYFTYPE gSK_E2bar_SK_E2,MYFTYPE zTau_SK_E2, MYFTYPE cai,MYFTYPE &eca){
+eca = ktf/2 *log(DEF_cao / cai);
         rates_SK_E2(cai,gSK_E2bar_SK_E2,zTau_SK_E2);
         z = zInf;
 };
@@ -245,7 +250,7 @@ void rates_NaTs2_t(MYFTYPE v,MYFTYPE gNaTs2_tbar_NaTs2_t) {
    hInf = hAlpha / ( hAlpha + hBeta ) ;
    hTau = ( 1.0 / ( hAlpha + hBeta ) ) / qt ;
 }
-void rates_SK_E2(MYFTYPE v,MYFTYPE gSK_E2bar_SK_E2,MYFTYPE zTau_SK_E2) {
+void rates_SK_E2(MYFTYPE ca,MYFTYPE gSK_E2bar_SK_E2,MYFTYPE zTau_SK_E2) {
    if ( ca < 1e-7 ) {
      ca = ca + 1e-07 ;
      }
@@ -261,21 +266,31 @@ void rates_SKv3_1(MYFTYPE v,MYFTYPE gSKv3_1bar_SKv3_1) {
 // Breaks:
 
 
-void BreakpointModel_Ca_HVA(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gCa_HVAbar_Ca_HVA, MYFTYPE &ica) {
+void BreakpointModel_Ca_HVA(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gCa_HVAbar_Ca_HVA, MYFTYPE &ica,MYFTYPE &eca, MYFTYPE &cai) {
+MYFTYPE ica_Ca_HVA;
+
    gCa = gCa_HVAbar_Ca_HVA * m * m * h ;
-   ica = gCa * ( v - eca ) ;
-sumCurrents+= ica;
+   ica_Ca_HVA = gCa * ( v - eca ) ;
+sumCurrents+= ica_Ca_HVA;
+
+ ica += ica_Ca_HVA;
+sumConductivity+= gCa;
 };
 
 
-void BreakpointModel_Ca_LVAst(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gCa_LVAstbar_Ca_LVAst, MYFTYPE &ica) {
+void BreakpointModel_Ca_LVAst(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gCa_LVAstbar_Ca_LVAst, MYFTYPE &ica,MYFTYPE &eca, MYFTYPE &cai) {
+MYFTYPE ica_Ca_LVAst;
+
    gCa_LVAst = gCa_LVAstbar_Ca_LVAst * m * m * h ;
-   ica = gCa_LVAst * ( v - eca ) ;
-sumCurrents+= ica;
+   ica_Ca_LVAst = gCa_LVAst * ( v - eca ) ;
+sumCurrents+= ica_Ca_LVAst;
+
+ ica += ica_Ca_LVAst;
+sumConductivity+= gCa_LVAst;
 };
 
 
-void BreakpointModel_CaDynamics_E2(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &cai,MYFTYPE gamma_CaDynamics_E2,MYFTYPE decay_CaDynamics_E2,MYFTYPE depth_CaDynamics_E2,MYFTYPE minCai_CaDynamics_E2, MYFTYPE ica) {
+void BreakpointModel_CaDynamics_E2(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &cai,MYFTYPE gamma_CaDynamics_E2,MYFTYPE decay_CaDynamics_E2,MYFTYPE depth_CaDynamics_E2,MYFTYPE minCai_CaDynamics_E2, MYFTYPE ica,MYFTYPE &eca) {
 };
 
 
@@ -285,6 +300,7 @@ void BreakpointModel_Ih(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MY
 i = ihcn;
 
 sumCurrents+= i;
+sumConductivity+= gIh;
 };
 
 
@@ -292,6 +308,7 @@ void BreakpointModel_Im(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MY
    gIm = gImbar_Im * m ;
    ik = gIm * ( v - ek ) ;
 sumCurrents+= ik;
+sumConductivity+= gIm;
 };
 
 
@@ -299,6 +316,7 @@ void BreakpointModel_K_Pst(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity,
    gK_Pst = gK_Pstbar_K_Pst * m * m * h ;
    ik = gK_Pst * ( v - ek ) ;
 sumCurrents+= ik;
+sumConductivity+= gK_Pst;
 };
 
 
@@ -306,6 +324,7 @@ void BreakpointModel_K_Tst(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity,
    gK_Tst = gK_Tstbar_K_Tst * powf( m , 4.0 ) * h ;
    ik = gK_Tst * ( v - ek ) ;
 sumCurrents+= ik;
+sumConductivity+= gK_Tst;
 };
 
 
@@ -313,6 +332,7 @@ void BreakpointModel_Nap_Et2(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivit
    gNap_Et2 = gNap_Et2bar_Nap_Et2 * m * m * m * h ;
    ina = gNap_Et2 * ( v - ena ) ;
 sumCurrents+= ina;
+sumConductivity+= gNap_Et2;
 };
 
 
@@ -320,6 +340,7 @@ void BreakpointModel_NaTa_t(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity
    gNaTa_t = gNaTa_tbar_NaTa_t * m * m * m * h ;
    ina = gNaTa_t * ( v - ena ) ;
 sumCurrents+= ina;
+sumConductivity+= gNaTa_t;
 };
 
 
@@ -327,6 +348,7 @@ void BreakpointModel_NaTs2_t(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivit
    gNaTs2_t = gNaTs2_tbar_NaTs2_t * m * m * m * h ;
    ina = gNaTs2_t * ( v - ena ) ;
 sumCurrents+= ina;
+sumConductivity+= gNaTs2_t;
 };
 
 
@@ -335,13 +357,15 @@ void BreakpointModel_pas(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, M
 i = i;
 
 sumCurrents+= i;
+sumConductivity+= g_pas;
 };
 
 
-void BreakpointModel_SK_E2(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &z,MYFTYPE gSK_E2bar_SK_E2,MYFTYPE zTau_SK_E2, MYFTYPE cai) {
+void BreakpointModel_SK_E2(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &z,MYFTYPE gSK_E2bar_SK_E2,MYFTYPE zTau_SK_E2, MYFTYPE cai,MYFTYPE &eca) {
    gSK_E2 = gSK_E2bar_SK_E2 * z ;
    ik = gSK_E2 * ( v - ek ) ;
 sumCurrents+= ik;
+sumConductivity+= gSK_E2;
 };
 
 
@@ -349,4 +373,5 @@ void BreakpointModel_SKv3_1(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity
    gSKv3_1 = gSKv3_1bar_SKv3_1 * m ;
    ik = gSKv3_1 * ( v - ek ) ;
 sumCurrents+= ik;
+sumConductivity+= gSKv3_1;
 };
