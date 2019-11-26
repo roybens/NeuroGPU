@@ -17,7 +17,7 @@ extern void _SK_E2_reg();
 extern void _SKv3_1_reg();
 extern void _branching_reg();
 
-modl_reg(){
+void modl_reg(){
 	//nrn_mswindll_stdio(stdin, stdout, stderr);
     if (!nrn_nobanner_) if (nrnmpi_myid < 1) {
 	fprintf(stderr, "Additional mechanisms from files\n");

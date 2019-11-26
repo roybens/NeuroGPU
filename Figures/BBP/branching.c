@@ -1,4 +1,4 @@
-/* Created by Language version: 6.2.0 */
+/* Created by Language version: 7.5.0 */
 /* NOT VECTORIZED */
 #define NRN_VECTORIZED 0
 #include <stdio.h>
@@ -142,7 +142,7 @@ static void  nrn_init(_NrnThread*, _Memb_list*, int);
 static void nrn_state(_NrnThread*, _Memb_list*, int);
  /* connect range variables in _p that hoc is supposed to know about */
  static const char *_mechanism[] = {
- "6.2.0",
+ "7.5.0",
 "branching",
  0,
  0,
@@ -171,7 +171,7 @@ extern void _cvode_abstol( Symbol**, double*, int);
 	int _vectorized = 0;
   _initlists();
  	hoc_register_var(hoc_scdoub, hoc_vdoub, hoc_intfunc);
- 	ivoc_help("help ?1 branching C:/L5_TTPC1_cADpyr232_1/branching.mod\n");
+ 	ivoc_help("help ?1 branching C:/BBP_newforML/branching.mod\n");
  }
 static int _reset;
 static char *modelname = "";
@@ -523,7 +523,6 @@ static int  MyPrintMatrix3 (  ) {
 for(ii=0;ii<_nt->end;ii++){
 nd=_nt->_v_node[ii];
 fprintf(fm,"%d %1.15f %1.15f %1.15f %1.15f\n", ii, NODEB(nd), NODEA(nd), NODED(nd), NODERHS(nd));
-printf("ii");
 }
 fclose (fm);
 }
