@@ -12,15 +12,15 @@
 
 // Reversals:
 #define ena (60.0f)
-#define ek (-90.0f)
 #define DEF_cai		5.e-5	   /* mM */
 #define DEF_cao		2.	   /* mM */
+#define ek (-90.0f)
 
 // Locals:
 MYFTYPE a,b,drive_channel,gca,gk,gna,hinf,htau,minf,mtau,ninf,ntau,vi;
 
 // Ion currents as Locals:
-MYFTYPE ina,ica,ik;
+MYFTYPE ik,ica,ina;
 
 // NGlobals:
 #define q10_ca (2.3)

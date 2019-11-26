@@ -39,13 +39,13 @@ def find_indices_in_template(data_dir, param, param_mappings):
 def insert_values(data_dir, indices, new_value, param_mappings):
         f = open(data_dir + 'ParamTemplate.csv', 'r')
         if f.mode != "r":
-            print("Error: Could not read file.");
-            return;
-        template = list(csv.reader(f))[1];
+            print("Error: Could not read file.")
+            return
+        template = list(csv.reader(f))[1]
         print(list(np.where(template == "2")))
-        index = template.index("2031");
+        index = template.index("2031")
         for i in range(10):
-            print("val", i,":\"", template[i], "\"");
+            print("val", i,":\"", template[i], "\"")
 
         f.close()
         indices = []
