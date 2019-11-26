@@ -1,4 +1,4 @@
-// Automatically generated C for C:\BBP_newforML./runModel.hoc
+// Automatically generated C for E:\GitHub\NeuroGPU\Figures\BBP./runModel.hoc
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -11,16 +11,16 @@
 #define ktf (1000.*8.3134*(celsius + 273.15)/FARADAY)
 
 // Reversals:
+#define ek (-85.0f)
 #define DEF_cai		5.e-5	   /* mM */
 #define DEF_cao		2.	   /* mM */
 #define ena (50.0f)
-#define ek (-85.0f)
 
 // Locals:
 MYFTYPE gCa,gCa_LVAst,gIh,gIm,gK_Pst,gK_Tst,gNaTa_t,gNaTs2_t,gNap_Et2,gSK_E2,gSKv3_1,hAlpha,hBeta,hInf,hTau,ihcn,mAlpha,mBeta,mInf,mTau,zInf;
 
 // Ion currents as Locals:
-MYFTYPE ica,ik,ina;
+MYFTYPE ik,ina,ica;
 
 // NGlobals:
 

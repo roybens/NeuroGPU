@@ -1,4 +1,4 @@
-// Automatically generated CUH for C:\BBP_newforML./runModel.hoc
+// Automatically generated CUH for E:\GitHub\NeuroGPU\Figures\BBP./runModel.hoc
 
 #ifndef __ALLMODELSCU__
 #define __ALLMODELSCU__
