@@ -2868,14 +2868,14 @@ def main():
     nrn.h.load_file(1, modelFile)
     if not os.path.exists(data_dir):
         os.makedirs(data_dir)
-    nrn.h.base = "C:\\Users\\Maxwell Chen\\Desktop\\NeuroGPU\\NeuroGPU_Base"                                # Changed path to work on my computer; will revert later
+    # nrn.h.base = "C:\\Users\\Maxwell Chen\\Desktop\\NeuroGPU\\NeuroGPU_Base"                                # Changed path to work on my computer; will revert later
     vs_dir = nrn.h.base + '/VS/pyNeuroGPU_win/NeuroGPU6'
     vs_root = nrn.h.base + '/VS/pyNeuroGPU_win/'
     baseDir = nrn.h.base
     vs_root = baseDir + '/VS/pyNeuroGPU_win/'
 
     # -----------------------------------------------------------------------------------------
-    nrn.h.base = "C:/Users/mdera/OneDrive/Desktop/Neuro/NeuroGPU_Base"
+    # nrn.h.base = "C:/Users/mdera/OneDrive/Desktop/Neuro/NeuroGPU_Base"
     vs_dir = nrn.h.base + '/VS/pyNeuroGPU_win/NeuroGPU6'
     vs_root = nrn.h.base + '/VS/pyNeuroGPU_win/'
     baseDir = nrn.h.base
