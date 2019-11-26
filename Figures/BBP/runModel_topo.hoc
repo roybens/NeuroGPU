@@ -2,19 +2,19 @@ strdef fitFile,timesFile,paramsFile,stimFile,outFile,modelFile,outFPre,base
 objref st,stims,fin,fout,pmat,matOut,stimtime,somaref,secref,extVec,strFunc,most,root,transvec
 
 ntimestep = 3168 
-nparams = 3 
-psize = 32770 
+nparams = 6 
+psize = 10 
 ntraces = 1 
 v_init = -80 
 calc_eca = 1 
 
 
-   stLoc = 0.52 
-base = "../NeuroGPU_Base" 
+   stLoc = 0.43 
+base = "E:/GitHub/NeuroGPU/NeuroGPU_Base" 
 paramsFile = "./params/params.csv" 
-stimFile = "./Stims/Stim_raw.csv" 
-modelFile = ".//mosinit.hoc" 
-timesFile = ".//Stims/times.csv" 
+stimFile = "./Stims/Step_8_.csv" 
+modelFile = "./mosinit.hoc" 
+timesFile = "./Stims/times.csv" 
 
 transvec = new Vector(nparams)
 
@@ -264,7 +264,7 @@ if(ext_num>0){
 		delete_section()
 	}
 //****************************************************
-//forall{nseg=1}
+forall{nseg=1}
 //******************************************************
 hinesDisperseBranching()
 

@@ -34,13 +34,17 @@ begintemplate cADpyr232_biophys
 public biophys, distribute
 
 proc distribute(){local x localobj sl
+	
         strdef stmp,distfunc,mech
         sl = $o1
         mech = $s2
         distfunc = $s3
         sprint(distfunc,"%%s %s(%%f) = %s",mech, distfunc)
+		//print distfunc
         forsec sl for(x) {
+			secname()
             sprint (stmp,distfunc,secname(),x,distance(x))
+			//print stmp
             execute(stmp)
         }
     }
@@ -97,7 +101,9 @@ proc biophys() {
 
 	forsec $o1.all {
 		g_pas = 3e-5 
+		
 	}
+	
 
 	forsec $o1.apical {
 		ena = 50 
@@ -154,6 +160,9 @@ proc biophys() {
 		distribute($o1.somatic,"gIhbar_Ih","(0.0 * %g + 1.0)*0.000080")
 		distribute($o1.somatic,"decay_CaDynamics_E2","(0.0 * %g + 1.0)*210.485284")
 		distribute($o1.somatic,"gCa_LVAstbar_Ca_LVAst","(0.0 * %g + 1.0)*0.000333")
+		
+		
+		
 }
 
 endtemplate cADpyr232_biophys

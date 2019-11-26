@@ -1,4 +1,4 @@
-// Automatically generated CU for C:\L5_TTPC1_cADpyr232_1./runModel.hoc
+// Automatically generated CU for C:\BBP_newforML./runModel.hoc
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -11,7 +11,17 @@
 #define R (8.31441f)
 #define FARADAY (96485.309f)
 #define ktf (1000.*8.3134*(celsius + 273.15)/FARADAY)
-
+#define DEF_vrest	-65.
+#define DEF_nai 10.
+#define DEF_nao 140.
+#define DEF_ena (115. + DEF_vrest)
+#define DEF_ki	54.4
+#define DEF_ko 2.5
+#define DEF_ek (-12. + DEF_vrest)
+#include <math.h>
+#define DEF_cai	5.e-5
+#define DEF_cao	2.
+#define	DEF_eca		12.5 *log(DEF_cao / DEF_cai)
 
 // GGlobals:
 #define celsius (34.0)
@@ -21,9 +31,9 @@
 
 // NGlobals:
 // Reversals:
+#define DEF_eca2 (140.21871199503352f)
 #define ena (50.0f)
 #define ek (-85.0f)
-#define eca (140.218711995f)
 
 // Declarations:
 __device__ void Curates_Ca_HVA(MYFTYPE v,MYFTYPE gCa_HVAbar_Ca_HVA,MYFTYPE &hAlpha,MYFTYPE &hBeta,MYFTYPE &hInf,MYFTYPE &hTau,MYFTYPE &mAlpha,MYFTYPE &mBeta,MYFTYPE &mInf,MYFTYPE &mTau);
@@ -35,7 +45,7 @@ __device__ void Curates_K_Tst(MYFTYPE v,MYFTYPE gK_Tstbar_K_Tst,MYFTYPE &hInf,MY
 __device__ void Curates_Nap_Et2(MYFTYPE v,MYFTYPE gNap_Et2bar_Nap_Et2,MYFTYPE &hAlpha,MYFTYPE &hBeta,MYFTYPE &hInf,MYFTYPE &hTau,MYFTYPE &mAlpha,MYFTYPE &mBeta,MYFTYPE &mInf,MYFTYPE &mTau);
 __device__ void Curates_NaTa_t(MYFTYPE v,MYFTYPE gNaTa_tbar_NaTa_t,MYFTYPE &hAlpha,MYFTYPE &hBeta,MYFTYPE &hInf,MYFTYPE &hTau,MYFTYPE &mAlpha,MYFTYPE &mBeta,MYFTYPE &mInf,MYFTYPE &mTau);
 __device__ void Curates_NaTs2_t(MYFTYPE v,MYFTYPE gNaTs2_tbar_NaTs2_t,MYFTYPE &hAlpha,MYFTYPE &hBeta,MYFTYPE &hInf,MYFTYPE &hTau,MYFTYPE &mAlpha,MYFTYPE &mBeta,MYFTYPE &mInf,MYFTYPE &mTau);
-__device__ void Curates_SK_E2(MYFTYPE v,MYFTYPE gSK_E2bar_SK_E2,MYFTYPE zTau_SK_E2,MYFTYPE &ca,MYFTYPE &zInf);
+__device__ void Curates_SK_E2(MYFTYPE ca,MYFTYPE gSK_E2bar_SK_E2,MYFTYPE zTau_SK_E2,MYFTYPE &zInf);
 __device__ void Curates_SKv3_1(MYFTYPE v,MYFTYPE gSKv3_1bar_SKv3_1,MYFTYPE &mInf,MYFTYPE &mTau);
 float Cunernst(float ci,float co, float z) {
 	if (z == 0) {
@@ -175,7 +185,7 @@ __device__ void Curates_NaTs2_t(MYFTYPE v,MYFTYPE gNaTs2_tbar_NaTs2_t,MYFTYPE &h
    hInf = hAlpha / ( hAlpha + hBeta ) ;
    hTau = ( 1.0 / ( hAlpha + hBeta ) ) / qt ;
 }
-__device__ void Curates_SK_E2(MYFTYPE v,MYFTYPE gSK_E2bar_SK_E2,MYFTYPE zTau_SK_E2,MYFTYPE &ca,MYFTYPE &zInf) {
+__device__ void Curates_SK_E2(MYFTYPE ca,MYFTYPE gSK_E2bar_SK_E2,MYFTYPE zTau_SK_E2,MYFTYPE &zInf) {
    if ( ca < 1e-7 ) {
      ca = ca + 1e-07 ;
      }
@@ -189,23 +199,27 @@ __device__ void Curates_SKv3_1(MYFTYPE v,MYFTYPE gSKv3_1bar_SKv3_1,MYFTYPE &mInf
 // Inits:
 
 
-__device__ void CuInitModel_Ca_HVA(MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gCa_HVAbar_Ca_HVA, MYFTYPE &ica){
+__device__ void CuInitModel_Ca_HVA(MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gCa_HVAbar_Ca_HVA, MYFTYPE &ica,MYFTYPE &eca, MYFTYPE &cai){
 MYFTYPE hAlpha,hBeta,hInf,hTau,mAlpha,mBeta,mInf,mTau;
+eca = ktf/2 *log(DEF_cao / cai);
 Curates_Ca_HVA(v,gCa_HVAbar_Ca_HVA,hAlpha,hBeta,hInf,hTau,mAlpha,mBeta,mInf,mTau);
    m = mInf;
    h = hInf;
 };
 
 
-__device__ void CuInitModel_Ca_LVAst(MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gCa_LVAstbar_Ca_LVAst, MYFTYPE &ica){
+__device__ void CuInitModel_Ca_LVAst(MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gCa_LVAstbar_Ca_LVAst, MYFTYPE &ica,MYFTYPE &eca, MYFTYPE &cai){
 MYFTYPE hInf,hTau,mInf,mTau;
+eca = ktf/2 *log(DEF_cao / cai);
 Curates_Ca_LVAst(v,gCa_LVAstbar_Ca_LVAst,hInf,hTau,mInf,mTau);
    m = mInf;
    h = hInf;
 };
 
 
-__device__ void CuInitModel_CaDynamics_E2(MYFTYPE v,MYFTYPE &cai,MYFTYPE gamma_CaDynamics_E2,MYFTYPE decay_CaDynamics_E2,MYFTYPE depth_CaDynamics_E2,MYFTYPE minCai_CaDynamics_E2, MYFTYPE ica){
+__device__ void CuInitModel_CaDynamics_E2(MYFTYPE v,MYFTYPE &cai,MYFTYPE gamma_CaDynamics_E2,MYFTYPE decay_CaDynamics_E2,MYFTYPE depth_CaDynamics_E2,MYFTYPE minCai_CaDynamics_E2, MYFTYPE ica,MYFTYPE &eca){
+cai = DEF_cai;
+eca = ktf/2 *log(DEF_cao / cai);
 };
 
 
@@ -267,9 +281,10 @@ __device__ void CuInitModel_pas(MYFTYPE v,MYFTYPE g_pas,MYFTYPE e_pas){
 };
 
 
-__device__ void CuInitModel_SK_E2(MYFTYPE v,MYFTYPE &z,MYFTYPE gSK_E2bar_SK_E2,MYFTYPE zTau_SK_E2, MYFTYPE cai){
-MYFTYPE ca,zInf;
-Curates_SK_E2(cai,gSK_E2bar_SK_E2,zTau_SK_E2,ca,zInf);
+__device__ void CuInitModel_SK_E2(MYFTYPE v,MYFTYPE &z,MYFTYPE gSK_E2bar_SK_E2,MYFTYPE zTau_SK_E2, MYFTYPE cai,MYFTYPE &eca){
+MYFTYPE zInf;
+eca = ktf/2 *log(DEF_cao / cai);
+Curates_SK_E2(cai,gSK_E2bar_SK_E2,zTau_SK_E2,zInf);
         z = zInf;
 };
 
@@ -295,9 +310,10 @@ Curates_Ca_LVAst (v,gCa_LVAstbar_Ca_LVAst,hInf,hTau,mInf,mTau);
     m = m + (1. - exp(dt*(( ( ( - 1.0 ) ) ) / mTau)))*(- ( ( ( mInf ) ) / mTau ) / ( ( ( ( - 1.0 ) ) ) / mTau ) - m) ;
     h = h + (1. - exp(dt*(( ( ( - 1.0 ) ) ) / hTau)))*(- ( ( ( hInf ) ) / hTau ) / ( ( ( ( - 1.0 ) ) ) / hTau ) - h) ;
 }
-__device__ void CuDerivModel_CaDynamics_E2(MYFTYPE dt, MYFTYPE v,MYFTYPE &cai,MYFTYPE gamma_CaDynamics_E2,MYFTYPE decay_CaDynamics_E2,MYFTYPE depth_CaDynamics_E2,MYFTYPE minCai_CaDynamics_E2, MYFTYPE ica){
+__device__ void CuDerivModel_CaDynamics_E2(MYFTYPE dt, MYFTYPE v,MYFTYPE &cai,MYFTYPE gamma_CaDynamics_E2,MYFTYPE decay_CaDynamics_E2,MYFTYPE depth_CaDynamics_E2,MYFTYPE minCai_CaDynamics_E2, MYFTYPE ica,MYFTYPE &eca){
 
     cai = cai + (1. - exp(dt*(( - ( ( 1.0 ) ) / decay_CaDynamics_E2 ))))*(- ( ( - ( 10000.0 ) )*( ( ( ( ica )*( gamma_CaDynamics_E2 ) ) / ( 2.0 * FARADAY * depth_CaDynamics_E2 ) ) ) - ( ( ( - minCai_CaDynamics_E2 ) ) ) / decay_CaDynamics_E2 ) / ( ( - ( ( 1.0 ) ) / decay_CaDynamics_E2 ) ) - cai) ;
+eca = ktf/2 *log(DEF_cao / cai);
 }
 __device__ void CuDerivModel_Ih(MYFTYPE dt, MYFTYPE v,MYFTYPE &m,MYFTYPE gIhbar_Ih,MYFTYPE ehcn_Ih){
 MYFTYPE ihcn,gIh;
@@ -346,11 +362,12 @@ Curates_NaTs2_t (v,gNaTs2_tbar_NaTs2_t,hAlpha,hBeta,hInf,hTau,mAlpha,mBeta,mInf,
     m = m + (1. - exp(dt*(( ( ( - 1.0 ) ) ) / mTau)))*(- ( ( ( mInf ) ) / mTau ) / ( ( ( ( - 1.0 ) ) ) / mTau ) - m) ;
     h = h + (1. - exp(dt*(( ( ( - 1.0 ) ) ) / hTau)))*(- ( ( ( hInf ) ) / hTau ) / ( ( ( ( - 1.0 ) ) ) / hTau ) - h) ;
 }
-__device__ void CuDerivModel_SK_E2(MYFTYPE dt, MYFTYPE v,MYFTYPE &z,MYFTYPE gSK_E2bar_SK_E2,MYFTYPE zTau_SK_E2, MYFTYPE cai){
+__device__ void CuDerivModel_SK_E2(MYFTYPE dt, MYFTYPE v,MYFTYPE &z,MYFTYPE gSK_E2bar_SK_E2,MYFTYPE zTau_SK_E2, MYFTYPE cai,MYFTYPE &eca){
 MYFTYPE gSK_E2;
-MYFTYPE ca,zInf;
-Curates_SK_E2 (   cai,gSK_E2bar_SK_E2,zTau_SK_E2,ca,zInf);
+MYFTYPE zInf;
+Curates_SK_E2 (   cai,gSK_E2bar_SK_E2,zTau_SK_E2,zInf);
     z = z + (1. - exp(dt*(( ( ( - 1.0 ) ) ) / zTau_SK_E2)))*(- ( ( ( zInf ) ) / zTau_SK_E2 ) / ( ( ( ( - 1.0 ) ) ) / zTau_SK_E2 ) - z) ;
+eca = ktf/2 *log(DEF_cao / cai);
 }
 __device__ void CuDerivModel_SKv3_1(MYFTYPE dt, MYFTYPE v,MYFTYPE &m,MYFTYPE gSKv3_1bar_SKv3_1){
 MYFTYPE gSKv3_1;
@@ -362,25 +379,35 @@ Curates_SKv3_1 (v,gSKv3_1bar_SKv3_1,mInf,mTau);
 // Breaks:
 
 
-__device__ void CuBreakpointModel_Ca_HVA(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gCa_HVAbar_Ca_HVA, MYFTYPE &ica) {
+__device__ void CuBreakpointModel_Ca_HVA(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gCa_HVAbar_Ca_HVA, MYFTYPE &ica,MYFTYPE &eca, MYFTYPE &cai) {
 MYFTYPE gCa, gCa_HVA;
 MYFTYPE ;
+MYFTYPE ica_Ca_HVA;
+
    gCa = gCa_HVAbar_Ca_HVA * m * m * h ;
-   ica = gCa * ( v - eca ) ;
-sumCurrents+= ica;
+   ica_Ca_HVA = gCa * ( v - eca ) ;
+sumCurrents+= ica_Ca_HVA;
+
+ ica += ica_Ca_HVA;
+sumConductivity+= gCa;
 };
 
 
-__device__ void CuBreakpointModel_Ca_LVAst(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gCa_LVAstbar_Ca_LVAst, MYFTYPE &ica) {
-MYFTYPE gca, gCa_LVAst;
+__device__ void CuBreakpointModel_Ca_LVAst(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gCa_LVAstbar_Ca_LVAst, MYFTYPE &ica,MYFTYPE &eca, MYFTYPE &cai) {
+MYFTYPE gCa_LVAst, gca;
 MYFTYPE ;
+MYFTYPE ica_Ca_LVAst;
+
    gCa_LVAst = gCa_LVAstbar_Ca_LVAst * m * m * h ;
-   ica = gCa_LVAst * ( v - eca ) ;
-sumCurrents+= ica;
+   ica_Ca_LVAst = gCa_LVAst * ( v - eca ) ;
+sumCurrents+= ica_Ca_LVAst;
+
+ ica += ica_Ca_LVAst;
+sumConductivity+= gCa_LVAst;
 };
 
 
-__device__ void CuBreakpointModel_CaDynamics_E2(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &cai,MYFTYPE gamma_CaDynamics_E2,MYFTYPE decay_CaDynamics_E2,MYFTYPE depth_CaDynamics_E2,MYFTYPE minCai_CaDynamics_E2, MYFTYPE ica) {
+__device__ void CuBreakpointModel_CaDynamics_E2(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &cai,MYFTYPE gamma_CaDynamics_E2,MYFTYPE decay_CaDynamics_E2,MYFTYPE depth_CaDynamics_E2,MYFTYPE minCai_CaDynamics_E2, MYFTYPE ica,MYFTYPE &eca) {
 MYFTYPE gca;
 MYFTYPE ;
 };
@@ -394,42 +421,47 @@ MYFTYPE i;
 i = ihcn;
 
 sumCurrents+= i;
+sumConductivity+= gIh;
 };
 
 
 __device__ void CuBreakpointModel_Im(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE gImbar_Im) {
-MYFTYPE gIm, gk, ik;
+MYFTYPE ik, gIm, gk;
 MYFTYPE ;
    gIm = gImbar_Im * m ;
    ik = gIm * ( v - ek ) ;
 sumCurrents+= ik;
+sumConductivity+= gIm;
 };
 
 
 __device__ void CuBreakpointModel_K_Pst(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gK_Pstbar_K_Pst) {
-MYFTYPE gK_Pst, ik, gk;
+MYFTYPE ik, gK_Pst, gk;
 MYFTYPE ;
    gK_Pst = gK_Pstbar_K_Pst * m * m * h ;
    ik = gK_Pst * ( v - ek ) ;
 sumCurrents+= ik;
+sumConductivity+= gK_Pst;
 };
 
 
 __device__ void CuBreakpointModel_K_Tst(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gK_Tstbar_K_Tst) {
-MYFTYPE gk, ik, gK_Tst;
+MYFTYPE ik, gK_Tst, gk;
 MYFTYPE ;
    gK_Tst = gK_Tstbar_K_Tst * powf( m , 4.0 ) * h ;
    ik = gK_Tst * ( v - ek ) ;
 sumCurrents+= ik;
+sumConductivity+= gK_Tst;
 };
 
 
 __device__ void CuBreakpointModel_Nap_Et2(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gNap_Et2bar_Nap_Et2) {
-MYFTYPE gna, ina, gNap_Et2;
+MYFTYPE gNap_Et2, gna, ina;
 MYFTYPE ;
    gNap_Et2 = gNap_Et2bar_Nap_Et2 * m * m * m * h ;
    ina = gNap_Et2 * ( v - ena ) ;
 sumCurrents+= ina;
+sumConductivity+= gNap_Et2;
 };
 
 
@@ -439,6 +471,7 @@ MYFTYPE ;
    gNaTa_t = gNaTa_tbar_NaTa_t * m * m * m * h ;
    ina = gNaTa_t * ( v - ena ) ;
 sumCurrents+= ina;
+sumConductivity+= gNaTa_t;
 };
 
 
@@ -448,6 +481,7 @@ MYFTYPE ;
    gNaTs2_t = gNaTs2_tbar_NaTs2_t * m * m * m * h ;
    ina = gNaTs2_t * ( v - ena ) ;
 sumCurrents+= ina;
+sumConductivity+= gNaTs2_t;
 };
 
 
@@ -458,15 +492,17 @@ MYFTYPE i;
 i = i;
 
 sumCurrents+= i;
+sumConductivity+= g_pas;
 };
 
 
-__device__ void CuBreakpointModel_SK_E2(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &z,MYFTYPE gSK_E2bar_SK_E2,MYFTYPE zTau_SK_E2, MYFTYPE cai) {
-MYFTYPE gca, ik, gk, gSK_E2;
+__device__ void CuBreakpointModel_SK_E2(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &z,MYFTYPE gSK_E2bar_SK_E2,MYFTYPE zTau_SK_E2, MYFTYPE cai,MYFTYPE &eca) {
+MYFTYPE ik, gSK_E2, gk, gca;
 MYFTYPE ;
    gSK_E2 = gSK_E2bar_SK_E2 * z ;
    ik = gSK_E2 * ( v - ek ) ;
 sumCurrents+= ik;
+sumConductivity+= gSK_E2;
 };
 
 
@@ -476,4 +512,5 @@ MYFTYPE ;
    gSKv3_1 = gSKv3_1bar_SKv3_1 * m ;
    ik = gSKv3_1 * ( v - ek ) ;
 sumCurrents+= ik;
+sumConductivity+= gSKv3_1;
 };
