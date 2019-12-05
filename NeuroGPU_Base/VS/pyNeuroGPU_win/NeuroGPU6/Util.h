@@ -5,7 +5,7 @@
 
 #include <fstream>
 #define MYFTYPE float
-#define MYSECONDFTYPE double	
+#define MYSECONDFTYPE double
 #define MYTHIRDFTYPE double
 //#define MYDTYPE unsigned short
 #define MYDTYPE short
@@ -30,7 +30,7 @@
 
 #ifdef _WIN32
 	#define TIMES_FN "..\\Data\\RunTimes.csv"
-	#define VHOT_OUT_FN_P "..\\Data\\VHotP.dat"
+	#define VHOT_OUT_FN_P "..\\Data\\VHotP.h5"
 	#define AllParams_FN "..\\Data\\AllParams.csv"
 	#define InitStates_FN "..\\Data\\AllStates.csv"
 	#define BasicConstP_FN "..\\Data\\BasicConst"
@@ -43,7 +43,7 @@
 
 #else
 	#define TIMES_FN "../Data/RunTimes.csv"
-	#define VHOT_OUT_FN_P "../Data/VHotP.dat"
+	#define VHOT_OUT_FN_P "../Data/VHotP.h5"
 	#define AllParams_FN "../Data/AllParams.csv"
 	#define InitStates_FN "../Data/AllStates.csv"
 	#define BasicConstP_FN "../Data/BasicConst"
@@ -83,9 +83,9 @@ typedef struct {
 	MYDTYPE nFathers;
 	MYDTYPE nCallForFather;
 	MYDTYPE* Fathers;
-	
+
 	MYDTYPE* SonNoVec;
-	
+
 	MYDTYPE* RelStarts;
 	MYDTYPE* RelEnds;
 	MYDTYPE* RelVec;
@@ -96,7 +96,7 @@ typedef struct {
 	#ifdef BKSUB1
 		MYDTYPE* FIdxs;
 	#endif
-	
+
 	MYDTYPE *CompByLevel32;
 	MYDTYPE *CompByFLevel32;
 	MYDTYPE nLRel;
@@ -105,7 +105,7 @@ typedef struct {
 	MYDTYPE nFLRel;
 	MYDTYPE *FLRelStarts;
 	MYDTYPE *FLRelEnds;
-	
+
 	#ifdef BKSUB2
 		MYDTYPE *KsB;
 	#endif

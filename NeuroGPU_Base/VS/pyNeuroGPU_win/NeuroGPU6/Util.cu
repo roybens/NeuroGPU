@@ -422,36 +422,63 @@ double diffclock(clock_t clock1, clock_t clock2)
 void SaveArrayToFile(const char* FN, const int N, const double* Arr) {
 	printf("printing %s size is %d\n", FN, N);
 	const int prec = 3;
-	
-	FILE *file = fopen(FN, "wb");
-	if (file) {
-		fwrite(&N, sizeof(int), 1, file);
-		fwrite(&prec, sizeof(int), 1, file);
-		fwrite(Arr, sizeof(double), N, file);
-	}
-	else {
-		printf("ERR SaveArrayToFile %s %d\n", FN, N);
-	}
-	fclose(file);
+
+	hid_t		file, dataspace, datatype, dataset;
+	herr_t	status;
+	hsize_t maxdims[2] = {H5S_UNLIMITED, H5S_UNLIMITED};
+	int RANK = 1;
+	hsize_t dimsf[2] = {1, N};
+	static const char DATASETNAME[] = "/dset"
+
+	file = H5Fcreate (FN, H5F_ACC_EXCL, H5P_DEFAULT, H5P_DEFAULT);
+
+	dataspace = H5Screate_simple(RANK, dimsf, maxdims);
+	datatype = H5Tcopy(H5T_NATIVE_DOUBLE);
+	status = H5Tset_order(datatype, H5T_ORDER_LE);
+	dataset = H5Dcreate(file, DATASETNAME, datatype, dataspace,
+											H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+
+	status = H5Dwrite(dataset, H5T_NATIVE_DOUBLE, H5S_ALL, H5S_ALL,
+										H5P_DEFAULT, Arr);
+
+	status = H5Dclose (dataset);
+	status = H5Tclose (datatype);
+	status = H5Sclose (dataspace);
+	status = H5Fclose (file);
 }
 void SaveArrayToFile(const char* FN, const int N, const float* Arr) {
 	printf("printing %s size is %d\n", FN, N);
-	double* arr_dbl;
-	arr_dbl =(double*) malloc(N * sizeof(double));
+	double* arr_dbl = (double*) malloc(N * sizeof(double));
 	const int prec = 3;
 	for (int i = 0; i < N; i++) {
 		arr_dbl[i] = (double)Arr[i];
 	}
-	FILE *file = fopen(FN, "wb");
-	if (file) {
-		fwrite(&N, sizeof(int), 1, file);
-		fwrite(&prec, sizeof(int), 1, file);
-		fwrite(arr_dbl, sizeof(double), N, file);
-	}
-	else {
-		printf("ERR SaveArrayToFile %s %d\n", FN, N);
-	}
-	fclose(file);
+	printf("printing %s size is %d\n", FN, N);
+	const int prec = 3;
+
+	hid_t		file, dataspace, datatype, dataset;
+	herr_t	status;
+	hsize_t maxdims[2] = {H5S_UNLIMITED, H5S_UNLIMITED};
+	int RANK = 1;
+	hsize_t dimsf[2] = {1, N};
+	static const char DATASETNAME[] = "/dset"
+
+	file = H5Fcreate (FN, H5F_ACC_EXCL, H5P_DEFAULT, H5P_DEFAULT);
+
+	dataspace = H5Screate_simple(RANK, dimsf, maxdims);
+	datatype = H5Tcopy(H5T_NATIVE_DOUBLE);
+	status = H5Tset_order(datatype, H5T_ORDER_LE);
+	dataset = H5Dcreate(file, DATASETNAME, datatype, dataspace,
+											H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+
+	status = H5Dwrite(dataset, H5T_NATIVE_DOUBLE, H5S_ALL, H5S_ALL,
+										H5P_DEFAULT, arr_dbl);
+
+	free(arr_dbl)
+	status = H5Dclose (dataset);
+	status = H5Tclose (datatype);
+	status = H5Sclose (dataspace);
+	status = H5Fclose (file);
 }
 
 MYFTYPE* transposeMat(MYFTYPE* Arr, MYDTYPE width, MYDTYPE length) {

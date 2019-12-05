@@ -4,6 +4,7 @@ import ipywidgets as widgets
 import shutil
 import matplotlib.pyplot as plt
 import struct
+import h5py
 
 global base
 global all_volts
@@ -45,12 +46,10 @@ def init_working_dir():
     button.on_click(on_button_clicked0_1)
 
 
-def nrnMread(fileName):
-    f = open(fileName, "rb")
-    nparam = struct.unpack('i', f.read(4))[0]
-    print(nparam)
-    typeFlg = struct.unpack('i', f.read(4))[0]
-    return np.fromfile(f, np.double)
+def hdf5ReadHelper(fileName):
+    file = h5py.File('dset.h5', 'r')
+    return file["dset"][0].astype(np.double)
+
 
 
 def plotModel(model_ind, stim_ind):
@@ -92,7 +91,7 @@ def readOutput(folder):
     stimFN = folder + 'Stim_raw.csv'
     stim = np.genfromtxt(stimFN, delimiter=',')
     # nrn_volt = nrn.h.Vector()
-    all_volts = nrnMread(folder + 'VHotP.dat')
+    all_volts = hdf5ReadHelper(folder + 'VHotP.h5')
     # nrn_fn = nrn.h.File(folder + 'VHotP.dat')
     # nrn_fn.wopen(folder + 'VHotP.dat')
     # nrn_volt.vread(nrn_fn)
@@ -104,7 +103,7 @@ def readOutput(folder):
     else:
         Nstim = 1
         psize = int(len(all_volts) / Nt)
-        
+
         all_volts = np.reshape(all_volts, [psize, Nt])
         stim = stim[:Nt]
 
@@ -130,4 +129,3 @@ def readOutput(folder):
         saveModel(text_chooseModel.value, text_chooseStim.value,folder)
     plotbutton.on_click(on_button_clicked0_1)
     savebutton.on_click(on_button_clicked0_2)
-
