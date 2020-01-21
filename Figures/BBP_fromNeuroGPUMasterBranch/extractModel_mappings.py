@@ -1,4 +1,4 @@
-from json import load
+from json import load, dumps, dump
 from csv import reader, writer
 import numpy as np
 
@@ -9,11 +9,21 @@ params_dir =        'params'                                    # params directo
 
 params_file =       f'{params_dir}/params.csv'                  # 12 parameters
 param_map =         f'{data_dir}/ParamMappings.txt'             # mappings from new extractModel
-allparam_map =      f'{data_dir}/params_to_allparams.json'      # mapping from 12 params to allparams
+# allparam_map =      f'{data_dir}/params_to_allparams.json'      # mapping from 12 params to allparams
+allparam_map =      f'{data_dir}/params_to_allparams_bbp.json'  # mapping from 12 params to allparams
 template =          f'{data_dir}/ParamTemplate.csv'             # template for allparams
 model_data =        '64MDL.csv'                                 # the model data to be extracted and placed into allparams
 
 reference =         'reference/AllParams.csv'                   # check the results against reference result
+
+
+def categorize_key(key):
+    if 'apic' in key:
+        return 'apical'
+    elif 'axon' in key:
+        return 'axonal'
+    elif 'soma' in key:
+        return 'somatic'
 
 
 def flatten_dict(dct):
@@ -37,10 +47,20 @@ def check_allparams(allparams_file, reference_file):
         allparams_matrix = list(reader(af))
     with open(reference_file, 'r') as rf:
         reference_matrix = list(reader(rf))
+    
+    error_mapping = dict()
+    index = 0
+
     for row_a, row_r in zip(allparams_matrix, reference_matrix):
+        print('-----------------------------------------------')
         for elem_a, elem_r in zip(row_a, row_r):
             if float(elem_a) != float(elem_r):
                 print(f'Got {elem_a}, but expected {elem_r}')
+                if float(elem_a) == 8 * 10 ** (-5):
+                    error_mapping[index] = float(elem_r)
+            index += 1
+    with open('errors.json', 'w') as ejf:
+        dump(error_mapping, ejf)
 
 
 def parse_model(model_file):
@@ -71,28 +91,45 @@ def assemble_allparams(allparams_template, params, param_to_allparam, param_mapp
 
     index_map = dict()
 
-    for p in model_mappings_flat:
-        if p in param_mappings_flat:
+    unused_keys = list()
+
+    #-----------------------------------------------------------------------------------------------------
+    # experimental
+    with open(f'{data_dir}/biophysics_mapping.json', 'r') as bph:
+        bphm = load(bph)
+    #-----------------------------------------------------------------------------------------------------
+
+    for p in param_mappings_flat:
+        if p in model_mappings_flat:
             index_map[ param_mappings_flat[p] ] = model_mappings_flat[p]
+        else:
+            new_p = p.split('.')[-1]
+            new_key = f'{categorize_key(p)}.{new_p}'
+            if new_key in bphm:
+                index_map[ param_mappings_flat[p] ] = bphm[new_key]
 
     # create the template to fill with values
-    template = [allparams_template[:] for _ in range(1023)]
+    template = [allparams_template[:] for _ in range(len(params))]
 
     # use index map to fill template initially
     for row in template:
         for i in range(len(row)):
             if row[i] in index_map:
                 row[i] = index_map[row[i]]
-    
+
+
     # apply params
     for i in range(len(params)):
         for k, v in list(param_to_allparam.items()):
             for j in v:
                 template[i][j] = params[i][int(k)]
+
     
     # replace specific value
-    for i in range(len(params)):
-        template[i][2833] = 1000
+    # for i in range(len(params)):
+    #     template[i][2833] = 1000
+
+    
 
     return template
 
@@ -111,6 +148,7 @@ def allparams_from_mapping():
     # get the mappings from extraneous params to allparams
     with open(allparam_map, 'r') as tm:
         param_to_allparam = load(tm)
+
     
     model_mappings = parse_model(model_data)
 
@@ -126,7 +164,7 @@ def allparams_from_mapping():
     # write allparams to csv
     with open(f'{data_dir}/AllParams.csv', 'w', newline='') as ap:
         wr = writer(ap)
-        wr.writerow(['1023'])
+        wr.writerow([f'{len(params)}'])
         for row in allparams:
             wr.writerow(list(map(format_value, row)))
     
@@ -137,5 +175,5 @@ if __name__ == "__main__":
     allparams = allparams_from_mapping()
     # check allparams 
     # get reference for correct output
-    # check_allparams('AllParams.csv', 'reference/AllParams.csv')
+    check_allparams(f'{data_dir}/AllParams.csv', f'{data_dir}/AllParams_reference.csv')
     # need to fill this in, need to go but will fill in later

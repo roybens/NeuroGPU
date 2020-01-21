@@ -2869,6 +2869,15 @@ def main():
     vs_root = nrn.h.base + '/VS/pyNeuroGPU_win/'
     baseDir = nrn.h.base
     vs_root = baseDir + '/VS/pyNeuroGPU_win/'
+
+    # -----------------------------------------------------------------------------------------
+    nrn.h.base = "C:/Users/mdera/OneDrive/Desktop/Neuro/NeuroGPU_Base"
+    vs_dir = nrn.h.base + '/VS/pyNeuroGPU_win/NeuroGPU6'
+    vs_root = nrn.h.base + '/VS/pyNeuroGPU_win/'
+    baseDir = nrn.h.base
+    vs_root = baseDir + '/VS/pyNeuroGPU_win/'
+    # -----------------------------------------------------------------------------------------
+
     # thread = nrn_dll_sym('nrn_threads', ctypes.POINTER(NrnThread))
     sec_list = create_sec_list()
     rec_sites = write_sim()

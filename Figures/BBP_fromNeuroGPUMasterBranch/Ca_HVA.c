@@ -1,4 +1,4 @@
-/* Created by Language version: 7.5.0 */
+/* Created by Language version: 7.7.0 */
 /* VECTORIZED */
 #define NRN_VECTORIZED 1
 #include <stdio.h>
@@ -92,6 +92,15 @@ extern void hoc_register_limits(int, HocParmLimits*);
 extern void hoc_register_units(int, HocParmUnits*);
 extern void nrn_promote(Prop*, int, int);
 extern Memb_func* memb_func;
+ 
+#define NMODL_TEXT 1
+#if NMODL_TEXT
+static const char* nmodl_file_text;
+static const char* nmodl_filename;
+extern void hoc_reg_nmodl_text(int, const char*);
+extern void hoc_reg_nmodl_filename(int, const char*);
+#endif
+
  extern void _nrn_setdata_reg(int, void(*)(Prop*));
  static void _setdata(Prop* _prop) {
  _extcall_prop = _prop;
@@ -144,7 +153,7 @@ static void _ode_matsol(_NrnThread*, _Memb_list*, int);
  static void _ode_matsol_instance1(_threadargsproto_);
  /* connect range variables in _p that hoc is supposed to know about */
  static const char *_mechanism[] = {
- "7.5.0",
+ "7.7.0",
 "Ca_HVA",
  "gCa_HVAbar_Ca_HVA",
  0,
@@ -198,6 +207,10 @@ extern void _cvode_abstol( Symbol**, double*, int);
  _mechtype = nrn_get_mechtype(_mechanism[1]);
      _nrn_setdata_reg(_mechtype, _setdata);
      _nrn_thread_reg(_mechtype, 2, _update_ion_pointer);
+ #if NMODL_TEXT
+  hoc_reg_nmodl_text(_mechtype, nmodl_file_text);
+  hoc_reg_nmodl_filename(_mechtype, nmodl_filename);
+#endif
   hoc_register_prop_size(_mechtype, 18, 4);
   hoc_register_dparam_semantics(_mechtype, 0, "ca_ion");
   hoc_register_dparam_semantics(_mechtype, 1, "ca_ion");
@@ -206,7 +219,7 @@ extern void _cvode_abstol( Symbol**, double*, int);
  	hoc_register_cvode(_mechtype, _ode_count, _ode_map, _ode_spec, _ode_matsol);
  	hoc_register_tolerance(_mechtype, _hoc_state_tol, &_atollist);
  	hoc_register_var(hoc_scdoub, hoc_vdoub, hoc_intfunc);
- 	ivoc_help("help ?1 Ca_HVA C:/BBP_newforML/Ca_HVA.mod\n");
+ 	ivoc_help("help ?1 Ca_HVA C:/Users/mdera/OneDrive/Desktop/Neuro/Figures/BBP_fromNeuroGPUMasterBranch/Ca_HVA.mod\n");
  hoc_register_limits(_mechtype, _hoc_parm_limits);
  hoc_register_units(_mechtype, _hoc_parm_units);
  }
@@ -473,4 +486,82 @@ _first = 0;
 
 #if defined(__cplusplus)
 } /* extern "C" */
+#endif
+
+#if NMODL_TEXT
+static const char* nmodl_filename = "Ca_HVA.mod";
+static const char* nmodl_file_text = 
+  ":Comment :\n"
+  ":Reference : :		Reuveni, Friedman, Amitai, and Gutnick, J.Neurosci. 1993\n"
+  "\n"
+  "NEURON	{\n"
+  "	SUFFIX Ca_HVA\n"
+  "	USEION ca READ eca WRITE ica\n"
+  "	RANGE gCa_HVAbar, gCa_HVA, ica \n"
+  "}\n"
+  "\n"
+  "UNITS	{\n"
+  "	(S) = (siemens)\n"
+  "	(mV) = (millivolt)\n"
+  "	(mA) = (milliamp)\n"
+  "}\n"
+  "\n"
+  "PARAMETER	{\n"
+  "	gCa_HVAbar = 0.00001 (S/cm2) \n"
+  "}\n"
+  "\n"
+  "ASSIGNED	{\n"
+  "	v	(mV)\n"
+  "	eca	(mV)\n"
+  "	ica	(mA/cm2)\n"
+  "	gCa	(S/cm2)\n"
+  "	mInf\n"
+  "	mTau\n"
+  "	mAlpha\n"
+  "	mBeta\n"
+  "	hInf\n"
+  "	hTau\n"
+  "	hAlpha\n"
+  "	hBeta\n"
+  "}\n"
+  "\n"
+  "STATE	{ \n"
+  "	m\n"
+  "	h\n"
+  "}\n"
+  "\n"
+  "BREAKPOINT	{\n"
+  "	SOLVE states METHOD cnexp\n"
+  "	gCa = gCa_HVAbar*m*m*h\n"
+  "	ica = gCa*(v-eca)\n"
+  "}\n"
+  "\n"
+  "DERIVATIVE states	{\n"
+  "	rates()\n"
+  "	m' = (mInf-m)/mTau\n"
+  "	h' = (hInf-h)/hTau\n"
+  "}\n"
+  "\n"
+  "INITIAL{\n"
+  "	rates()\n"
+  "	m = mInf\n"
+  "	h = hInf\n"
+  "}\n"
+  "\n"
+  "PROCEDURE rates(){\n"
+  "	UNITSOFF\n"
+  "        if((v == -27) ){        \n"
+  "            v = v+0.0001\n"
+  "        }\n"
+  "		mAlpha =  (0.055*(-27-v))/(exp((-27-v)/3.8) - 1)        \n"
+  "		mBeta  =  (0.94*exp((-75-v)/17))\n"
+  "		mInf = mAlpha/(mAlpha + mBeta)\n"
+  "		mTau = 1/(mAlpha + mBeta)\n"
+  "		hAlpha =  (0.000457*exp((-13-v)/50))\n"
+  "		hBeta  =  (0.0065/(exp((-v-15)/28)+1))\n"
+  "		hInf = hAlpha/(hAlpha + hBeta)\n"
+  "		hTau = 1/(hAlpha + hBeta)\n"
+  "	UNITSON\n"
+  "}\n"
+  ;
 #endif

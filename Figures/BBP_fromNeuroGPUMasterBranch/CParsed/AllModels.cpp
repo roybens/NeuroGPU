@@ -1,4 +1,4 @@
-// Automatically generated C for E:\GitHub\NeuroGPU\Figures\BBP_fromNeuroGPUMasterBranch./runModel.hoc
+// Automatically generated C for C:\Users\mdera\OneDrive\Desktop\Neuro\Figures\BBP_fromNeuroGPUMasterBranch./runModel.hoc
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -13,14 +13,14 @@
 // Reversals:
 #define DEF_cai		5.e-5	   /* mM */
 #define DEF_cao		2.	   /* mM */
-#define ek (-85.0f)
 #define ena (50.0f)
+#define ek (-85.0f)
 
 // Locals:
 MYFTYPE gCa,gCa_LVAst,gIh,gIm,gK_Pst,gK_Tst,gNaTa_t,gNaTs2_t,gNap_Et2,gSK_E2,gSKv3_1,hAlpha,hBeta,hInf,hTau,ihcn,mAlpha,mBeta,mInf,mTau,zInf;
 
 // Ion currents as Locals:
-MYFTYPE ina,ik,ica;
+MYFTYPE ina,ica,ik;
 
 // NGlobals:
 

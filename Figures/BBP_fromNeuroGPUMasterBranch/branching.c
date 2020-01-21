@@ -1,4 +1,4 @@
-/* Created by Language version: 7.5.0 */
+/* Created by Language version: 7.7.0 */
 /* NOT VECTORIZED */
 #define NRN_VECTORIZED 0
 #include <stdio.h>
@@ -142,7 +142,7 @@ static void  nrn_init(_NrnThread*, _Memb_list*, int);
 static void nrn_state(_NrnThread*, _Memb_list*, int);
  /* connect range variables in _p that hoc is supposed to know about */
  static const char *_mechanism[] = {
- "7.5.0",
+ "7.7.0",
 "branching",
  0,
  0,
@@ -171,7 +171,7 @@ extern void _cvode_abstol( Symbol**, double*, int);
 	int _vectorized = 0;
   _initlists();
  	hoc_register_var(hoc_scdoub, hoc_vdoub, hoc_intfunc);
- 	ivoc_help("help ?1 branching C:/BBP_newforML/branching.mod\n");
+ 	ivoc_help("help ?1 branching C:/Users/mdera/OneDrive/Desktop/Neuro/Figures/BBP_fromNeuroGPUMasterBranch/branching.mod\n");
  }
 static int _reset;
 static char *modelname = "";
