@@ -53,11 +53,11 @@ def proc_add_param_to_hoc_for_opt(all_parameters_non_global_c, hoc_base_fn, base
     neuron_types = [i + '(0-1)' for i in neuron_types]                              # list of neuron types
     comp_mechanisms = [list(i) for i in comp_mechanisms]                            # list of component mechanisms
 
-    print(comp_names)
-    print('\n')
-    print(neuron_types)
-    print('\n')
-    print(comp_mechanisms)
+    # print(comp_names)
+    # print('\n')
+    # print(neuron_types)
+    # print('\n')
+    # print(comp_mechanisms)
 
     param_start_i = [0]
     if len(all_parameters_non_global_c) == 1:
@@ -182,25 +182,19 @@ def proc_add_param_to_hoc_for_opt(all_parameters_non_global_c, hoc_base_fn, base
     func_name = 'proc' + str(proc_counter) + '()'
     added_lines.append(func_name)
     funcs.append('proc ' + func_name + '{')
-    print("len(comp_names): %s" % len(comp_names))
+    # print("len(comp_names): %s" % len(comp_names))
 
+    # param_mappings = dictionary that will map from parameters to unique IDs
     param_mappings = {}
     mapping_counter = 1
-    print('-------------------------------------------------------------------')
-    print('-------------------------------------------------------------------')
-    print('-------------------------------------------------------------------')
+    # print('-------------------------------------------------------------------')
     # print(all_parameters_non_global_c_d)
-    print(comp_names)
-    print('-------------------------------------------------------------------')
-    print('-------------------------------------------------------------------')
-    print('-------------------------------------------------------------------')
+    # print(comp_names)
+    # print('-------------------------------------------------------------------')
     # print(all_parameters_non_global_c)
     # print('-------------------------------------------------------------------')
-    # print('-------------------------------------------------------------------')
-    # print('-------------------------------------------------------------------')
 
-
-    for c in range(1, len(comp_names) + 1):                                         # Starts line 431. Creates numbered procs (e.g. proc proc0() {...})
+    for c in range(1, len(comp_names) + 1):                                         # Writes procs (e.g. proc proc0() {...}) to runModel_param.hoc
         if counter > 50:                                                            # comp_names = all component names i.e. create proc for each section in model
             funcs.append('}')
             proc_counter += 1
@@ -213,37 +207,37 @@ def proc_add_param_to_hoc_for_opt(all_parameters_non_global_c, hoc_base_fn, base
             F.append(i in comp_mechanisms[c - 1])
         F = np.where(np.array(F))
         funcs.append('access ' + comp_names[c - 1][1:])                                           # in Neuron, access specific section
-        print(proc_counter)
-        print(comp_names[c-1][1:])
+        # print(proc_counter)
+        # print(comp_names[c-1][1:])
         counter += 1
 
+        # Iterate over components stored in F
         for m in range(1, len(F[0]) + 1):
             cur_mech_params = all_parameters_non_global_c[F[0][m - 1]]
             curr_mech_states = all_states[F[0][m-1]]
-            print(cur_mech_params)
+            # print(cur_mech_params)
+
             for p in range(1, len(cur_mech_params) + 1):
-                # param_name = comp_names[c-1][1:]
+                # if there is a new component name, create a new dictionary
                 if (comp_names[c-1][1:] not in param_mappings):
                     param_mappings[comp_names[c-1][1:]] = {}
+                # if parameter 'cur_mech_params[p - 1]' is not already in the dictionary 'param_mappings[comp_names[c-1][1:]]', enumerate it
                 if (cur_mech_params[p - 1] not in param_mappings[comp_names[c-1][1:]].keys()):
                     param_mappings[comp_names[c-1][1:]][cur_mech_params[p - 1]] = mapping_counter
                     mapping_counter += 1
+
+                # write the value for each parameter to 'runModel_param.hoc (e.g. a=1   fn.vwrite(&a))'
                 funcs.append('a=' + str(param_mappings.get(comp_names[c-1][1:]).get(cur_mech_params[p - 1])))
-                # funcs.append('a=' + cur_mech_params[p - 1])
                 funcs.append('fn.vwrite(&a)')
                 counter += 2
+
             if KINFLG:
                 if m in kin_mod_inds:
                     for p in range(1, len(curr_mech_states) + 1):
-                        # funcs.append('a=' + '\"' + str(curr_mech_states[p - 1]) + '\"')           # str() converts value to string
                         funcs.append('a=' + curr_mech_states[p - 1])
                         funcs.append('fn2.vwrite(&a)')
                         counter += 2
-    print(param_mappings)
-
-    # f = open(data_dir + '/param_mappings.txt', 'w')
-    # f.write(param_mappings)
-    # f.close()
+    # print(param_mappings)
 
     if counter > 0:
         funcs.append('}')
@@ -268,17 +262,16 @@ def proc_add_param_to_hoc_for_opt(all_parameters_non_global_c, hoc_base_fn, base
     out_lines.extend(added_lines)
     out_lines.extend([lines[i] for i in range(int(add_line_i[0]) + 1, len(lines))])
 #     put_lines(fn_with_param, out_lines)
+    ################################################################################
+    # open runModel_param.hoc and overwrite it with 'out_lines'
     runmodelparam_file = open('runModel_param.hoc', 'w')
-    runmodelparam_file.write("%s\n" % '\n'.join(out_lines))                         # Rewrite runModel_param.hoc; overwrite with out_lines, which contains added_lines
+    runmodelparam_file.write("%s\n" % '\n'.join(out_lines))
     runmodelparam_file.close()
     runModel_hoc_object = nrn.hoc.HocObject()
     print("running runModel_param.hoc...")
-    subprocess.call(["nrniv", "runModel_param.hoc"])                               # ISSUE HERE-RESOLVED; RAN MULTIPLE TIMES AND DISAPPEARED (Run runModel_param.hoc in NEURON)
-    #runModel_hoc_object.execute('~' + '\n'.join(out_lines))
-    #runModel_hoc_object.load_file(1, fn_with_param)
-
-    #subprocess.call(["nrniv", "runModel_param.hoc"])
-    f = open(fn_param_m, 'rb')                                                      #fn_param_m = ParamM.dat; contains binary values...I think
+    subprocess.call(["nrniv", "runModel_param.hoc"])                               # (Run runModel_param.hoc in NEURON)
+    
+    f = open(fn_param_m, 'rb')                                                      #fn_param_m = ParamM.dat; contains binary values (?)
     f2 = open(fn_kinetic_states_init, 'rb')                                         #fn_kinetic_states_init = KinStates.dat
     reversals_v, g_globals_v, n_globals_v = [0 for i in range(len(reversals))], [0 for i in range(len(g_globals))], [0 for i in range(len(n_globals))]          # Create 1-D arrays of 0s, length = length of respective array
     for i in range(len(reversals)):
@@ -294,29 +287,35 @@ def proc_add_param_to_hoc_for_opt(all_parameters_non_global_c, hoc_base_fn, base
     first_param_m = None
     # for kk in range(1, n_sets[0] + 1):
     for kk in range(1, 2):
-        if kk % 8 == 0:
-            print("%d / %d" % (kk, n_sets[0] + 1))
+        # if kk % 8 == 0:
+        #     print("%d / %d" % (kk, n_sets[0] + 1))
         param_m = np.zeros((len(comp_names), int(param_start_i[-1])))
         states_vals = np.zeros((len(comp_names), int(state_start_i[-1])))
+
         for c in range(1, len(comp_names) + 1):
             comp_name = comp_names[c - 1]
             comp_ind = get_comp_index(neuron_types, comp_name[1:])
             comp_topology_map[c - 1] = comp_ind
             kin_ind = -1
             F = []
+
             for i in available_mechanisms:
                 F.append(i in comp_mechanisms[c - 1])
             F = np.where(np.array(F))
+
             for m in range(1, F[0].size + 1):
                 cur_mech_params = all_parameters_non_global_c[F[0][m - 1]]
                 curr_mech_states = all_states[F[0][m - 1]]
+
                 for p in range(1, len(cur_mech_params) + 1):
                     Tmp = np.fromfile(f, dtype=np.float64, count=1)
                     param_m[[i - 1 for i in comp_ind], int(param_start_i[F[0][m - 1]] + p - 1)] = Tmp
+
                 if KINFLG:
                     if m in kin_mod_inds:
                         kin_ind += 1
                         curr_mech_states = all_states[F[0][m - 1]]
+
                         for p in range(1, len(curr_mech_states) + 1):
                             Tmp = np.fromfile(f2, dtype=np.float64, count=1)
                             states_vals[[i - 1 for i in comp_ind],state_start_i[kin_ind] + p-1] = Tmp
@@ -327,7 +326,6 @@ def proc_add_param_to_hoc_for_opt(all_parameters_non_global_c, hoc_base_fn, base
         if kk == 1:
             first_param_m = param_m  # Store only the first param_m for templating purposes
     param_m = None
-    # print param_m
 
     # all_params = all_params.reshape((all_params.shape[0] * all_params.shape[1],))
     f.close()
@@ -340,14 +338,13 @@ def proc_add_param_to_hoc_for_opt(all_parameters_non_global_c, hoc_base_fn, base
     np.savetxt(n_sets_s, [1], fmt='%5.d', newline=',')
     n_sets_st = n_sets_s.getvalue()                                                     # retrieve contents of file
     all_params_s = StringIO()
-    # np.savetxt(all_params_s, all_params, fmt='%.5e,', newline='\n')                     # Same but using all_params; val. separated by \n
     np.savetxt(all_params_s, all_params, fmt='%.5d,', newline='\n')
     all_params_st = all_params_s.getvalue()
 
-    print("n_sets:", len(n_sets))
-    print("n_sets_st:", len(n_sets_st))
-    print("all_params:", len(all_params))
-    print("all_params_st:", len(all_params_st))
+    # print("n_sets:", len(n_sets))
+    # print("n_sets_st:", len(n_sets_st))
+    # print("all_params:", len(all_params))
+    # print("all_params_st:", len(all_params_st))
 
     num_models = len(all_params);
     total_vals = len(all_params_st);
