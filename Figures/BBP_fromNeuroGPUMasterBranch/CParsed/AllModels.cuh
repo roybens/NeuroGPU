@@ -1,4 +1,4 @@
-// Automatically generated CUH for C:\Users\mdera\OneDrive\Desktop\Neuro\Figures\BBP_fromNeuroGPUMasterBranch./runModel.hoc
+// Automatically generated CUH for C:\Users\Maxwell Chen\Desktop\NeuroGPU\Figures\BBP_fromNeuroGPUMasterBranch./runModel.hoc
 
 #ifndef __ALLMODELSCU__
 #define __ALLMODELSCU__

@@ -16,6 +16,7 @@ model_data =        '64MDL.csv'                                 # the model data
 reference =         'reference/AllParams.csv'                   # reference .csv file to compare results with
 
 
+reversed_mappings = None
 '''
 categorize_key(key)
 --------------------------------------------------
@@ -89,17 +90,21 @@ def check_allparams(allparams_file, reference_file):
     
     # initialize dictionary to collect errors in our mapping
     error_mapping = dict()
-    index = 0
 
     # iterate over corresponding rows in allparams_file and reference_file
     for row_a, row_r in zip(allparams_matrix, reference_matrix):
         print('-----------------------------------------------')
+        index = 0
         correct = 0
         wrong = 0
         # pairwise iteration over elements in the corresponding rows
         for elem_a, elem_r in zip(row_a, row_r):
             if float(elem_a) != float(elem_r):
                 wrong += 1
+                if index in reversed_mappings:
+                    print(index, reversed_mappings[index], f'Got {elem_a}, but expected {elem_r}')
+                else:
+                    print(index, f'Got {elem_a}, but expected {elem_r}')
                 # print(f'Got {elem_a}, but expected {elem_r}')       # Value mismatch found; diagnostic print statement
                 if float(elem_a) == 8 * 10 ** (-5):
                     error_mapping[index] = float(elem_r)
@@ -157,8 +162,10 @@ output[1]:
 '''
 def assemble_allparams(allparams_template, params, param_to_allparam, param_mappings, model_mappings):
     # create a map of indices to values in the model
+    global reversed_mappings
     model_mappings_flat = flatten_dict(model_mappings)
     param_mappings_flat = flatten_dict(param_mappings)
+    reversed_mappings = {int(v): k for k, v in param_mappings_flat.items()}
 
     index_map = dict()
 
