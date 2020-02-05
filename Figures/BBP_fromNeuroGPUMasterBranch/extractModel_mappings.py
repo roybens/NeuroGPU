@@ -1,19 +1,22 @@
 from json import load, dumps, dump
 from csv import reader, writer
 import numpy as np
+from os.path import exists
 
 # DEFINE
 data_dir =          'Data'                                      # data directory (folder)
 params_dir =        'params'                                    # params directory (folder)
 
-params_file =       f'{params_dir}/params.csv'                  # 12 parameters
-param_map =         f'{data_dir}/ParamMappings.txt'             # mappings from new extractModel
+params_file =       f'./{params_dir}/params.csv'                  # 12 parameters
+param_map =         f'./{data_dir}/ParamMappings.txt'             # mappings from new extractModel
 # allparam_map =      f'{data_dir}/params_to_allparams.json'      # mapping from 12 params to allparams
-allparam_map =      f'{data_dir}/params_to_allparams_bbp.json'  # mapping from 12 params to allparams
-template =          f'{data_dir}/ParamTemplate.csv'             # template for allparams
+allparam_map =      f'./{data_dir}/params_to_allparams_bbp.json'  # mapping from 12 params to allparams
+template =          f'./{data_dir}/ParamTemplate.csv'             # template for allparams
 model_data =        '64MDL.csv'                                 # the model data to be extracted and placed into allparams
+corrections =       f'./{data_dir}/correction_mappings.json'      # corrections made after initial model runs
 
 reference =         'reference/AllParams.csv'                   # reference .csv file to compare results with
+run_model_file =    './runModel.hoc'                            # runModel.hoc
 
 
 reversed_mappings = None
@@ -103,6 +106,7 @@ def check_allparams(allparams_file, reference_file):
                 wrong += 1
                 if index in reversed_mappings:
                     print(index, reversed_mappings[index], f'Got {elem_a}, but expected {elem_r}')
+                    error_mapping[reversed_mappings[index]] = index
                 else:
                     print(index, f'Got {elem_a}, but expected {elem_r}')
                 # print(f'Got {elem_a}, but expected {elem_r}')       # Value mismatch found; diagnostic print statement
@@ -113,8 +117,7 @@ def check_allparams(allparams_file, reference_file):
             index += 1
         print("correct: ", correct)
         print("wrong: ", wrong)
-    with open('errors.json', 'w') as x:
-        dump(error_mapping, x)
+    return error_mapping
 
 '''
 parse_model(model_file)
@@ -203,12 +206,19 @@ def assemble_allparams(allparams_template, params, param_to_allparam, param_mapp
         for k, v in list(param_to_allparam.items()):
             for j in v:
                 template[i][j] = params[i][int(k)]
-
     
-    # replace specific value
-    # for i in range(len(params)):
-    #     template[i][2833] = 1000    
-
+    # correct incorrect values
+    fl = f'{data_dir}/correction_mappings.json'
+    if exists(fl):
+        with open(fl) as jf:
+            '''
+            dct:
+                index |-> value
+            '''
+            dct = load(jf)
+            for i in range(len(params)):
+                for k, v in dct.items():
+                    template[i][int(k)] = v
     return template
 
 '''
@@ -257,9 +267,43 @@ def allparams_from_mapping():
     return allparams
 
 
+def query_neuron(lst, model_file): # MOCKUP
+    '''
+    maps names to values
+    '''
+    new_lst = list()
+    for name in lst:
+        if 'gihbar_ih' in name.lower():
+            new_lst.append(0.1)
+        elif 'gskv3' in name.lower():
+            new_lst.append(0.1)
+        elif 'ehcn' in name.lower():
+            new_lst.append(0.1)
+        elif 'gnats2' in name.lower():
+            new_lst.append( 1 * 10**(-4))
+        elif 'gimbar' in name.lower():
+            new_lst.append( 1 * 10**(-4))
+        elif 'g_pas' in name.lower():
+            new_lst.append( 1 * 10**(-4))
+    return new_lst
+
+
 if __name__ == "__main__":
     allparams = allparams_from_mapping()
     # check allparams 
     # get reference for correct output
-    check_allparams(f'{data_dir}/AllParams.csv', f'{data_dir}/AllParams_reference.csv')
+    error_mapping = check_allparams(f'{data_dir}/AllParams.csv', f'{data_dir}/AllParams_reference.csv')
+    # get real values from neuron
+    if len(error_mapping) > 0:
+        lst = list(error_mapping.keys())
+        values = query_neuron(lst, run_model_file)
+        new_dct = dict()
+        for name, value in zip(lst, values):
+            key = error_mapping[name]
+            new_dct[key] = value
+        with open(f'{data_dir}/correction_mappings.json', 'w') as jf:
+            dump(new_dct, jf)
+        allparams = allparams_from_mapping()
+        # NO NEED TO CHECK AFTER IN REAL ONE
+        check_allparams(f'{data_dir}/AllParams.csv', f'{data_dir}/AllParams_reference.csv')
     # need to fill this in, need to go but will fill in later -Matthew

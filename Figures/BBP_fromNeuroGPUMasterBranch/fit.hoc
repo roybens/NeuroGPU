@@ -40,8 +40,8 @@ transvec.printf()
 	sprint(tmp_str,"%s%f",const_str,transvec.x(2))
 	distribute2(cell.axonal,"gK_Tstbar_K_Tst",tmp_str)
 	//apical Ih
-	//distribute($o1.apical,"gIhbar_Ih","(-0.869600 + 2.087000*exp((%g-0.000000)*0.003100))*0.000080")
-	sprint(tmp_str,"%s%f","(-0.869600 + 2.087000*exp((%g-0.000000)*0.003100))*",transvec.x(3))
+	//distribute($o1.apical,"gIhbar_Ih","(0.0 * %g + 1.0)*0.0014596583")
+	sprint(tmp_str,"%s%f","(0.0 * %g + 1.0)*0.0014596583",transvec.x(3))
 	distribute2(cell.apical,"gIhbar_Ih",tmp_str)
 	//apical Im
 	//distribute($o1.apical,"gImbar_Im","(0.0 * %g + 1.0)*0.000143")
