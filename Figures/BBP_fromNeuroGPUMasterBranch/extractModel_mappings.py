@@ -2,6 +2,7 @@ from json import load, dumps, dump
 from csv import reader, writer
 import numpy as np
 from os.path import exists
+from neuron import h
 
 # DEFINE
 data_dir =          'Data'                                      # data directory (folder)
@@ -268,24 +269,14 @@ def allparams_from_mapping():
 
 
 def query_neuron(lst, model_file): # MOCKUP
-    '''
-    maps names to values
-    '''
-    new_lst = list()
-    for name in lst:
-        if 'gihbar_ih' in name.lower():
-            new_lst.append(0.1)
-        elif 'gskv3' in name.lower():
-            new_lst.append(0.1)
-        elif 'ehcn' in name.lower():
-            new_lst.append(0.1)
-        elif 'gnats2' in name.lower():
-            new_lst.append( 1 * 10**(-4))
-        elif 'gimbar' in name.lower():
-            new_lst.append( 1 * 10**(-4))
-        elif 'g_pas' in name.lower():
-            new_lst.append( 1 * 10**(-4))
-    return new_lst
+    h.load_file("runModel.hoc")
+    values = []
+    for item in lst:
+        aa=0
+        h('aa = ' + item)
+        val = float(h.aa)
+        values.append(val)
+    return values
 
 
 if __name__ == "__main__":
