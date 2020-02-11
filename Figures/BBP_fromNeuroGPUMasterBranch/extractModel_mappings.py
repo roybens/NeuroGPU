@@ -269,13 +269,25 @@ def allparams_from_mapping():
 
 
 def query_neuron(lst, model_file): # MOCKUP
-    h.load_file("runModel.hoc")
+    h.load_file(model_file)
     values = []
+    aa=0
     for item in lst:
-        aa=0
         h('aa = ' + item)
         val = float(h.aa)
         values.append(val)
+        print(f"par is {item} values is {val}")
+    return values
+
+
+def query_neuron_2(lst, model_file): # MOCKUP
+    '''
+    maps names to values
+    '''
+    values = []
+    h.load_file(model_file)
+    for item in lst:
+        values.append(h(item))
     return values
 
 
