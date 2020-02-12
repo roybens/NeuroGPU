@@ -428,7 +428,7 @@ void SaveArrayToFile(const char* FN, const int N, const double* Arr) {
 	hsize_t maxdims[2] = {H5S_UNLIMITED, H5S_UNLIMITED};
 	int RANK = 1;
 	hsize_t dimsf[2] = {1, N};
-	static const char DATASETNAME[] = "/dset"
+	static const char DATASETNAME[] = "dset"
 
 	file = H5Fcreate (FN, H5F_ACC_EXCL, H5P_DEFAULT, H5P_DEFAULT);
 
@@ -461,7 +461,7 @@ void SaveArrayToFile(const char* FN, const int N, const float* Arr) {
 	hsize_t maxdims[2] = {H5S_UNLIMITED, H5S_UNLIMITED};
 	int RANK = 1;
 	hsize_t dimsf[2] = {1, N};
-	static const char DATASETNAME[] = "/dset"
+	static const char DATASETNAME[] = "dset"
 
 	file = H5Fcreate (FN, H5F_ACC_EXCL, H5P_DEFAULT, H5P_DEFAULT);
 

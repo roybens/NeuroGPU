@@ -47,7 +47,7 @@ def init_working_dir():
 
 
 def hdf5ReadHelper(fileName):
-    file = h5py.File('dset.h5', 'r')
+    file = h5py.File(fileName, 'r')
     return file["dset"][0].astype(np.double)
 
 
@@ -90,13 +90,7 @@ def readOutput(folder):
     Nt = time_steps.size
     stimFN = folder + 'Stim_raw.csv'
     stim = np.genfromtxt(stimFN, delimiter=',')
-    # nrn_volt = nrn.h.Vector()
     all_volts = hdf5ReadHelper(folder + 'VHotP.h5')
-    # nrn_fn = nrn.h.File(folder + 'VHotP.dat')
-    # nrn_fn.wopen(folder + 'VHotP.dat')
-    # nrn_volt.vread(nrn_fn)
-    # print nrn_volt
-    # all_volts = nrn_volt.to_python()
     all_volts = np.array(all_volts)
     if stim.ndim == 2:
         Nstim = params.shape[0]
