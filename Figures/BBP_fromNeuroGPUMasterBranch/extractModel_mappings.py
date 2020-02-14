@@ -263,7 +263,6 @@ def allparams_from_mapping():
         wr.writerow([str(len(params))])
         for row in allparams:
             wr.writerow(list(map(format_value, row)))
-    
     return allparams
 
 
@@ -290,6 +289,18 @@ def query_neuron_2(lst, model_file): # MOCKUP
     return values
 
 
+def query_neuron_3(lst, model_file):
+    dct = {
+        'cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[71].gIhbar_Ih':              10**(-1),
+        'cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[72].gSKv3_1bar_SKv3_1':      10**(-1),
+        'cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[76].ehcn_Ih':                10**(-1),
+        'cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[105].gNaTs2_tbar_NaTs2_t':   10**(-4),
+        'cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[107].gImbar_Im':             10**(-4),
+        'cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[110].g_pas':                 10**(-4)
+    }
+    return [dct[l] for l in lst]
+
+
 if __name__ == "__main__":
     allparams = allparams_from_mapping()
     # check allparams 
@@ -298,7 +309,10 @@ if __name__ == "__main__":
     # get real values from neuron
     if len(error_mapping) > 0:
         lst = list(error_mapping.keys())
-        values = query_neuron(lst, run_model_file)
+        # ===============================================================================================
+        # neuron query, change to query_neuron, query_neuron_2, or query_neuron_3
+        values = query_neuron_3(lst, run_model_file)
+        # ===============================================================================================
         new_dct = dict()
         for name, value in zip(lst, values):
             key = error_mapping[name]
