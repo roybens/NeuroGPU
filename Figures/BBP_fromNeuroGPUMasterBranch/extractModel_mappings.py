@@ -5,20 +5,21 @@ from os.path import exists
 from neuron import h
 
 # DEFINE
-data_dir =          'Data'                                      # data directory (folder)
-params_dir =        'params'                                    # params directory (folder)
+data_dir =          'Data'                                          # data directory (folder)
+params_dir =        'params'                                        # params directory (folder)
 
-params_file =       f'./{params_dir}/params.csv'                  # 12 parameters
-param_map =         f'./{data_dir}/ParamMappings.txt'             # mappings from new extractModel
-# allparam_map =      f'{data_dir}/params_to_allparams.json'      # mapping from 12 params to allparams
-allparam_map =      f'./{data_dir}/params_to_allparams_bbp.json'  # mapping from 12 params to allparams
-template =          f'./{data_dir}/ParamTemplate.csv'             # template for allparams
-model_data =        '64MDL.csv'                                 # the model data to be extracted and placed into allparams
-corrections =       f'./{data_dir}/correction_mappings.json'      # corrections made after initial model runs
+params_file =       f'./{params_dir}/params.csv'                    # 12 parameters
+param_map =         f'./{data_dir}/ParamMappings.txt'               # mappings from new extractModel
+# allparam_map =      f'{data_dir}/params_to_allparams.json'        # mapping from 12 params to allparams
+allparam_map =      f'./{data_dir}/params_to_allparams_bbp.json'    # mapping from 12 params to allparams
+template =          f'./{data_dir}/ParamTemplate.csv'               # template for allparams
+model_data =        '64MDL.csv'                                     # the model data to be extracted and placed into allparams
+corrections =       f'./{data_dir}/correction_mappings.json'        # corrections made after initial model runs
 
-reference =         'reference/AllParams.csv'                   # reference .csv file to compare results with
-run_model_file =    './runModel.hoc'                            # runModel.hoc
+reference =         'reference/AllParams.csv'                       # reference .csv file to compare results with
+run_model_file =    './runModel.hoc'                                # runModel.hoc
 
+N_PARAMS =          10                                              # number of parameter sets, determines number of rows in allparams
 
 reversed_mappings = None
 '''
@@ -193,7 +194,7 @@ def assemble_allparams(allparams_template, params, param_to_allparam, param_mapp
                 index_map[ param_mappings_flat[p] ] = bphm[new_key]
 
     # create the template to fill with values
-    template = [allparams_template[:] for _ in range(len(params))]
+    template = [allparams_template[:] for _ in range(N_PARAMS)]
 
     # use index map to fill template initially
     for row in template:
@@ -203,7 +204,7 @@ def assemble_allparams(allparams_template, params, param_to_allparam, param_mapp
 
 
     # apply params
-    for i in range(len(params)):
+    for i in range(N_PARAMS):
         for k, v in list(param_to_allparam.items()):
             for j in v:
                 template[i][j] = params[i][int(k)]
@@ -217,7 +218,7 @@ def assemble_allparams(allparams_template, params, param_to_allparam, param_mapp
                 index |-> value
             '''
             dct = load(jf)
-            for i in range(len(params)):
+            for i in range(N_PARAMS):
                 for k, v in dct.items():
                     template[i][int(k)] = v
     return template
@@ -261,7 +262,7 @@ def allparams_from_mapping():
     # write allparams to .csv file
     with open(f'{data_dir}/AllParams.csv', 'w', newline='') as ap:
         wr = writer(ap)
-        wr.writerow([f'{len(params)}'])
+        wr.writerow([str(N_PARAMS)])
         for row in allparams:
             wr.writerow(list(map(format_value, row)))
     
