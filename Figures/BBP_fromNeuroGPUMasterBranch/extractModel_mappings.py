@@ -19,8 +19,6 @@ corrections =       f'./{data_dir}/correction_mappings.json'        # correction
 reference =         'reference/AllParams.csv'                       # reference .csv file to compare results with
 run_model_file =    './runModel.hoc'                                # runModel.hoc
 
-N_PARAMS =          10                                              # number of parameter sets, determines number of rows in allparams
-
 reversed_mappings = None
 '''
 categorize_key(key)
@@ -194,7 +192,7 @@ def assemble_allparams(allparams_template, params, param_to_allparam, param_mapp
                 index_map[ param_mappings_flat[p] ] = bphm[new_key]
 
     # create the template to fill with values
-    template = [allparams_template[:] for _ in range(N_PARAMS)]
+    template = [allparams_template[:] for _ in range(len(params))]
 
     # use index map to fill template initially
     for row in template:
@@ -204,7 +202,7 @@ def assemble_allparams(allparams_template, params, param_to_allparam, param_mapp
 
 
     # apply params
-    for i in range(N_PARAMS):
+    for i in range(len(params)):
         for k, v in list(param_to_allparam.items()):
             for j in v:
                 template[i][j] = params[i][int(k)]
@@ -218,7 +216,7 @@ def assemble_allparams(allparams_template, params, param_to_allparam, param_mapp
                 index |-> value
             '''
             dct = load(jf)
-            for i in range(N_PARAMS):
+            for i in range(len(params)):
                 for k, v in dct.items():
                     template[i][int(k)] = v
     return template
@@ -262,7 +260,7 @@ def allparams_from_mapping():
     # write allparams to .csv file
     with open(f'{data_dir}/AllParams.csv', 'w', newline='') as ap:
         wr = writer(ap)
-        wr.writerow([str(N_PARAMS)])
+        wr.writerow([str(len(params))])
         for row in allparams:
             wr.writerow(list(map(format_value, row)))
     
