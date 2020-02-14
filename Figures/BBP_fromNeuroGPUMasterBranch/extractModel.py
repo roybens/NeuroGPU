@@ -2854,6 +2854,17 @@ def linux_packing():
         shutil.copy(filename, src_loc)
 
 
+# ========================================================================
+# AllParams_refence.csv generation utility function
+def make_allparams_reference():
+    ref_file = data_dir + '/AllParams_reference.csv'
+    allparams = data_dir + '/AllParams.csv'
+    old_ref_exists = os.path.exists(ref_file)
+    new_ref_exists = os.path.exists(allparams)
+    if old_ref_exists and new_ref_exists:
+        os.system('rm ' + ref_file)
+        os.system('cp ' + allparams + ' ' + ref_file)
+# ========================================================================
 
 
 def main():
@@ -2901,6 +2912,10 @@ def main():
     # def tail_end(f, n_params, call_to_init_str_cu, call_to_deriv_str_cu, call_to_break_str_cu, call_to_break_dv_str_cu,params_m, n_segs_mat, cm_vec, vs_dir, has_f, nd, nrhs):
     runPyNeuroGPU()
     linux_packing()
+    make_allparams_reference()
+    print('created new reference file')
+
+
 
 if __name__ == '__main__':
     main()
