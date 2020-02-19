@@ -1,4 +1,4 @@
-/* Created by Language version: 7.7.0 */
+/* Created by Language version: 7.5.0 */
 /* VECTORIZED */
 #define NRN_VECTORIZED 1
 #include <stdio.h>
@@ -92,15 +92,6 @@ extern void hoc_register_limits(int, HocParmLimits*);
 extern void hoc_register_units(int, HocParmUnits*);
 extern void nrn_promote(Prop*, int, int);
 extern Memb_func* memb_func;
- 
-#define NMODL_TEXT 1
-#if NMODL_TEXT
-static const char* nmodl_file_text;
-static const char* nmodl_filename;
-extern void hoc_reg_nmodl_text(int, const char*);
-extern void hoc_reg_nmodl_filename(int, const char*);
-#endif
-
  extern void _nrn_setdata_reg(int, void(*)(Prop*));
  static void _setdata(Prop* _prop) {
  _extcall_prop = _prop;
@@ -154,7 +145,7 @@ static void _ode_matsol(_NrnThread*, _Memb_list*, int);
  static void _ode_matsol_instance1(_threadargsproto_);
  /* connect range variables in _p that hoc is supposed to know about */
  static const char *_mechanism[] = {
- "7.7.0",
+ "7.5.0",
 "NaTa_t",
  "gNaTa_tbar_NaTa_t",
  0,
@@ -209,10 +200,6 @@ extern void _cvode_abstol( Symbol**, double*, int);
  _mechtype = nrn_get_mechtype(_mechanism[1]);
      _nrn_setdata_reg(_mechtype, _setdata);
      _nrn_thread_reg(_mechtype, 2, _update_ion_pointer);
- #if NMODL_TEXT
-  hoc_reg_nmodl_text(_mechtype, nmodl_file_text);
-  hoc_reg_nmodl_filename(_mechtype, nmodl_filename);
-#endif
   hoc_register_prop_size(_mechtype, 18, 4);
   hoc_register_dparam_semantics(_mechtype, 0, "na_ion");
   hoc_register_dparam_semantics(_mechtype, 1, "na_ion");
@@ -221,7 +208,7 @@ extern void _cvode_abstol( Symbol**, double*, int);
  	hoc_register_cvode(_mechtype, _ode_count, _ode_map, _ode_spec, _ode_matsol);
  	hoc_register_tolerance(_mechtype, _hoc_state_tol, &_atollist);
  	hoc_register_var(hoc_scdoub, hoc_vdoub, hoc_intfunc);
- 	ivoc_help("help ?1 NaTa_t C:/Users/mdera/OneDrive/Desktop/Neuro/Figures/BBP_fromNeuroGPUMasterBranch/NaTa_t.mod\n");
+ 	ivoc_help("help ?1 NaTa_t E:/GitHub/NeuroGPU/Figures/BBP_fromNeuroGPUMasterBranch/NaTa_t.mod\n");
  hoc_register_limits(_mechtype, _hoc_parm_limits);
  hoc_register_units(_mechtype, _hoc_parm_units);
  }
@@ -493,89 +480,4 @@ _first = 0;
 
 #if defined(__cplusplus)
 } /* extern "C" */
-#endif
-
-#if NMODL_TEXT
-static const char* nmodl_filename = "NaTa_t.mod";
-static const char* nmodl_file_text = 
-  ":Reference :Colbert and Pan 2002\n"
-  "\n"
-  "NEURON	{\n"
-  "	SUFFIX NaTa_t\n"
-  "	USEION na READ ena WRITE ina\n"
-  "	RANGE gNaTa_tbar, gNaTa_t, ina\n"
-  "}\n"
-  "\n"
-  "UNITS	{\n"
-  "	(S) = (siemens)\n"
-  "	(mV) = (millivolt)\n"
-  "	(mA) = (milliamp)\n"
-  "}\n"
-  "\n"
-  "PARAMETER	{\n"
-  "	gNaTa_tbar = 0.00001 (S/cm2)\n"
-  "}\n"
-  "\n"
-  "ASSIGNED	{\n"
-  "	v	(mV)\n"
-  "	ena	(mV)\n"
-  "	ina	(mA/cm2)\n"
-  "	gNaTa_t	(S/cm2)\n"
-  "	mInf\n"
-  "	mTau\n"
-  "	mAlpha\n"
-  "	mBeta\n"
-  "	hInf\n"
-  "	hTau\n"
-  "	hAlpha\n"
-  "	hBeta\n"
-  "}\n"
-  "\n"
-  "STATE	{\n"
-  "	m\n"
-  "	h\n"
-  "}\n"
-  "\n"
-  "BREAKPOINT	{\n"
-  "	SOLVE states METHOD cnexp\n"
-  "	gNaTa_t = gNaTa_tbar*m*m*m*h\n"
-  "	ina = gNaTa_t*(v-ena)\n"
-  "}\n"
-  "\n"
-  "DERIVATIVE states	{\n"
-  "	rates()\n"
-  "	m' = (mInf-m)/mTau\n"
-  "	h' = (hInf-h)/hTau\n"
-  "}\n"
-  "\n"
-  "INITIAL{\n"
-  "	rates()\n"
-  "	m = mInf\n"
-  "	h = hInf\n"
-  "}\n"
-  "\n"
-  "PROCEDURE rates(){\n"
-  "  LOCAL qt\n"
-  "  qt = 2.3^((34-21)/10)\n"
-  "	\n"
-  "  UNITSOFF\n"
-  "    if(v == -38){\n"
-  "    	v = v+0.0001\n"
-  "    }\n"
-  "		mAlpha = (0.182 * (v- -38))/(1-(exp(-(v- -38)/6)))\n"
-  "		mBeta  = (0.124 * (-v -38))/(1-(exp(-(-v -38)/6)))\n"
-  "		mTau = (1/(mAlpha + mBeta))/qt\n"
-  "		mInf = mAlpha/(mAlpha + mBeta)\n"
-  "\n"
-  "    if(v == -66){\n"
-  "      v = v + 0.0001\n"
-  "    }\n"
-  "\n"
-  "		hAlpha = (-0.015 * (v- -66))/(1-(exp((v- -66)/6)))\n"
-  "		hBeta  = (-0.015 * (-v -66))/(1-(exp((-v -66)/6)))\n"
-  "		hTau = (1/(hAlpha + hBeta))/qt\n"
-  "		hInf = hAlpha/(hAlpha + hBeta)\n"
-  "	UNITSON\n"
-  "}\n"
-  ;
 #endif

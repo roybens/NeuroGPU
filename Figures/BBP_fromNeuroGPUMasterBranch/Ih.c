@@ -1,4 +1,4 @@
-/* Created by Language version: 7.7.0 */
+/* Created by Language version: 7.5.0 */
 /* VECTORIZED */
 #define NRN_VECTORIZED 1
 #include <stdio.h>
@@ -82,15 +82,6 @@ extern void hoc_register_limits(int, HocParmLimits*);
 extern void hoc_register_units(int, HocParmUnits*);
 extern void nrn_promote(Prop*, int, int);
 extern Memb_func* memb_func;
- 
-#define NMODL_TEXT 1
-#if NMODL_TEXT
-static const char* nmodl_file_text;
-static const char* nmodl_filename;
-extern void hoc_reg_nmodl_text(int, const char*);
-extern void hoc_reg_nmodl_filename(int, const char*);
-#endif
-
  extern void _nrn_setdata_reg(int, void(*)(Prop*));
  static void _setdata(Prop* _prop) {
  _extcall_prop = _prop;
@@ -147,7 +138,7 @@ static void _ode_matsol(_NrnThread*, _Memb_list*, int);
  static void _ode_matsol_instance1(_threadargsproto_);
  /* connect range variables in _p that hoc is supposed to know about */
  static const char *_mechanism[] = {
- "7.7.0",
+ "7.5.0",
 "Ih",
  "gIhbar_Ih",
  0,
@@ -191,16 +182,12 @@ extern void _cvode_abstol( Symbol**, double*, int);
  	register_mech(_mechanism, nrn_alloc,nrn_cur, nrn_jacob, nrn_state, nrn_init, hoc_nrnpointerindex, 1);
  _mechtype = nrn_get_mechtype(_mechanism[1]);
      _nrn_setdata_reg(_mechtype, _setdata);
- #if NMODL_TEXT
-  hoc_reg_nmodl_text(_mechtype, nmodl_file_text);
-  hoc_reg_nmodl_filename(_mechtype, nmodl_filename);
-#endif
   hoc_register_prop_size(_mechtype, 11, 1);
   hoc_register_dparam_semantics(_mechtype, 0, "cvodeieq");
  	hoc_register_cvode(_mechtype, _ode_count, _ode_map, _ode_spec, _ode_matsol);
  	hoc_register_tolerance(_mechtype, _hoc_state_tol, &_atollist);
  	hoc_register_var(hoc_scdoub, hoc_vdoub, hoc_intfunc);
- 	ivoc_help("help ?1 Ih C:/Users/mdera/OneDrive/Desktop/Neuro/Figures/BBP_fromNeuroGPUMasterBranch/Ih.mod\n");
+ 	ivoc_help("help ?1 Ih E:/GitHub/NeuroGPU/Figures/BBP_fromNeuroGPUMasterBranch/Ih.mod\n");
  hoc_register_limits(_mechtype, _hoc_parm_limits);
  hoc_register_units(_mechtype, _hoc_parm_units);
  }
@@ -442,71 +429,4 @@ _first = 0;
 
 #if defined(__cplusplus)
 } /* extern "C" */
-#endif
-
-#if NMODL_TEXT
-static const char* nmodl_filename = "Ih.mod";
-static const char* nmodl_file_text = 
-  ":Comment :\n"
-  ":Reference : :		Kole,Hallermann,and Stuart, J. Neurosci. 2006\n"
-  "\n"
-  "NEURON	{\n"
-  "	SUFFIX Ih\n"
-  "	NONSPECIFIC_CURRENT ihcn\n"
-  "	RANGE gIhbar, gIh, ihcn \n"
-  "}\n"
-  "\n"
-  "UNITS	{\n"
-  "	(S) = (siemens)\n"
-  "	(mV) = (millivolt)\n"
-  "	(mA) = (milliamp)\n"
-  "}\n"
-  "\n"
-  "PARAMETER	{\n"
-  "	gIhbar = 0.00001 (S/cm2) \n"
-  "	ehcn =  -45.0 (mV)\n"
-  "}\n"
-  "\n"
-  "ASSIGNED	{\n"
-  "	v	(mV)\n"
-  "	ihcn	(mA/cm2)\n"
-  "	gIh	(S/cm2)\n"
-  "	mInf\n"
-  "	mTau\n"
-  "	mAlpha\n"
-  "	mBeta\n"
-  "}\n"
-  "\n"
-  "STATE	{ \n"
-  "	m\n"
-  "}\n"
-  "\n"
-  "BREAKPOINT	{\n"
-  "	SOLVE states METHOD cnexp\n"
-  "	gIh = gIhbar*m\n"
-  "	ihcn = gIh*(v-ehcn)\n"
-  "}\n"
-  "\n"
-  "DERIVATIVE states	{\n"
-  "	rates()\n"
-  "	m' = (mInf-m)/mTau\n"
-  "}\n"
-  "\n"
-  "INITIAL{\n"
-  "	rates()\n"
-  "	m = mInf\n"
-  "}\n"
-  "\n"
-  "PROCEDURE rates(){\n"
-  "	UNITSOFF\n"
-  "        if(v == -154.9){\n"
-  "            v = v + 0.0001\n"
-  "        }\n"
-  "		mAlpha =  0.001*6.43*(v+154.9)/(exp((v+154.9)/11.9)-1)\n"
-  "		mBeta  =  0.001*193*exp(v/33.1)\n"
-  "		mInf = mAlpha/(mAlpha + mBeta)\n"
-  "		mTau = 1/(mAlpha + mBeta)\n"
-  "	UNITSON\n"
-  "}\n"
-  ;
 #endif

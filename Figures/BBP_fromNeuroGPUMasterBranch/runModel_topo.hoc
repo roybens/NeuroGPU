@@ -11,7 +11,7 @@ calc_eca = 1
 
    stLoc = 0.43 
 base = "E:/GitHub/NeuroGPU/NeuroGPU_Base" 
-paramsFile = "./params/params.csv" 
+paramsFile = "./params/params2.csv" 
 stimFile = "./Stims/Step_8_.csv" 
 modelFile = "./mosinit.hoc" 
 timesFile = "./Stims/times.csv" 

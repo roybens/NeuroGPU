@@ -1,4 +1,4 @@
-/* Created by Language version: 7.7.0 */
+/* Created by Language version: 7.5.0 */
 /* VECTORIZED */
 #define NRN_VECTORIZED 1
 #include <stdio.h>
@@ -88,15 +88,6 @@ extern void hoc_register_limits(int, HocParmLimits*);
 extern void hoc_register_units(int, HocParmUnits*);
 extern void nrn_promote(Prop*, int, int);
 extern Memb_func* memb_func;
- 
-#define NMODL_TEXT 1
-#if NMODL_TEXT
-static const char* nmodl_file_text;
-static const char* nmodl_filename;
-extern void hoc_reg_nmodl_text(int, const char*);
-extern void hoc_reg_nmodl_filename(int, const char*);
-#endif
-
  extern void _nrn_setdata_reg(int, void(*)(Prop*));
  static void _setdata(Prop* _prop) {
  _extcall_prop = _prop;
@@ -150,7 +141,7 @@ static void _ode_matsol(_NrnThread*, _Memb_list*, int);
  static void _ode_matsol_instance1(_threadargsproto_);
  /* connect range variables in _p that hoc is supposed to know about */
  static const char *_mechanism[] = {
- "7.7.0",
+ "7.5.0",
 "K_Pst",
  "gK_Pstbar_K_Pst",
  0,
@@ -205,10 +196,6 @@ extern void _cvode_abstol( Symbol**, double*, int);
  _mechtype = nrn_get_mechtype(_mechanism[1]);
      _nrn_setdata_reg(_mechtype, _setdata);
      _nrn_thread_reg(_mechtype, 2, _update_ion_pointer);
- #if NMODL_TEXT
-  hoc_reg_nmodl_text(_mechtype, nmodl_file_text);
-  hoc_reg_nmodl_filename(_mechtype, nmodl_filename);
-#endif
   hoc_register_prop_size(_mechtype, 14, 4);
   hoc_register_dparam_semantics(_mechtype, 0, "k_ion");
   hoc_register_dparam_semantics(_mechtype, 1, "k_ion");
@@ -217,7 +204,7 @@ extern void _cvode_abstol( Symbol**, double*, int);
  	hoc_register_cvode(_mechtype, _ode_count, _ode_map, _ode_spec, _ode_matsol);
  	hoc_register_tolerance(_mechtype, _hoc_state_tol, &_atollist);
  	hoc_register_var(hoc_scdoub, hoc_vdoub, hoc_intfunc);
- 	ivoc_help("help ?1 K_Pst C:/Users/mdera/OneDrive/Desktop/Neuro/Figures/BBP_fromNeuroGPUMasterBranch/K_Pst.mod\n");
+ 	ivoc_help("help ?1 K_Pst E:/GitHub/NeuroGPU/Figures/BBP_fromNeuroGPUMasterBranch/K_Pst.mod\n");
  hoc_register_limits(_mechtype, _hoc_parm_limits);
  hoc_register_units(_mechtype, _hoc_parm_units);
  }
@@ -486,82 +473,4 @@ _first = 0;
 
 #if defined(__cplusplus)
 } /* extern "C" */
-#endif
-
-#if NMODL_TEXT
-static const char* nmodl_filename = "K_Pst.mod";
-static const char* nmodl_file_text = 
-  ":Comment : The persistent component of the K current\n"
-  ":Reference : :		Voltage-gated K+ channels in layer 5 neocortical pyramidal neurones from young rats:subtypes and gradients,Korngreen and Sakmann, J. Physiology, 2000\n"
-  ":Comment : shifted -10 mv to correct for junction potential\n"
-  ":Comment: corrected rates using q10 = 2.3, target temperature 34, orginal 21\n"
-  "\n"
-  "\n"
-  "NEURON	{\n"
-  "	SUFFIX K_Pst\n"
-  "	USEION k READ ek WRITE ik\n"
-  "	RANGE gK_Pstbar, gK_Pst, ik\n"
-  "}\n"
-  "\n"
-  "UNITS	{\n"
-  "	(S) = (siemens)\n"
-  "	(mV) = (millivolt)\n"
-  "	(mA) = (milliamp)\n"
-  "}\n"
-  "\n"
-  "PARAMETER	{\n"
-  "	gK_Pstbar = 0.00001 (S/cm2)\n"
-  "}\n"
-  "\n"
-  "ASSIGNED	{\n"
-  "	v	(mV)\n"
-  "	ek	(mV)\n"
-  "	ik	(mA/cm2)\n"
-  "	gK_Pst	(S/cm2)\n"
-  "	mInf\n"
-  "	mTau\n"
-  "	hInf\n"
-  "	hTau\n"
-  "}\n"
-  "\n"
-  "STATE	{\n"
-  "	m\n"
-  "	h\n"
-  "}\n"
-  "\n"
-  "BREAKPOINT	{\n"
-  "	SOLVE states METHOD cnexp\n"
-  "	gK_Pst = gK_Pstbar*m*m*h\n"
-  "	ik = gK_Pst*(v-ek)\n"
-  "}\n"
-  "\n"
-  "DERIVATIVE states	{\n"
-  "	rates()\n"
-  "	m' = (mInf-m)/mTau\n"
-  "	h' = (hInf-h)/hTau\n"
-  "}\n"
-  "\n"
-  "INITIAL{\n"
-  "	rates()\n"
-  "	m = mInf\n"
-  "	h = hInf\n"
-  "}\n"
-  "\n"
-  "PROCEDURE rates(){\n"
-  "  LOCAL qt\n"
-  "  qt = 2.3^((34-21)/10)\n"
-  "	UNITSOFF\n"
-  "		v = v + 10\n"
-  "		mInf =  (1/(1 + exp(-(v+1)/12)))\n"
-  "        if(v<-50){\n"
-  "		    mTau =  (1.25+175.03*exp(-v * -0.026))/qt\n"
-  "        }else{\n"
-  "            mTau = ((1.25+13*exp(-v*0.026)))/qt\n"
-  "        }\n"
-  "		hInf =  1/(1 + exp(-(v+54)/-11))\n"
-  "		hTau =  (360+(1010+24*(v+55))*exp(-((v+75)/48)^2))/qt\n"
-  "		v = v - 10\n"
-  "	UNITSON\n"
-  "}\n"
-  ;
 #endif
