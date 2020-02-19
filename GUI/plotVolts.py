@@ -16,6 +16,13 @@ from tkinter import *
 from tkinter.filedialog import askopenfilename
 from tkinter.filedialog import askdirectory
 from ipywidgets import *
+import platform
+
+if platform.system() == 'Windows':
+    unix = False
+else:
+    unix = True
+
 def test():
     root = Tk()
     root.withdraw()
@@ -50,7 +57,12 @@ def hdf5ReadHelper(fileName):
     file = h5py.File(fileName, 'r')
     return file["dset"][0].astype(np.double)
 
-
+def nrnMread(fileName):
+    f = open(fileName, "rb")
+    nparam = struct.unpack('i', f.read(4))[0]
+    print(nparam)
+    typeFlg = struct.unpack('i', f.read(4))[0]
+    return np.fromfile(f, np.double)
 
 def plotModel(model_ind, stim_ind):
     volts = all_volts[int(model_ind), :]
@@ -59,6 +71,7 @@ def plotModel(model_ind, stim_ind):
     plt.title('Stimulation')
     plt.plot(times, volts)
     plt.show()
+
 def saveModel(model_ind, stim_ind,folder):
     volts = all_volts[int(model_ind), :]
     fn = folder + 'traces_' + str(model_ind) + '.csv'
@@ -80,7 +93,7 @@ def on_button_clicked0_1(b):
 
 
 def readOutput(folder):
-    global base
+     global base
     global all_volts
     global times
     global stim
@@ -90,7 +103,16 @@ def readOutput(folder):
     Nt = time_steps.size
     stimFN = folder + 'Stim_raw.csv'
     stim = np.genfromtxt(stimFN, delimiter=',')
-    all_volts = hdf5ReadHelper(folder + 'VHotP.h5')
+    # nrn_volt = nrn.h.Vector()
+    if unix:
+        all_volts = hdf5ReadHelper(folder + 'VHotP.h5')
+    else:
+        all_volts = nrnMread(folder + 'VHotP.dat')
+    # nrn_fn = nrn.h.File(folder + 'VHotP.dat')
+    # nrn_fn.wopen(folder + 'VHotP.dat')
+    # nrn_volt.vread(nrn_fn)
+    # print nrn_volt
+    # all_volts = nrn_volt.to_python()
     all_volts = np.array(all_volts)
     if stim.ndim == 2:
         Nstim = params.shape[0]
