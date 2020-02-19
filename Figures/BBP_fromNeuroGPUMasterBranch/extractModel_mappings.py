@@ -8,7 +8,7 @@ from neuron import h
 data_dir =          'Data'                                          # data directory (folder)
 params_dir =        'params'                                        # params directory (folder)
 
-params_file =       f'./{params_dir}/params.csv'                    # 12 parameters
+params_file =       f'./{params_dir}/params2.csv'                    # 12 parameters
 param_map =         f'./{data_dir}/ParamMappings.txt'               # mappings from new extractModel
 # allparam_map =      f'{data_dir}/params_to_allparams.json'        # mapping from 12 params to allparams
 allparam_map =      f'./{data_dir}/params_to_allparams_bbp.json'    # mapping from 12 params to allparams

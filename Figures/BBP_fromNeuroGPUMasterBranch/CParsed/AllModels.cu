@@ -1,4 +1,4 @@
-// Automatically generated CU for C:\Users\Maxwell Chen\Desktop\NeuroGPU\Figures\BBP_fromNeuroGPUMasterBranch./runModel.hoc
+// Automatically generated CU for E:\GitHub\NeuroGPU\Figures\BBP_fromNeuroGPUMasterBranch./runModel.hoc
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -394,7 +394,7 @@ sumConductivity+= gCa;
 
 
 __device__ void CuBreakpointModel_Ca_LVAst(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gCa_LVAstbar_Ca_LVAst, MYFTYPE &ica,MYFTYPE &eca, MYFTYPE &cai) {
-MYFTYPE gca, gCa_LVAst;
+MYFTYPE gCa_LVAst, gca;
 MYFTYPE ;
 MYFTYPE ica_Ca_LVAst;
 
@@ -426,7 +426,7 @@ sumConductivity+= gIh;
 
 
 __device__ void CuBreakpointModel_Im(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE gImbar_Im) {
-MYFTYPE gIm, gk, ik;
+MYFTYPE ik, gk, gIm;
 MYFTYPE ;
    gIm = gImbar_Im * m ;
    ik = gIm * ( v - ek ) ;
@@ -436,7 +436,7 @@ sumConductivity+= gIm;
 
 
 __device__ void CuBreakpointModel_K_Pst(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gK_Pstbar_K_Pst) {
-MYFTYPE gK_Pst, gk, ik;
+MYFTYPE gK_Pst, ik, gk;
 MYFTYPE ;
    gK_Pst = gK_Pstbar_K_Pst * m * m * h ;
    ik = gK_Pst * ( v - ek ) ;
@@ -446,7 +446,7 @@ sumConductivity+= gK_Pst;
 
 
 __device__ void CuBreakpointModel_K_Tst(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gK_Tstbar_K_Tst) {
-MYFTYPE gK_Tst, gk, ik;
+MYFTYPE gK_Tst, ik, gk;
 MYFTYPE ;
    gK_Tst = gK_Tstbar_K_Tst * powf( m , 4.0 ) * h ;
    ik = gK_Tst * ( v - ek ) ;
@@ -456,7 +456,7 @@ sumConductivity+= gK_Tst;
 
 
 __device__ void CuBreakpointModel_Nap_Et2(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gNap_Et2bar_Nap_Et2) {
-MYFTYPE ina, gNap_Et2, gna;
+MYFTYPE gna, ina, gNap_Et2;
 MYFTYPE ;
    gNap_Et2 = gNap_Et2bar_Nap_Et2 * m * m * m * h ;
    ina = gNap_Et2 * ( v - ena ) ;
@@ -466,7 +466,7 @@ sumConductivity+= gNap_Et2;
 
 
 __device__ void CuBreakpointModel_NaTa_t(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gNaTa_tbar_NaTa_t) {
-MYFTYPE gNaTa_t, ina, gna;
+MYFTYPE gna, gNaTa_t, ina;
 MYFTYPE ;
    gNaTa_t = gNaTa_tbar_NaTa_t * m * m * m * h ;
    ina = gNaTa_t * ( v - ena ) ;
@@ -476,7 +476,7 @@ sumConductivity+= gNaTa_t;
 
 
 __device__ void CuBreakpointModel_NaTs2_t(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE &h,MYFTYPE gNaTs2_tbar_NaTs2_t) {
-MYFTYPE gNaTs2_t, ina, gna;
+MYFTYPE gna, gNaTs2_t, ina;
 MYFTYPE ;
    gNaTs2_t = gNaTs2_tbar_NaTs2_t * m * m * m * h ;
    ina = gNaTs2_t * ( v - ena ) ;
@@ -497,7 +497,7 @@ sumConductivity+= g_pas;
 
 
 __device__ void CuBreakpointModel_SK_E2(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &z,MYFTYPE gSK_E2bar_SK_E2,MYFTYPE zTau_SK_E2, MYFTYPE cai,MYFTYPE &eca) {
-MYFTYPE gca, gSK_E2, gk, ik;
+MYFTYPE gk, gca, ik, gSK_E2;
 MYFTYPE ;
    gSK_E2 = gSK_E2bar_SK_E2 * z ;
    ik = gSK_E2 * ( v - ek ) ;
@@ -507,7 +507,7 @@ sumConductivity+= gSK_E2;
 
 
 __device__ void CuBreakpointModel_SKv3_1(MYSECONDFTYPE &sumCurrents, MYFTYPE &sumConductivity, MYFTYPE v,MYFTYPE &m,MYFTYPE gSKv3_1bar_SKv3_1) {
-MYFTYPE gk, ik, gSKv3_1;
+MYFTYPE gSKv3_1, ik, gk;
 MYFTYPE ;
    gSKv3_1 = gSKv3_1bar_SKv3_1 * m ;
    ik = gSKv3_1 * ( v - ek ) ;
