@@ -10,8 +10,9 @@
 #include <iostream>
 #endif
 
+#define UNIX false
 #if defined(unix) || defined(__unix__) || defined(__unix)
-#define UNIX TRUE
+#define UNIX true
 #endif
 
 using namespace H5;
@@ -440,16 +441,16 @@ void SaveArrayToFile(const char* FN, const int N, const double* Arr) {
     
     if (UNIX) {
 		H5File* file = new H5File( FN, H5F_ACC_TRUNC );
-		hsize_t maxdims[2] = {H5S_UNLIMITED, H5S_UNLIMITED};
-		int RANK = 1;
-		hsize_t dimsf[2] = {1, N};
-		static const char DATASETNAME[] = "dset"
+        hsize_t maxdims[2] = {H5S_UNLIMITED, H5S_UNLIMITED};
+        int RANK = 1;
+        hsize_t dimsf[2] = {1, N};
+        static const char datasetname[] = "dset";
 
-		DataSpace dataspace(RANK, dimsf);
-		FloatType datatype(PredType::NATIVE_DOUBLE);
-		datatype.setOrder(H5T_ORDER_LE);
-		DataSet dataset = file.createDataSet(DATASETNAME, datatype, dataspace);
-		dataset.write(Arr, PredType::NATIVE_DOUBLE );
+        DataSpace dataSpace(RANK, dimsf, maxdims);
+        FloatType datatype(PredType::NATIVE_DOUBLE);
+        datatype.setOrder(H5T_ORDER_LE);
+        DataSet dataset = file->createDataSet(datasetname, datatype, dataSpace);
+        dataset.write(Arr, PredType::NATIVE_DOUBLE );
     } else {
         FILE *file = fopen(FN, "wb");
         if (file) {
