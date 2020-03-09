@@ -1,4 +1,4 @@
-// Automatically generated CUH for E:\GitHub\NeuroGPU\Figures\Figure4_mainen./runModel.hoc
+// Automatically generated CUH for C:\Users\mdera\OneDrive\Desktop\Neuro_maxwell\Figures\Figure4_mainen./runModel.hoc
 
 #ifndef __ALLMODELSCU__
 #define __ALLMODELSCU__

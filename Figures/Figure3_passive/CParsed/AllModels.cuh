@@ -1,4 +1,4 @@
-// Automatically generated CUH for E:\GitHub\NeuroGPU\Figures\Figure3_passive./runModel.hoc
+// Automatically generated CUH for C:\Users\Maxwell Chen\Desktop\NeuroGPU\Figures\Figure3_passive./runModel.hoc
 
 #ifndef __ALLMODELSCU__
 #define __ALLMODELSCU__

@@ -222,8 +222,10 @@ endif
 
 # Debug build flags
 ifeq ($(dbg),1)
-      NVCCFLAGS += -O3
+      #NVCCFLAGS += -O3
       BUILD_TYPE := debug
+    
+
 else
       BUILD_TYPE := release
 endif
@@ -233,6 +235,13 @@ ALL_CCFLAGS += $(NVCCFLAGS)
 ALL_CCFLAGS += $(EXTRA_NVCCFLAGS)
 ALL_CCFLAGS += $(addprefix -Xcompiler ,$(CCFLAGS))
 ALL_CCFLAGS += $(addprefix -Xcompiler ,$(EXTRA_CCFLAGS))
+
+# Debug build flags
+ifeq ($(dbg),1)
+      #NVCCFLAGS += -O3
+      ALL_CCFLAGS += -g
+endif
+
 
 SAMPLE_ENABLED := 1
 
@@ -283,6 +292,9 @@ ifeq ($(SAMPLE_ENABLED),0)
 else
 	@echo "Sample is ready - all dependencies have been met"
 endif
+$(info "printing ccflags")
+$(info ALLCCFLAGS is  $(ALL_CCFLAGS))
+
 
 CudaStuff.o:CudaStuff.cu AllModels.cuh
 	$(EXEC) $(NVCC) $(INCLUDES) $(ALL_CCFLAGS) $(GENCODE_FLAGS) -o $@ -c $<
@@ -303,6 +315,10 @@ neuroGPU: AllModels.o kernel.o MainC.o  Util.o CudaStuff.o
 	$(EXEC) $(NVCC) $(ALL_LDFLAGS) $(GENCODE_FLAGS) -o $@ $+ $(LIBRARIES)
 	$(EXEC) mkdir -p ../bin/
 	$(EXEC) cp $@ ../bin/
+$(info "printing ccflags")
+$(info ALLCCFLAGS is  $(ALL_CCFLAGS))
+
+
 
 run: build
 	$(EXEC) ./neuroGPU

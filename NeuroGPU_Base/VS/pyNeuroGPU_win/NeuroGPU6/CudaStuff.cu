@@ -386,6 +386,7 @@ void initFrameWork(Stim stim, Sim sim, MYFTYPE* ParamsM, MYFTYPE* InitStatesM, H
 	Mat_d.nCallForFather = InMat.nCallForFather;
 	Mat_d.nLRel = InMat.nLRel;
 	Mat_d.nFLRel = InMat.nFLRel;
+	printf("going to cudamalloc\n");
 	// 32 data
 #ifdef BKSUB1
 	//cudaStatus = cudaMalloc((void**)&Mat_d.FIdxs, InMat.LognDepth*InMat.N* sizeof(MYDTYPE));
@@ -393,12 +394,22 @@ void initFrameWork(Stim stim, Sim sim, MYFTYPE* ParamsM, MYFTYPE* InitStatesM, H
 #ifdef BKSUB2
 	cudaStatus = cudaMalloc((void**)&Mat_d.KsB, (InMat.N + 1) * sizeof(MYDTYPE));
 #endif
-	CUDA_RT_CALL(cudaMemcpyToSymbol(cE, InMat.e, InMat.N * sizeof(MYSECONDFTYPE)));
+	//printf("status is %s",cudaStatus);
+	//printf("%p,%p,%d,%d\n",cE,InMat.e,InMat.N,sizeof(MYSECONDFTYPE));
+	//printf("%f",cE[500]);
+	//printf("\n");
+	//printf("%f",InMat.e[0]);
+	//printf("\n");
+	//printf("%d",InMat.N);
+	//printf("\n");
+	gpuErrchk(cudaMemcpyToSymbol(cE, InMat.e, InMat.N * sizeof(MYSECONDFTYPE)));
+	//printf("1\n");
 	CUDA_RT_CALL(cudaMemcpyToSymbol(cF, InMat.f, InMat.N * sizeof(MYSECONDFTYPE)));
 	CUDA_RT_CALL(cudaMemcpyToSymbol(cKs, InMat.Ks, InMat.N * sizeof(MYDTYPE)));
 	CUDA_RT_CALL(cudaMemcpyToSymbol(cSegToComp, InMat.SegToComp, InMat.N * sizeof(MYDTYPE)));
 	CUDA_RT_CALL(cudaMemcpyToSymbol(cBoolModel, InMat.boolModel, InMat.N * InMat.NModels * sizeof(MYDTYPE)));
 	CUDA_RT_CALL(cudaMemcpyToSymbol(cCm, InMat.Cms, InMat.N * sizeof(MYFTYPE)));
+	//printf("constant memory is copied2\n");
 	CUDA_RT_CALL(cudaMemcpyToSymbol(cSonNoVec, InMat.SonNoVec, InMat.N * sizeof(MYDTYPE)));
 	CUDA_RT_CALL(cudaMemcpyToSymbol(cRelStarts, InMat.RelStarts, InMat.nFathers * sizeof(MYDTYPE)));
 	CUDA_RT_CALL(cudaMemcpyToSymbol(cRelEnds, InMat.RelEnds, InMat.nFathers * sizeof(MYDTYPE)));
@@ -408,31 +419,43 @@ void initFrameWork(Stim stim, Sim sim, MYFTYPE* ParamsM, MYFTYPE* InitStatesM, H
 	CUDA_RT_CALL(cudaMemcpyToSymbol(cSegEndI, InMat.SegEndI, (InMat.nCallForFather + 1) * sizeof(MYDTYPE)));
 	//CUDA_RT_CALL(cudaMemcpy(Mat_d.Fathers, InMat.Fathers, InMat.nFathers * sizeof(MYDTYPE), cudaMemcpyHostToDevice);
 	CUDA_RT_CALL(cudaMemcpyToSymbol(cFathers, InMat.Fathers, InMat.nFathers * sizeof(MYDTYPE)));
+	//printf("constant memory is copied3\n");
 	// 32 data
 #ifdef BKSUB1
 	//CUDA_RT_CALL(cudaMemcpy(Mat_d.FIdxs, InMat.FIdxs, InMat.LognDepth*InMat.N* sizeof(MYDTYPE), cudaMemcpyHostToDevice);
+	//printf("%d\n",InMat.LognDepth);
+	//printf("%d\n",InMat.N);
+	//printf("%d\n",InMat.FIdxs[24*512-1]);
+	//printf("%d\n",InMat.FIdxs[0]);
+	
 	CUDA_RT_CALL(cudaMemcpyToSymbol(cFIdxs, InMat.FIdxs, InMat.LognDepth*InMat.N * sizeof(MYDTYPE)));
+	//printf("constant memory is copied3.5\n");
 #endif
 #ifdef BKSUB2
 	CUDA_RT_CALL(cudaMemcpy(Mat_d.KsB, InMat.KsB, (InMat.N + 1) * sizeof(MYDTYPE), cudaMemcpyHostToDevice);
 #endif
 	//CUDA_RT_CALL(cudaMemcpy(Mat_d.CompByLevel32, InMat.CompByLevel32, (CompDepth)*WARPSIZE*sizeof(MYDTYPE), cudaMemcpyHostToDevice);
 	CUDA_RT_CALL(cudaMemcpyToSymbol(cCompByLevel32, InMat.CompByLevel32, (CompDepth)*WARPSIZE * sizeof(MYDTYPE)));
+	printf("constant memory is copied3.75\n");
 	//CUDA_RT_CALL(cudaMemcpy(Mat_d.CompByFLevel32, InMat.CompByFLevel32, (CompFDepth)*WARPSIZE*sizeof(MYDTYPE), cudaMemcpyHostToDevice);
+	printf("constant memory is copied3.9\n");
 	CUDA_RT_CALL(cudaMemcpyToSymbol(cCompByFLevel32, InMat.CompByFLevel32, (CompFDepth)*WARPSIZE * sizeof(MYDTYPE)));
 
 
 	//CUDA_RT_CALL(cudaMemcpy(Mat_d.LRelStarts, InMat.LRelStarts,InMat.nLRel*sizeof(MYDTYPE), cudaMemcpyHostToDevice);
 	CUDA_RT_CALL(cudaMemcpyToSymbol(cLRelStarts, InMat.LRelStarts, InMat.nLRel * sizeof(MYDTYPE)));
+	//printf("constant memory is copied4\n");
 	//CUDA_RT_CALL(cudaMemcpy(Mat_d.LRelEnds, InMat.LRelEnds,InMat.nLRel*sizeof(MYDTYPE), cudaMemcpyHostToDevice);
 	CUDA_RT_CALL(cudaMemcpyToSymbol(cLRelEnds, InMat.LRelEnds, InMat.nLRel * sizeof(MYDTYPE)));
 	//CUDA_RT_CALL(cudaMemcpy(Mat_d.FLRelStarts, InMat.FLRelStarts,InMat.nFLRel*sizeof(MYDTYPE), cudaMemcpyHostToDevice);
 	CUDA_RT_CALL(cudaMemcpyToSymbol(cFLRelStarts, InMat.FLRelStarts, InMat.nFLRel * sizeof(MYDTYPE)));
 	//CUDA_RT_CALL(cudaMemcpy(Mat_d.FLRelEnds, InMat.FLRelEnds,InMat.nFLRel*sizeof(MYDTYPE), cudaMemcpyHostToDevice);
 	CUDA_RT_CALL(cudaMemcpyToSymbol(cFLRelEnds, InMat.FLRelEnds, InMat.nFLRel * sizeof(MYDTYPE)));
+	//printf("constant memory is copied5\n");
 	CUDA_RT_CALL(cudaMalloc((void**)&PXOut_d, (InMat.N + 1) * sizeof(MYSECONDFTYPE)));
 	CUDA_RT_CALL(cudaMalloc((void**)&PFOut_d, (InMat.N + 1) * sizeof(MYSECONDFTYPE)));
-	CUDA_RT_CALL(cudaThreadSynchronize());
+	printf("we once had here a synhronize call");
+	//CUDA_RT_CALL(cudaThreadSynchronize());
 	printf("done with all init framework\n");
 }
 

@@ -23,6 +23,10 @@ from nrn_structs import *
 from create_auxilliary_data_3 import create_auxilliary_data_3
 import pickle as pkl
 
+# mappings
+from extractModel_mappings import allparams_from_mapping
+
+
 # Definitions
 ModData = collections.namedtuple('ModData', 'mod_per_seg,available_mechs')
 ParsedModel = collections.namedtuple('ParsedModel', 'Writes,Reads')
@@ -117,7 +121,7 @@ def get_parent_seg(thread):
 def get_parent_seg1():
     #nrn.h.load_file(modelFile)
     nrn.h("MyTopology2()")
-    
+
     parent = []
     ax = './parent.txt'
     with open(ax, 'r') as bx:
@@ -362,14 +366,15 @@ def parse_models():
     #   mod_files.remove('pasx.mod')
     mod_files = sorted(mod_files,key=str.lower)
     for i in range(len(mod_files)):
-        mod_f = mod_files[i]
+        mod_f = mod_files[i]                                                        # identify ith mod file
         print ('parsing ' + mod_f)
-        lines_list.append(file_to_list_no_comments(mod_f))
+        lines_list.append(file_to_list_no_comments(mod_f))                          # convert mod file to list of values (w/o comments)
         # print 'parsing ' + mod_f + 'i is ' + repr(i)
-        output = parse_model(lines_list[i])
-        # return [model_name,globals,ions,reads,writes,only_reads,nglobal_c,curr_all_state,all_state_line]
+        output = parse_model(lines_list[i])                                         # parse the converted mod file (i.e. list) using handle_neuron_block
+        # return [model_name, globals, ions, reads, writes, only_reads,
+        # nglobal_c,curr_all_state,all_state_line]
         model_name.append(output[0])
-        ions_c.append(output[2])
+        ions_c.append(output[2])                                                    # parse_model[2] = output[2] = handle_neuron_block(line)[2] = "Useion"
         currents = ['i' + s for s in ions_c[i] ]+['i']
         reads.append(output[3])
         writes.append(output[4])
@@ -392,8 +397,8 @@ def parse_models():
         all_assigned.append(output[10])
         ranges.append(output[11])
         non_spec_curr.append(output[12])
-        currreversals = set(['e' + v for v in ions_c[i]])
-        reversals.append(currreversals)
+        currreversals = set(['e' + v for v in ions_c[i]])                           # Aggregate all e___ from each ion channel from each mod file
+        reversals.append(currreversals)                                             # append all currReversals for this iteration as a sublist (.append, not .extend)
         tmp = only_reads_tmp - currreversals
         only_reads_no_reversals.append(tmp)
         StateStartVal = StateStartVal + len(curr_all_states)
@@ -616,6 +621,8 @@ def parse_models():
 
     params_m, runModel_hoc_object = proc_add_param_to_hoc_for_opt(all_params_non_global_list_non_flat, modelFile,base_p, available_mechs, reversals, reversals,cs_names, comp_mechs, g_globals, nglobals_flat,sec_list, ftypestr, p_size_set, param_set, data_dir,all_states_names_list,kin_models_inds)
 
+    # print("Finish running proc_add_param_to_hoc_for_opt")
+
     # subprocess.call("matlab -nosplash -nodisplay -nodesktop -r \"ProcAddParamToHocForOpt()\"",shell=True);
     # subprocess.call('matlab -nosplash -nodisplay -nodesktop -r \"ProcAddParamToHocForOpt(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)\"' % (all_params_non_global_flat, modelFile, base_p, available_mechs, reversals,reversals, cs_names, comp_mechs, g_globals, nglobals_flat, sec_list, ftypestr,p_size_set, param_set),shell=True);
     output = write_all_models_cpp(c_parsed_folder, list(all_reversals), actual_reversals, all_writes, all_locals,
@@ -639,7 +646,7 @@ def parse_models():
     call_to_deriv_str_cu = output[1]
     call_to_break_str_cu = output[2]
     call_to_break_dv_str_cu = output[3]
-    
+
     output = get_topo()
     n_segs = output[0]
     n_segs_mat = [x + 1 for x in n_segs]
@@ -690,13 +697,13 @@ def parse_models():
                                   ''.join(call_to_break_dv_list),kin_indices,len(comp_mechs))
 
     # (c_parsed_folder,NX,aux,bool_model,n_params,c_init_lines_cu,c_proc_lines_cu,c_deriv_lines_cu,c_break_lines_cu):
-
+    print("Finished body of extractModel.py; running tail_end now:")
     with open('CParsed/AllModels.cuh', 'a') as fcuh:
         tail_end(fcuh, n_params, call_to_init_str_cu, call_to_deriv_str_cu, call_to_break_str_cu,
                  call_to_break_dv_str_cu, params_m, n_segs_mat, cm_vec, vs_dir, has_f, ND, NRHS, tmp_file_name, nstates,
                  nextra_states,kin_states,kin_indices)
 
-
+    print("Finished running tail_end; returning values:")
     return [n_params, call_to_init_str_cu, call_to_deriv_str_cu, call_to_break_str_cu, call_to_break_dv_str_cu,
             params_m, n_segs_mat, cm_vec, vs_dir, has_f, ND, NRHS,seg_start,seg_end]
 
@@ -907,7 +914,7 @@ def write_all_models_h(c_parsed_folder, n_total_states, n_params, gglobals_flat,
         # KINETIC
     call_to_init_str = ''
     call_to_deriv_str = ''
-    
+
     call_to_break_str = ''
     call_to_break_dv_str = ''
     for i in range(len(call_to_init)):
@@ -1100,6 +1107,7 @@ def tail_end(f, n_params, call_to_init_str_cu, call_to_deriv_str_cu, call_to_bre
     #for curr_param in range(1, n_params + 1):
     #    curr_parameter_str = '#define   SET_PARAMS{:03d}(VARILP) MYFTYPE p{:d}_ ## VARILP =ParamsM[NeuronID*perThreadMSize + {:d}*InMat.NComps+cSegToComp[PIdx_ ## VARILP] ];\n'.format(curr_param, curr_param - 1, curr_param - 1)
     #    f.write(curr_parameter_str)
+    # f is the file "CParsed/AllModels.cuh"
     set_states_for_cuh(f, nstates, nextra_states)
     if has_kinetics:
         init_kin_states(f, states_kin,kin_indices)
@@ -1115,8 +1123,6 @@ def tail_end(f, n_params, call_to_init_str_cu, call_to_deriv_str_cu, call_to_bre
 
     f.write('\n#endif')
     f.close()
-
-    print('Finished writing AllModels.h,cpp,cu,cuh')
 
     params_m_per_seg = []
     params_m = np.array(params_m)
@@ -1134,6 +1140,7 @@ def tail_end(f, n_params, call_to_init_str_cu, call_to_deriv_str_cu, call_to_bre
         print('we have a non WARPSIZE multiple number of segs')
         exit(12345)
     nilp = all_segs / WARPSIZE
+    print(vs_dir)
     if (split_flg==0):
         tmp = np.array(get_lines(vs_dir + '/CudaStuffBase.cu'))
     else:
@@ -1160,8 +1167,6 @@ def tail_end(f, n_params, call_to_init_str_cu, call_to_deriv_str_cu, call_to_bre
         f = open(fn, 'w')
         f.write(nd.astype(float))
         f.close()
-
-    print ('Finished NMODLtoC_Main.')
 
 
 def write_all_models_cu(c_parsed_folder, reversals_names, reversals_vals, gglobals_flat, gglobals_vals, nglobals_flat,
@@ -1700,10 +1705,10 @@ def create_states_param_str(all_state_line, all_state_line_seg, all_params_line,
 
 """
 PARAMETERS:
-    lines: all the lines in the mod file  
+    lines: all the lines in the mod file
     model_name: name of the model
     states: a string, of all the states used in the kinetic model. Gotten from handle_state_block
-    rates_lines: The lines of code in the rates block. This is used during the calculation of the Q matrix. NOTE: this must be of a particular form, with no comments 
+    rates_lines: The lines of code in the rates block. This is used during the calculation of the Q matrix. NOTE: this must be of a particular form, with no comments
 
 RETURNS:
     c_kinetic_helper_lines: basically a giant string of helper functions
@@ -1712,7 +1717,7 @@ RETURNS:
     call_to_kinetic_deriv: how to call the CuDerivModel function for this particular instance (should be the same as all other deriv calls, besides the model name)
     declare: the function declaration for this (should be the same as all other deriv declares)
 
-Only supports kinetic equations with one state on each side of the equation, so far. 
+Only supports kinetic equations with one state on each side of the equation, so far.
 Also assumes that the conserve statement at the bottom of the kinetic block is essentially sum(all states) = 1
 """
 
@@ -2798,29 +2803,29 @@ def add_params_to_func_call(input, func_names, input_vars_c, all_param_line_call
 def runPyNeuroGPU():
     if (os.path.exists(run_dir)):
         shutil.rmtree(run_dir + '/')
-    print (vs_root)
-    print (run_dir)
+    # print (vs_root)
+    # print (run_dir)
     shutil.copytree(vs_root, run_dir)
     if (os.path.exists(run_dir + "/Data")):
         shutil.rmtree(run_dir + "/Data")
     os.makedirs(run_dir + "/Data")
     temp = data_dir + 'BasicConst*.csv'
-    print (temp)
+    # print (temp)
     for file in glob.glob(temp):
-        print(file)
+        # print(file)
         shutil.copy(file, run_dir + "/Data/")
-    shutil.copy(data_dir + 'AllParams.csv', run_dir + "/Data/")
+    # shutil.copy(data_dir + 'AllParams.csv', run_dir + "/Data/")                     # shutil.copy(src, dst) copy file src to file/directory dst
+    shutil.copy(data_dir + 'ParamTemplate.csv', run_dir + "/Data/")                     # shutil.copy(src, dst) copy file src to file/directory dst
     shutil.copy(data_dir + 'AllStates.csv', run_dir + "/Data/")
-
     shutil.copy(data_dir + "/Sim.csv", run_dir + "/Data/")
-    # shutil.copy(data_dir+'Stim.dat',run_dir +"/Data/")
-    #shutil.copy(data_dir + 'StimF.dat', run_dir + "/Data/")
     shutil.copy(data_dir + 'Stim_raw.csv', run_dir + "/Data/")
     shutil.copy(data_dir + 'times.csv', run_dir + "/Data/")
     shutil.copy(data_dir + 'Stim_meta.csv', run_dir + "/Data/")
 
     for filename in glob.glob(os.path.join('./CParsed/', '*.*')):
         shutil.copy(filename, run_dir + "/NeuroGPU6/")
+
+    # print("Finished runPyNeuroGPU()")
 #    shutil.copy(data_dir + 'try.bat', run_dir)
 def linux_packing():
     file_for_linux = ['kernel.cu','MainC.cu','Makefile','Util.cu','Util.h','CudaStuff.cu','CudaStuff.cuh']
@@ -2831,17 +2836,18 @@ def linux_packing():
     os.makedirs(src_loc)
     for fn in file_for_linux:
         fn = vs_root + '/NeuroGPU6/' +fn
-        print(fn)
+        # print(fn)
         shutil.copy(fn, src_loc)
     if (os.path.exists(unix_dir + "/Data")):
         shutil.rmtree(unix_dir + "/Data")
     os.makedirs(unix_dir + "/Data")
     temp = data_dir + 'BasicConst*.csv'
-    print (temp)
+    # print (temp)
     for file in glob.glob(temp):
-        print(file)
+        # print(file)
         shutil.copy(file, unix_dir + "/Data/")
-    shutil.copy(data_dir + 'AllParams.csv', unix_dir + "/Data/")
+    # shutil.copy(data_dir + 'AllParams.csv', unix_dir + "/Data/")
+    shutil.copy(data_dir + 'ParamTemplate.csv', unix_dir + "/Data/")
     shutil.copy(data_dir + 'AllStates.csv', unix_dir + "/Data/")
 
     shutil.copy(data_dir + "/Sim.csv", unix_dir + "/Data/")
@@ -2852,9 +2858,7 @@ def linux_packing():
     shutil.copy(data_dir + 'Stim_meta.csv', unix_dir + "/Data/")
     for filename in glob.glob(os.path.join('./CParsed/', '*.*')):
         shutil.copy(filename, src_loc)
-
-
-
+    print("Finished linux_packing()")
 
 def main():
     global sec_list
@@ -2864,11 +2868,26 @@ def main():
     nrn.h.load_file(1, modelFile)
     if not os.path.exists(data_dir):
         os.makedirs(data_dir)
-
+    # nrn.h.base = "C:\\Users\\Maxwell Chen\\Desktop\\NeuroGPU\\NeuroGPU_Base"                                # Changed path to work on my computer; will revert later
     vs_dir = nrn.h.base + '/VS/pyNeuroGPU_win/NeuroGPU6'
     vs_root = nrn.h.base + '/VS/pyNeuroGPU_win/'
     baseDir = nrn.h.base
     vs_root = baseDir + '/VS/pyNeuroGPU_win/'
+
+    # -----------------------------------------------------------------------------------------
+    # nrn.h.base = "C:/Users/mdera/OneDrive/Desktop/Neuro/NeuroGPU_Base"
+    vs_dir = nrn.h.base + '/VS/pyNeuroGPU_win/NeuroGPU6'
+    vs_root = nrn.h.base + '/VS/pyNeuroGPU_win/'
+    baseDir = nrn.h.base
+    vs_root = baseDir + '/VS/pyNeuroGPU_win/'
+    # -----------------------------------------------------------------------------------------
+
+    # print("nrn.h: \t\t", nrn.h)
+    # print("nrn.h.base: \t", nrn.h.base)
+    # print("vs_dir: \t", vs_dir)
+    # print("data_dir: \t", data_dir)
+    # print("unix_dir: \t", unix_dir)
+
     # thread = nrn_dll_sym('nrn_threads', ctypes.POINTER(NrnThread))
     sec_list = create_sec_list()
     rec_sites = write_sim()
@@ -2881,13 +2900,16 @@ def main():
     # recsites = get_recsites()  # list of section names
     # mod_file_map = get_mod_file_map(topo_mdl.available_mechs) # dictionary whose keys are mechanisms suffixs and values are their .mod file name=
     mechanisms = parse_models()
+    # ------------------------------------------------------------
+    allparams_from_mapping()
+    # ------------------------------------------------------------
+    # print("Passed parse_models()")
     seg_start = mechanisms[-2]
     seg_end = mechanisms[-1]
 
-
     write_stim(rec_sites,seg_start,seg_end)
-    print ("done with parse_models")
-    
+    # print ("done with parse_models")
+
     # def tail_end(f, n_params, call_to_init_str_cu, call_to_deriv_str_cu, call_to_break_str_cu, call_to_break_dv_str_cu,params_m, n_segs_mat, cm_vec, vs_dir, has_f, nd, nrhs):
     runPyNeuroGPU()
     linux_packing()
