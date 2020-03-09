@@ -331,10 +331,10 @@ void InitP(){ // YYY add void
 
 void ReadParallelNeuronData(const char* FN, HMat &TheMat,MYDTYPE *CompDepth,MYDTYPE *CompFDepth) {
 	char FileName[300];
-	char cwd[300];
+	//char cwd[3000];
 	double* tmpe,*tmpf;
-	getcwd(cwd, sizeof(cwd));
-	printf("working dir is %s\n",cwd);
+	//getcwd(cwd, sizeof(cwd));
+	//printf("working dir is %s\n",cwd);
 
 	sprintf(FileName,"%sSegP.csv",FN);
 	//sprintf(FileName,"%s%dSegP.mat",FN,64);
@@ -346,29 +346,46 @@ void ReadParallelNeuronData(const char* FN, HMat &TheMat,MYDTYPE *CompDepth,MYDT
 		printf("Failed to read TreeData.x\n");
 		return;
 	}
+	printf("*1 mallocing");
+	//TheMat.e = (MYSECONDFTYPE*) malloc((TheMat.N+1)*sizeof(MYSECONDFTYPE));
+	//TheMat.f = (MYSECONDFTYPE*) malloc(TheMat.N*sizeof(MYSECONDFTYPE));
+	//TheMat.Ks = (MYDTYPE*) malloc(TheMat.N*sizeof(MYDTYPE));
+	//printf("*2 mallocing");
+	//TheMat.SegToComp = (MYDTYPE*) malloc(TheMat.N*sizeof(MYDTYPE));
+//	TheMat.Cms = (MYFTYPE*) malloc(TheMat.N*sizeof(MYFTYPE));
+//	TheMat.SonNoVec = (MYDTYPE*) malloc(TheMat.N*sizeof(MYDTYPE));
+//	TheMat.boolModel = (MYDTYPE*) malloc(TheMat.N*TheMat.NModels*sizeof(MYDTYPE));
+	printf("*3 mallocing");
+//	TheMat.RelStarts = (MYDTYPE*) malloc(TheMat.nFathers*sizeof(MYDTYPE));
+//	TheMat.RelEnds = (MYDTYPE*) malloc(TheMat.nFathers*sizeof(MYDTYPE));
+//	TheMat.RelVec = (MYDTYPE*) malloc(TheMat.nCallForFather*sizeof(MYDTYPE));
+//	TheMat.SegStartI = (MYDTYPE*)malloc((TheMat.nCallForFather + 1) * sizeof(MYDTYPE));
+//	TheMat.SegEndI = (MYDTYPE*) malloc((TheMat.nCallForFather+1)*sizeof(MYDTYPE));
+//	TheMat.Fathers= (MYDTYPE*) malloc(TheMat.nFathers*sizeof(MYDTYPE));
+	printf("*4 done  mallocing");
+
+
 	char line[409600];
 	fgets(line, sizeof(line), fl);
-	ReadShortFromCSV(line, &TheMat.N, 1);
-	printf("printing line %s\n",line);
-	fgets(line, sizeof(line), fl);
+	ReadShortFromCSV(line, &TheMat.N, 1);//line 0
+	//printf("printing line %s\n",line);
+	fgets(line, sizeof(line), fl);;//line 1
 	ReadShortFromCSV(line, &TheMat.NComps, 1);
-	fgets(line, sizeof(line), fl);
-	//tmpe = //(double*) malloc(TheMat.N*sizeof(double));
-	//tmpf = //(double*) malloc(TheMat.N*sizeof(double));
-	TheMat.e = (MYSECONDFTYPE*) malloc(TheMat.N*sizeof(MYSECONDFTYPE));
-	TheMat.f = (MYSECONDFTYPE*) malloc(TheMat.N*sizeof(MYSECONDFTYPE));
-	tmpe = TheMat.e;
-	tmpf = TheMat.f;
-	TheMat.Ks = (MYDTYPE*) malloc(TheMat.N*sizeof(MYDTYPE));
-	TheMat.SegToComp = (MYDTYPE*) malloc(TheMat.N*sizeof(MYDTYPE));
-
-	TheMat.Cms = (MYFTYPE*) malloc(TheMat.N*sizeof(MYFTYPE));
-	TheMat.SonNoVec = (MYDTYPE*) malloc(TheMat.N*sizeof(MYDTYPE));
-	//TheMat.MidComps = (MYDTYPE*) malloc(TheMat.NComps*sizeof(MYDTYPE));
+	fgets(line, sizeof(line), fl);;//line 2
+	tmpe = (double*) malloc(TheMat.N*sizeof(double));
+	tmpf = (double*) malloc(TheMat.N*sizeof(double));
+	//TheMat.e = (MYSECONDFTYPE*) malloc(TheMat.N*sizeof(MYSECONDFTYPE));
+	//TheMat.f = (MYSECONDFTYPE*) malloc(TheMat.N*sizeof(MYSECONDFTYPE));
+	//tmpe = TheMat.e;
+	//tmpf = TheMat.f;
 	ReadDoubleFromCSV(line, tmpe, TheMat.N);
-	fgets(line, sizeof(line), fl);
+	TheMat.e = tmpe;
+	fgets(line, sizeof(line), fl);;//line 3
 	ReadDoubleFromCSV(line, tmpf, TheMat.N);
-	fgets(line, sizeof(line), fl);
+	TheMat.f = tmpf;
+	fgets(line, sizeof(line), fl);;//line 4
+	//printf("*1 assigning line 4\n");
+	//printf(line);
 	/*for(int i =0;i<TheMat.N;i++){
 		TheMat.e[i] = tmpe[i+1];
 		TheMat.f[i] = tmpf[i];
@@ -378,88 +395,123 @@ void ReadParallelNeuronData(const char* FN, HMat &TheMat,MYDTYPE *CompDepth,MYDT
 	//TheMat.e[TheMat.N]=0;*/
 	TheMat.e = tmpe;
 	TheMat.f = tmpf;
+	MYDTYPE* tmpks =  (MYDTYPE*) malloc(TheMat.N*sizeof(MYDTYPE));
+	ReadShortFromCSV(line, tmpks, TheMat.N);
+	TheMat.Ks = tmpks;
 	
-	ReadShortFromCSV(line, TheMat.Ks, TheMat.N);
-	printf("*2");
-	fgets(line, sizeof(line), fl);
-	ReadShortFromCSV(line, TheMat.SegToComp, TheMat.N);
-	fgets(line, sizeof(line), fl);
-	ReadFloatFromCSV(line, TheMat.Cms, TheMat.N);
-	fgets(line, sizeof(line), fl);
+	
+	fgets(line, sizeof(line), fl);//line 5
+	MYDTYPE* tmpsegtocomp = (MYDTYPE*) malloc(TheMat.N*sizeof(MYDTYPE));
+	ReadShortFromCSV(line, tmpsegtocomp, TheMat.N);
+	TheMat.SegToComp = tmpsegtocomp;
+	fgets(line, sizeof(line), fl);//line 6
+	MYFTYPE* tmpcms = (MYFTYPE*) malloc(TheMat.N*sizeof(MYFTYPE));
+	ReadFloatFromCSV(line, tmpcms, TheMat.N);
+	TheMat.Cms = tmpcms;
+	fgets(line, sizeof(line), fl);;//line 7
 	ReadShortFromCSV(line, &TheMat.NModels, 1);
-	fgets(line, sizeof(line), fl);
-	TheMat.boolModel = (MYDTYPE*) malloc(TheMat.N*TheMat.NModels*sizeof(MYDTYPE));
-	printf("*3");
-	ReadShortFromCSV(line, TheMat.boolModel, TheMat.N*TheMat.NModels);
-	fgets(line, sizeof(line), fl);
-	ReadShortFromCSV(line, TheMat.SonNoVec, TheMat.N*TheMat.NModels);
-	fgets(line, sizeof(line), fl);
-	ReadShortFromCSV(line, &TheMat.Depth, 1);
-
-	fgets(line, sizeof(line), fl);
-	ReadShortFromCSV(line, &TheMat.LognDepth, 1);
-	fgets(line, sizeof(line), fl);
-	ReadShortFromCSV(line, &TheMat.nFathers, 1);
-	fgets(line, sizeof(line), fl);
-	ReadShortFromCSV(line, &TheMat.nCallForFather, 1);
-	fgets(line, sizeof(line), fl);
+	fgets(line, sizeof(line), fl);;//line 8
+	//printf("line 8 is \n");
+	//printf(line);
+	MYDTYPE* tmpbool = (MYDTYPE*) malloc(TheMat.N*TheMat.NModels*sizeof(MYDTYPE));
+	ReadShortFromCSV(line,tmpbool, TheMat.N*TheMat.NModels);
+	TheMat.boolModel = tmpbool;
 	
-	printf("*3.5\n");
-	TheMat.RelStarts = (MYDTYPE*) malloc(TheMat.nFathers*sizeof(MYDTYPE));
-	printf("*4*\n");
-	ReadShortFromCSV(line, TheMat.RelStarts, TheMat.nFathers);
-	fgets(line, sizeof(line), fl);
-	TheMat.RelEnds = (MYDTYPE*) malloc(TheMat.nFathers*sizeof(MYDTYPE));
+	fgets(line, sizeof(line), fl);//line 9
+	//printf("line 9 is \n");
+	//printf(line);
+	MYDTYPE* tmpsonnovec = (MYDTYPE*) malloc(TheMat.N*sizeof(MYDTYPE));
+	ReadShortFromCSV(line,tmpsonnovec, TheMat.N);
+ 	TheMat.SonNoVec = tmpsonnovec;
+	fgets(line, sizeof(line), fl);//line 10
+	ReadShortFromCSV(line, &TheMat.Depth, 1);
+	setbuf(stdout, NULL);
+	fgets(line, sizeof(line), fl);//line 11
+	ReadShortFromCSV(line, &TheMat.LognDepth, 1);
+	fgets(line, sizeof(line), fl);//line 12
+	ReadShortFromCSV(line, &TheMat.nFathers, 1);
+	fgets(line, sizeof(line), fl);//line 13
+	//printf("*** %s",line);
+	
+	ReadShortFromCSV(line, &TheMat.nCallForFather, 1);
+	fgets(line, sizeof(line), fl);//line 14
+	//printf("*3.5line 14\n");
+	//printf(line);
+	//printf("*4*\n");
+	MYDTYPE* tmprelstarts = (MYDTYPE*) malloc(TheMat.nFathers*sizeof(MYDTYPE));
+	ReadShortFromCSV(line,tmprelstarts, TheMat.nFathers);
+	TheMat.RelStarts = tmprelstarts; 
+	fgets(line, sizeof(line), fl);//line 15
 	printf("*5*\n");
-	ReadShortFromCSV(line, TheMat.RelEnds, TheMat.nFathers);
-	fgets(line, sizeof(line), fl);
-	TheMat.RelVec = (MYDTYPE*) malloc(TheMat.nCallForFather*sizeof(MYDTYPE));
+	MYDTYPE* tmprelends = (MYDTYPE*) malloc(TheMat.nFathers*sizeof(MYDTYPE));
+	ReadShortFromCSV(line,tmprelends, TheMat.nFathers);
+	TheMat.RelEnds = tmprelends;
+	fgets(line, sizeof(line), fl);//line 16
 	printf("*6*\n");
-	ReadShortFromCSV(line, TheMat.RelVec, TheMat.nCallForFather);
+	MYDTYPE* tmprelvec = (MYDTYPE*) malloc(TheMat.nCallForFather*sizeof(MYDTYPE));
+	ReadShortFromCSV(line,tmprelvec, TheMat.nCallForFather);
+	TheMat.RelVec = tmprelvec;
+	
 	printf("*7*\n");
-	fgets(line, sizeof(line), fl);
+	fgets(line, sizeof(line), fl);//line 17
 	printf("*8*\n");
-	TheMat.SegStartI = (MYDTYPE*)malloc((TheMat.nCallForFather + 1) * sizeof(MYDTYPE));
-	ReadShortFromCSV(line, TheMat.SegStartI, TheMat.nCallForFather + 1);
+	//printf(line);
+	MYDTYPE* tmpsegstarti = (MYDTYPE*)malloc((TheMat.nCallForFather + 1) * sizeof(MYDTYPE));
+	ReadShortFromCSV(line,tmpsegstarti, TheMat.nCallForFather + 1);
+	TheMat.SegStartI = tmpsegstarti;
 	printf("*8.5*\n");
-	fgets(line, sizeof(line), fl);
-	printf("*9*\n");
-	TheMat.SegEndI = (MYDTYPE*) malloc((TheMat.nCallForFather+1)*sizeof(MYDTYPE));
+	//printf(line);
+	printf("\n");
+	printf("%d", TheMat.nCallForFather);
+	fgets(line, sizeof(line), fl);//line 18
+	//printf("*9* printing seg end\n");
+	//printf(line);
+	//printf("\n");
+	
 	printf("*10*\n");
-	ReadShortFromCSV(line, TheMat.SegEndI, TheMat.nCallForFather + 1);
-	fgets(line, sizeof(line), fl);
-	printf("*9");
-
-	TheMat.Fathers= (MYDTYPE*) malloc(TheMat.nFathers*sizeof(MYDTYPE));
-	ReadShortFromCSV(line, TheMat.Fathers, TheMat.nFathers);
-	fgets(line, sizeof(line), fl);
+	MYDTYPE* tmpsegendi = (MYDTYPE*) malloc((TheMat.nCallForFather+1)*sizeof(MYDTYPE));
+	ReadShortFromCSV(line,tmpsegendi, TheMat.nCallForFather + 1);
+	TheMat.SegEndI = tmpsegendi;
+	printf("*11*\n");
+	//printf("%d 12\n",*TheMat.SegEndI);
+	(MYDTYPE*) malloc(TheMat.nFathers*sizeof(MYDTYPE));
+	//printf("aa2\n");
+	fgets(line, sizeof(line), fl);//line 19
+	//printf("*12 printing fathers line111  %s\n",line);
+	MYDTYPE* tmpfathers = (MYDTYPE*) malloc(TheMat.nFathers*sizeof(MYDTYPE));
+	ReadShortFromCSV(line,tmpfathers, TheMat.nFathers);
+	TheMat.Fathers = tmpfathers;
+	fgets(line, sizeof(line), fl);//line 20
+	//printf("\n**\n");
+	//printf(line);
 	#ifdef BKSUB1
+	        printf("goign to malloc fidxs\n");
 		TheMat.FIdxs = (MYDTYPE*) malloc((TheMat.LognDepth)*TheMat.N*sizeof(MYDTYPE));
 		ReadShortFromCSV(line, TheMat.FIdxs, TheMat.LognDepth*TheMat.N);
-		fgets(line, sizeof(line), fl);
+	//	printf("*************  %d\n",TheMat.FIdxs[24*512-1]);
+		fgets(line, sizeof(line), fl);//line 21
 	#endif
 	#ifdef BKSUB2
+	       printf("2222?\n")
 		MYDTYPE *Temp = (MYDTYPE*) malloc((TheMat.LognDepth)*TheMat.N*sizeof(MYDTYPE));
 		fread(Temp, (TheMat.LognDepth)*TheMat.N*sizeof(MYDTYPE), 1, fl);
 		free(Temp);
 	#endif
+	//printf("NO!\n");
 	ReadShortFromCSV(line, CompDepth, 1);
-	fgets(line, sizeof(line), fl);
+	fgets(line, sizeof(line), fl);//line 22
 	ReadShortFromCSV(line, CompFDepth, 1);
-
 	fgets(line, sizeof(line), fl);
-
-
 	TheMat.CompByLevel32 = (MYDTYPE*) malloc((*CompDepth)*WARPSIZE*sizeof(MYDTYPE));
 	ReadShortFromCSV(line, TheMat.CompByLevel32, (*CompDepth)*WARPSIZE);
 	fgets(line, sizeof(line), fl);
 	TheMat.CompByFLevel32 = (MYDTYPE*) malloc((*CompFDepth)*WARPSIZE*sizeof(MYDTYPE));
 	ReadShortFromCSV(line, TheMat.CompByFLevel32, (*CompFDepth)*WARPSIZE);
+	printf("*13\n");
 	fgets(line, sizeof(line), fl);
 	ReadShortFromCSV(line, &TheMat.nLRel, 1);
-
 	fgets(line, sizeof(line), fl);
-	
+	printf("*13.5\n");
 	TheMat.LRelStarts = (MYDTYPE*) malloc(TheMat.nLRel*sizeof(MYDTYPE));
 	ReadShortFromCSV(line, TheMat.LRelStarts, TheMat.nLRel);
 	fgets(line, sizeof(line), fl);
@@ -467,29 +519,31 @@ void ReadParallelNeuronData(const char* FN, HMat &TheMat,MYDTYPE *CompDepth,MYDT
 	ReadShortFromCSV(line, TheMat.LRelEnds, TheMat.nLRel);
 	fgets(line, sizeof(line), fl);
 	ReadShortFromCSV(line, &TheMat.nFLRel, 1);
-
 	fgets(line, sizeof(line), fl);
 	TheMat.FLRelStarts = (MYDTYPE*) malloc(TheMat.nFLRel*sizeof(MYDTYPE));
 	ReadShortFromCSV(line, TheMat.FLRelStarts, TheMat.nFLRel);
 	fgets(line, sizeof(line), fl);
-	
 	TheMat.FLRelEnds = (MYDTYPE*) malloc(TheMat.nFLRel*sizeof(MYDTYPE));
 	ReadShortFromCSV(line, TheMat.FLRelEnds, TheMat.nFLRel);
-	fgets(line, sizeof(line), fl);
-
-
+	//printf("before if's");
 	#ifdef BKSUB1
+	        printf("*15 ifder\n");
 		MYDTYPE *Temp = (MYDTYPE*) malloc((TheMat.N+1) *sizeof(MYDTYPE));
 		fread(Temp,(TheMat.N+1)*sizeof(MYDTYPE), 1, fl);
 		free(Temp);
+	//	printf("*16 endifdef\n");
 	#endif
 	#ifdef BKSUB2
 		TheMat.KsB = (MYDTYPE*) malloc((TheMat.N+1) *sizeof(MYDTYPE));
 		ReadShortFromCSV(line, TheMat.KsB, TheMat.N + 1);
 		fgets(line, sizeof(line), fl);
 	#endif
+	//printf("failing in closing file\n");
+	//printf(line);
+	printf("\nfl=%p\n",fl);
+	//if (fclose(fl)) { printf("error closing file.");  }
 	fclose(fl);
-	printf("done with mallocs");
+	//printf("DID NOT CLOSE BASICCONSTSEGP\n");
 	return;
 }
 void FreeReadParallelNeuronData(HMat *TheMat) {

@@ -45,22 +45,28 @@ void ReadShortFromCSV(char* line, short *ans, int n) {
 		tok = strtok(line, ",");
 		printf("%s\n", tok);
 		tmp = atoi(tok);
-		*ans = (unsigned short)tmp;
+		*ans = (short)tmp;
 	}
 	else {
-
-		for (tok = strtok(line, ","); tok != NULL; tok = strtok(NULL, ","))
-		{
+	
+		for (tok = strtok(line, ","); tok != NULL; tok = strtok(NULL, ",")){
+		if(count<n){
+		
 			tmp = atoi(tok);
-			ans[count++] = (unsigned short)tmp;
+			ans[count++] = (short)tmp;
+			//printf("%d-%d,-%s,** %c,%c\n",count,strlen(tok),tok,tok[0],tok[1]);
 
 		}
-	}
+		}
+		printf("read short %d\n",count);
+		}
+	
+
 }
 void ReadIntFromCSV(char* line, int *ans, int n) {
 	int count = 0;
 	char* tok;
-	unsigned short tmp;
+	int tmp;
 	if (n == 1) {
 		tok = strtok(line, ",");
 		printf("%s\n", tok);
@@ -68,14 +74,15 @@ void ReadIntFromCSV(char* line, int *ans, int n) {
 		*ans = (int)tmp;
 	}
 	else {
-
+	     
 		for (tok = strtok(line, ","); tok != NULL; tok = strtok(NULL, ","))
 		{
 			tmp = atoi(tok);
-			ans[count++] = (unsigned short)tmp;
+			ans[count++] = (int)tmp;
 
 		}
-	}
+		}
+	
 }
 
 
@@ -92,11 +99,15 @@ void ReadDoubleFromCSV(char* line, double *ans, int n) {
 
 		for (tok = strtok(line, ","); tok != NULL; tok = strtok(NULL, ","))
 		{
-			tmp = atof(tok);
-			ans[count++] = tmp;
+			if (tok[1] != '\n'){
+						tmp = atof(tok);
+					//	printf("%d-%d,-%s,** %c,%c\n",count,strlen(tok),tok,tok[0],tok[1]);
+						ans[count++] = tmp;
+						}
 
 		}
 	}
+	//printf("\ndone with readdouble\n");
 }
 void ReadFloatFromCSV(char* line, MYFTYPE *ans, int n) {
 	int count = 0;
@@ -111,8 +122,11 @@ void ReadFloatFromCSV(char* line, MYFTYPE *ans, int n) {
 
 		for (tok = strtok(line, ","); tok != NULL; tok = strtok(NULL, ","))
 		{
+		if (n>count){
 			tmp = atof(tok);
+			//printf("%d-%d,-%s,** %c,%c",count,strlen(tok),tok,tok[0],tok[1]);
 			ans[count++] = tmp;
+			}
 
 		}
 	}
@@ -183,8 +197,10 @@ void ReadFloatWithEFromCSV(char* line, MYFTYPE *ans, int n) {
 
 		for (tok = strtok(line, ","); (tok != NULL && tok[0] != '\n'); tok = strtok(NULL, ","))
 		{
+			if (n>count){
 			tmp = myatof(tok);
 			ans[count++] = tmp;
+			}
 
 		}
 	}
