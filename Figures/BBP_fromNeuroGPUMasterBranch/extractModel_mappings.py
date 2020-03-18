@@ -8,7 +8,7 @@ from neuron import h
 data_dir =          'Data'                                          # data directory (folder)
 params_dir =        'params'                                        # params directory (folder)
 
-params_file =       f'./{params_dir}/params2.csv'                    # 12 parameters
+params_file =       f'./{params_dir}/gen.csv'                    # 12 parameters
 param_map =         f'./{data_dir}/ParamMappings.txt'               # mappings from new extractModel
 # allparam_map =      f'{data_dir}/params_to_allparams.json'        # mapping from 12 params to allparams
 allparam_map =      f'./{data_dir}/params_to_allparams_bbp.json'    # mapping from 12 params to allparams
@@ -231,14 +231,17 @@ input[0]:
 output[1]:
     - 'allparams', the output from 'assemble_allparams'
 '''
-def allparams_from_mapping():
+def allparams_from_mapping(params_input=None):
     global template, params_file, allparam_map, model_data, data_dir
     # get raw allparams template
     with open(template, 'r') as ap:
         allparams_template = list(map(lambda x: int(float(x)), list(reader(ap))[1][:-1]))
     # get parameters
-    with open(params_file, 'r') as p:
-        params = [list(map(float, p[0].split(' '))) for p in list(reader(p))]
+    if params_input is None:
+        with open(params_file, 'r') as p:
+            params = [list(map(float, p[0].split(' '))) for p in list(reader(p))]
+    else:
+            params = params_input
     # get all param mappings from json
     with open(param_map, 'r') as pm:
         param_mappings = load(pm)
