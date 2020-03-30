@@ -2,15 +2,15 @@ strdef fitFile,timesFile,paramsFile,stimFile,outFile,modelFile,outFPre,base
 objref st,stims,fin,fout,pmat,matOut,stimtime,somaref,secref,extVec,strFunc,most,root,transvec
 
 ntimestep = 3168 
-nparams = 12 
-psize = 1 
+nparams = 6 
+psize = 1000
 ntraces = 2 
 tfinal = 1000 
 initv = -80 
 
 
 base = "C:/Users/bensr/Dropbox/NeuroGPU/NeuroGPULast" 
-paramsFile = "C:/BBP/params/orig.dat" 
+paramsFile = "../params/gen.csv" 
 stimFile = "C:/BBP/Stims/Step_8_.csv" 
 modelFile = "C:/BBP/mosinit.hoc" 
 timesFile = "./Volts/times.dat" 

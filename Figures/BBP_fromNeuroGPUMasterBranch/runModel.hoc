@@ -3,7 +3,7 @@ objref st,stims,fin,fout,pmat,matOut,stimtime,somaref,secref,extVec,strFunc,most
 
 ntimestep = 3168 
 nparams = 6 
-psize = 10 
+psize = 1000
 ntraces = 1 
 v_init = -80 
 calc_eca = 1 
@@ -11,7 +11,7 @@ calc_eca = 1
 
    stLoc = 0.43 
 base = "E:/GitHub/NeuroGPU/NeuroGPU_Base" 
-paramsFile = "./params/params.csv" 
+paramsFile = "./params/gen.csv" 
 stimFile = "./Stims/Step_8_.csv" 
 modelFile = "./mosinit.hoc" 
 timesFile = "./Stims/times.csv" 
