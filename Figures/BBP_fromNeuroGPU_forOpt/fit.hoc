@@ -1,0 +1,43 @@
+
+
+
+
+proc tfunc(){
+
+    forsec cell.all {
+		g_pas = transvec.x(0)
+		e_pas = transvec.x(1)
+		}
+	forsec cell.axonal{
+		gNaTa_tbar_NaTa_t = transvec.x(2)
+		gK_Tstbar_K_Tst = transvec.x(3)
+		gNap_Et2bar_Nap_Et2 = transvec.x(4)
+		gK_Pstbar_K_Pst = transvec.x(5)
+		gSKv3_1bar_SKv3_1 = transvec.x(6)
+		gCa_LVAstbar_Ca_LVAst = transvec.x(7)
+		gCa_HVAbar_Ca_HVA = transvec.x(8)
+	}
+	forsec cell.somatic{
+		gSKv3_1bar_SKv3_1 = transvec.x(9)
+		gCa_HVAbar_Ca_HVA = transvec.x(10)
+		gNaTs2_tbar_NaTs2_t = transvec.x(11)
+		gCa_LVAstbar_Ca_LVAst = transvec.x(12)
+		
+	}
+	forsec cell.somatic{
+		gSKv3_1bar_SKv3_1 = transvec.x(9)
+		gCa_HVAbar_Ca_HVA = transvec.x(10)
+		gNaTs2_tbar_NaTs2_t = transvec.x(11)
+		gCa_LVAstbar_Ca_LVAst = transvec.x(12)
+		
+	}
+	forsec cell.basal{
+		gIhbar_Ih = transvec.x(13)
+	}
+	
+	forsec cell.apical{
+		gIhbar_Ih = transvec.x(13)
+	}
+	
+}
+	

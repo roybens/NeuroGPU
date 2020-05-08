@@ -1,0 +1,3512 @@
+strdef fitFile,timesFile,paramsFile,stimFile,outFile,modelFile,outFPre,base
+objref st,stims,fin,fout,pmat,matOut,stimtime,somaref,secref,extVec,strFunc,most,root,transvec
+
+
+ntimestep = 5000 
+nparams = 14 
+psize = 1
+ntraces = 1 
+v_init = -80 
+calc_eca = 1 
+
+   stLoc = 0.43 
+base = "E:/GitHub/NeuroGPU/NeuroGPU_Base" 
+paramsFile = "./params/formap1.tmp" 
+stimFile = "./Stims/Stim_raw.csv" 
+modelFile = "./mosinit.hoc" 
+timesFile = "./Stims/times.csv" 
+
+transvec = new Vector(nparams)
+
+fin = new File()
+fout = new File()
+load_file(modelFile)
+
+
+root = new SectionRef()
+if (root.has_parent()){
+	print secname()
+	root = root.root()
+	}
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].soma
+
+create Exts[1]
+objref recSites
+recSites = new SectionList()
+outFPre = "./volts/orig_step"
+access root.sec
+print "**********************"
+print secname()
+root.sec recSites.append()
+
+
+ 
+secondorder=0
+proc runMatrix(){
+
+	//access dend[1]
+	sprint(outFile,"%s_%s.dat",outFPre,secname())
+
+	st.del=0 
+	st.dur=1e9
+	//printf ("$o1.nrow,$o2.nrow,$o2.ncol,%d,%d,%d",$o1.nrow,$o2.nrow,$o2.ncol)
+	matOut = new Matrix($o1.nrow,($o2.nrow*$o2.ncol))
+	for(sim=0;sim<$o1.nrow;sim+=1){
+	//printf("running sim %d\n",sim)
+		counter=0
+		transvec = $o1.getrow(sim)
+		tfunc()
+		for(i=0;i<stims.nrow;i+=1){
+			finitialize(v_init)
+			for(tt =0;tt<stimtime.ncol;tt+=1){
+			dt  =stimtime.x(0,tt)
+
+				st.amp = 1*stims.x(i,tt)
+
+				matOut.x(sim,counter)=v(0.5)
+				counter+=1
+				fadvance()
+				
+			}
+		}
+	}
+	//printf("finshed run matrix %s\n",outFile)
+}
+strFunc = new StringFunctions()
+proc readMatrix(){localobj temp
+	csv_ind = strFunc.substr($s1,"csv")
+	if (csv_ind==-1){
+		temp = new Vector()
+		fin.ropen($s1)
+		for (i=0;i<$o2.nrow;i+=1){
+			temp.vread(fin)
+			$o2.setrow(i,temp)
+			//print i
+		}
+		fin.close()
+	} else {
+	readCSVMatrix($s1,$o2)
+	}
+}
+
+proc readCSVMatrix(){
+	fin = new File($s1)
+	fin.ropen()
+	print $o2.nrow()
+	$o2.scanf(fin,$o2.nrow(),$o2.ncol())
+	fin.close()
+}
+proc writeMatrix(){localobj temp
+	fout.wopen($s1)
+	temp = new Vector()
+	for (i=0;i<$o2.nrow;i+=1){
+		temp = $o2.getrow(i)
+		temp.vwrite(fout,3)
+	}
+	fout.close()
+}
+proc mul32(){localobj thisone
+	countSegs()
+	segsMat = segs+comps+1 
+	//printf("1we have a matrix in the size of %d \n",segsMat )
+	segsToAdd = 32-segsMat%32
+	forall {
+		thisone = new SectionRef()   
+		if (thisone.nchild == 0 ) {
+			break
+			}
+	}
+	access thisone.sec
+	nseg = nseg+segsToAdd
+	fcurrent()
+	countSegs()
+	//printf("we have a matrix in the size of %d \n",segs+comps+1 )
+	
+}
+proc writeVector(){
+	fout.aopen($s1)
+	$o2.vwrite(fout,3)
+	fout.close()
+	
+}
+proc printChildren(){localobj sl
+	sl = new SectionList()
+	sl.children()
+	u=0
+	forsec sl{
+	print secname()
+	u+=1
+	}
+	print u
+}	
+proc printparent(){localobj sref
+	sref = new SectionRef()
+	sref.parent
+	print secname()
+}		
+
+
+proc countSegs(){
+segs=0
+comps=0
+	forall{
+		segs+=nseg
+		comps+=1
+	}
+}
+create Exts[1]		
+proc hinesDisperseBranching(){local i localobj sl,secRef, clist, avec, bvec		
+	counter = 0		
+	forsec most{		
+		secRef = new SectionRef()		
+		if(secRef.nchild>2){		
+clist = new List()		
+  for i=0, secRef.nchild-1 {		
+    secRef.child[i] clist.append(new SectionRef())		
+  }		
+			Exts[counter]{		
+				L = 1e-9		
+				diam = 1		
+				Ra = secRef.sec.Ra		
+				cm = secRef.sec.cm	
+				nseg = secRef.nchild-1		
+			}		
+			i=0		
+			Exts[counter]{		
+				for(x){ 		
+					if (x > 0) {		
+						avec =new Vector()		
+						bvec =new Vector()		
+						//printf("x is %f i is %d\n",x,i)		
+						clist.o(i).sec{		
+							avec =new Vector()		
+							bvec =new Vector()		
+							for(y){		
+								avec.append(GetA(y))		
+								bvec.append(GetB(y))		
+							}		
+						}		
+						connect clist.o(i).sec(0), x		
+						 k=0		
+					  clist.o(i).sec{		
+							for(y){		
+								SetA(y,avec.x(k))		
+								SetB(y,bvec.x(k))		
+							}		
+						}		
+						i +=1		
+							
+					}		
+							
+							
+				}		
+						
+			}		
+			fcurrent()		
+			secRef {		
+				connect Exts[counter](0), 1		
+			}		
+			Exts[counter]{		
+				for(x){ 		
+			//printf("x is %f and sec is %s\n",x,secname())		
+					SetA(x,0)		
+					SetB(x,0)		
+					}		
+				}		
+					
+	counter+=1				
+		}		
+	}
+		//print "printing counter"
+		//print counter
+		
+		
+}
+
+proc countExts(){
+ext_num=0
+forsec most {
+	somaref= new SectionRef()
+	if (somaref.nchild>2){
+		ext_num+=1
+	}
+	}
+	
+	//printf("ext_num is %d", ext_num)
+}
+
+
+
+proc PrintRecSites(){localobj sref
+	recSites.printnames()
+}	
+stimtime = new Matrix(1,ntimestep)
+readMatrix(timesFile,stimtime)
+pmat = new Matrix(psize,nparams)
+readMatrix(paramsFile,pmat)
+stims = new Matrix(ntraces,ntimestep)
+readCSVMatrix(stimFile,stims)
+forsec "dend" nseg=1
+forsec "apic" nseg=1
+	
+//topology()
+most = new SectionList()
+forall most.append()
+countExts()
+fcurrent()
+//fmatrix()
+//printf("Creating Exts %d\n",ext_num)
+//printf("Creating Exts %d\n",ext_num)
+if(ext_num>0){
+	create Exts[ext_num]
+	}	else{
+	access Exts[0]
+		delete_section()
+	}
+//****************************************************
+forall{nseg=1}
+//******************************************************
+hinesDisperseBranching()
+
+mul32()
+access root.sec
+transvec = pmat.getrow(0)
+tfunc()
+st = new IClamp(0.5)
+
+
+
+ 
+finitialize(v_init)
+
+
+
+//runMatrix(pmat,stims)
+//writeMatrix(outFile,matOut)
+finitialize(v_init)
+//ADD STUFF HERE
+
+//quit()// Start topologyList output
+
+// Start mechanisms output
+objref mt,ms,fn,pp
+strdef s,ss,mname
+mt = new MechanismType(0)
+fn = new File()
+fn.wopen("64MDL.csv")
+forall{
+	fn.printf("#%s\n",secname())
+	if (ismembrane("pas")){
+		fn.printf("g_pas = %f\n",g_pas)
+		fn.printf("e_pas = %f\n",e_pas)
+	}
+	for i=0, mt.count()-1 {
+		mt.select(i)
+		mt.selected(mname)
+		if (ismembrane(mname)){
+			ms = new MechanismStandard(mname,-1)
+			for j=0, ms.count()-1 {
+				k = ms.name(s, j)
+				sprint(ss,"temp=%s",s)
+				execute(ss)
+				fn.printf("%s = %f\n",s,temp)
+			}
+			ms = new MechanismStandard(mname,3)
+			for j=0, ms.count()-1 {
+				k = ms.name(s, j)
+				sprint(ss,"temp=%s",s)
+				execute(ss)
+				fn.printf("%s = %f\n",s,temp)
+			}
+		}
+	}
+}
+fn.close()
+// End mechanisms output
+// Start point processess mechanisms output
+fn = new File()
+fn.wopen("64PP.csv")
+forall{
+	fn.printf("#%s\n",secname())
+	mt = new MechanismType(1)
+	mt.select("IClamp")
+	for (pp = mt.pp_begin(); object_id(pp) != 0; pp = mt.pp_next()) {
+		x = pp.get_loc()
+		del1 = pp.del
+		dur1 = pp.dur
+		amp1 = pp.amp
+		fn.printf("IClamp,%g, %g, %g, %g, ", x, del1, dur1, amp1)
+		pop_section()
+	}
+	fn.printf("\n")
+}
+fn.close()
+// End point processess mechanisms output
+// Start params output
+objref fn2
+fn2 = new File()
+proc writeReversals(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0]
+a=eca
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0]
+a=ek
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0]
+a=ena
+fn.vwrite(&a)
+}
+proc writeGGlobals(){
+a=celsius
+fn.vwrite(&a)
+a=stoprun
+fn.vwrite(&a)
+a=clamp_resist
+fn.vwrite(&a)
+a=secondorder
+fn.vwrite(&a)
+}
+proc writeNGlobals(){
+}
+proc proc0(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0]
+a=1
+fn.vwrite(&a)
+a=2
+fn.vwrite(&a)
+a=3
+fn.vwrite(&a)
+a=4
+fn.vwrite(&a)
+a=5
+fn.vwrite(&a)
+a=6
+fn.vwrite(&a)
+a=7
+fn.vwrite(&a)
+a=8
+fn.vwrite(&a)
+a=9
+fn.vwrite(&a)
+a=10
+fn.vwrite(&a)
+a=11
+fn.vwrite(&a)
+a=12
+fn.vwrite(&a)
+a=13
+fn.vwrite(&a)
+a=14
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[0]
+a=15
+fn.vwrite(&a)
+a=16
+fn.vwrite(&a)
+a=17
+fn.vwrite(&a)
+a=18
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[1]
+a=19
+fn.vwrite(&a)
+a=20
+fn.vwrite(&a)
+a=21
+fn.vwrite(&a)
+a=22
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[2]
+a=23
+fn.vwrite(&a)
+a=24
+fn.vwrite(&a)
+a=25
+fn.vwrite(&a)
+a=26
+fn.vwrite(&a)
+}
+proc proc1(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[3]
+a=27
+fn.vwrite(&a)
+a=28
+fn.vwrite(&a)
+a=29
+fn.vwrite(&a)
+a=30
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[4]
+a=31
+fn.vwrite(&a)
+a=32
+fn.vwrite(&a)
+a=33
+fn.vwrite(&a)
+a=34
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[5]
+a=35
+fn.vwrite(&a)
+a=36
+fn.vwrite(&a)
+a=37
+fn.vwrite(&a)
+a=38
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[6]
+a=39
+fn.vwrite(&a)
+a=40
+fn.vwrite(&a)
+a=41
+fn.vwrite(&a)
+a=42
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[7]
+a=43
+fn.vwrite(&a)
+a=44
+fn.vwrite(&a)
+a=45
+fn.vwrite(&a)
+a=46
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[8]
+a=47
+fn.vwrite(&a)
+a=48
+fn.vwrite(&a)
+a=49
+fn.vwrite(&a)
+a=50
+fn.vwrite(&a)
+}
+proc proc2(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[9]
+a=51
+fn.vwrite(&a)
+a=52
+fn.vwrite(&a)
+a=53
+fn.vwrite(&a)
+a=54
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[10]
+a=55
+fn.vwrite(&a)
+a=56
+fn.vwrite(&a)
+a=57
+fn.vwrite(&a)
+a=58
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[11]
+a=59
+fn.vwrite(&a)
+a=60
+fn.vwrite(&a)
+a=61
+fn.vwrite(&a)
+a=62
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[12]
+a=63
+fn.vwrite(&a)
+a=64
+fn.vwrite(&a)
+a=65
+fn.vwrite(&a)
+a=66
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[13]
+a=67
+fn.vwrite(&a)
+a=68
+fn.vwrite(&a)
+a=69
+fn.vwrite(&a)
+a=70
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[14]
+a=71
+fn.vwrite(&a)
+a=72
+fn.vwrite(&a)
+a=73
+fn.vwrite(&a)
+a=74
+fn.vwrite(&a)
+}
+proc proc3(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[15]
+a=75
+fn.vwrite(&a)
+a=76
+fn.vwrite(&a)
+a=77
+fn.vwrite(&a)
+a=78
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[16]
+a=79
+fn.vwrite(&a)
+a=80
+fn.vwrite(&a)
+a=81
+fn.vwrite(&a)
+a=82
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[17]
+a=83
+fn.vwrite(&a)
+a=84
+fn.vwrite(&a)
+a=85
+fn.vwrite(&a)
+a=86
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[18]
+a=87
+fn.vwrite(&a)
+a=88
+fn.vwrite(&a)
+a=89
+fn.vwrite(&a)
+a=90
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[19]
+a=91
+fn.vwrite(&a)
+a=92
+fn.vwrite(&a)
+a=93
+fn.vwrite(&a)
+a=94
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[20]
+a=95
+fn.vwrite(&a)
+a=96
+fn.vwrite(&a)
+a=97
+fn.vwrite(&a)
+a=98
+fn.vwrite(&a)
+}
+proc proc4(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[21]
+a=99
+fn.vwrite(&a)
+a=100
+fn.vwrite(&a)
+a=101
+fn.vwrite(&a)
+a=102
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[22]
+a=103
+fn.vwrite(&a)
+a=104
+fn.vwrite(&a)
+a=105
+fn.vwrite(&a)
+a=106
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[23]
+a=107
+fn.vwrite(&a)
+a=108
+fn.vwrite(&a)
+a=109
+fn.vwrite(&a)
+a=110
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[24]
+a=111
+fn.vwrite(&a)
+a=112
+fn.vwrite(&a)
+a=113
+fn.vwrite(&a)
+a=114
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[25]
+a=115
+fn.vwrite(&a)
+a=116
+fn.vwrite(&a)
+a=117
+fn.vwrite(&a)
+a=118
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[26]
+a=119
+fn.vwrite(&a)
+a=120
+fn.vwrite(&a)
+a=121
+fn.vwrite(&a)
+a=122
+fn.vwrite(&a)
+}
+proc proc5(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[27]
+a=123
+fn.vwrite(&a)
+a=124
+fn.vwrite(&a)
+a=125
+fn.vwrite(&a)
+a=126
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[28]
+a=127
+fn.vwrite(&a)
+a=128
+fn.vwrite(&a)
+a=129
+fn.vwrite(&a)
+a=130
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[29]
+a=131
+fn.vwrite(&a)
+a=132
+fn.vwrite(&a)
+a=133
+fn.vwrite(&a)
+a=134
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[30]
+a=135
+fn.vwrite(&a)
+a=136
+fn.vwrite(&a)
+a=137
+fn.vwrite(&a)
+a=138
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[31]
+a=139
+fn.vwrite(&a)
+a=140
+fn.vwrite(&a)
+a=141
+fn.vwrite(&a)
+a=142
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[32]
+a=143
+fn.vwrite(&a)
+a=144
+fn.vwrite(&a)
+a=145
+fn.vwrite(&a)
+a=146
+fn.vwrite(&a)
+}
+proc proc6(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[33]
+a=147
+fn.vwrite(&a)
+a=148
+fn.vwrite(&a)
+a=149
+fn.vwrite(&a)
+a=150
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[34]
+a=151
+fn.vwrite(&a)
+a=152
+fn.vwrite(&a)
+a=153
+fn.vwrite(&a)
+a=154
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[35]
+a=155
+fn.vwrite(&a)
+a=156
+fn.vwrite(&a)
+a=157
+fn.vwrite(&a)
+a=158
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[36]
+a=159
+fn.vwrite(&a)
+a=160
+fn.vwrite(&a)
+a=161
+fn.vwrite(&a)
+a=162
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[37]
+a=163
+fn.vwrite(&a)
+a=164
+fn.vwrite(&a)
+a=165
+fn.vwrite(&a)
+a=166
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[38]
+a=167
+fn.vwrite(&a)
+a=168
+fn.vwrite(&a)
+a=169
+fn.vwrite(&a)
+a=170
+fn.vwrite(&a)
+}
+proc proc7(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[39]
+a=171
+fn.vwrite(&a)
+a=172
+fn.vwrite(&a)
+a=173
+fn.vwrite(&a)
+a=174
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[40]
+a=175
+fn.vwrite(&a)
+a=176
+fn.vwrite(&a)
+a=177
+fn.vwrite(&a)
+a=178
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[41]
+a=179
+fn.vwrite(&a)
+a=180
+fn.vwrite(&a)
+a=181
+fn.vwrite(&a)
+a=182
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[42]
+a=183
+fn.vwrite(&a)
+a=184
+fn.vwrite(&a)
+a=185
+fn.vwrite(&a)
+a=186
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[43]
+a=187
+fn.vwrite(&a)
+a=188
+fn.vwrite(&a)
+a=189
+fn.vwrite(&a)
+a=190
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[44]
+a=191
+fn.vwrite(&a)
+a=192
+fn.vwrite(&a)
+a=193
+fn.vwrite(&a)
+a=194
+fn.vwrite(&a)
+}
+proc proc8(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[45]
+a=195
+fn.vwrite(&a)
+a=196
+fn.vwrite(&a)
+a=197
+fn.vwrite(&a)
+a=198
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[46]
+a=199
+fn.vwrite(&a)
+a=200
+fn.vwrite(&a)
+a=201
+fn.vwrite(&a)
+a=202
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[47]
+a=203
+fn.vwrite(&a)
+a=204
+fn.vwrite(&a)
+a=205
+fn.vwrite(&a)
+a=206
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[48]
+a=207
+fn.vwrite(&a)
+a=208
+fn.vwrite(&a)
+a=209
+fn.vwrite(&a)
+a=210
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[49]
+a=211
+fn.vwrite(&a)
+a=212
+fn.vwrite(&a)
+a=213
+fn.vwrite(&a)
+a=214
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[50]
+a=215
+fn.vwrite(&a)
+a=216
+fn.vwrite(&a)
+a=217
+fn.vwrite(&a)
+a=218
+fn.vwrite(&a)
+}
+proc proc9(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[51]
+a=219
+fn.vwrite(&a)
+a=220
+fn.vwrite(&a)
+a=221
+fn.vwrite(&a)
+a=222
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[52]
+a=223
+fn.vwrite(&a)
+a=224
+fn.vwrite(&a)
+a=225
+fn.vwrite(&a)
+a=226
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[53]
+a=227
+fn.vwrite(&a)
+a=228
+fn.vwrite(&a)
+a=229
+fn.vwrite(&a)
+a=230
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[54]
+a=231
+fn.vwrite(&a)
+a=232
+fn.vwrite(&a)
+a=233
+fn.vwrite(&a)
+a=234
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[55]
+a=235
+fn.vwrite(&a)
+a=236
+fn.vwrite(&a)
+a=237
+fn.vwrite(&a)
+a=238
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[56]
+a=239
+fn.vwrite(&a)
+a=240
+fn.vwrite(&a)
+a=241
+fn.vwrite(&a)
+a=242
+fn.vwrite(&a)
+}
+proc proc10(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[57]
+a=243
+fn.vwrite(&a)
+a=244
+fn.vwrite(&a)
+a=245
+fn.vwrite(&a)
+a=246
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[58]
+a=247
+fn.vwrite(&a)
+a=248
+fn.vwrite(&a)
+a=249
+fn.vwrite(&a)
+a=250
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[59]
+a=251
+fn.vwrite(&a)
+a=252
+fn.vwrite(&a)
+a=253
+fn.vwrite(&a)
+a=254
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[60]
+a=255
+fn.vwrite(&a)
+a=256
+fn.vwrite(&a)
+a=257
+fn.vwrite(&a)
+a=258
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[61]
+a=259
+fn.vwrite(&a)
+a=260
+fn.vwrite(&a)
+a=261
+fn.vwrite(&a)
+a=262
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[62]
+a=263
+fn.vwrite(&a)
+a=264
+fn.vwrite(&a)
+a=265
+fn.vwrite(&a)
+a=266
+fn.vwrite(&a)
+}
+proc proc11(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[63]
+a=267
+fn.vwrite(&a)
+a=268
+fn.vwrite(&a)
+a=269
+fn.vwrite(&a)
+a=270
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[64]
+a=271
+fn.vwrite(&a)
+a=272
+fn.vwrite(&a)
+a=273
+fn.vwrite(&a)
+a=274
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[65]
+a=275
+fn.vwrite(&a)
+a=276
+fn.vwrite(&a)
+a=277
+fn.vwrite(&a)
+a=278
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[66]
+a=279
+fn.vwrite(&a)
+a=280
+fn.vwrite(&a)
+a=281
+fn.vwrite(&a)
+a=282
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[67]
+a=283
+fn.vwrite(&a)
+a=284
+fn.vwrite(&a)
+a=285
+fn.vwrite(&a)
+a=286
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[68]
+a=287
+fn.vwrite(&a)
+a=288
+fn.vwrite(&a)
+a=289
+fn.vwrite(&a)
+a=290
+fn.vwrite(&a)
+}
+proc proc12(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[69]
+a=291
+fn.vwrite(&a)
+a=292
+fn.vwrite(&a)
+a=293
+fn.vwrite(&a)
+a=294
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[70]
+a=295
+fn.vwrite(&a)
+a=296
+fn.vwrite(&a)
+a=297
+fn.vwrite(&a)
+a=298
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[71]
+a=299
+fn.vwrite(&a)
+a=300
+fn.vwrite(&a)
+a=301
+fn.vwrite(&a)
+a=302
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[72]
+a=303
+fn.vwrite(&a)
+a=304
+fn.vwrite(&a)
+a=305
+fn.vwrite(&a)
+a=306
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[73]
+a=307
+fn.vwrite(&a)
+a=308
+fn.vwrite(&a)
+a=309
+fn.vwrite(&a)
+a=310
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[74]
+a=311
+fn.vwrite(&a)
+a=312
+fn.vwrite(&a)
+a=313
+fn.vwrite(&a)
+a=314
+fn.vwrite(&a)
+}
+proc proc13(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[75]
+a=315
+fn.vwrite(&a)
+a=316
+fn.vwrite(&a)
+a=317
+fn.vwrite(&a)
+a=318
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[76]
+a=319
+fn.vwrite(&a)
+a=320
+fn.vwrite(&a)
+a=321
+fn.vwrite(&a)
+a=322
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[77]
+a=323
+fn.vwrite(&a)
+a=324
+fn.vwrite(&a)
+a=325
+fn.vwrite(&a)
+a=326
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[78]
+a=327
+fn.vwrite(&a)
+a=328
+fn.vwrite(&a)
+a=329
+fn.vwrite(&a)
+a=330
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[79]
+a=331
+fn.vwrite(&a)
+a=332
+fn.vwrite(&a)
+a=333
+fn.vwrite(&a)
+a=334
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[80]
+a=335
+fn.vwrite(&a)
+a=336
+fn.vwrite(&a)
+a=337
+fn.vwrite(&a)
+a=338
+fn.vwrite(&a)
+}
+proc proc14(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[81]
+a=339
+fn.vwrite(&a)
+a=340
+fn.vwrite(&a)
+a=341
+fn.vwrite(&a)
+a=342
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[82]
+a=343
+fn.vwrite(&a)
+a=344
+fn.vwrite(&a)
+a=345
+fn.vwrite(&a)
+a=346
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[83]
+a=347
+fn.vwrite(&a)
+a=348
+fn.vwrite(&a)
+a=349
+fn.vwrite(&a)
+a=350
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[84]
+a=351
+fn.vwrite(&a)
+a=352
+fn.vwrite(&a)
+a=353
+fn.vwrite(&a)
+a=354
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[85]
+a=355
+fn.vwrite(&a)
+a=356
+fn.vwrite(&a)
+a=357
+fn.vwrite(&a)
+a=358
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[86]
+a=359
+fn.vwrite(&a)
+a=360
+fn.vwrite(&a)
+a=361
+fn.vwrite(&a)
+a=362
+fn.vwrite(&a)
+}
+proc proc15(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[87]
+a=363
+fn.vwrite(&a)
+a=364
+fn.vwrite(&a)
+a=365
+fn.vwrite(&a)
+a=366
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[88]
+a=367
+fn.vwrite(&a)
+a=368
+fn.vwrite(&a)
+a=369
+fn.vwrite(&a)
+a=370
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[89]
+a=371
+fn.vwrite(&a)
+a=372
+fn.vwrite(&a)
+a=373
+fn.vwrite(&a)
+a=374
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[90]
+a=375
+fn.vwrite(&a)
+a=376
+fn.vwrite(&a)
+a=377
+fn.vwrite(&a)
+a=378
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[91]
+a=379
+fn.vwrite(&a)
+a=380
+fn.vwrite(&a)
+a=381
+fn.vwrite(&a)
+a=382
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[92]
+a=383
+fn.vwrite(&a)
+a=384
+fn.vwrite(&a)
+a=385
+fn.vwrite(&a)
+a=386
+fn.vwrite(&a)
+}
+proc proc16(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[93]
+a=387
+fn.vwrite(&a)
+a=388
+fn.vwrite(&a)
+a=389
+fn.vwrite(&a)
+a=390
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[94]
+a=391
+fn.vwrite(&a)
+a=392
+fn.vwrite(&a)
+a=393
+fn.vwrite(&a)
+a=394
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[95]
+a=395
+fn.vwrite(&a)
+a=396
+fn.vwrite(&a)
+a=397
+fn.vwrite(&a)
+a=398
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[96]
+a=399
+fn.vwrite(&a)
+a=400
+fn.vwrite(&a)
+a=401
+fn.vwrite(&a)
+a=402
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[97]
+a=403
+fn.vwrite(&a)
+a=404
+fn.vwrite(&a)
+a=405
+fn.vwrite(&a)
+a=406
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[98]
+a=407
+fn.vwrite(&a)
+a=408
+fn.vwrite(&a)
+a=409
+fn.vwrite(&a)
+a=410
+fn.vwrite(&a)
+}
+proc proc17(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[99]
+a=411
+fn.vwrite(&a)
+a=412
+fn.vwrite(&a)
+a=413
+fn.vwrite(&a)
+a=414
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[100]
+a=415
+fn.vwrite(&a)
+a=416
+fn.vwrite(&a)
+a=417
+fn.vwrite(&a)
+a=418
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[101]
+a=419
+fn.vwrite(&a)
+a=420
+fn.vwrite(&a)
+a=421
+fn.vwrite(&a)
+a=422
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[102]
+a=423
+fn.vwrite(&a)
+a=424
+fn.vwrite(&a)
+a=425
+fn.vwrite(&a)
+a=426
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[103]
+a=427
+fn.vwrite(&a)
+a=428
+fn.vwrite(&a)
+a=429
+fn.vwrite(&a)
+a=430
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[104]
+a=431
+fn.vwrite(&a)
+a=432
+fn.vwrite(&a)
+a=433
+fn.vwrite(&a)
+a=434
+fn.vwrite(&a)
+}
+proc proc18(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[105]
+a=435
+fn.vwrite(&a)
+a=436
+fn.vwrite(&a)
+a=437
+fn.vwrite(&a)
+a=438
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[106]
+a=439
+fn.vwrite(&a)
+a=440
+fn.vwrite(&a)
+a=441
+fn.vwrite(&a)
+a=442
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[107]
+a=443
+fn.vwrite(&a)
+a=444
+fn.vwrite(&a)
+a=445
+fn.vwrite(&a)
+a=446
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[108]
+a=447
+fn.vwrite(&a)
+a=448
+fn.vwrite(&a)
+a=449
+fn.vwrite(&a)
+a=450
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[109]
+a=451
+fn.vwrite(&a)
+a=452
+fn.vwrite(&a)
+a=453
+fn.vwrite(&a)
+a=454
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[110]
+a=455
+fn.vwrite(&a)
+a=456
+fn.vwrite(&a)
+a=457
+fn.vwrite(&a)
+a=458
+fn.vwrite(&a)
+}
+proc proc19(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[111]
+a=459
+fn.vwrite(&a)
+a=460
+fn.vwrite(&a)
+a=461
+fn.vwrite(&a)
+a=462
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[112]
+a=463
+fn.vwrite(&a)
+a=464
+fn.vwrite(&a)
+a=465
+fn.vwrite(&a)
+a=466
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[0]
+a=467
+fn.vwrite(&a)
+a=468
+fn.vwrite(&a)
+a=469
+fn.vwrite(&a)
+a=470
+fn.vwrite(&a)
+a=471
+fn.vwrite(&a)
+a=472
+fn.vwrite(&a)
+a=473
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[1]
+a=474
+fn.vwrite(&a)
+a=475
+fn.vwrite(&a)
+a=476
+fn.vwrite(&a)
+a=477
+fn.vwrite(&a)
+a=478
+fn.vwrite(&a)
+a=479
+fn.vwrite(&a)
+a=480
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[2]
+a=481
+fn.vwrite(&a)
+a=482
+fn.vwrite(&a)
+a=483
+fn.vwrite(&a)
+a=484
+fn.vwrite(&a)
+a=485
+fn.vwrite(&a)
+a=486
+fn.vwrite(&a)
+a=487
+fn.vwrite(&a)
+}
+proc proc20(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[3]
+a=488
+fn.vwrite(&a)
+a=489
+fn.vwrite(&a)
+a=490
+fn.vwrite(&a)
+a=491
+fn.vwrite(&a)
+a=492
+fn.vwrite(&a)
+a=493
+fn.vwrite(&a)
+a=494
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[4]
+a=495
+fn.vwrite(&a)
+a=496
+fn.vwrite(&a)
+a=497
+fn.vwrite(&a)
+a=498
+fn.vwrite(&a)
+a=499
+fn.vwrite(&a)
+a=500
+fn.vwrite(&a)
+a=501
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[5]
+a=502
+fn.vwrite(&a)
+a=503
+fn.vwrite(&a)
+a=504
+fn.vwrite(&a)
+a=505
+fn.vwrite(&a)
+a=506
+fn.vwrite(&a)
+a=507
+fn.vwrite(&a)
+a=508
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[6]
+a=509
+fn.vwrite(&a)
+a=510
+fn.vwrite(&a)
+a=511
+fn.vwrite(&a)
+a=512
+fn.vwrite(&a)
+a=513
+fn.vwrite(&a)
+a=514
+fn.vwrite(&a)
+a=515
+fn.vwrite(&a)
+}
+proc proc21(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[7]
+a=516
+fn.vwrite(&a)
+a=517
+fn.vwrite(&a)
+a=518
+fn.vwrite(&a)
+a=519
+fn.vwrite(&a)
+a=520
+fn.vwrite(&a)
+a=521
+fn.vwrite(&a)
+a=522
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[8]
+a=523
+fn.vwrite(&a)
+a=524
+fn.vwrite(&a)
+a=525
+fn.vwrite(&a)
+a=526
+fn.vwrite(&a)
+a=527
+fn.vwrite(&a)
+a=528
+fn.vwrite(&a)
+a=529
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[9]
+a=530
+fn.vwrite(&a)
+a=531
+fn.vwrite(&a)
+a=532
+fn.vwrite(&a)
+a=533
+fn.vwrite(&a)
+a=534
+fn.vwrite(&a)
+a=535
+fn.vwrite(&a)
+a=536
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[10]
+a=537
+fn.vwrite(&a)
+a=538
+fn.vwrite(&a)
+a=539
+fn.vwrite(&a)
+a=540
+fn.vwrite(&a)
+a=541
+fn.vwrite(&a)
+a=542
+fn.vwrite(&a)
+a=543
+fn.vwrite(&a)
+}
+proc proc22(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[11]
+a=544
+fn.vwrite(&a)
+a=545
+fn.vwrite(&a)
+a=546
+fn.vwrite(&a)
+a=547
+fn.vwrite(&a)
+a=548
+fn.vwrite(&a)
+a=549
+fn.vwrite(&a)
+a=550
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[12]
+a=551
+fn.vwrite(&a)
+a=552
+fn.vwrite(&a)
+a=553
+fn.vwrite(&a)
+a=554
+fn.vwrite(&a)
+a=555
+fn.vwrite(&a)
+a=556
+fn.vwrite(&a)
+a=557
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[13]
+a=558
+fn.vwrite(&a)
+a=559
+fn.vwrite(&a)
+a=560
+fn.vwrite(&a)
+a=561
+fn.vwrite(&a)
+a=562
+fn.vwrite(&a)
+a=563
+fn.vwrite(&a)
+a=564
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[14]
+a=565
+fn.vwrite(&a)
+a=566
+fn.vwrite(&a)
+a=567
+fn.vwrite(&a)
+a=568
+fn.vwrite(&a)
+a=569
+fn.vwrite(&a)
+a=570
+fn.vwrite(&a)
+a=571
+fn.vwrite(&a)
+}
+proc proc23(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[15]
+a=572
+fn.vwrite(&a)
+a=573
+fn.vwrite(&a)
+a=574
+fn.vwrite(&a)
+a=575
+fn.vwrite(&a)
+a=576
+fn.vwrite(&a)
+a=577
+fn.vwrite(&a)
+a=578
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[16]
+a=579
+fn.vwrite(&a)
+a=580
+fn.vwrite(&a)
+a=581
+fn.vwrite(&a)
+a=582
+fn.vwrite(&a)
+a=583
+fn.vwrite(&a)
+a=584
+fn.vwrite(&a)
+a=585
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[17]
+a=586
+fn.vwrite(&a)
+a=587
+fn.vwrite(&a)
+a=588
+fn.vwrite(&a)
+a=589
+fn.vwrite(&a)
+a=590
+fn.vwrite(&a)
+a=591
+fn.vwrite(&a)
+a=592
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[18]
+a=593
+fn.vwrite(&a)
+a=594
+fn.vwrite(&a)
+a=595
+fn.vwrite(&a)
+a=596
+fn.vwrite(&a)
+a=597
+fn.vwrite(&a)
+a=598
+fn.vwrite(&a)
+a=599
+fn.vwrite(&a)
+}
+proc proc24(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[19]
+a=600
+fn.vwrite(&a)
+a=601
+fn.vwrite(&a)
+a=602
+fn.vwrite(&a)
+a=603
+fn.vwrite(&a)
+a=604
+fn.vwrite(&a)
+a=605
+fn.vwrite(&a)
+a=606
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[20]
+a=607
+fn.vwrite(&a)
+a=608
+fn.vwrite(&a)
+a=609
+fn.vwrite(&a)
+a=610
+fn.vwrite(&a)
+a=611
+fn.vwrite(&a)
+a=612
+fn.vwrite(&a)
+a=613
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[21]
+a=614
+fn.vwrite(&a)
+a=615
+fn.vwrite(&a)
+a=616
+fn.vwrite(&a)
+a=617
+fn.vwrite(&a)
+a=618
+fn.vwrite(&a)
+a=619
+fn.vwrite(&a)
+a=620
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[22]
+a=621
+fn.vwrite(&a)
+a=622
+fn.vwrite(&a)
+a=623
+fn.vwrite(&a)
+a=624
+fn.vwrite(&a)
+a=625
+fn.vwrite(&a)
+a=626
+fn.vwrite(&a)
+a=627
+fn.vwrite(&a)
+}
+proc proc25(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[23]
+a=628
+fn.vwrite(&a)
+a=629
+fn.vwrite(&a)
+a=630
+fn.vwrite(&a)
+a=631
+fn.vwrite(&a)
+a=632
+fn.vwrite(&a)
+a=633
+fn.vwrite(&a)
+a=634
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[24]
+a=635
+fn.vwrite(&a)
+a=636
+fn.vwrite(&a)
+a=637
+fn.vwrite(&a)
+a=638
+fn.vwrite(&a)
+a=639
+fn.vwrite(&a)
+a=640
+fn.vwrite(&a)
+a=641
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[25]
+a=642
+fn.vwrite(&a)
+a=643
+fn.vwrite(&a)
+a=644
+fn.vwrite(&a)
+a=645
+fn.vwrite(&a)
+a=646
+fn.vwrite(&a)
+a=647
+fn.vwrite(&a)
+a=648
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[26]
+a=649
+fn.vwrite(&a)
+a=650
+fn.vwrite(&a)
+a=651
+fn.vwrite(&a)
+a=652
+fn.vwrite(&a)
+a=653
+fn.vwrite(&a)
+a=654
+fn.vwrite(&a)
+a=655
+fn.vwrite(&a)
+}
+proc proc26(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[27]
+a=656
+fn.vwrite(&a)
+a=657
+fn.vwrite(&a)
+a=658
+fn.vwrite(&a)
+a=659
+fn.vwrite(&a)
+a=660
+fn.vwrite(&a)
+a=661
+fn.vwrite(&a)
+a=662
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[28]
+a=663
+fn.vwrite(&a)
+a=664
+fn.vwrite(&a)
+a=665
+fn.vwrite(&a)
+a=666
+fn.vwrite(&a)
+a=667
+fn.vwrite(&a)
+a=668
+fn.vwrite(&a)
+a=669
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[29]
+a=670
+fn.vwrite(&a)
+a=671
+fn.vwrite(&a)
+a=672
+fn.vwrite(&a)
+a=673
+fn.vwrite(&a)
+a=674
+fn.vwrite(&a)
+a=675
+fn.vwrite(&a)
+a=676
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[30]
+a=677
+fn.vwrite(&a)
+a=678
+fn.vwrite(&a)
+a=679
+fn.vwrite(&a)
+a=680
+fn.vwrite(&a)
+a=681
+fn.vwrite(&a)
+a=682
+fn.vwrite(&a)
+a=683
+fn.vwrite(&a)
+}
+proc proc27(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[31]
+a=684
+fn.vwrite(&a)
+a=685
+fn.vwrite(&a)
+a=686
+fn.vwrite(&a)
+a=687
+fn.vwrite(&a)
+a=688
+fn.vwrite(&a)
+a=689
+fn.vwrite(&a)
+a=690
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[32]
+a=691
+fn.vwrite(&a)
+a=692
+fn.vwrite(&a)
+a=693
+fn.vwrite(&a)
+a=694
+fn.vwrite(&a)
+a=695
+fn.vwrite(&a)
+a=696
+fn.vwrite(&a)
+a=697
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[33]
+a=698
+fn.vwrite(&a)
+a=699
+fn.vwrite(&a)
+a=700
+fn.vwrite(&a)
+a=701
+fn.vwrite(&a)
+a=702
+fn.vwrite(&a)
+a=703
+fn.vwrite(&a)
+a=704
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[34]
+a=705
+fn.vwrite(&a)
+a=706
+fn.vwrite(&a)
+a=707
+fn.vwrite(&a)
+a=708
+fn.vwrite(&a)
+a=709
+fn.vwrite(&a)
+a=710
+fn.vwrite(&a)
+a=711
+fn.vwrite(&a)
+}
+proc proc28(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[35]
+a=712
+fn.vwrite(&a)
+a=713
+fn.vwrite(&a)
+a=714
+fn.vwrite(&a)
+a=715
+fn.vwrite(&a)
+a=716
+fn.vwrite(&a)
+a=717
+fn.vwrite(&a)
+a=718
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[36]
+a=719
+fn.vwrite(&a)
+a=720
+fn.vwrite(&a)
+a=721
+fn.vwrite(&a)
+a=722
+fn.vwrite(&a)
+a=723
+fn.vwrite(&a)
+a=724
+fn.vwrite(&a)
+a=725
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[37]
+a=726
+fn.vwrite(&a)
+a=727
+fn.vwrite(&a)
+a=728
+fn.vwrite(&a)
+a=729
+fn.vwrite(&a)
+a=730
+fn.vwrite(&a)
+a=731
+fn.vwrite(&a)
+a=732
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[38]
+a=733
+fn.vwrite(&a)
+a=734
+fn.vwrite(&a)
+a=735
+fn.vwrite(&a)
+a=736
+fn.vwrite(&a)
+a=737
+fn.vwrite(&a)
+a=738
+fn.vwrite(&a)
+a=739
+fn.vwrite(&a)
+}
+proc proc29(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[39]
+a=740
+fn.vwrite(&a)
+a=741
+fn.vwrite(&a)
+a=742
+fn.vwrite(&a)
+a=743
+fn.vwrite(&a)
+a=744
+fn.vwrite(&a)
+a=745
+fn.vwrite(&a)
+a=746
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[40]
+a=747
+fn.vwrite(&a)
+a=748
+fn.vwrite(&a)
+a=749
+fn.vwrite(&a)
+a=750
+fn.vwrite(&a)
+a=751
+fn.vwrite(&a)
+a=752
+fn.vwrite(&a)
+a=753
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[41]
+a=754
+fn.vwrite(&a)
+a=755
+fn.vwrite(&a)
+a=756
+fn.vwrite(&a)
+a=757
+fn.vwrite(&a)
+a=758
+fn.vwrite(&a)
+a=759
+fn.vwrite(&a)
+a=760
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[42]
+a=761
+fn.vwrite(&a)
+a=762
+fn.vwrite(&a)
+a=763
+fn.vwrite(&a)
+a=764
+fn.vwrite(&a)
+a=765
+fn.vwrite(&a)
+a=766
+fn.vwrite(&a)
+a=767
+fn.vwrite(&a)
+}
+proc proc30(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[43]
+a=768
+fn.vwrite(&a)
+a=769
+fn.vwrite(&a)
+a=770
+fn.vwrite(&a)
+a=771
+fn.vwrite(&a)
+a=772
+fn.vwrite(&a)
+a=773
+fn.vwrite(&a)
+a=774
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[44]
+a=775
+fn.vwrite(&a)
+a=776
+fn.vwrite(&a)
+a=777
+fn.vwrite(&a)
+a=778
+fn.vwrite(&a)
+a=779
+fn.vwrite(&a)
+a=780
+fn.vwrite(&a)
+a=781
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[45]
+a=782
+fn.vwrite(&a)
+a=783
+fn.vwrite(&a)
+a=784
+fn.vwrite(&a)
+a=785
+fn.vwrite(&a)
+a=786
+fn.vwrite(&a)
+a=787
+fn.vwrite(&a)
+a=788
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[46]
+a=789
+fn.vwrite(&a)
+a=790
+fn.vwrite(&a)
+a=791
+fn.vwrite(&a)
+a=792
+fn.vwrite(&a)
+a=793
+fn.vwrite(&a)
+a=794
+fn.vwrite(&a)
+a=795
+fn.vwrite(&a)
+}
+proc proc31(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[47]
+a=796
+fn.vwrite(&a)
+a=797
+fn.vwrite(&a)
+a=798
+fn.vwrite(&a)
+a=799
+fn.vwrite(&a)
+a=800
+fn.vwrite(&a)
+a=801
+fn.vwrite(&a)
+a=802
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[48]
+a=803
+fn.vwrite(&a)
+a=804
+fn.vwrite(&a)
+a=805
+fn.vwrite(&a)
+a=806
+fn.vwrite(&a)
+a=807
+fn.vwrite(&a)
+a=808
+fn.vwrite(&a)
+a=809
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[49]
+a=810
+fn.vwrite(&a)
+a=811
+fn.vwrite(&a)
+a=812
+fn.vwrite(&a)
+a=813
+fn.vwrite(&a)
+a=814
+fn.vwrite(&a)
+a=815
+fn.vwrite(&a)
+a=816
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[50]
+a=817
+fn.vwrite(&a)
+a=818
+fn.vwrite(&a)
+a=819
+fn.vwrite(&a)
+a=820
+fn.vwrite(&a)
+a=821
+fn.vwrite(&a)
+a=822
+fn.vwrite(&a)
+a=823
+fn.vwrite(&a)
+}
+proc proc32(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[51]
+a=824
+fn.vwrite(&a)
+a=825
+fn.vwrite(&a)
+a=826
+fn.vwrite(&a)
+a=827
+fn.vwrite(&a)
+a=828
+fn.vwrite(&a)
+a=829
+fn.vwrite(&a)
+a=830
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[52]
+a=831
+fn.vwrite(&a)
+a=832
+fn.vwrite(&a)
+a=833
+fn.vwrite(&a)
+a=834
+fn.vwrite(&a)
+a=835
+fn.vwrite(&a)
+a=836
+fn.vwrite(&a)
+a=837
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[53]
+a=838
+fn.vwrite(&a)
+a=839
+fn.vwrite(&a)
+a=840
+fn.vwrite(&a)
+a=841
+fn.vwrite(&a)
+a=842
+fn.vwrite(&a)
+a=843
+fn.vwrite(&a)
+a=844
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[54]
+a=845
+fn.vwrite(&a)
+a=846
+fn.vwrite(&a)
+a=847
+fn.vwrite(&a)
+a=848
+fn.vwrite(&a)
+a=849
+fn.vwrite(&a)
+a=850
+fn.vwrite(&a)
+a=851
+fn.vwrite(&a)
+}
+proc proc33(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[55]
+a=852
+fn.vwrite(&a)
+a=853
+fn.vwrite(&a)
+a=854
+fn.vwrite(&a)
+a=855
+fn.vwrite(&a)
+a=856
+fn.vwrite(&a)
+a=857
+fn.vwrite(&a)
+a=858
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[56]
+a=859
+fn.vwrite(&a)
+a=860
+fn.vwrite(&a)
+a=861
+fn.vwrite(&a)
+a=862
+fn.vwrite(&a)
+a=863
+fn.vwrite(&a)
+a=864
+fn.vwrite(&a)
+a=865
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[57]
+a=866
+fn.vwrite(&a)
+a=867
+fn.vwrite(&a)
+a=868
+fn.vwrite(&a)
+a=869
+fn.vwrite(&a)
+a=870
+fn.vwrite(&a)
+a=871
+fn.vwrite(&a)
+a=872
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[58]
+a=873
+fn.vwrite(&a)
+a=874
+fn.vwrite(&a)
+a=875
+fn.vwrite(&a)
+a=876
+fn.vwrite(&a)
+a=877
+fn.vwrite(&a)
+a=878
+fn.vwrite(&a)
+a=879
+fn.vwrite(&a)
+}
+proc proc34(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[59]
+a=880
+fn.vwrite(&a)
+a=881
+fn.vwrite(&a)
+a=882
+fn.vwrite(&a)
+a=883
+fn.vwrite(&a)
+a=884
+fn.vwrite(&a)
+a=885
+fn.vwrite(&a)
+a=886
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[60]
+a=887
+fn.vwrite(&a)
+a=888
+fn.vwrite(&a)
+a=889
+fn.vwrite(&a)
+a=890
+fn.vwrite(&a)
+a=891
+fn.vwrite(&a)
+a=892
+fn.vwrite(&a)
+a=893
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[61]
+a=894
+fn.vwrite(&a)
+a=895
+fn.vwrite(&a)
+a=896
+fn.vwrite(&a)
+a=897
+fn.vwrite(&a)
+a=898
+fn.vwrite(&a)
+a=899
+fn.vwrite(&a)
+a=900
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[62]
+a=901
+fn.vwrite(&a)
+a=902
+fn.vwrite(&a)
+a=903
+fn.vwrite(&a)
+a=904
+fn.vwrite(&a)
+a=905
+fn.vwrite(&a)
+a=906
+fn.vwrite(&a)
+a=907
+fn.vwrite(&a)
+}
+proc proc35(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[63]
+a=908
+fn.vwrite(&a)
+a=909
+fn.vwrite(&a)
+a=910
+fn.vwrite(&a)
+a=911
+fn.vwrite(&a)
+a=912
+fn.vwrite(&a)
+a=913
+fn.vwrite(&a)
+a=914
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[64]
+a=915
+fn.vwrite(&a)
+a=916
+fn.vwrite(&a)
+a=917
+fn.vwrite(&a)
+a=918
+fn.vwrite(&a)
+a=919
+fn.vwrite(&a)
+a=920
+fn.vwrite(&a)
+a=921
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[65]
+a=922
+fn.vwrite(&a)
+a=923
+fn.vwrite(&a)
+a=924
+fn.vwrite(&a)
+a=925
+fn.vwrite(&a)
+a=926
+fn.vwrite(&a)
+a=927
+fn.vwrite(&a)
+a=928
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[66]
+a=929
+fn.vwrite(&a)
+a=930
+fn.vwrite(&a)
+a=931
+fn.vwrite(&a)
+a=932
+fn.vwrite(&a)
+a=933
+fn.vwrite(&a)
+a=934
+fn.vwrite(&a)
+a=935
+fn.vwrite(&a)
+}
+proc proc36(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[67]
+a=936
+fn.vwrite(&a)
+a=937
+fn.vwrite(&a)
+a=938
+fn.vwrite(&a)
+a=939
+fn.vwrite(&a)
+a=940
+fn.vwrite(&a)
+a=941
+fn.vwrite(&a)
+a=942
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[68]
+a=943
+fn.vwrite(&a)
+a=944
+fn.vwrite(&a)
+a=945
+fn.vwrite(&a)
+a=946
+fn.vwrite(&a)
+a=947
+fn.vwrite(&a)
+a=948
+fn.vwrite(&a)
+a=949
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[69]
+a=950
+fn.vwrite(&a)
+a=951
+fn.vwrite(&a)
+a=952
+fn.vwrite(&a)
+a=953
+fn.vwrite(&a)
+a=954
+fn.vwrite(&a)
+a=955
+fn.vwrite(&a)
+a=956
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[70]
+a=957
+fn.vwrite(&a)
+a=958
+fn.vwrite(&a)
+a=959
+fn.vwrite(&a)
+a=960
+fn.vwrite(&a)
+a=961
+fn.vwrite(&a)
+a=962
+fn.vwrite(&a)
+a=963
+fn.vwrite(&a)
+}
+proc proc37(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[71]
+a=964
+fn.vwrite(&a)
+a=965
+fn.vwrite(&a)
+a=966
+fn.vwrite(&a)
+a=967
+fn.vwrite(&a)
+a=968
+fn.vwrite(&a)
+a=969
+fn.vwrite(&a)
+a=970
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[72]
+a=971
+fn.vwrite(&a)
+a=972
+fn.vwrite(&a)
+a=973
+fn.vwrite(&a)
+a=974
+fn.vwrite(&a)
+a=975
+fn.vwrite(&a)
+a=976
+fn.vwrite(&a)
+a=977
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[73]
+a=978
+fn.vwrite(&a)
+a=979
+fn.vwrite(&a)
+a=980
+fn.vwrite(&a)
+a=981
+fn.vwrite(&a)
+a=982
+fn.vwrite(&a)
+a=983
+fn.vwrite(&a)
+a=984
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[74]
+a=985
+fn.vwrite(&a)
+a=986
+fn.vwrite(&a)
+a=987
+fn.vwrite(&a)
+a=988
+fn.vwrite(&a)
+a=989
+fn.vwrite(&a)
+a=990
+fn.vwrite(&a)
+a=991
+fn.vwrite(&a)
+}
+proc proc38(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[75]
+a=992
+fn.vwrite(&a)
+a=993
+fn.vwrite(&a)
+a=994
+fn.vwrite(&a)
+a=995
+fn.vwrite(&a)
+a=996
+fn.vwrite(&a)
+a=997
+fn.vwrite(&a)
+a=998
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[76]
+a=999
+fn.vwrite(&a)
+a=1000
+fn.vwrite(&a)
+a=1001
+fn.vwrite(&a)
+a=1002
+fn.vwrite(&a)
+a=1003
+fn.vwrite(&a)
+a=1004
+fn.vwrite(&a)
+a=1005
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[77]
+a=1006
+fn.vwrite(&a)
+a=1007
+fn.vwrite(&a)
+a=1008
+fn.vwrite(&a)
+a=1009
+fn.vwrite(&a)
+a=1010
+fn.vwrite(&a)
+a=1011
+fn.vwrite(&a)
+a=1012
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[78]
+a=1013
+fn.vwrite(&a)
+a=1014
+fn.vwrite(&a)
+a=1015
+fn.vwrite(&a)
+a=1016
+fn.vwrite(&a)
+a=1017
+fn.vwrite(&a)
+a=1018
+fn.vwrite(&a)
+a=1019
+fn.vwrite(&a)
+}
+proc proc39(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[79]
+a=1020
+fn.vwrite(&a)
+a=1021
+fn.vwrite(&a)
+a=1022
+fn.vwrite(&a)
+a=1023
+fn.vwrite(&a)
+a=1024
+fn.vwrite(&a)
+a=1025
+fn.vwrite(&a)
+a=1026
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[80]
+a=1027
+fn.vwrite(&a)
+a=1028
+fn.vwrite(&a)
+a=1029
+fn.vwrite(&a)
+a=1030
+fn.vwrite(&a)
+a=1031
+fn.vwrite(&a)
+a=1032
+fn.vwrite(&a)
+a=1033
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[81]
+a=1034
+fn.vwrite(&a)
+a=1035
+fn.vwrite(&a)
+a=1036
+fn.vwrite(&a)
+a=1037
+fn.vwrite(&a)
+a=1038
+fn.vwrite(&a)
+a=1039
+fn.vwrite(&a)
+a=1040
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[82]
+a=1041
+fn.vwrite(&a)
+a=1042
+fn.vwrite(&a)
+a=1043
+fn.vwrite(&a)
+a=1044
+fn.vwrite(&a)
+a=1045
+fn.vwrite(&a)
+a=1046
+fn.vwrite(&a)
+a=1047
+fn.vwrite(&a)
+}
+proc proc40(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[83]
+a=1048
+fn.vwrite(&a)
+a=1049
+fn.vwrite(&a)
+a=1050
+fn.vwrite(&a)
+a=1051
+fn.vwrite(&a)
+a=1052
+fn.vwrite(&a)
+a=1053
+fn.vwrite(&a)
+a=1054
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[84]
+a=1055
+fn.vwrite(&a)
+a=1056
+fn.vwrite(&a)
+a=1057
+fn.vwrite(&a)
+a=1058
+fn.vwrite(&a)
+a=1059
+fn.vwrite(&a)
+a=1060
+fn.vwrite(&a)
+a=1061
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[85]
+a=1062
+fn.vwrite(&a)
+a=1063
+fn.vwrite(&a)
+a=1064
+fn.vwrite(&a)
+a=1065
+fn.vwrite(&a)
+a=1066
+fn.vwrite(&a)
+a=1067
+fn.vwrite(&a)
+a=1068
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[86]
+a=1069
+fn.vwrite(&a)
+a=1070
+fn.vwrite(&a)
+a=1071
+fn.vwrite(&a)
+a=1072
+fn.vwrite(&a)
+a=1073
+fn.vwrite(&a)
+a=1074
+fn.vwrite(&a)
+a=1075
+fn.vwrite(&a)
+}
+proc proc41(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[87]
+a=1076
+fn.vwrite(&a)
+a=1077
+fn.vwrite(&a)
+a=1078
+fn.vwrite(&a)
+a=1079
+fn.vwrite(&a)
+a=1080
+fn.vwrite(&a)
+a=1081
+fn.vwrite(&a)
+a=1082
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[88]
+a=1083
+fn.vwrite(&a)
+a=1084
+fn.vwrite(&a)
+a=1085
+fn.vwrite(&a)
+a=1086
+fn.vwrite(&a)
+a=1087
+fn.vwrite(&a)
+a=1088
+fn.vwrite(&a)
+a=1089
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[89]
+a=1090
+fn.vwrite(&a)
+a=1091
+fn.vwrite(&a)
+a=1092
+fn.vwrite(&a)
+a=1093
+fn.vwrite(&a)
+a=1094
+fn.vwrite(&a)
+a=1095
+fn.vwrite(&a)
+a=1096
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[90]
+a=1097
+fn.vwrite(&a)
+a=1098
+fn.vwrite(&a)
+a=1099
+fn.vwrite(&a)
+a=1100
+fn.vwrite(&a)
+a=1101
+fn.vwrite(&a)
+a=1102
+fn.vwrite(&a)
+a=1103
+fn.vwrite(&a)
+}
+proc proc42(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[91]
+a=1104
+fn.vwrite(&a)
+a=1105
+fn.vwrite(&a)
+a=1106
+fn.vwrite(&a)
+a=1107
+fn.vwrite(&a)
+a=1108
+fn.vwrite(&a)
+a=1109
+fn.vwrite(&a)
+a=1110
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[92]
+a=1111
+fn.vwrite(&a)
+a=1112
+fn.vwrite(&a)
+a=1113
+fn.vwrite(&a)
+a=1114
+fn.vwrite(&a)
+a=1115
+fn.vwrite(&a)
+a=1116
+fn.vwrite(&a)
+a=1117
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[93]
+a=1118
+fn.vwrite(&a)
+a=1119
+fn.vwrite(&a)
+a=1120
+fn.vwrite(&a)
+a=1121
+fn.vwrite(&a)
+a=1122
+fn.vwrite(&a)
+a=1123
+fn.vwrite(&a)
+a=1124
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[94]
+a=1125
+fn.vwrite(&a)
+a=1126
+fn.vwrite(&a)
+a=1127
+fn.vwrite(&a)
+a=1128
+fn.vwrite(&a)
+a=1129
+fn.vwrite(&a)
+a=1130
+fn.vwrite(&a)
+a=1131
+fn.vwrite(&a)
+}
+proc proc43(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[95]
+a=1132
+fn.vwrite(&a)
+a=1133
+fn.vwrite(&a)
+a=1134
+fn.vwrite(&a)
+a=1135
+fn.vwrite(&a)
+a=1136
+fn.vwrite(&a)
+a=1137
+fn.vwrite(&a)
+a=1138
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[96]
+a=1139
+fn.vwrite(&a)
+a=1140
+fn.vwrite(&a)
+a=1141
+fn.vwrite(&a)
+a=1142
+fn.vwrite(&a)
+a=1143
+fn.vwrite(&a)
+a=1144
+fn.vwrite(&a)
+a=1145
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[97]
+a=1146
+fn.vwrite(&a)
+a=1147
+fn.vwrite(&a)
+a=1148
+fn.vwrite(&a)
+a=1149
+fn.vwrite(&a)
+a=1150
+fn.vwrite(&a)
+a=1151
+fn.vwrite(&a)
+a=1152
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[98]
+a=1153
+fn.vwrite(&a)
+a=1154
+fn.vwrite(&a)
+a=1155
+fn.vwrite(&a)
+a=1156
+fn.vwrite(&a)
+a=1157
+fn.vwrite(&a)
+a=1158
+fn.vwrite(&a)
+a=1159
+fn.vwrite(&a)
+}
+proc proc44(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[99]
+a=1160
+fn.vwrite(&a)
+a=1161
+fn.vwrite(&a)
+a=1162
+fn.vwrite(&a)
+a=1163
+fn.vwrite(&a)
+a=1164
+fn.vwrite(&a)
+a=1165
+fn.vwrite(&a)
+a=1166
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[100]
+a=1167
+fn.vwrite(&a)
+a=1168
+fn.vwrite(&a)
+a=1169
+fn.vwrite(&a)
+a=1170
+fn.vwrite(&a)
+a=1171
+fn.vwrite(&a)
+a=1172
+fn.vwrite(&a)
+a=1173
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[101]
+a=1174
+fn.vwrite(&a)
+a=1175
+fn.vwrite(&a)
+a=1176
+fn.vwrite(&a)
+a=1177
+fn.vwrite(&a)
+a=1178
+fn.vwrite(&a)
+a=1179
+fn.vwrite(&a)
+a=1180
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[102]
+a=1181
+fn.vwrite(&a)
+a=1182
+fn.vwrite(&a)
+a=1183
+fn.vwrite(&a)
+a=1184
+fn.vwrite(&a)
+a=1185
+fn.vwrite(&a)
+a=1186
+fn.vwrite(&a)
+a=1187
+fn.vwrite(&a)
+}
+proc proc45(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[103]
+a=1188
+fn.vwrite(&a)
+a=1189
+fn.vwrite(&a)
+a=1190
+fn.vwrite(&a)
+a=1191
+fn.vwrite(&a)
+a=1192
+fn.vwrite(&a)
+a=1193
+fn.vwrite(&a)
+a=1194
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[104]
+a=1195
+fn.vwrite(&a)
+a=1196
+fn.vwrite(&a)
+a=1197
+fn.vwrite(&a)
+a=1198
+fn.vwrite(&a)
+a=1199
+fn.vwrite(&a)
+a=1200
+fn.vwrite(&a)
+a=1201
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[105]
+a=1202
+fn.vwrite(&a)
+a=1203
+fn.vwrite(&a)
+a=1204
+fn.vwrite(&a)
+a=1205
+fn.vwrite(&a)
+a=1206
+fn.vwrite(&a)
+a=1207
+fn.vwrite(&a)
+a=1208
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[106]
+a=1209
+fn.vwrite(&a)
+a=1210
+fn.vwrite(&a)
+a=1211
+fn.vwrite(&a)
+a=1212
+fn.vwrite(&a)
+a=1213
+fn.vwrite(&a)
+a=1214
+fn.vwrite(&a)
+a=1215
+fn.vwrite(&a)
+}
+proc proc46(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[107]
+a=1216
+fn.vwrite(&a)
+a=1217
+fn.vwrite(&a)
+a=1218
+fn.vwrite(&a)
+a=1219
+fn.vwrite(&a)
+a=1220
+fn.vwrite(&a)
+a=1221
+fn.vwrite(&a)
+a=1222
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[108]
+a=1223
+fn.vwrite(&a)
+a=1224
+fn.vwrite(&a)
+a=1225
+fn.vwrite(&a)
+a=1226
+fn.vwrite(&a)
+a=1227
+fn.vwrite(&a)
+a=1228
+fn.vwrite(&a)
+a=1229
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[109]
+a=1230
+fn.vwrite(&a)
+a=1231
+fn.vwrite(&a)
+a=1232
+fn.vwrite(&a)
+a=1233
+fn.vwrite(&a)
+a=1234
+fn.vwrite(&a)
+a=1235
+fn.vwrite(&a)
+a=1236
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[110]
+a=1237
+fn.vwrite(&a)
+a=1238
+fn.vwrite(&a)
+a=1239
+fn.vwrite(&a)
+a=1240
+fn.vwrite(&a)
+a=1241
+fn.vwrite(&a)
+a=1242
+fn.vwrite(&a)
+a=1243
+fn.vwrite(&a)
+}
+proc proc47(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[111]
+a=1244
+fn.vwrite(&a)
+a=1245
+fn.vwrite(&a)
+a=1246
+fn.vwrite(&a)
+a=1247
+fn.vwrite(&a)
+a=1248
+fn.vwrite(&a)
+a=1249
+fn.vwrite(&a)
+a=1250
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[112]
+a=1251
+fn.vwrite(&a)
+a=1252
+fn.vwrite(&a)
+a=1253
+fn.vwrite(&a)
+a=1254
+fn.vwrite(&a)
+a=1255
+fn.vwrite(&a)
+a=1256
+fn.vwrite(&a)
+a=1257
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[113]
+a=1258
+fn.vwrite(&a)
+a=1259
+fn.vwrite(&a)
+a=1260
+fn.vwrite(&a)
+a=1261
+fn.vwrite(&a)
+a=1262
+fn.vwrite(&a)
+a=1263
+fn.vwrite(&a)
+a=1264
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[114]
+a=1265
+fn.vwrite(&a)
+a=1266
+fn.vwrite(&a)
+a=1267
+fn.vwrite(&a)
+a=1268
+fn.vwrite(&a)
+a=1269
+fn.vwrite(&a)
+a=1270
+fn.vwrite(&a)
+a=1271
+fn.vwrite(&a)
+}
+proc proc48(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[115]
+a=1272
+fn.vwrite(&a)
+a=1273
+fn.vwrite(&a)
+a=1274
+fn.vwrite(&a)
+a=1275
+fn.vwrite(&a)
+a=1276
+fn.vwrite(&a)
+a=1277
+fn.vwrite(&a)
+a=1278
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[116]
+a=1279
+fn.vwrite(&a)
+a=1280
+fn.vwrite(&a)
+a=1281
+fn.vwrite(&a)
+a=1282
+fn.vwrite(&a)
+a=1283
+fn.vwrite(&a)
+a=1284
+fn.vwrite(&a)
+a=1285
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[117]
+a=1286
+fn.vwrite(&a)
+a=1287
+fn.vwrite(&a)
+a=1288
+fn.vwrite(&a)
+a=1289
+fn.vwrite(&a)
+a=1290
+fn.vwrite(&a)
+a=1291
+fn.vwrite(&a)
+a=1292
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[118]
+a=1293
+fn.vwrite(&a)
+a=1294
+fn.vwrite(&a)
+a=1295
+fn.vwrite(&a)
+a=1296
+fn.vwrite(&a)
+a=1297
+fn.vwrite(&a)
+a=1298
+fn.vwrite(&a)
+a=1299
+fn.vwrite(&a)
+}
+proc proc49(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[119]
+a=1300
+fn.vwrite(&a)
+a=1301
+fn.vwrite(&a)
+a=1302
+fn.vwrite(&a)
+a=1303
+fn.vwrite(&a)
+a=1304
+fn.vwrite(&a)
+a=1305
+fn.vwrite(&a)
+a=1306
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[120]
+a=1307
+fn.vwrite(&a)
+a=1308
+fn.vwrite(&a)
+a=1309
+fn.vwrite(&a)
+a=1310
+fn.vwrite(&a)
+a=1311
+fn.vwrite(&a)
+a=1312
+fn.vwrite(&a)
+a=1313
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[121]
+a=1314
+fn.vwrite(&a)
+a=1315
+fn.vwrite(&a)
+a=1316
+fn.vwrite(&a)
+a=1317
+fn.vwrite(&a)
+a=1318
+fn.vwrite(&a)
+a=1319
+fn.vwrite(&a)
+a=1320
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[122]
+a=1321
+fn.vwrite(&a)
+a=1322
+fn.vwrite(&a)
+a=1323
+fn.vwrite(&a)
+a=1324
+fn.vwrite(&a)
+a=1325
+fn.vwrite(&a)
+a=1326
+fn.vwrite(&a)
+a=1327
+fn.vwrite(&a)
+}
+proc proc50(){
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].axon[0]
+a=1328
+fn.vwrite(&a)
+a=1329
+fn.vwrite(&a)
+a=1330
+fn.vwrite(&a)
+a=1331
+fn.vwrite(&a)
+a=1332
+fn.vwrite(&a)
+a=1333
+fn.vwrite(&a)
+a=1334
+fn.vwrite(&a)
+a=1335
+fn.vwrite(&a)
+a=1336
+fn.vwrite(&a)
+a=1337
+fn.vwrite(&a)
+a=1338
+fn.vwrite(&a)
+a=1339
+fn.vwrite(&a)
+a=1340
+fn.vwrite(&a)
+a=1341
+fn.vwrite(&a)
+a=1342
+fn.vwrite(&a)
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].axon[1]
+a=1343
+fn.vwrite(&a)
+a=1344
+fn.vwrite(&a)
+a=1345
+fn.vwrite(&a)
+a=1346
+fn.vwrite(&a)
+a=1347
+fn.vwrite(&a)
+a=1348
+fn.vwrite(&a)
+a=1349
+fn.vwrite(&a)
+a=1350
+fn.vwrite(&a)
+a=1351
+fn.vwrite(&a)
+a=1352
+fn.vwrite(&a)
+a=1353
+fn.vwrite(&a)
+a=1354
+fn.vwrite(&a)
+a=1355
+fn.vwrite(&a)
+a=1356
+fn.vwrite(&a)
+a=1357
+fn.vwrite(&a)
+}
+proc proc51(){
+access Exts[0]
+access Exts[1]
+}
+proc printParams(){
+fn.wopen("ParamM.dat")
+fn2.wopen("KinStates.dat")
+writeReversals()
+writeGGlobals()
+writeNGlobals()
+for (ii=0;ii<pmat.nrow();ii+=1){
+transvec = pmat.getrow(ii)
+tfunc()
+finitialize()
+fadvance()
+fcurrent()
+proc0()
+proc1()
+proc2()
+proc3()
+proc4()
+proc5()
+proc6()
+proc7()
+proc8()
+proc9()
+proc10()
+proc11()
+proc12()
+proc13()
+proc14()
+proc15()
+proc16()
+proc17()
+proc18()
+proc19()
+proc20()
+proc21()
+proc22()
+proc23()
+proc24()
+proc25()
+proc26()
+proc27()
+proc28()
+proc29()
+proc30()
+proc31()
+proc32()
+proc33()
+proc34()
+proc35()
+proc36()
+proc37()
+proc38()
+proc39()
+proc40()
+proc41()
+proc42()
+proc43()
+proc44()
+proc45()
+proc46()
+proc47()
+proc48()
+proc49()
+proc50()
+proc51()
+}
+fn.close()
+}
+printParams()
+// End params output
+// Start Mat Output
+fcurrent()
+MyPrintMatrix3()
+// endMat Output
+
+MyPrintMatrix3()
+
+// End Fmatrix
+// Start Recording Sites
+//hoc_stdout("RecList.csv")
+PrintRecSites()
+
+quit()
+
