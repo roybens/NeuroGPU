@@ -18,10 +18,10 @@ from file_io import get_lines, put_lines
 from proc_add_param_to_hoc_for_opt import proc_add_param_to_hoc_for_opt
 import scipy.io as sio
 from collections import OrderedDict
-from cStringIO import StringIO
+from io import StringIO
 from nrn_structs import *
 from create_auxilliary_data_3 import create_auxilliary_data_3
-import cPickle as pkl
+import pickle as pkl
 
 # Definitions
 ModData = collections.namedtuple('ModData', 'mod_per_seg,available_mechs')
@@ -34,7 +34,7 @@ not_states = ['ica','cai']
 global vs_dir
 #vs_dir = '../../VS/pyNeuroGPU_win2/NeuroGPU6'
 #vs_root = '../../VS/pyNeuroGPU_win2/'
-run_dir = 'C:/pyNeuroGPU_win2'
+run_dir = 'C:/pyNeuroGPU_win55'
 unix_dir = 'C:/pyNeuroGPU_unix'
 data_dir = './Data/'
 split_flg = 0
@@ -75,7 +75,7 @@ def nrn_dll(printpath=False):
     for extension in ['', '.dll', '.so', '.dylib']:
         try:
             the_dll = ctypes.cdll[base_path + extension]
-            if printpath: print base_path + extension
+            if printpath: print (base_path + extension)
             success = True
         except:
             pass
@@ -115,7 +115,9 @@ def get_parent_seg(thread):
 
 
 def get_parent_seg1():
+    #nrn.h.load_file(modelFile)
     nrn.h("MyTopology2()")
+    
     parent = []
     ax = './parent.txt'
     with open(ax, 'r') as bx:
@@ -156,12 +158,12 @@ def get_topo():
     for s in nrn.h.sec_list:
         name = nrn.h.secname()
         #print name
-        topology = [s.nseg, s.L, s.diam, s.Ra, s.cm, nrn.h.dt, nrn.h.st.delay,
-                    nrn.h.st.dur, nrn.h.st.amp, s.v, nrn.h.area(.5), nrn.h.parent_connection(), nrn.h.n3d()]
+        #topology = [s.nseg, s.L, s.diam, s.Ra, s.cm, nrn.h.dt, nrn.h.st.del,
+         #           nrn.h.st.dur, nrn.h.st.amp, s.v, nrn.h.area(.5), nrn.h.parent_connection(), nrn.h.n3d()]
         nsegs.append(int(s.nseg))
         cms.append(float(s.cm))
 
-        sections[name] = topology
+        #sections[name] = topology
     return [nsegs, cms]
 
 
@@ -299,7 +301,7 @@ def get_topo_mdl2():
 
 def get_fmatrix():
     for s in nrn.h.allsec():
-        print s.fmatrix(0, 1)
+        print (s.fmatrix(0, 1))
 
 
 def get_recsites():
@@ -351,16 +353,17 @@ def parse_models():
     reversals = []
     all_locals = []
     all_states_names_list = []
-    mod_files = list(glob.glob('*.mod'))
+    mod_files = list(glob.glob('*.mod')) + list(glob.glob('*.mod2'))
     if 'branching.mod' in mod_files:
         mod_files.remove('branching.mod')
-    if 'passive.mod' in mod_files:
-        mod_files.remove('passive.mod')
+    #if 'passive.mod' in mod_files:
+    #    mod_files.remove('passive.mod')
     # if 'pasx.mod' in mod_files:
     #   mod_files.remove('pasx.mod')
+    mod_files = sorted(mod_files,key=str.lower)
     for i in range(len(mod_files)):
         mod_f = mod_files[i]
-        print 'parsing ' + mod_f
+        print ('parsing ' + mod_f)
         lines_list.append(file_to_list_no_comments(mod_f))
         # print 'parsing ' + mod_f + 'i is ' + repr(i)
         output = parse_model(lines_list[i])
@@ -443,7 +446,7 @@ def parse_models():
     model_name_sorted = sorted(model_name, key=lambda s: s.lower())
     for j in range(len(model_name_sorted)):
         i = model_name.index(model_name_sorted[j])
-        print 'parsing ' + model_name[i]
+        print ('parsing ' + model_name[i])
         output = parse_model2(mod_files[i], lines_list[i], globals[i], all_state_line[i], all_state_line_seg[i],
                               model_name[i], only_reads_no_reversals[i], write_no_currents[i], all_reads_no_reversals,
                               writes[i], all_assigned[i], all_states[i], reads[i], gs[i], ranges[i], non_spec_curr[i],
@@ -606,17 +609,12 @@ def parse_models():
     # print cs_names
     # print available_mechs
     hocmodel_name = data_dir + os.path.basename(nrn.h.modelFile)[:-3] + 'pkl'
-    print hocmodel_name
-    with open(hocmodel_name, 'w') as f:  # Python 3: open(..., 'wb')
-        pkl.dump(
-            [all_params_non_global_list_non_flat, modelFile, base_p, available_mechs, reversals, reversals, cs_names,
-             comp_mechs, g_globals, nglobals_flat, sec_list, ftypestr, p_size_set, param_set, data_dir,all_states_names_list,kin_models_inds], f)
+    print (hocmodel_name)
+    with open(hocmodel_name, 'wb') as f:  # Python 3: open(..., 'wb')
+        pkl.dump([all_params_non_global_list_non_flat, modelFile, base_p, available_mechs, reversals, reversals, cs_names,comp_mechs, g_globals, nglobals_flat, sec_list, ftypestr, p_size_set, param_set, data_dir,all_states_names_list,kin_models_inds], f)
 
 
-    params_m, runModel_hoc_object = proc_add_param_to_hoc_for_opt(all_params_non_global_list_non_flat, modelFile,
-                                                                  base_p, available_mechs, reversals, reversals,
-                                                                  cs_names, comp_mechs, g_globals, nglobals_flat,
-                                                                  sec_list, ftypestr, p_size_set, param_set, data_dir,all_states_names_list,kin_models_inds)
+    params_m, runModel_hoc_object = proc_add_param_to_hoc_for_opt(all_params_non_global_list_non_flat, modelFile,base_p, available_mechs, reversals, reversals,cs_names, comp_mechs, g_globals, nglobals_flat,sec_list, ftypestr, p_size_set, param_set, data_dir,all_states_names_list,kin_models_inds)
 
     # subprocess.call("matlab -nosplash -nodisplay -nodesktop -r \"ProcAddParamToHocForOpt()\"",shell=True);
     # subprocess.call('matlab -nosplash -nodisplay -nodesktop -r \"ProcAddParamToHocForOpt(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)\"' % (all_params_non_global_flat, modelFile, base_p, available_mechs, reversals,reversals, cs_names, comp_mechs, g_globals, nglobals_flat, sec_list, ftypestr,p_size_set, param_set),shell=True);
@@ -641,7 +639,7 @@ def parse_models():
     call_to_deriv_str_cu = output[1]
     call_to_break_str_cu = output[2]
     call_to_break_dv_str_cu = output[3]
-
+    
     output = get_topo()
     n_segs = output[0]
     n_segs_mat = [x + 1 for x in n_segs]
@@ -727,7 +725,7 @@ def write_stim(rec_sites,seg_start,seg_end):
     stim_fn_nrn = nrn.h.stimFile
     ext = stim_fn_nrn[-3:]
     if ext == 'csv':
-        stims = np.genfromtxt(stim_fn_nrn,delimiter=',')
+        stims = np.genfromtxt(stim_fn_nrn,delimiter=' ')
         stims = stims.transpose()
     else:
         tmp = nrn.h.stims
@@ -739,7 +737,7 @@ def write_stim(rec_sites,seg_start,seg_end):
 
         np.savetxt(stim_outfn, stims[0], fmt="%f",delimiter=',',newline=',')
     else:
-        np.savetxt(stim_outfn, stims.transpose(), fmt="%f",delimiter=',')
+        np.savetxt(stim_outfn, stims, fmt="%f",delimiter=',',newline=',')
     times_fn_nrn = nrn.h.timesFile
     ext = times_fn_nrn[-3:]
     if ext == 'csv':
@@ -754,13 +752,13 @@ def write_stim(rec_sites,seg_start,seg_end):
     #writing stim_meta  1 - &stim.NStimuli 2 stim.Nt 3 &stim.comp  4 stim.loc  5 stim.area,
     stim_meta_outfn =  data_dir + 'Stim_meta.csv'
     stim_meta_dict = OrderedDict()
-    stim_meta_dict['NStimuli'] = len(rec_sites)
+    stim_meta_dict['NStimuli'] = int(nrn.h.ntraces)
     stim_meta_dict['Nt'] = len(times)
     comp_ind = index_containing_substring(sec_list,rec_sites[0])
     stim_meta_dict['comp'] = comp_ind
     st_start = seg_start[comp_ind]
     st_end = seg_end[comp_ind]
-    stim_ind =int(math.ceil((st_end - st_start)*nrn.h.stLoc))
+    stim_ind =int(math.ceil((st_end - st_start)*nrn.h.stLoc))+1
     stim_meta_dict['loc'] = stim_ind
     nrn.h("access " + rec_sites[0])
     st_area = nrn.h.area(nrn.h.stLoc)
@@ -861,6 +859,7 @@ def write_all_models_cuh(c_parsed_folder, n_total_states, NX, aux, bool_model, n
         f.write('#define NPARAMS ' + str(n_params) + '\n\n')
     else:
         f.write('#define NPARAMS ' + str(0) + '//actually zero\n\n')
+    f.write('#define NTRACES ' + str(int(nrn.h.ntraces)) + '\n')
     # kinetics
     if has_kinetics:
         f.write('#define NKIN_STATES ' + str(len(kin_indices)) + '\n')
@@ -1067,7 +1066,7 @@ def expand_ilp_macros(file_name, other_file_names, ilpn, out_file_name):
         curr_line_i_tmp = [1 if re.search('#define.*' + all_in_macros[i - 1], line) else 0 for line in all_lines]
         #print 'tmp'
 
-        tmp1 = filter(lambda x: x != 0, curr_line_i_tmp)
+        tmp1 = list(filter(lambda x: x != 0, curr_line_i_tmp))
         if (len(tmp1) > 0):
             tmp2 = curr_line_i_tmp.index(tmp1[0])
             curr_line_i = tmp2
@@ -1091,7 +1090,7 @@ def expand_ilp_macros(file_name, other_file_names, ilpn, out_file_name):
                 lines[curr_call_i[j - 1]] = lines[curr_call_i[j - 1]][
                                             :lines[curr_call_i[j - 1]].find('SUPERILPMACRO') - 1] + expanded
         else:
-            print "what to do?"
+            print("what to do?")
     put_lines(out_file_name, lines)
 
 
@@ -1117,7 +1116,7 @@ def tail_end(f, n_params, call_to_init_str_cu, call_to_deriv_str_cu, call_to_bre
     f.write('\n#endif')
     f.close()
 
-    print 'Finished writing AllModels.h,cpp,cu,cuh'
+    print('Finished writing AllModels.h,cpp,cu,cuh')
 
     params_m_per_seg = []
     params_m = np.array(params_m)
@@ -1132,7 +1131,7 @@ def tail_end(f, n_params, call_to_init_str_cu, call_to_deriv_str_cu, call_to_bre
     params_m_per_seg[cm_zeros, :] = np.zeros(params_m_per_seg[cm_zeros, :].shape)
     all_segs = np.sum(n_segs_mat)
     if np.floor(all_segs / WARPSIZE) != all_segs / WARPSIZE:
-        print 'we have a non WARPSIZE multiple number of segs'
+        print('we have a non WARPSIZE multiple number of segs')
         exit(12345)
     nilp = all_segs / WARPSIZE
     if (split_flg==0):
@@ -1145,13 +1144,13 @@ def tail_end(f, n_params, call_to_init_str_cu, call_to_deriv_str_cu, call_to_bre
         tmp3 = tmp[:set_params_line_i[-1]] + tmp2 + tmp[set_params_line_i[-1] + 1:]
     else:
         tmp3 = tmp
-        tmp3[3] = '#define ILP' + str(nilp)
+        tmp3[3] = '#define ILP' + str(int(nilp))
     put_lines(vs_dir + '/CudaStuffBasex.cu', tmp3)
     expand_ilp_macros(vs_dir + '/CudaStuffBasex.cu', ['./CParsed/AllModels.cuh'], nilp,
                       vs_dir + '/CudaStuff.cu')  # for some reason it was using allmodels.cuh which we should not anymore
-    params_m_mat = sio.loadmat(baseDir + '/Data/ParamsMForC.mat')
-    params_m_mat['param_m'] = params_m.astype(float)
-    sio.savemat(baseDir + '/Data/ParamsMForC.mat', params_m_mat)
+    #params_m_mat = sio.loadmat(baseDir + '/Data/ParamsMForC.mat')
+    #params_m_mat['param_m'] = params_m.astype(float)
+    #sio.savemat(baseDir + '/Data/ParamsMForC.mat', params_m_mat)
     if has_f:
         fn = baseDir + '/Data/rhsFromNeuron.dat'
         f = open(fn, 'w')
@@ -1162,7 +1161,7 @@ def tail_end(f, n_params, call_to_init_str_cu, call_to_deriv_str_cu, call_to_bre
         f.write(nd.astype(float))
         f.close()
 
-    print 'Finished NMODLtoC_Main.'
+    print ('Finished NMODLtoC_Main.')
 
 
 def write_all_models_cu(c_parsed_folder, reversals_names, reversals_vals, gglobals_flat, gglobals_vals, nglobals_flat,
@@ -1875,7 +1874,7 @@ def handle_initial_block(lines, model_name, states_params_str, states_params_str
     if 'eca' in states_params_str and 'cai' not in writes:
         if einit == 1:
             #lines.insert(0, 'eca = ktf/2 *log(DEF_cao / cai)')
-            lines.insert(0, 'eca = ktf/2 *log(cao / cai)')
+            lines.insert(0, 'eca = ktf/2 *log(DEF_cao / cai)')
         else:
             lines.insert(0, 'eca =DEF_eca2')
 
@@ -2016,7 +2015,7 @@ def handle_deriv_block(mod_fn, lines, model_name, states_params_str, states, loc
     if (cai_ind != -1):
         if eadvance == 1:
             #tmp_lines_cu.insert((len(tmp_lines_cu)-1) ,'eca = ktf/2 *log(DEF_cao / cai);')
-            tmp_lines_cu.insert((len(tmp_lines_cu) - 1), 'eca = ktf/2 *log(cao / cai);')
+            tmp_lines_cu.insert((len(tmp_lines_cu) - 1), 'eca = ktf/2 *log(DEF_cao / cai);')
         else:
             tmp_lines_cu.insert((len(tmp_lines_cu) - 1), 'eca = DEF_eca2;')
     tmp_lines_cu = [s + '\n' for s in tmp_lines_cu]
@@ -2055,7 +2054,7 @@ def handle_breakpoint_block(mod_fn, lines, model_name, states_params_str, ranges
         lines = lines[start + 1:end]
     solve_line_ind = index_containing_substring(lines, 'SOLVE')
     if solve_line_ind < 0:
-        print 'no solve in breakpoint'
+        print('no solve in breakpoint')
     else:
         [first, rest] = lines[solve_line_ind].strip(' \t').split(' ', 1)
         if "METHOD" in rest:
@@ -2066,7 +2065,7 @@ def handle_breakpoint_block(mod_fn, lines, model_name, states_params_str, ranges
             solve_what = rest
             solve_method = "None"
         if (solve_method != 'cnexp') | (solve_method != 'sparse'):
-            print 'Solve method not cnexp/sparse! in ' + model_name
+            print ('Solve method not cnexp/sparse! in ' + model_name)
         del lines[solve_line_ind]
     lines = [re.sub('\s*', '', s) for s in lines]
     if 'eca' in states_params_str and 'cai' not in writes:
@@ -2090,7 +2089,7 @@ def handle_breakpoint_block(mod_fn, lines, model_name, states_params_str, ranges
         lines_c = f.read().splitlines()
     c_start_line = index_containing_substring(lines_c, 'static double _nrn_current')
     if c_start_line == -1:
-        print "cant find a function in .c file"
+        print ("cant find a function in .c file")
     for i, x in enumerate(lines_c):
         lines_c[i] = re.sub('_threadargsproto_', ' ', x)
         lines_c[i] = re.sub('_threadargs_', ' ', x)
@@ -2276,7 +2275,7 @@ def handle_neuron_block(lines):
 
             # print currglobal
         else:
-            print 'unknown' + currline
+            print('unknown' + currline)
     return [suffix, currglobal, Useion, NSC, reads, writes, ranges]
 
 
@@ -2328,7 +2327,7 @@ def handle_state_block(lines,writes):
         all_state_line = ''.join(all_state_line)
         all_state_line = all_state_line[:-1]
         all_state_line_seg = ''
-        for x in xrange(0, len(states)):
+        for x in range(0, len(states)):
             if states[x] in not_states:
                 all_state_line_seg = all_state_line_seg + states[x] + '[seg] ,'
             else:
@@ -2575,7 +2574,7 @@ def parse_mod_proc(mod_fn,lines, all_param_line_declare, globals, all_params_lin
         if 'static int' in tmp:
             c_start_line = start_ind
     if c_start_line == -1:
-        print "cant find a function in .c file"
+        print ("cant find a function in .c file")
     for i, x in enumerate(lines_c):
         lines_c[i] = re.sub('_threadargsproto_', ' ', x)
         lines_c[i] = re.sub('_threadargs_', ' ', x)
@@ -2649,12 +2648,12 @@ def parse_mod_proc(mod_fn,lines, all_param_line_declare, globals, all_params_lin
 
 def printMatrix(testMatrix):
     for row in testMatrix:
-        print row
+        print (row)
 
 
 def add_model_name_to_function(input, src, trg):
     output = input
-    if isinstance(input, basestring):
+    if isinstance(input, str):
         for j in range(len(src)):
             output = re.sub(r'(^|\W)(' + src[j] + ')(\W)', r'\1' + trg[j] + r'\3', output)
     else:
@@ -2669,7 +2668,7 @@ def remove_globals_recalculation(input, nglobals):
     for i in range(len(input)):
 
         if output[i]:
-            if isinstance(input[i], basestring):
+            if isinstance(input[i], str):
                 for g in nglobals:
                     output[i] = re.sub('(^|\W)' + g + '\W*=.*?;', '/* removed ' + g + ' recalculation */', output[i])
             else:
@@ -2680,7 +2679,7 @@ def replace_pow(input):
     output = input
     for i in range(len(input)):
         curr_str = input[i]
-        if isinstance(curr_str, basestring):
+        if isinstance(curr_str, str):
             output[i] = curr_str.replace('pow','powf')
             ind = curr_str.find('^')
             input[i].replace('}', ';}')
@@ -2702,7 +2701,7 @@ def file_to_list_no_comments(FN):
     indices = [i for i, x in enumerate(lines) if re.search('.*:.*', x)]
     for i in indices:
         lines[i] = lines[i].split(':', 1)[0]
-    lines = filter(lambda a: a.find(':') == -1, lines)
+    lines = list(filter(lambda a: a.find(':') == -1, lines))
     comment_block_start = index_containing_substring(lines, 'COMMENT')
     comment_block_end = index_containing_substring(lines, 'ENDCOMMENT')
     if comment_block_start != -1:
@@ -2799,14 +2798,14 @@ def add_params_to_func_call(input, func_names, input_vars_c, all_param_line_call
 def runPyNeuroGPU():
     if (os.path.exists(run_dir)):
         shutil.rmtree(run_dir + '/')
-    print vs_root
-    print run_dir
+    print (vs_root)
+    print (run_dir)
     shutil.copytree(vs_root, run_dir)
     if (os.path.exists(run_dir + "/Data")):
         shutil.rmtree(run_dir + "/Data")
     os.makedirs(run_dir + "/Data")
     temp = data_dir + 'BasicConst*.csv'
-    print temp
+    print (temp)
     for file in glob.glob(temp):
         print(file)
         shutil.copy(file, run_dir + "/Data/")
@@ -2815,14 +2814,14 @@ def runPyNeuroGPU():
 
     shutil.copy(data_dir + "/Sim.csv", run_dir + "/Data/")
     # shutil.copy(data_dir+'Stim.dat',run_dir +"/Data/")
-    shutil.copy(data_dir + 'StimF.dat', run_dir + "/Data/")
+    #shutil.copy(data_dir + 'StimF.dat', run_dir + "/Data/")
     shutil.copy(data_dir + 'Stim_raw.csv', run_dir + "/Data/")
     shutil.copy(data_dir + 'times.csv', run_dir + "/Data/")
     shutil.copy(data_dir + 'Stim_meta.csv', run_dir + "/Data/")
 
     for filename in glob.glob(os.path.join('./CParsed/', '*.*')):
         shutil.copy(filename, run_dir + "/NeuroGPU6/")
-    shutil.copy(data_dir + 'try.bat', run_dir)
+#    shutil.copy(data_dir + 'try.bat', run_dir)
 def linux_packing():
     file_for_linux = ['kernel.cu','MainC.cu','Makefile','Util.cu','Util.h','CudaStuff.cu','CudaStuff.cuh']
     if (os.path.exists(unix_dir)):
@@ -2832,13 +2831,13 @@ def linux_packing():
     os.makedirs(src_loc)
     for fn in file_for_linux:
         fn = vs_root + '/NeuroGPU6/' +fn
-        print fn
+        print(fn)
         shutil.copy(fn, src_loc)
     if (os.path.exists(unix_dir + "/Data")):
         shutil.rmtree(unix_dir + "/Data")
     os.makedirs(unix_dir + "/Data")
     temp = data_dir + 'BasicConst*.csv'
-    print temp
+    print (temp)
     for file in glob.glob(temp):
         print(file)
         shutil.copy(file, unix_dir + "/Data/")
@@ -2847,7 +2846,7 @@ def linux_packing():
 
     shutil.copy(data_dir + "/Sim.csv", unix_dir + "/Data/")
     # shutil.copy(data_dir+'Stim.dat',run_dir +"/Data/")
-    shutil.copy(data_dir + 'StimF.dat', unix_dir + "/Data/")
+    #shutil.copy(data_dir + 'StimF.dat', unix_dir + "/Data/")
     shutil.copy(data_dir + 'Stim_raw.csv', unix_dir + "/Data/")
     shutil.copy(data_dir + 'times.csv', unix_dir + "/Data/")
     shutil.copy(data_dir + 'Stim_meta.csv', unix_dir + "/Data/")
@@ -2855,6 +2854,17 @@ def linux_packing():
         shutil.copy(filename, src_loc)
 
 
+# ========================================================================
+# AllParams_refence.csv generation utility function
+def make_allparams_reference():
+    ref_file = data_dir + '/AllParams_reference.csv'
+    allparams = data_dir + '/AllParams.csv'
+    old_ref_exists = os.path.exists(ref_file)
+    new_ref_exists = os.path.exists(allparams)
+    if old_ref_exists and new_ref_exists:
+        os.system('rm ' + ref_file)
+        os.system('cp ' + allparams + ' ' + ref_file)
+# ========================================================================
 
 
 def main():
@@ -2863,11 +2873,23 @@ def main():
     global vs_dir
     global vs_root
     nrn.h.load_file(1, modelFile)
+    if not os.path.exists(data_dir):
+        os.makedirs(data_dir)
 
     vs_dir = nrn.h.base + '/VS/pyNeuroGPU_win/NeuroGPU6'
     vs_root = nrn.h.base + '/VS/pyNeuroGPU_win/'
     baseDir = nrn.h.base
     vs_root = baseDir + '/VS/pyNeuroGPU_win/'
+
+    # -----------------------------------------------------------------------------------------
+    # nrn.h.base = "C:/Users/mdera/OneDrive/Desktop/Neuro/NeuroGPU_Base"
+    nrn.h.base = "C:/Users/Maxwell Chen/Desktop/NeuroGPU/NeuroGPU_Base"
+    vs_dir = nrn.h.base + '/VS/pyNeuroGPU_win/NeuroGPU6'
+    vs_root = nrn.h.base + '/VS/pyNeuroGPU_win/'
+    baseDir = nrn.h.base
+    vs_root = baseDir + '/VS/pyNeuroGPU_win/'
+    # -----------------------------------------------------------------------------------------
+
     # thread = nrn_dll_sym('nrn_threads', ctypes.POINTER(NrnThread))
     sec_list = create_sec_list()
     rec_sites = write_sim()
@@ -2885,11 +2907,14 @@ def main():
 
 
     write_stim(rec_sites,seg_start,seg_end)
-    print "done with parse_models"
-
+    print ("done with parse_models")
+    
     # def tail_end(f, n_params, call_to_init_str_cu, call_to_deriv_str_cu, call_to_break_str_cu, call_to_break_dv_str_cu,params_m, n_segs_mat, cm_vec, vs_dir, has_f, nd, nrhs):
     runPyNeuroGPU()
     linux_packing()
+    make_allparams_reference()
+    print('created new reference file')
+
 
 
 if __name__ == '__main__':
