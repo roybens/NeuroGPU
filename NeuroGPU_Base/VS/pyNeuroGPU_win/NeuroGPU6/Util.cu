@@ -1,21 +1,21 @@
-
 #include "Util.h"
-#include "H5Cpp.h"
 //#include "CudaStuff.cuh"
 #define checkCudaErrors(val)           check ( (val), #val, __FILE__, __LINE__ )
 
-#ifdef OLD_HEADER_FILENAME
-#include <iostream.h>
-#else
 #include <iostream>
-#endif
 
-#define UNIX false
+#include "H5Cpp.h"
+
 #if defined(unix) || defined(__unix__) || defined(__unix)
-#define UNIX true
+#define UNIX_VERSION true
+#else
+#define UNIX_VERSION false
 #endif
 
 using namespace H5;
+using std::endl;
+using std::cout;
+const H5std_string  datasetname( "Data" );
 
 MYFTYPE  maxf(MYFTYPE  a, MYFTYPE  b) {
 	if (a>b)
@@ -452,22 +452,22 @@ double diffclock(clock_t clock1, clock_t clock2)
 }
 
 void SaveArrayToFile(const char* FN, const int N, const double* Arr) {
-	printf("printing %s size is %d\n", FN, N);
-	const int prec = 3;
+    const int prec = 3;
     
-    if (UNIX) {
-		H5File* file = new H5File( FN, H5F_ACC_TRUNC );
-        hsize_t maxdims[2] = {H5S_UNLIMITED, H5S_UNLIMITED};
-        int RANK = 1;
+    if (UNIX_VERSION) {
+        printf("SaveArrayToFile UNIX Version\n");
+		const H5std_string  FILE_NAME( FN );
+        H5File file( FILE_NAME, H5F_ACC_TRUNC );
+        int RANK = 2;
         hsize_t dimsf[2] = {1, N};
-        static const char datasetname[] = "dset";
-
-        DataSpace dataSpace(RANK, dimsf, maxdims);
+        
+        DataSpace dataspace(RANK, dimsf);
         FloatType datatype(PredType::NATIVE_DOUBLE);
         datatype.setOrder(H5T_ORDER_LE);
-        DataSet dataset = file->createDataSet(datasetname, datatype, dataSpace);
+        DataSet dataset = file.createDataSet(datasetname, datatype, dataspace);
         dataset.write(Arr, PredType::NATIVE_DOUBLE );
     } else {
+        printf("SaveArrayToFile w/o HDF5\n");
         FILE *file = fopen(FN, "wb");
         if (file) {
             fwrite(&N, sizeof(int), 1, file);
@@ -479,17 +479,39 @@ void SaveArrayToFile(const char* FN, const int N, const double* Arr) {
         }
         fclose(file);
     }
-    
-   
+
 }
 void SaveArrayToFile(const char* FN, const int N, const float* Arr) {
-	printf("converting %s to double\n", FN);
-	double* arr_dbl = (double*) malloc(N * sizeof(double));
-	const int prec = 3;
-	for (int i = 0; i < N; i++) {
-		arr_dbl[i] = (double)Arr[i];
-	}
-	SaveArrayToFile(FN, N, arr_dbl);
+    printf("converting %s to double\n", FN);
+    double* arr_dbl = (double*) malloc(N * sizeof(double));
+    const int prec = 3;
+    for (int i = 0; i < N; i++) {
+        arr_dbl[i] = (double)Arr[i];
+    }
+    SaveArrayToFile(FN, N, arr_dbl);
+}
+
+double * ReadArrayFromFile(const char* FN) {
+    const H5std_string  FILE_NAME( FN );
+    H5File file( FN, H5F_ACC_RDONLY );
+    DataSet dataset = file.openDataSet( datasetname );
+    DataSpace dataspace = dataset.getSpace();
+    hsize_t dims_out[2];
+    int ndims = dataspace.getSimpleExtentDims( dims_out, NULL);
+    printf("dimensions are %d by %d\n", dims_out[0], dims_out[1]);
+    double* data_out = (double*)malloc(sizeof(double)*dims_out[0]*dims_out[1]);
+    if (data_out == NULL) {
+        printf("Malloc Error in ReadArrayFromFile");
+        throw "Malloc Error in ReadArrayFromFile";
+    }
+    dataset.read( data_out, PredType::NATIVE_DOUBLE, H5S_ALL, H5S_ALL );
+    
+    for (int j = 0; j < dims_out[0]; j++) {
+        for (int i = 0; i < dims_out[1]; i++)
+            cout << data_out[j*dims_out[1] + i] << " ";
+            cout << endl;
+    }
+    return data_out;
 }
 
 MYFTYPE* transposeMat(MYFTYPE* Arr, MYDTYPE width, MYDTYPE length) {
