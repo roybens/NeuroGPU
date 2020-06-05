@@ -254,14 +254,9 @@ ALL_LDFLAGS += $(addprefix -Xlinker ,$(EXTRA_LDFLAGS))
 INCLUDES  :=  -I../../common/inc
 
 # HDF5
-HDF5I := -I/usr/common/software/hdf5-parallel/1.10.1/pgi/include -I/usr/common/software/cuda/10.2.89/include -I/usr/common/software/cuda/10.2.89/include -I/usr/common/software/mvapich2/2.3.2/pgi/19.10/cuda/10.2.89/include
-# HDF5L := -I/usr/common/software/mvapich2/2.3.2/pgi/19.10/cuda/10.2.89/include -L/usr/common/software/mvapich2/2.3.2/pgi/19.10/cuda/10.2.89/lib -lmpicxx -L/usr/common/software/mvapich2/2.3.2/pgi/19.10/cuda/10.2.89/lib -L/usr/common/software/hdf5-parallel/1.10.1/pgi/lib /usr/common/software/hdf5-parallel/1.10.1/pgi/lib/libhdf5_hl_cpp.a /usr/common/software/hdf5-parallel/1.10.1/pgi/lib/libhdf5_cpp.a /usr/common/software/hdf5-parallel/1.10.1/pgi/lib/libhdf5_hl.a /usr/common/software/hdf5-parallel/1.10.1/pgi/lib/libhdf5.a -L/opt/esslurm/lib64 -lz -ldl -lm -lmpi
-# HDF5L := -I/usr/common/software/mvapich2/2.3.2/pgi/19.10/cuda/10.2.89/include -L/usr/common/software/mvapich2/2.3.2/pgi/19.10/cuda/10.2.89/lib -lmpicxx -lmpi -L/usr/common/software/hdf5-parallel/1.10.1/pgi/lib /usr/common/software/hdf5-parallel/1.10.1/pgi/lib/libhdf5_hl_cpp.a /usr/common/software/hdf5-parallel/1.10.1/pgi/lib/libhdf5_cpp.a /usr/common/software/hdf5-parallel/1.10.1/pgi/lib/libhdf5_hl.a /usr/common/software/hdf5-parallel/1.10.1/pgi/lib/libhdf5.a -L/opt/esslurm/lib64 -lz -ldl -lm
+HDF5 := -I/usr/common/software/hdf5-parallel/1.10.1/pgi/include -I/usr/common/software/cuda/10.2.89/include -I/usr/common/software/cuda/10.2.89/include -I/usr/common/software/mvapich2/2.3.2/pgi/19.10/cuda/10.2.89/include
 
-HDF5LI := -I/usr/common/software/cuda/10.2.89/include
-HDF5L := -L/usr/common/software/hdf5-parallel/1.10.1/pgi/lib /usr/common/software/hdf5-parallel/1.10.1/pgi/lib/libhdf5_hl_cpp.a /usr/common/software/hdf5-parallel/1.10.1/pgi/lib/libhdf5_cpp.a /usr/common/software/hdf5-parallel/1.10.1/pgi/lib/libhdf5_hl.a /usr/common/software/hdf5-parallel/1.10.1/pgi/lib/libhdf5.a -L/opt/esslurm/lib64 -lz -ldl -lm -I/usr/common/software/mvapich2/2.3.2/pgi/19.10/cuda/10.2.89/include -L/usr/common/software/mvapich2/2.3.2/pgi/19.10/cuda/10.2.89/lib -lmpicxx -lmpi
-
-HDF5L2 := -L/usr/common/software/hdf5-parallel/1.10.1/pgi/lib -L/usr/common/software/mvapich2/2.3.2/pgi/19.10/cuda/10.2.89/lib
+HDF52 := -L/usr/common/software/hdf5-parallel/1.10.1/pgi/lib -lhdf5_hl_cpp -lhdf5_cpp -lhdf5_hl -lhdf5 -L/opt/esslurm/lib64 -lz -ldl -lm -I/usr/common/software/mvapich2/2.3.2/pgi/19.10/cuda/10.2.89/include -L/usr/common/software/mvapich2/2.3.2/pgi/19.10/cuda/10.2.89/lib -lmpicxx -lmpi
 
 
 ################################################################################
@@ -312,7 +307,7 @@ CudaStuff.o:CudaStuff.cu AllModels.cuh
 AllModels.o:AllModels.cu 
 	$(EXEC) $(NVCC) $(INCLUDES) $(ALL_CCFLAGS) $(GENCODE_FLAGS) -o $@ -c $<
 Util.o:Util.cu Util.h
-	$(EXEC) $(NVCC) $(INCLUDES) $(HDF5I) $(ALL_CCFLAGS) -o $@ -c $<
+	$(EXEC) $(NVCC) $(INCLUDES) $(HDF5) $(ALL_CCFLAGS) -o $@ -c $<
 
 MainC.o:MainC.cu Util.h
 	$(EXEC) $(NVCC) $(INCLUDES) $(ALL_CCFLAGS) $(GENCODE_FLAGS) -o $@ -c $<
@@ -322,7 +317,7 @@ kernel.o:kernel.cu
 
 neuroGPU: AllModels.o kernel.o MainC.o  Util.o CudaStuff.o
 #neuroGPU: kernel.o MainC.o  Util.o CudaStuff.o
-	$(EXEC) $(NVCC) $(ALL_LDFLAGS) $(GENCODE_FLAGS) $(HDF5LI) $(HDF5LI) -o $@ $+ $(HDF5L) $(LIBRARIES)
+	$(EXEC) $(NVCC) $(ALL_LDFLAGS) $(GENCODE_FLAGS) -o $@ $+ $(HDF52)
 	$(EXEC) mkdir -p ../bin/
 	$(EXEC) cp $@ ../bin/
 $(info "printing ccflags")
