@@ -42,7 +42,7 @@ run_dir = '../bin'
 orig_volts_fn = data_dir + './exp_data.csv' #ORIG volts
 vs_fn = model_dir + 'Data/VHotP'
 times_file_path = model_dir + 'Data/times.csv'
-nstims = 8
+nstims = 2
 target_volts = np.genfromtxt(orig_volts_fn)
 times =  np.cumsum(np.genfromtxt(times_file_path,delimiter=','))
 nCpus =  multiprocessing.cpu_count()

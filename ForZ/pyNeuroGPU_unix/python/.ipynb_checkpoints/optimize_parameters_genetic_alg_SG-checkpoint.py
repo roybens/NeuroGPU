@@ -1,6 +1,6 @@
 import bluepyopt as bpop
 import bluepyopt.deapext.algorithms as algo
-import neurogpu_multistim_evaluator_SG_Split as hoc_ev
+import neurogpu_multistim_evaluator_par as hoc_ev
 import pickle
 import time
 import numpy as np
@@ -47,7 +47,7 @@ def main():
     evaluator = hoc_ev.neurogpu_multistim_evaluator()
     algo._update_history_and_hof = my_update
     algo._record_stats = my_record_stats
-    opt = bpop.optimisations.DEAPOptimisation(evaluator,seed=1178, offspring_size=10000,  eta=20, mutpb=0.3, cxpb=0.7, hof = tools.ParetoFront())
+    opt = bpop.optimisations.DEAPOptimisation(evaluator,seed=1178, offspring_size=1000,  eta=20, mutpb=0.3, cxpb=0.7, hof = tools.ParetoFront())
     #
     if (cp_true ==True):
         pop, hof, log, hst = opt.run(max_ngen=3, cp_filename=cp_file, cp_frequency=1,continue_cp=True)

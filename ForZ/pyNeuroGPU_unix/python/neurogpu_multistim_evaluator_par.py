@@ -1,7 +1,5 @@
 import os
-
 import numpy as np
-import os
 import subprocess
 import shutil
 import bluepyopt as bpop
@@ -9,25 +7,19 @@ import struct
 import time
 import pandas as pd
 import efel_ext
-import efel_ext_old
-
-import time
+import efel_ext_old # to run a check based on inital algo
 import glob
 import ctypes
 import matplotlib.pyplot as plt
 import bluepyopt.deapext.algorithms as algo
 from extractModel_mappings_linux import   allparams_from_mapping
 import multiprocessing
-from multiprocessing import Process
-#from multiprocessing import Pool
 import h5py
 from concurrent.futures import ProcessPoolExecutor as Pool
-import hdf5maker as h5help
-from joblib import Parallel, delayed, parallel_backend
 
 
 model_dir = '../'
-param_file ='./params/gen.csv'               #What is gen.csv? does it matter?
+param_file ='./params/gen.csv'               
 data_dir = model_dir+'/Data/'
 params_table = data_dir + 'opt_table.csv'    #bbp template ORIG
 run_dir = '../bin'
@@ -42,26 +34,20 @@ nCpus =  multiprocessing.cpu_count()
 #times = times[:-1]
 
 old_eval = algo._evaluate_invalid_fitness
-def nrnMread(fileName):
-    f = open(fileName, "rb")
-    nparam = struct.unpack('i', f.read(4))[0]
-    typeFlg = struct.unpack('i', f.read(4))[0]
-    return np.fromfile(f,np.double)
+
 
 def nrnMreadH5(fileName):
     f = h5py.File(fileName,'r')
     dat = f['Data'][:][0]
     return np.array(dat)
 
-
-
-
-
 class neurogpu_multistim_evaluator(bpop.evaluators.Evaluator):
     def __init__(self):
         #for fl in glob.glob(vs_fn + "*"):
         #    os.remove(fl)
-        """Constructor"""
+        """Constructor
+        initialize parameters for BPOP, BPOP uses self.params to produce indviduals with genetic alg,
+        self.objectives also go into BPOP"""
         def read_with_genfromtxt(path, type=float, delim=None):
             r = np.genfromtxt(path, dtype=type, delimiter=delim)
             if np.shape(r) == ():
@@ -78,12 +64,6 @@ class neurogpu_multistim_evaluator(bpop.evaluators.Evaluator):
             params.append(bpop.parameters.Parameter('p' + str(i), bounds=(self.pmin[i],self.pmax[i])))
 
         self.params = params
-
-        #self.opt_stim_list = read_with_genfromtxt(opt_stim_name_list, str, ' ')
-        # ['mean_frequency', 'adaptation_index', 'time_to_first_spike', 'mean_AP_amplitude', 'ISI values', 'spike_half_width']
-        # ['voltage_base','steady_state_voltage_stimend','decay_time_constant_after_stim']
-
-
 
         self.objectives = [bpop.objectives.Objective('voltage_base_1'),\
                            bpop.objectives.Objective('AP_amplitude_1'),\
@@ -166,22 +146,25 @@ class neurogpu_multistim_evaluator(bpop.evaluators.Evaluator):
             ind.fitness.values = fit
         return len(invalid_ind)
 
-    def run_model(self,stim_ind,params):
+    def run_model(self,stim_ind):
+        """ Run NeuroGPU source code in executable file using subprocess
+        Parameters
+        --------------------
+        stim_ind: parameter passed into exe for naming conventions 
+        
+        Return
+        --------------------
+        subprocess instance that terminates when the process is finished
+        """
         print("running stim ind" + str(stim_ind))
         volts_fn = vs_fn + str(stim_ind) + '.h5'
-        #volts_fn = vs_fn + str(stim_ind) + '.dat'  
-
         if os.path.exists(volts_fn):
             os.remove(volts_fn)
-            #pass
-        #path = "./sleep.sh"
-        #p_object = subprocess.Popen(path, shell=True)
         p_object = subprocess.Popen(['../bin/neuroGPU',str(stim_ind)])
-        #p_object = subprocess.Popen(['../bin/neuroGPU2',str(stim_ind)])
-
         return p_object
 
     def info(self,title):
+        """logging for multiprocessing"""
         print(title)
         print('module name:', __name__)
         print('parent process:', os.getppid())
@@ -190,11 +173,18 @@ class neurogpu_multistim_evaluator(bpop.evaluators.Evaluator):
     def eval_stim_parallel(self,idx):
         '''Function to be mapped in parallel, prints process ID then does
         normal prep for shaping volts and then ships it off to be evaled
-        with function call to efel_ext'''
+        with function call to efel_ext
+        Parameters
+        --------------------
+        idx: int corresponding to stim number
+        
+        Return
+        --------------------
+        scores from efel evaluator with shape (individuals, 8stims*7scorefunctions)
+        
+        '''
         self.info("evaling stim: " + str(idx))
         nindv = len(self.param_values)
-        # fn = vs_fn + str(idx) + '.dat'
-        # curr_volts = nrnMread(fn)
         fn = vs_fn + str(idx) + '.h5'
         curr_volts = nrnMreadH5(fn)
         Nt = int(len(curr_volts)/nindv)
@@ -241,13 +231,11 @@ class neurogpu_multistim_evaluator(bpop.evaluators.Evaluator):
         nindv = len(param_values)
         self.param_values = param_values
         allparams = allparams_from_mapping(param_values)
-        h5help.makeallparams()
-
         scores=[]
         start_time_sim = time.time()
         p_objects = []
         for i in range(nstims):
-            p_objects.append(self.run_model(i,param_values))
+            p_objects.append(self.run_model(i))
         for i in range(nstims):
             p_obj = p_objects[i]
             p_obj.wait()
@@ -262,10 +250,12 @@ class neurogpu_multistim_evaluator(bpop.evaluators.Evaluator):
             shaped_volts = np.reshape(curr_volts, [nindv, Nt])
             scores = efel_ext.eval([target_volts[0]], shaped_volts,times)
         else:
+            #mutiprocessing parallel map
             with Pool(nCpus) as p:
                 flattened_scores = p.map(self.eval_stim_parallel, np.arange(nstims))
             flattened_scores = list(flattened_scores)
             scores = flattened_scores[0]
+            #reshape check
             print(np.array(scores).shape)
             for stim in flattened_scores[1:]:
                 for ind in range(len(stim)):

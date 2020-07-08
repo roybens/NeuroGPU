@@ -266,10 +266,29 @@ MYFTYPE * ReadArrayFromFile(const char* FN, int *ans ) {
 
 
 MYFTYPE* ReadAllParams(const char* FN, MYDTYPE NParams, MYDTYPE Nx, int  &nSets) {
-	/* Just reads raw h5 data and returns it, as it is already formatted correctly in allparams h5*/
-	//printf("readingggg params %s\n",FN);
-    MYFTYPE* test = ReadArrayFromFile("../Data/AllParams.h5", &nSets);
-	return test;
+    MYFTYPE* ans;
+    //printf("readingggg params %s\n",FN);
+    FILE *fl = fopen(FN, "r"); // YYY add FILE*
+    if (!fl) {
+        printf("Failed to read allparmas.csv\n");
+        return NULL;
+    }
+    char line[1009600];
+    fgets(line, sizeof(line), fl);
+    ReadIntFromCSV(line, &nSets, 1);
+    //printf("reading params nsets is %d\n",nSets);
+    ans = (MYFTYPE *)malloc(Nx * NParams * nSets * sizeof(MYFTYPE));
+    //printf("Nx %d nparams %d,nSets%d\n",Nx,NParams,nSets);
+    //printf("malloc size is %d\n",Nx*NParams*nSets*sizeof(MYFTYPE));
+    for (int i = 0; i<nSets; i++) {
+        fgets(line, sizeof(line), fl);
+        //printf("a%d.adreess is %d",i,i*Nx*NParams);
+        ReadFloatWithEFromCSV(line, &ans[i*Nx*NParams], Nx*NParams);
+        //printf("\n");
+    }
+    //printf("done filling params");
+    fclose(fl);
+    return ans;
 }
 MYFTYPE* ReadInitStates(const char *FN, MYDTYPE NStates, MYDTYPE Nx, MYDTYPE  nSets) {
 	/* TODO: edit this file opening stuff based on how the init states file is named */
