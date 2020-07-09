@@ -43,39 +43,46 @@ void ReadShortFromCSV(char* line, short *ans, int n) {
 	unsigned short tmp;
 	if (n == 1) {
 		tok = strtok(line, ",");
-		printf("%s\n", tok);
+		//printf("%s\n", tok);
 		tmp = atoi(tok);
-		*ans = (unsigned short)tmp;
+		*ans = (short)tmp;
 	}
 	else {
-
-		for (tok = strtok(line, ","); tok != NULL; tok = strtok(NULL, ","))
-		{
+	
+		for (tok = strtok(line, ","); tok != NULL; tok = strtok(NULL, ",")){
+		if(count<n){
+		
 			tmp = atoi(tok);
-			ans[count++] = (unsigned short)tmp;
+			ans[count++] = (short)tmp;
+			//printf("%d-%d,-%s,** %c,%c\n",count,strlen(tok),tok,tok[0],tok[1]);
 
 		}
-	}
+		}
+		//printf("read short %d\n",count);
+		}
+	
+
 }
 void ReadIntFromCSV(char* line, int *ans, int n) {
 	int count = 0;
 	char* tok;
-	unsigned short tmp;
+	int tmp;
 	if (n == 1) {
 		tok = strtok(line, ",");
-		printf("%s\n", tok);
+		//printf("%s\n", tok);
 		tmp = atoi(tok);
 		*ans = (int)tmp;
 	}
 	else {
-
+	     
 		for (tok = strtok(line, ","); tok != NULL; tok = strtok(NULL, ","))
 		{
 			tmp = atoi(tok);
-			ans[count++] = (unsigned short)tmp;
+			ans[count++] = (int)tmp;
 
 		}
-	}
+		}
+	
 }
 
 
@@ -92,11 +99,15 @@ void ReadDoubleFromCSV(char* line, double *ans, int n) {
 
 		for (tok = strtok(line, ","); tok != NULL; tok = strtok(NULL, ","))
 		{
-			tmp = atof(tok);
-			ans[count++] = tmp;
+			if (tok[1] != '\n'){
+						tmp = atof(tok);
+					//	printf("%d-%d,-%s,** %c,%c\n",count,strlen(tok),tok,tok[0],tok[1]);
+						ans[count++] = tmp;
+						}
 
 		}
 	}
+	//printf("\ndone with readdouble\n");
 }
 void ReadFloatFromCSV(char* line, MYFTYPE *ans, int n) {
 	int count = 0;
@@ -111,8 +122,11 @@ void ReadFloatFromCSV(char* line, MYFTYPE *ans, int n) {
 
 		for (tok = strtok(line, ","); tok != NULL; tok = strtok(NULL, ","))
 		{
+		if (n>count){
 			tmp = atof(tok);
+			//printf("%d-%d,-%s,** %c,%c",count,strlen(tok),tok,tok[0],tok[1]);
 			ans[count++] = tmp;
+			}
 
 		}
 	}
@@ -183,8 +197,10 @@ void ReadFloatWithEFromCSV(char* line, MYFTYPE *ans, int n) {
 
 		for (tok = strtok(line, ","); (tok != NULL && tok[0] != '\n'); tok = strtok(NULL, ","))
 		{
+			if (n>count){
 			tmp = myatof(tok);
 			ans[count++] = tmp;
+			}
 
 		}
 	}
@@ -212,7 +228,7 @@ MYFTYPE* ReadAllParams(const char* FN, MYDTYPE NParams, MYDTYPE Nx, int  &nSets)
 		ReadFloatWithEFromCSV(line, &ans[i*Nx*NParams], Nx*NParams);
 		//printf("\n");
 	}
-	printf("done filling params");
+	//printf("done filling params");
 	fclose(fl);
 	return ans;
 }
@@ -228,7 +244,7 @@ MYFTYPE* ReadInitStates(const char *FN, MYDTYPE NStates, MYDTYPE Nx, MYDTYPE  nS
 	char line[1009600];
 	fgets(line, sizeof(line), fl);
 	ReadShortFromCSV(line, &nsetsFromFile, 1);
-	printf("nsetsfrom file is %d", nsetsFromFile);
+	//printf("nsetsfrom file is %d", nsetsFromFile);
 	if (nsetsFromFile != nSets)
 		printf("we have a problem nsets from params does not much states");
 	ans = (MYFTYPE *)malloc(Nx * NStates * nSets * sizeof(MYFTYPE));
@@ -245,8 +261,8 @@ MYFTYPE* ReadInitStates(const char *FN, MYDTYPE NStates, MYDTYPE Nx, MYDTYPE  nS
 void ReadStimData(const char* FN, Stim &stim, MYDTYPE Nx) {
 	char FileName[300];
 	//sprintf(FileName,"%s%d.dat",FN,MUL32*32);
-	sprintf(FileName, "%s.dat", FN);
-	printf("Start reading file - ReadStimData()\n");
+    
+	printf("Start reading file - %s ReadStimData() \n",FileName);
 
 	FILE *fl;
 	fl = fopen(FileName, "rb");
@@ -324,7 +340,7 @@ void ReadCSVStim(Stim &stim) {
 	//sprintf(FileName,"%s%d.dat",FN,MUL32*32);
 	FILE *fl = fopen(FileName, "r"); // YYY add FILE*
 	if (!fl) {
-		printf("Failed to read SimData\n");
+		printf("Failed to read metaStimData1\n");
 
 	}
 	char line[160000];
@@ -339,12 +355,12 @@ void ReadCSVStim(Stim &stim) {
 	stim.loc -= 1;
 	fgets(line, sizeof(line), fl);
 	ReadFloatFromCSV(line, &stim.area, 1);
-
-	sprintf(FileName, "%s", Stim_csv_raw);
-	//sprintf(FileName,"%s%d.dat",FN,MUL32*32);
+    int stim_ind;
+    cudaGetDevice(&stim_ind);
+	sprintf(FileName, "%s%d.csv", Stim_csv_raw,stim_ind);
 	FILE *f2 = fopen(FileName, "r");
 	if (!f2) {
-		printf("Failed to read SimData\n");
+		printf("Failed to read StimRaw Data2 - %s\n",FileName);
 
 	}
 
@@ -359,7 +375,7 @@ void ReadCSVStim(Stim &stim) {
 	//sprintf(FileName,"%s%d.dat",FN,MUL32*32);
 	FILE *f3 = fopen(FileName, "r"); // YYY add FILE*
 	if (!f3) {
-		printf("Failed to read SimData\n");
+		printf("Failed to read SimData3\n");
 
 	}
 	stim.durs = (MYFTYPE*)malloc(stim.Nt * sizeof(MYFTYPE));
@@ -376,7 +392,7 @@ void ReadSimData(const char* FN, MYDTYPE N, Sim &sim) {
 	//sprintf(FileName,"%s%d.dat",FN,MUL32*32);
 	FILE *fl = fopen(FileName, "r"); // YYY add FILE*
 	if (!fl) {
-		printf("Failed to read SimData\n");
+		printf("Failed to read SimData4\n");
 
 	}
 
@@ -435,7 +451,7 @@ void SaveArrayToFile(const char* FN, const int N, const double* Arr) {
 	fclose(file);
 }
 void SaveArrayToFile(const char* FN, const int N, const float* Arr) {
-	printf("printing %s size is %d\n", FN, N);
+	printf("\nprinting %s size is %d\n", FN, N);
 	double* arr_dbl;
 	arr_dbl =(double*) malloc(N * sizeof(double));
 	const int prec = 3;
@@ -583,13 +599,13 @@ bool IsAppBuiltAs64()
 }
 int* checkPeerAccess(int &n_p2p) {
 	n_p2p = 0;
-	printf("[%s] - Starting...\n");
+	//printf("[%s] - Starting...\n");
 	if (!IsAppBuiltAs64())
 	{
-		printf("%s is only supported with on 64-bit OSs and the application must be built as a 64-bit target.  Test is being waived.\n");
+	//	printf("%s is only supported with on 64-bit OSs and the application must be built as a 64-bit target.  Test is being waived.\n");
 	}
 	// Number of GPUs
-	printf("Checking for multiple GPUs...\n");
+	//printf("Checking for multiple GPUs...\n");
 	int gpu_n;
 	CUDA_RT_CALL(cudaGetDeviceCount(&gpu_n));
 	printf("CUDA-capable device count: %i\n", gpu_n);
@@ -619,7 +635,7 @@ int* checkPeerAccess(int &n_p2p) {
 			gpuid[gpu_count++] = i;
 		}
 
-		printf("> GPU%d = \"%15s\" %s capable of Peer-to-Peer (P2P)\n", i, prop[i].name, (IsGPUCapableP2P(&prop[i]) ? "IS " : "NOT"));
+	//	printf("> GPU%d = \"%15s\" %s capable of Peer-to-Peer (P2P)\n", i, prop[i].name, (IsGPUCapableP2P(&prop[i]) ? "IS " : "NOT"));
 	}
 
 	// Check for TCC for Windows
@@ -634,7 +650,7 @@ int* checkPeerAccess(int &n_p2p) {
 
 	}
 	// Check possibility for peer access
-	printf("\nChecking GPU(s) for support of peer to peer memory access...\n");
+	//printf("\nChecking GPU(s) for support of peer to peer memory access...\n");
 	int can_access_peer;
 	int* p2pCapableGPUs; // We take only 1 pair of P2P capable GPUs
 	p2pCapableGPUs = (int*)malloc(gpu_n * sizeof(int));
@@ -646,9 +662,7 @@ int* checkPeerAccess(int &n_p2p) {
 	{
 		p2pCapableGPUs[i] = -1;
 		CUDA_RT_CALL(cudaDeviceCanAccessPeer(&can_access_peer, gpuid[i], 0));
-		printf("> Peer access from %s (GPU%d) -> %s (GPU%d) : %s\n", prop[gpuid[i]].name, gpuid[i],
-			prop[0].name, gpuid[0],
-			can_access_peer ? "Yes" : "No");
+	//	printf("> Peer access from %s (GPU%d) -> %s (GPU%d) : %s\n", prop[gpuid[i]].name, gpuid[i],prop[0].name, gpuid[0],can_access_peer ? "Yes" : "No");
 		if (can_access_peer)
 		{
 			p2pCapableGPUs[i] = gpuid[i];
@@ -667,19 +681,22 @@ void enablePeerAccess(int* p2pCapableGPUs, int np2p) {
 	int gpuid[64];
 	// Use all  of p2p to 0 capable GPUs detected.
 	int gpu_n;
-	int index = 0;
+	//int index = 0;
 	CUDA_RT_CALL(cudaGetDeviceCount(&gpu_n));
 	for (int i = 1; i < np2p; i++) {
-		printf("in enablep2p i is %d p2p is %d\n", i, np2p);
+	//	printf("in enablep2p i is %d p2p is %d\n", i, np2p);
 		gpuid[i] = p2pCapableGPUs[i];
 		CUDA_RT_CALL(cudaGetDeviceProperties(&prop[i], gpuid[i]));
-		printf("Enabling peer access from GPU%d to GPU%d...\n", gpuid[i], 0);
+	//	printf("Enabling peer access from GPU%d to GPU%d...\n", gpuid[i], 0);
 		CUDA_RT_CALL(cudaSetDevice(gpuid[i]));
 		CUDA_RT_CALL(cudaDeviceEnablePeerAccess(0, 0));
-		printf("Checking GPU%d and GPU%d for UVA capabilities...\n", gpuid[0], gpuid[i]);
+	//	printf("Checking GPU%d and GPU%d for UVA capabilities...\n", gpuid[0], gpuid[i]);
 		const bool has_uva = (prop[gpuid[0]].unifiedAddressing && prop[gpuid[i]].unifiedAddressing);
-		printf("> %s (GPU%d) supports UVA: %s\n", prop[gpuid[i]].name, gpuid[i], (prop[gpuid[i]].unifiedAddressing ? "Yes" : "No"));
+	//	printf("> %s (GPU%d) supports UVA: %s\n", prop[gpuid[i]].name, gpuid[i], (prop[gpuid[i]].unifiedAddressing ? "Yes" : "No"));
 	}
 
-	printf("leaving enablepeeraccess");
+	//printf("leaving enablepeeraccess");
+}
+int char2int(char* str){
+return atoi(str);
 }
