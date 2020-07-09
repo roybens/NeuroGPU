@@ -29,17 +29,17 @@
 #define PASLOOP 0
 
 #ifdef _WIN32
-	#define TIMES_FN "..\\Data\\RunTimes.csv"
-	#define VHOT_OUT_FN_P "..\\Data\\VHotP.dat"
-	#define AllParams_FN "..\\Data\\AllParams.csv"
-	#define InitStates_FN "..\\Data\\AllStates.csv"
-	#define BasicConstP_FN "..\\Data\\BasicConst"
-	#define ParamsMat_FN "\\..\\Data\\ParamsM"
-	#define Stim_csv_meta "..\\Data\\Stim_meta.csv"
-	#define Stim_csv_raw "..\\Data\\Stim_raw.csv"
-	#define Time_steps_FN "..\\Data\\times.csv"
-	#define Stim_FN "..\\Data\\StimF.dat"
-	#define Sim_FN "..\\Data\\Sim"
+	#define TIMES_FN "../Data/RunTimes.csv"
+	#define VHOT_OUT_FN_P "../Data/VHotP"
+	#define AllParams_FN "../Data/AllParams.csv"
+	#define InitStates_FN "../Data/AllStates.csv"
+	#define BasicConstP_FN "../Data/BasicConst"
+	#define ParamsMat_FN "../Data/ParamsM"
+	#define Stim_csv_meta "../Data/Stim_meta.csv"
+	#define Stim_csv_raw "../Data/Stim_raw"
+	#define Time_steps_FN "../Data/times.csv"
+	#define Stim_FN "../Data/StimF.dat"
+	#define Sim_FN "../Data/Sim"
 
 #else
 	#define TIMES_FN "../Data/RunTimes.csv"
@@ -161,7 +161,7 @@ void ReadStimData(const char* FN, Stim &stim,MYDTYPE Nx);
 void CreateStimData(Stim &stim);
 void ReadSimData(const char* FN,MYDTYPE N, Sim &sim);
 void ReadStimFromFile(const char* FN,Stim &stim);
-void ReadCSVStim( Stim &stim);
+void ReadCSVStim( Stim &stim,int argc);
 void FreeStimData(Stim &stim);
 void FreeSimData(Sim &sim);
 

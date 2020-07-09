@@ -334,7 +334,7 @@ void ReadStimFromFile(const char* FN, Stim &stim) {//deprecated
 	fclose(fl);
 
 }
-void ReadCSVStim(Stim &stim) {
+void ReadCSVStim(Stim &stim,int argc) {
 	char FileName[300];
 	sprintf(FileName, "%s", Stim_csv_meta);
 	//sprintf(FileName,"%s%d.dat",FN,MUL32*32);
@@ -357,7 +357,12 @@ void ReadCSVStim(Stim &stim) {
 	ReadFloatFromCSV(line, &stim.area, 1);
     int stim_ind;
     cudaGetDevice(&stim_ind);
-	sprintf(FileName, "%s%d.csv", Stim_csv_raw,stim_ind);
+	if (argc > 1) {
+		sprintf(FileName, "%s%d.csv", Stim_csv_raw, stim_ind);
+	}
+	else {
+		sprintf(FileName, "%s.csv", Stim_csv_raw);
+	}
 	FILE *f2 = fopen(FileName, "r");
 	if (!f2) {
 		printf("Failed to read StimRaw Data2 - %s\n",FileName);

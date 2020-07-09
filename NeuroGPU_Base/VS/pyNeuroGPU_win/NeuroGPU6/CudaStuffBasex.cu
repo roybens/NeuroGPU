@@ -371,7 +371,7 @@ void ReadParamsMat(const char* FN, MYFTYPE** ParamsM, MYDTYPE NParams, MYDTYPE N
 
 void initFrameWork(Stim stim, Sim sim, MYFTYPE* ParamsM, MYFTYPE* InitStatesM, HMat& InMat, MYDTYPE CompDepth, MYDTYPE CompFDepth, MYDTYPE NSets, HMat& Mat_d) {
 
-	printf("in initframework\n");
+//	printf("in initframework\n");
 	cudaError_t cudaStatus;
 	int i, j, t;
 	// For matrix -
@@ -433,7 +433,7 @@ void initFrameWork(Stim stim, Sim sim, MYFTYPE* ParamsM, MYFTYPE* InitStatesM, H
 	CUDA_RT_CALL(cudaMalloc((void**)&PXOut_d, (InMat.N + 1) * sizeof(MYSECONDFTYPE)));
 	CUDA_RT_CALL(cudaMalloc((void**)&PFOut_d, (InMat.N + 1) * sizeof(MYSECONDFTYPE)));
 	CUDA_RT_CALL(cudaThreadSynchronize());
-	printf("done with all init framework\n");
+//	printf("done with all init framework\n");
 }
 
 
@@ -568,7 +568,11 @@ void stEfork2Main(Stim stim, Sim sim, MYFTYPE* ParamsM, MYFTYPE* InitStatesM, HM
 		printf("ERR SaveArrayToFile %s\n", TIMES_FN);
 	}
 	fclose(file);
-	SaveArrayToFile(VHOT_OUT_FN_P, NSets*Nt*stim.NStimuli*sim.NRecSites, Vhots);
+    int curr_dev;
+    CUDA_RT_CALL(cudaGetDevice(&curr_dev));
+    char FileName[300];
+	sprintf(FileName, "%s%d.dat", VHOT_OUT_FN_P,curr_dev);
+	SaveArrayToFile(FileName, NSets*Nt*stim.NStimuli*sim.NRecSites, Vhots);
 }
 
 
