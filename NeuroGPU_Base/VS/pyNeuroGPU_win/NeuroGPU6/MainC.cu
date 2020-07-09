@@ -47,7 +47,7 @@ void Init(int argc){
 #endif // STIMFROMFILE
 #ifdef  STIMFROMCSV
      printf("ReadCSVStim \n");
-	ReadCSVStim(stim);
+	ReadCSVStim(stim,argc);
 
 #endif // STIMFROMFILE
 	//CreateStimData(stim);
@@ -610,15 +610,17 @@ void RunByModelP(int argc) { // YYY add void
     int np2p;
 	Init(argc);
     printf("reading file %s\n", BasicConstP_FN);
-    if(argc<=1){
-        
+/* in the case of multiple gpus working together this lines should be used
+	if(argc<=1){
+       
         p2pCapableGPUs = checkPeerAccess(np2p);
         enablePeerAccess(p2pCapableGPUs,np2p);
     }
     else{
+	*/
     p2pCapableGPUs = {&curr_dev};
     np2p = 0;
-    }
+    //}
 	stEfork2Main(stim,sim, ParamsM,InitStatesM, TheMMat, V,CompDepth,CompFDepth,NSets, p2pCapableGPUs,np2p);
 
 }
