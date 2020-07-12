@@ -404,7 +404,7 @@ def run_trans_script_gui():
     
     def translate():
         global template
-        template = base + "/scripts/pyscripts"
+        template = base + "/scripts/pyscripts/"
         template.replace('/', '\\')
         working
         src_files = os.listdir(template)
