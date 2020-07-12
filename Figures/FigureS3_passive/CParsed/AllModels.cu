@@ -1,4 +1,4 @@
-// Automatically generated CU for E:\GitHub\NeuroGPU\Figures\FigureS3_passive./runModel.hoc
+// Automatically generated CU for E:\GitHub\NeuroGPU\Figures\FigureS3_passive_mew./runModel.hoc
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
