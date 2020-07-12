@@ -6,10 +6,10 @@ nparams = 3
 psize = 1024 
 ntraces = 1 
 v_init = -80 
-calc_eca = 0 
+calc_eca = 1 
 
 
-   stLoc = 0.3 
+   stLoc = 0.46 
 base = "E:/GitHub/NeuroGPU/NeuroGPU_Base" 
 paramsFile = "./params/params.csv" 
 stimFile = "./Stims/Step_8_.csv" 
