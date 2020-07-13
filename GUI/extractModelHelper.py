@@ -416,9 +416,13 @@ def run_trans_script_gui():
                 shutil.copy(full_file_name, working)
         create_topo()
         os.chdir(working)
-        p = Popen("python extractModel.py", stdout=PIPE, stderr=STDOUT, shell=True)
-        for line in iter(p.stdout.readline, ""):
-            print (line)
+        result = run(['python','extractModel.py'], stdout=subprocess.PIPE)
+        for line in result.stdout:
+            print(result.stdout)
+            result.stdout.flush()
+        # p = Popen("python extractModel.py", stdout=PIPE, stderr=STDOUT, shell=True)
+        # for line in iter(p.stdout.readline, ""):
+        #     print (line)
     button = widgets.Button(description="Translate to CUDA Code", width="100%")
     display(button)
 
