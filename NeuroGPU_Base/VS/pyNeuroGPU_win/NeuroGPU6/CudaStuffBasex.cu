@@ -1,7 +1,7 @@
 #include "CudaStuff.cuh"
 //#include "AllModels.cu"
 #include "AllModels.cuh"
-#define ILP12
+#define ILP16
 __constant__ MYFTYPE cCm[NSEG];
 __constant__ MYSECONDFTYPE cE[NSEG];
 __constant__ MYSECONDFTYPE cF[NSEG];
