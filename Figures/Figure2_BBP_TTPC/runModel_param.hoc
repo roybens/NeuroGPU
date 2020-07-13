@@ -9,11 +9,11 @@ v_init = -80
 calc_eca = 1 
 
 
-   stLoc = 0.31 
+   stLoc = 0.24 
 base = "E:/GitHub/NeuroGPU/NeuroGPU_Base" 
 paramsFile = "./params/params.csv" 
 stimFile = "./Stims/Step_8_.csv" 
-modelFile = ".//mosinit.hoc" 
+modelFile = "./mosinit.hoc" 
 timesFile = "./Stims/times.csv" 
 
 transvec = new Vector(nparams)

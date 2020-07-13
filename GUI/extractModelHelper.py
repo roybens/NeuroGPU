@@ -7,16 +7,24 @@ base = '../NeuroGPU_Base'
 import ipywidgets as widgets
 import shutil
 
-
-
+import sys
+import io
+import time
 # for Python3
 
 from tkinter import *
-
+import numpy as np
 from tkinter.filedialog import askopenfilename
 from tkinter.filedialog import askdirectory
 from ipywidgets import *
-
+from distutils.dir_util import copy_tree
+import os
+import os.path
+from ipywidgets import FloatProgress
+from IPython.display import display
+import re
+#from subprocess import Popen, PIPE, STDOUT, run
+import subprocess
 
 def test():
     root = Tk()
@@ -75,7 +83,7 @@ def init_working_dir():
 
     button.on_click(on_button_clicked_1)
 
-    from distutils.dir_util import copy_tree
+
 
     button = widgets.Button(description="Generate/Rest Working Files:", layout=widgets.Layout(width='300px'))
     display(button)
@@ -114,20 +122,13 @@ def init_compile_mod():
     show_comp_button()
 
 
-import os
-import os.path
-from ipywidgets import FloatProgress
-from IPython.display import display
-from subprocess import Popen, PIPE, STDOUT
-
-
 def compile():
     global template
     global modpath
     os.chdir(modpath)
     if os.path.exists("pas.mod"):
         os.remove("pas.mod")
-    p = Popen('compile.bat', stdout=PIPE, stderr=STDOUT, shell=True)
+    p = subprocess.Popen('compile.bat', stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
     f = FloatProgress(min=0, max=100, description='Compiling Mod files...')
     display(f)
     path, dirs, files = os.walk(modpath).next()
@@ -154,9 +155,6 @@ def show_comp_button():
 
 # SELECT INPUT FILES
 
-from IPython.display import display
-from ipywidgets import *
-from shutil import copyfile
 
 global file_values
 file_values = ["", "", "", ""]
@@ -252,9 +250,7 @@ def integrate1():
     print("Input files successfully integrated")
 
 
-import numpy as np
-from IPython.display import display
-from ipywidgets import *
+
 
 global run_var_values
 run_var_values = ["", "", "", "", "", ""]
@@ -325,14 +321,13 @@ def integrate2():
     replace_line('runModel_topo.hoc', 6, 'v_init = %s \n' % run_var_values[4].value)
     replace_line('runModel_topo.hoc', 7, 'calc_eca = %s \n' % run_var_values[5].value)
     print("Input files successfully integrated")
-import re
+
 
 def select_inj_site():
     global working
     working.replace('/', '\\')
     os.chdir(working)
-    aa = ''
-    p = Popen("python test2.py", stdout=PIPE, stderr=None, shell=True)
+    p = subprocess.Popen("python test2.py", stdout=subprocess.PIPE, stderr=None, shell=True)
     for line in iter(p.stdout.readline, ""):
         #print(line)
         if "PRINTING COMPARTMENT" in str(line):
@@ -344,7 +339,7 @@ def select_inj_site():
     #print(line)
     result = []
     prefix = ''
-    import re
+
 
     dot_ind = x[0].find('.')
     if dot_ind != -1:
@@ -415,11 +410,23 @@ def run_trans_script_gui():
                 print (full_file_name)
                 shutil.copy(full_file_name, working)
         create_topo()
-        os.chdir(working)
-        result = run(['python','extractModel.py'], stdout=subprocess.PIPE)
-        for line in result.stdout:
-            print(result.stdout)
-            result.stdout.flush()
+        # os.chdir(working)
+        # result = run(['python','extractModel.py'], stdout=PIPE)
+        
+        command = 'python extractModel.py'
+        filename = 'test.log'
+        with io.open(filename, 'wb') as writer, io.open(filename, 'rb', 1) as reader:
+            process = subprocess.Popen(command, stdout=writer, stderr=writer)
+            while process.poll() is None:
+                sys.stdout.write(reader.read())
+                time.sleep(0.5)
+    # Read the remaining
+            sys.stdout.write(reader.read())
+        # line = result.stdout.readline()
+        # while line:
+        #     print(line)
+        #     line = result.stdout.readline()
+            
         # p = Popen("python extractModel.py", stdout=PIPE, stderr=STDOUT, shell=True)
         # for line in iter(p.stdout.readline, ""):
         #     print (line)
