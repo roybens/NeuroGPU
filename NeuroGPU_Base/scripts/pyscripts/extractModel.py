@@ -1999,6 +1999,8 @@ def handle_deriv_block(mod_fn, lines, model_name, states_params_str, states, loc
     # add_params_to_func_call(input,func_names,input_vars_c,all_param_line_call):
     call_to_deriv = 'DerivModel_' + model_name + '(dt, V[seg]' + states_params_str_seg + ');';
     tmp_lines_cu = [re.sub('\t', '   ', s) for s in tmp_lines_cu]
+    if '{'  in tmp_lines_cu[0]:
+        tmp_lines_cu = tmp_lines_cu[1:]
     has_any_func_call = False
     for i in range(len(tmp_lines_cu)):
         for j in range(len(func_names)):
@@ -2414,11 +2416,11 @@ def handle_mod_function(lines, model_name):
         func_names_cu.append('Cu' + output[0])
         c_func_lines.append(output[1])
         input_vars.append(output[2])
-        c_func_lines_cu.append(copy.deepcopy(output[1]))
-
-        for i in range(len(c_func_lines_cu)):
-            c_func_lines_cu[i][0] = (
-                        '__device__ ' + re.sub(output[0], 'Cu' + output[0] + '_' + model_name, output[1][0]))
+        tmp_cu_func_lines = copy.deepcopy(output[1])
+        tmp_cu_func_lines[0] = '__device__ ' + re.sub(output[0], 'Cu' + output[0] + '_' + model_name, output[1][0])
+        c_func_lines_cu.append(tmp_cu_func_lines)
+        #for i in range(len(c_func_lines_cu)):
+         
     return [func_names, c_func_lines, input_vars, c_func_lines_cu]
 
 
@@ -2665,14 +2667,14 @@ def add_model_name_to_function(input, src, trg):
 
 def remove_globals_recalculation(input, nglobals):
     output = input
-    for i in range(len(input)):
-
-        if output[i]:
-            if isinstance(input[i], str):
-                for g in nglobals:
-                    output[i] = re.sub('(^|\W)' + g + '\W*=.*?;', '/* removed ' + g + ' recalculation */', output[i])
-            else:
-                output[i] = remove_globals_recalculation(output[i], nglobals)
+#    for i in range(len(input)):
+#
+#        if output[i]:
+#            if isinstance(input[i], str):
+#                for g in nglobals:
+#                    output[i] = re.sub('(^|\W)' + g + '\W*=.*?;', '/* removed ' + g + ' recalculation */', output[i])
+#            else:
+#                output[i] = remove_globals_recalculation(output[i], nglobals)
     return output
 
 def replace_pow(input):
