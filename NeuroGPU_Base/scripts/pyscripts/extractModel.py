@@ -2877,9 +2877,9 @@ def make_allparams_reference():
     allparams = data_dir + '/AllParams.csv'
     old_ref_exists = os.path.exists(ref_file)
     new_ref_exists = os.path.exists(allparams)
-    if old_ref_exists and new_ref_exists:
+    if old_ref_exists:
         os.system('rm ' + ref_file)
-        os.system('cp ' + allparams + ' ' + ref_file)
+    os.system('cp ' + allparams + ' ' + ref_file)
 # ========================================================================
 def run_extract(to_map):
     global map_flag
