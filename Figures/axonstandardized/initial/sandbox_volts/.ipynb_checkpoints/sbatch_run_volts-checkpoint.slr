@@ -1,0 +1,46 @@
+#!/bin/bash
+#SBATCH --qos=regular
+#SBATCH --time=00:30:00
+#SBATCH --nodes=1
+#SBATCH --constraint=haswell
+#SBATCH --array 1-300
+
+# change array 1-n, where n is the number of stims
+
+echo "start-A "`hostname`" task="${job_sh}
+echo  'cscratch='${CSCRATCH}
+echo  'scratch='${SCRATCH}
+echo SLURM_ARRAY_TASK_ID=${SLURM_ARRAY_TASK_ID}
+echo SLURM_JOBID=${SLURM_JOBID}
+srcDir=`pwd`
+
+sleep 10
+c='' # change c to folder name
+coreN=${c}'/sandbox/'${SLURM_ARRAY_JOB_ID}
+arrIdx=${SLURM_ARRAY_TASK_ID}
+wrkDir=${SCRATCH}/data_axonrun/runs/${coreN}-${arrIdx}
+echo 'my wrkDir='${wrkDir}
+mkdir -p ${wrkDir}
+
+cp -rp ../model ${wrkDir}/run_model
+
+cd ${wrkDir}/run_model
+
+cp ../../../params/params.hdf5 params/params.hdf5
+cp ../../../stims/stims.hdf5 stims/stims.hdf5
+
+echo inventore at start
+pwd
+ls -l *
+
+nrnivmodl
+
+export HDF5_USE_FILE_LOCKING=FALSE
+export OMP_NUM_THREADS=1
+
+source activate .env
+
+srun -n 64 python run_stim_hdf5.py $arrIdx
+
+# mv slurm log to final destination - it is alwasy a job-array
+mv $srcDir/slurm-${SLURM_ARRAY_JOB_ID}_${SLURM_ARRAY_TASK_ID}.out .

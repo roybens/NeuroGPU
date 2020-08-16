@@ -1,0 +1,114 @@
+objref transvec, stim, stimtime
+transvec = new Vector()
+
+proc distribute2(){local x localobj sl
+
+        strdef stmp,distfunc,mech
+        sl = $o1
+        mech = $s2
+        distfunc = $s3
+		//print distfunc
+        //sprint(distfunc,"%%s %s(%%f) = %s",mech, distfunc)
+		//print distfunc
+        forsec sl for(x) {
+			secname()
+            //print (stmp,distfunc,secname(),x,distance(x))
+			//print stmp
+            execute(stmp)
+        }
+    }
+
+proc tfunc(){local dumm
+	//PC.take("TASK",currSim,&dumm,transvec,stimFile,timesFile,outFile)
+	counter=0
+	//printf("calculating %s \n",stimFile)
+	strdef tmp_str,const_str
+	const_str = "(0.0 * %g + 1.0)*"
+	//transvec.printf()
+	    // Initialise distance function to soma
+
+  forsec cell.all {
+		Ra = transvec.x(0)
+	}
+
+  forsec cell.all {
+    cm = transvec.x(1)
+  }
+
+  forsec cell.all {
+		g_pas = transvec.x(2)
+	}
+
+  forsec cell.all {
+    e_pas = transvec.x(3)
+  }
+
+	//basal Ihbar
+	distribute2(cell.basal,"gIhbar_Ih","0")
+
+	//apical NaTs2
+	distribute2(cell.apical,"gNaTs2_tbar_NaTs2_t","0")
+
+	//apical SKv3
+	distribute2(cell.apical,"gSKv3_1bar_SKv3_1","0")
+
+	//apical Ihbar
+	distribute2(cell.apical,"gIhbar_Ih","0")
+
+	//apical Imbar
+	distribute2(cell.apical,"gImbar_Im","0")
+
+	//axonal NaTa
+	distribute2(cell.axonal,"gNaTa_tbar_NaTa_t","0")
+
+	//axonal K_Tstbar
+	distribute2(cell.axonal,"gK_Tstbar_K_Tst","0")
+
+	//axonal CaDynamics
+	distribute2(cell.axonal,"gamma_CaDynamics_E2","0")
+
+	//axonal Nap_Et2bar
+	distribute2(cell.axonal,"gNap_Et2bar_Nap_Et2","0")
+
+	//axonal SK_E2bar
+	distribute2(cell.axonal,"gSK_E2bar_SK_E2","0")
+
+	//axonal Ca_HVAbar
+	distribute2(cell.axonal,"gCa_HVAbar_Ca_HVA","0")
+
+	//axonal K_Pstbar
+	distribute2(cell.axonal,"gK_Pstbar_K_Pst","0")
+
+	//axonal SKv3_1bar
+	distribute2(cell.axonal,"gSKv3_1bar_SKv3_1","0")
+
+	//axonal decay_CaDynamics
+	distribute2(cell.axonal,"decay_CaDynamics_E2","0")
+
+	//axonal Ca_LVAstbar
+	distribute2(cell.axonal,"gCa_LVAstbar_Ca_LVAst","0")
+
+	//somatic gamma_CaDynamics
+	distribute2(cell.somatic,"gamma_CaDynamics_E2","0")
+
+	//somatic gSKv3_1bar_SKv3_1
+	distribute2(cell.somatic,"gSKv3_1bar_SKv3_1","0")
+
+	//somatic gSK_E2bar_SK_E2
+	distribute2(cell.somatic,"gSK_E2bar_SK_E2","0")
+
+	//somatic gCa_HVAbar_Ca_HVA
+	distribute2(cell.somatic,"gCa_HVAbar_Ca_HVA","0")
+
+	//somatic gNaTs2_tbar_NaTs2_t
+	distribute2(cell.somatic,"gNaTs2_tbar_NaTs2_t","0")
+
+	//somatic gIhbar_Ih
+	distribute2(cell.somatic,"gIhbar_Ih","0")
+
+	//somatic decay_CaDynamics_E2
+	distribute2(cell.somatic,"decay_CaDynamics_E2","0")
+
+	//somatic gCa_LVAstbar_Ca_LVAst
+	distribute2(cell.somatic,"gCa_LVAstbar_Ca_LVAst","0")
+}

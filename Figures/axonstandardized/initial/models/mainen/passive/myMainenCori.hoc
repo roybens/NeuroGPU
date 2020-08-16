@@ -1,0 +1,190 @@
+
+objref sh, axonal, dendritic, dendritic_only
+create soma
+access soma
+
+n_axon_seg = 5
+create soma,iseg,hill,myelin[2],node[2]
+
+
+//RBS code starts here
+
+load_file("./fitCori.hoc")
+
+//RBS code ends
+// --------------------------------------------------------------
+// Axon geometry
+//
+// Similar to Mainen et al (Neuron, 1995)
+// --------------------------------------------------------------
+
+proc create_axon() {
+
+  create iseg,hill,myelin[n_axon_seg],node[n_axon_seg]
+
+  soma {
+    equiv_diam = sqrt(area(.5)/(4*PI))
+
+    // area = equiv_diam^2*4*PI
+  }
+  if (numarg()) equiv_diam = $1
+
+  iseg {                // initial segment between hillock + myelin
+     L = 15
+     nseg = 5
+     diam = equiv_diam/10        // see Sloper and Powell 1982, Fig.71
+  }
+
+  hill {                
+    L = 10
+    nseg = 5
+    diam(0:1) = 4*iseg.diam:iseg.diam
+  }
+
+  // construct myelinated axon with nodes of ranvier
+
+  for i=0,n_axon_seg-1 {
+    myelin[i] {         // myelin element
+      nseg = 5
+      L = 100
+      diam = iseg.diam         
+    }
+    node[i] {           // nodes of Ranvier
+      nseg = 1
+      L = 1.0           
+      diam = iseg.diam*.75       // nodes are thinner than axon
+    }
+  }
+
+  soma connect hill(0), 0.5
+  hill connect iseg(0), 1
+  iseg connect myelin[0](0), 1
+  myelin[0] connect node[0](0), 1
+
+  for i=0,n_axon_seg-2  { 
+      node[i] connect myelin[i+1](0), 1 
+      myelin[i+1] connect node[i+1](0), 1
+  }
+}
+
+// --------------------------------------------------------------
+// Spines
+// --------------------------------------------------------------
+
+      // Based on the "Folding factor" described in
+      // Jack et al (1989), Major et al (1994)
+      // note, this assumes active channels are present in spines 
+      // at same density as dendrites
+
+spine_dens = 1
+      // just using a simple spine density model due to lack of data on some 
+      // neuron types.
+
+spine_area = 0.83 // um^2  -- K Harris
+
+proc add_spines() { local a
+  forsec $o1 {
+    a =0
+    for(x) a=a+area(x)
+
+    F = (L*spine_area*spine_dens + a)/a
+
+    L = L * F^(2/3)
+    for(x) diam(x) = diam(x) * F^(1/3)
+  }
+}
+
+
+proc init_cell() {
+  // passive
+  forall {
+    insert pas
+    Ra = ra 
+    cm = c_m 
+    g_pas = 1/rm
+    e_pas = v_init
+  }
+
+  // exceptions along the axon
+  forsec "myelin" cm = cm_myelin
+  forsec "node" g_pas = g_pas_node
+
+  // na+ channels
+  forall insert na
+  forsec dendritic gbar_na = gna_dend
+  forsec "myelin" gbar_na = gna_dend
+  hill.gbar_na = gna_node
+  iseg.gbar_na = gna_node
+  forsec "node" gbar_na = gna_node
+
+  // kv delayed rectifier channels
+  iseg { insert kv  gbar_kv = gkv_axon }
+  hill { insert kv  gbar_kv = gkv_axon }
+  soma { insert kv  gbar_kv = gkv_soma }
+
+  // dendritic channels
+  forsec dendritic {
+	insert km    gbar_km  = gkm_dend
+    insert kca   gbar_kca = gkca_dend
+    insert ca    gbar_ca = gca_dend
+    insert cad
+  }
+
+  soma {
+    gbar_na = gna_soma
+    gbar_km = gkm_soma
+    gbar_kca = gkca_soma
+    gbar_ca = gca_soma
+  }
+
+ 
+  forall if(ismembrane("k_ion")) ek = Ek
+  forall if(ismembrane("na_ion")) {
+    ena = Ena
+    // seems to be necessary for 3d cells to shift Na kinetics -5 mV
+    //vshift_na = -5 //RBS i changed it earlier
+  }
+  forall if(ismembrane("ca_ion")) {
+    eca = Eca
+    ion_style("ca_ion",0,1,0,0,0)
+    //vshift_ca = 0
+  }
+  finitialize(v_init)
+}
+
+
+proc load_3dcell() {
+
+// $s1 filename
+
+  aspiny = 0
+  forall delete_section()
+  xopen($s1)
+  access soma
+
+  dendritic = new SectionList()
+
+  // make sure no compartments exceed 50 uM length
+  forall {
+    diam_save = diam
+    n = L/50
+    nseg = n + 1
+    if (n3d() == 0) diam = diam_save
+    dendritic.append()
+  }    
+
+  dendritic_only = new SectionList()
+  forsec dendritic dendritic_only.append()
+  soma  dendritic_only.remove()
+
+  create_axon()
+
+  
+
+  if (!aspiny) add_spines(dendritic_only,spine_dens)
+  
+
+
+}
+
+load_3dcell("./j4a.hoc") 

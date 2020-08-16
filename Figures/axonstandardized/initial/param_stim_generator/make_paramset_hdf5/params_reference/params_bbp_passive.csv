@@ -1,0 +1,5 @@
+Param name,Base value,Lower bound,Upper bound,Unit,Unit type,Const,Base variation estimation,Description,index in vector
+Ra,100,10,1000,,Uniform,Open,n/a,n/a,1
+cm,1,0.1,10,,Uniform,Open,n/a,n/a,2
+g_pas,3.00E-05,0.000003,0.0003,,Uniform,Open,n/a,n/a,3
+e_pas,-75,-7.5,-750,,Uniform,Open,n/a,n/a,4

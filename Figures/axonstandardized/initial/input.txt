@@ -1,0 +1,11 @@
+user=dnavani
+model=mainen
+peeling=passive
+nSubZones=100
+nPerSubZone=10
+norm=100
+dx=0.001
+seed=1846353
+SCRATCH=TEST
+num_volts=300
+params=1, 4, 21, 24

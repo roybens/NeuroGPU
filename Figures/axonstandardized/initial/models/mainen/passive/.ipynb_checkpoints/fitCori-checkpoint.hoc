@@ -1,0 +1,75 @@
+objref transvec, stim, stimtime
+transvec = new Vector()
+celsius   = 37
+Ek=-90
+Ena=60
+Eca=140
+vshift_na=-5
+v_init=-70
+
+rm=30000
+c_m = 0.75
+cm_myelin = 0.04
+g_pas_node = 0.02
+
+gna_dend = 0
+gna_node = 0
+gna_soma = 0
+gkv_axon = 0
+gkv_soma = 0
+gca = 0
+gkm = 0
+gkca = 0
+ra = 150	
+
+vshift_na = -5//transvec.x(13)
+gca_soma = 0
+gkm_soma = 0
+gkca_soma = 0
+gca_dend = 0
+gkm_dend = 0
+gkca_dend = 0
+depth_cad = 0.1
+
+print "The non passive params are:"
+print "gna_dend:", gna_dend
+print "gna_node:", gna_node
+print "gna_soma:", gna_soma
+print "gkv_axon:", gkv_axon
+print "gkv_soma:", gkv_soma
+print "gca:", gca
+print "gkm:", gkm
+print "gkca:", gkca
+print "gca_soma:", gca_soma
+print "gkm_soma:", gkm_soma
+print "gkca_soma:", gkca_soma
+print "gkca_soma:", gkca_soma
+print "gca_dend:", gca_dend
+print "gkm_dend:", gkm_dend
+print "gkca_dend:", gkca_dend
+print "depth_cad:", depth_cad
+print "---------------------------"
+
+print "The passive params are:"
+print "c_m:", c_m
+print "cm_myelin:", cm_myelin
+print "g_pas_node:", g_pas_node
+print "ra:", ra
+print "rm:", rm
+print "---------------------------"
+
+
+proc tfunc(){local dumm
+	c_m =transvec.x(0)
+	cm_myelin = transvec.x(1)
+	g_pas_node = transvec.x(2)
+	ra = transvec.x(3)
+	rm=transvec.x(4)
+
+	init_cell()
+	global_ra = ra
+}
+
+
+	
+

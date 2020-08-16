@@ -1,0 +1,56 @@
+objref transvec, stim, stimtime
+transvec = new Vector()
+
+celsius = 37
+Ek = -90
+Ena = 60
+Eca = 140
+vshift_na = -5
+v_init = -70
+
+//Passive
+c_m = 0.75
+cm_myelin = 0.04
+g_pas_node = 0.02
+ra = 150
+rm = 30000
+
+//Potassium
+gkv_axon = 2000
+gkv_soma = 200
+gkm_dend = 0.1
+gkm_soma = 0.1
+
+//Sodium
+gna_dend = 0
+gna_node = 0
+gna_soma = 0
+
+//Calcium
+gca_dend = 0
+gkca_dend = 0
+gca_soma = 0
+gkca_soma = 0
+depth_cad = 0.1
+
+proc tfunc(){local dumm
+	gna_dend=transvec.x(0)
+	gna_node=transvec.x(1)
+	gna_soma=transvec.x(2)
+	gkv_axon=transvec.x(3)
+	gkv_soma=transvec.x(4)
+	gca_dend=transvec.x(5)
+	gkm_dend=transvec.x(6)
+	gkca_dend=transvec.x(7)
+	gca_soma=transvec.x(8)
+	gkm_soma=transvec.x(9)
+	gkca_soma=transvec.x(10)
+	depth_cad=transvec.x(11)
+	
+	init_cell()
+	global_ra = ra
+}
+
+
+	
+

@@ -1,0 +1,79 @@
+strdef fitFile,timesFile,paramsFile,stimFile,outFile,modelFile
+modelFile = "./mosinit.hoc"
+timesFile = ""
+paramsFile = ""
+stimFile = ""
+outFile = ""
+ntimestep = 7600
+nparams =23
+psize =1
+ntraces =1
+objref st,stims,fin,fout,pmat,matOut,stimtime,transvec,root
+transvec = new Vector(nparams)
+fin = new File()
+fout = new File()
+//create soma
+proc runMatrix(){
+	//access soma
+	st = new IClamp(0.5)
+	st.del=0 
+	st.dur=1e9
+	printf ("$o1.nrow,$o2.nrow,$o2.ncol,%d,%d,%d",$o1.nrow,$o2.nrow,$o2.ncol)
+	matOut = new Matrix($o1.nrow,($o2.nrow*$o2.ncol))
+	for(sim=0;sim<$o1.nrow;sim+=1){
+	printf("running sim %d\n",sim)
+		counter=0
+		transvec = $o1.getrow(sim)
+		print "calling tfunc"
+		tfunc()
+		print gNaTs2_tbar_NaTs2_t
+		for(i=0;i<stims.nrow;i+=1){
+
+			finitialize(v_init)
+			for(tt =0;tt<stimtime.ncol;tt+=1){
+
+				dt  =stimtime.x(0,tt)
+
+				st.amp = stims.x(i,tt)
+
+				matOut.x(sim,counter)=v(0.5)
+				counter+=1
+				fadvance()
+			}
+		}
+	}
+	printf("finshed run matrix %s\n",outFile)
+}
+proc writeMatrix(){localobj temp
+	fout.wopen($s1)
+	temp = new Vector()
+	for (i=0;i<$o2.nrow;i+=1){
+		temp = $o2.getrow(i)
+		temp.printf(fout, "%f ")
+	}
+	fout.close()
+}
+proc readCSVMatrix(){
+	fin = new File($s1)
+	fin.ropen()
+	print $o2.nrow()
+	$o2.scanf(fin,$o2.nrow(),$o2.ncol())
+	fin.close()
+}
+print "loading model file"
+load_file(modelFile)
+root = new SectionRef()
+if (root.has_parent()){
+	print secname()
+	root = root.root()
+	}
+access root.sec
+print secname()
+stimtime = new Matrix(1,ntimestep)
+//readMatrix(timesFile,stimtime)
+pmat = new Matrix(psize,nparams)
+//readMatrix(paramsFile,pmat)
+stims = new Matrix(ntraces,ntimestep)
+//readMatrix(stimFile,stims)
+//runMatrix(pmat,stims)
+//writeMatrix(outFile,matOut)

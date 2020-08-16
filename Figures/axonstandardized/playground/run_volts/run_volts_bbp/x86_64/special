@@ -1,0 +1,13 @@
+#!/bin/sh
+if test "x${NRNHOME}" = "x" ; then
+	NRNHOME="/global/homes/z/zladd/nrn-7.6/bin"
+fi
+if test "x${NRNBIN}" = "x" ; then
+	NRNBIN="/global/homes/z/zladd/nrn-7.6/bin/x86_64/bin/"
+fi
+if test "" = "yes" ; then
+	NRNIV="${NRNBIN}nrniv.app/Contents/MacOS/nrniv"
+else
+	NRNIV="${NRNBIN}nrniv"
+fi
+"${NRNIV}" -dll "/global/cscratch1/sd/zladd/genetic_alg/genetic_alg/bbp_sodium_with_subzones_data/run_volts_bbp/x86_64/.libs/libnrnmech.so" "$@"

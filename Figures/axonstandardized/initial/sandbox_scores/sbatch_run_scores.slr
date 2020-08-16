@@ -1,0 +1,57 @@
+#!/bin/bash
+#SBATCH --qos=regular
+#SBATCH --time=00:05:00
+#SBATCH --nodes=1
+#SBATCH --constraint=haswell
+#SBATCH --mail-user=hkyoung@berkeley.edu
+#SBATCH --mail-type=ALL
+
+
+# change array 1-n, where n is the number of stims
+
+input="input.txt"
+while IFS= read -r line
+do
+    IFS='=' read -ra inputs <<< "$line"
+    name="${inputs[0]}"
+    data="${inputs[1]}"
+    printf -v $name "$data"
+done < "$input"
+
+#SBATCH --array 1-${num_scores_to_do}
+
+echo "start-A "`hostname`" task="${job_sh}
+echo  'cscratch='${CSCRATCH}
+echo  'scratch='${SCRATCH}
+echo SLURM_ARRAY_TASK_ID=${SLURM_ARRAY_TASK_ID}
+echo SLURM_JOBID=${SLURM_JOBID}
+srcDir=`pwd`
+
+sleep 10
+c="sand_${model}_${peeling}_scores" 
+coreN=${c}'/sandbox/'${SLURM_ARRAY_JOB_ID}
+arrIdx=${SLURM_ARRAY_TASK_ID}
+wrkDir=${SCRATCH}/${coreN}-${arrIdx}
+echo 'my wrkDir='${wrkDir}
+mkdir -p ${wrkDir}
+
+dirToRun='score_volts_hdf5'
+
+cp -rp ../${dirToRun} ${wrkDir}/run_score
+
+cd ${wrkDir}/run_score
+mkdir -p params
+
+cp /global/cscratch1/sd/kyoungh/paper-sp19/sandbox/run_model_BBP_passive/params/params_BBP_passive.hdf5 params/params.hdf5
+cp -rp /global/cscratch1/sd/kyoungh/sand_BBP_passive/volts/ ../../../volts
+
+echo inventore at start
+pwd
+ls -l *
+
+export OMP_NUM_THREADS=1
+
+# srun -n 64 python score_volts_hdf5.py $arrIdx
+
+# mv slurm log to final destination - it is alwasy a job-array
+mv $srcDir/slurm-${SLURM_ARRAY_JOB_ID}_${SLURM_ARRAY_TASK_ID}.out .

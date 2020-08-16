@@ -1,0 +1,113 @@
+objref transvec, stim, stimtime
+transvec = new Vector()
+
+proc distribute2(){local x localobj sl
+
+        strdef stmp,distfunc,mech
+        sl = $o1
+        mech = $s2
+        distfunc = $s3
+		//print distfunc
+        sprint(distfunc,"%%s %s(%%f) = %s",mech, distfunc)
+		//print distfunc
+        forsec sl for(x) {
+			secname()
+            sprint (stmp,distfunc,secname(),x,distance(x))
+			//print stmp
+            execute(stmp)
+        }
+    }
+
+proc tfunc(){local dumm
+	//PC.take("TASK",currSim,&dumm,transvec,stimFile,timesFile,outFile)
+	counter=0
+	//printf("calculating %s \n",stimFile)
+	strdef tmp_str,const_str, ih_const_str
+	const_str = "(0.0 * %g + 1.0)*"
+  ih_const_str = "(-0.869600 + 2.087000*exp((%g-0.000000)*0.003100))*"
+	transvec.printf()
+	    // Initialise distance function to soma
+	//basal Ihbar
+	sprint(tmp_str,"%s%f",const_str,transvec.x(0))
+	distribute2(cell.basal,"gIhbar_Ih",tmp_str)
+
+	//apical NaTs2
+	sprint(tmp_str,"%s%f",const_str,0)
+	distribute2(cell.apical,"gNaTs2_tbar_NaTs2_t",tmp_str)
+
+	//apical SKv3
+	sprint(tmp_str,"%s%f",const_str,transvec.x(1))
+	distribute2(cell.apical,"gSKv3_1bar_SKv3_1",tmp_str)
+
+	//apical Ihbar
+	sprint(tmp_str,"%s%f",ih_const_str,transvec.x(2))
+	distribute2(cell.apical,"gIhbar_Ih",tmp_str)
+
+	//apical Imbar
+	sprint(tmp_str,"%s%f",const_str,transvec.x(3))
+	distribute2(cell.apical,"gImbar_Im",tmp_str)
+
+	//axonal NaTa
+	sprint(tmp_str,"%s%f",const_str,0)
+	distribute2(cell.axonal,"gNaTa_tbar_NaTa_t",tmp_str)
+
+	//axonal K_Tstbar
+	sprint(tmp_str,"%s%f",const_str,transvec.x(4))
+	distribute2(cell.axonal,"gK_Tstbar_K_Tst",tmp_str)
+
+	//axonal CaDynamics
+	sprint(tmp_str,"%s%f",const_str,0)
+	distribute2(cell.axonal,"gamma_CaDynamics_E2",tmp_str)
+
+	//axonal Nap_Et2bar
+	sprint(tmp_str,"%s%f",const_str,0)
+	distribute2(cell.axonal,"gNap_Et2bar_Nap_Et2",tmp_str)
+
+	//axonal SK_E2bar
+	sprint(tmp_str,"%s%f",const_str,0)
+	distribute2(cell.axonal,"gSK_E2bar_SK_E2",tmp_str)
+
+	//axonal Ca_HVAbar
+	sprint(tmp_str,"%s%f",const_str,0)
+	distribute2(cell.axonal,"gCa_HVAbar_Ca_HVA",tmp_str)
+
+	//axonal K_Pstbar
+	sprint(tmp_str,"%s%f",const_str,transvec.x(5))
+	distribute2(cell.axonal,"gK_Pstbar_K_Pst",tmp_str)
+
+	//axonal SKv3_1bar
+	sprint(tmp_str,"%s%f",const_str,transvec.x(6))
+	distribute2(cell.axonal,"gSKv3_1bar_SKv3_1",tmp_str)
+
+	//axonal Ca_LVAstbar
+	sprint(tmp_str,"%s%f",const_str,0)
+	distribute2(cell.axonal,"gCa_LVAstbar_Ca_LVAst",tmp_str)
+
+	//somatic gamma_CaDynamics
+	sprint(tmp_str,"%s%f",const_str,0)
+	distribute2(cell.somatic,"gamma_CaDynamics_E2",tmp_str)
+
+	//somatic gSKv3_1bar_SKv3_1
+	sprint(tmp_str,"%s%f",const_str,transvec.x(7))
+	distribute2(cell.somatic,"gSKv3_1bar_SKv3_1",tmp_str)
+
+	//somatic gSK_E2bar_SK_E2
+	sprint(tmp_str,"%s%f",const_str,0)
+	distribute2(cell.somatic,"gSK_E2bar_SK_E2",tmp_str)
+
+	//somatic gCa_HVAbar_Ca_HVA
+	sprint(tmp_str,"%s%f",const_str,0)
+	distribute2(cell.somatic,"gCa_HVAbar_Ca_HVA",tmp_str)
+
+	//somatic gNaTs2_tbar_NaTs2_t
+	sprint(tmp_str,"%s%f",const_str,0)
+	distribute2(cell.somatic,"gNaTs2_tbar_NaTs2_t",tmp_str)
+
+	//somatic gIhbar_Ih
+	sprint(tmp_str,"%s%f",const_str,transvec.x(8))
+	distribute2(cell.somatic,"gIhbar_Ih",tmp_str)
+
+	//somatic gCa_LVAstbar_Ca_LVAst
+	sprint(tmp_str,"%s%f",const_str,0)
+	distribute2(cell.somatic,"gCa_LVAstbar_Ca_LVAst",tmp_str)
+}

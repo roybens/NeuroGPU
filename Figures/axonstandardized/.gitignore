@@ -1,0 +1,11 @@
+deletethis.py
+runs/*
+playground/runs/*
+ipcontroller.pid
+ipcontroller_config.py
+tasks.db
+gen_alg_GPU/Data/*
+./gen_alg_GPU
+*2020.pkl
+*.pkl
+*.out 

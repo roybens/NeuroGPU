@@ -1,0 +1,5 @@
+module purge && module load esslurm cuda pgi mvapich2
+module load hdf5-parallel
+module load PrgEnv-gnu/6.0.5 pmi openmpi
+module load openmpi 
+

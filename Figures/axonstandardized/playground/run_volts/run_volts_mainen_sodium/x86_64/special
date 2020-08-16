@@ -1,0 +1,13 @@
+#!/bin/sh
+if test "x${NRNHOME}" = "x" ; then
+	NRNHOME="/global/homes/k/kyungkim/nrn-7.6/bin"
+fi
+if test "x${NRNBIN}" = "x" ; then
+	NRNBIN="/global/homes/k/kyungkim/nrn-7.6/bin/x86_64/bin/"
+fi
+if test "" = "yes" ; then
+	NRNIV="${NRNBIN}nrniv.app/Contents/MacOS/nrniv"
+else
+	NRNIV="${NRNBIN}nrniv"
+fi
+"${NRNIV}" -dll "/global/cscratch1/sd/kyungkim/bbp_passive_with_subzones_data/run_volts_bbp_passive/x86_64/.libs/libnrnmech.so" "$@"

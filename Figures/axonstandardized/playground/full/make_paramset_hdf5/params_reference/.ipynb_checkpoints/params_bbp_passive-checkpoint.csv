@@ -1,0 +1,27 @@
+Param name,Base value,Lower bound,Upper bound,Unit,Unit type,Const,Base variation estimation,Description,index in vector,
+gIhbar_Ih,0.00008,0.0000008,0.008,,Uniform,Open,2,n/a,1,0
+gNaTs2_tbar_NaTs2_t,0,0,0,,Uniform,Open,3,n/a,2,0
+gSKv3_1bar_SKv3_1,0,0,0,,Uniform,Open,2,n/a,3,0
+gIhbar_Ih,0.00008,0.0000008,0.008,,Uniform,Open,3,n/a,4,0
+gImbar_Im,0,0,0,,Uniform,Open,3,n/a,5,0
+gNaTa_tbar_NaTa_t,0,0,0,,Uniform,Open,3,n/a,6,0
+gK_Tstbar_K_Tst,0,0,0,,Uniform,Open,3,n/a,7,0
+gamma_CaDynamics_E2,0,0,0,,Uniform,Open,3,n/a,8,0
+gNap_Et2bar_Nap_Et2,0,0,0,,Uniform,Open,3,n/a,9,0
+gSK_E2bar_SK_E2,0,0,0,,Uniform,Open,3,n/a,10,0
+gCa_HVAbar_Ca_HVA,0,0,0,,Uniform,Open,3,n/a,11,0
+gK_Pstbar_K_Pst,0,0,0,,Uniform,Open,3,n/a,12,0
+gSKv3_1bar_SKv3_1,0,0,0,,Uniform,Open,3,n/a,13,0
+decay_CaDynamics_E2,0,0,0,,Uniform,Open,3,n/a,14,0
+gCa_LVAstbar_Ca_LVAst,0,0,0,,Uniform,Open,3,n/a,15,0
+gamma_CaDynamics_E2,0,0,0,,Uniform,Open,3,n/a,16,0
+gSKv3_1bar_SKv3_1,0,0,0,,Uniform,Open,3,n/a,17,0
+gSK_E2bar_SK_E2,0,0,0,,Uniform,Open,3,n/a,18,0
+gCa_HVAbar_Ca_HVA,0,0,0,,Uniform,Open,3,n/a,19,0
+gNaTs2_tbar_NaTs2_t,0,0,0,,Uniform,Open,3,n/a,20,0
+gIhbar_Ih,0.00008,0.0000008,0.008,,Uniform,Open,3,n/a,21,0
+decay_CaDynamics_E2,0,0,0,,Uniform,Open,3,n/a,22,0
+gCa_LVAstbar_Ca_LVAst,0,0,0,,Uniform,Open,3,n/a,23,0
+Ra,100,1,10000,,Uniform,Open,3,n/a,24,0
+cm,1,0.01,100,,Uniform,Open,3,n/a,25,0
+g_pas,3.00E-05,0.0000003,0.003,,Uniform,Open,3,n/a,26,0

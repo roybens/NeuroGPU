@@ -1,0 +1,25 @@
+Param name,Base value,Lower bound,Upper bound,Unit,Unit type,Const,Base variation estimation,Description,index in vector,,Peeling Step
+gIhbar_Ih_basal,0.00008,0.00008,0.00008,,Uniform,Open,2,n/a,1,0,Constant
+gNaTs2_tbar_NaTs2_t_apical,0,0,0,,Uniform,Open,3,n/a,2,0,Sodium
+gSKv3_1bar_SKv3_1_apical,0.004226,0.00004226,0.4226,,Uniform,Open,2,n/a,3,0,Potassium
+gIhbar_Ih_apical,0.00008,0.00008,0.00008,,Uniform,Open,3,n/a,4,0,Passive
+gImbar_Im_apical,0.000143,0.00000143,0.0143,,Uniform,Open,3,n/a,5,0,Potassium
+gNaTa_tbar_NaTa_t_axonal,0,0,0,,Uniform,Open,3,n/a,6,0,Sodium
+gK_Tstbar_K_Tst_axonal,0.089259,0.00089259,8.9259,,Uniform,Open,3,n/a,7,0,Potassium
+gamma_CaDynamics_E2_axonal,0.00291,0.00291,0.00291,,Uniform,Open,3,n/a,8,0,Constant
+gNap_Et2bar_Nap_Et2_axonal,0,0,0,,Uniform,Open,3,n/a,9,0,Sodium
+gSK_E2bar_SK_E2_axonal,0,0,0,,Uniform,Open,3,n/a,10,0,Calcium
+gCa_HVAbar_Ca_HVA_axonal,0,0,0,,Uniform,Open,3,n/a,11,0,Calcium
+gK_Pstbar_K_Pst_axonal,0.973538,0.00973538,97.3538,,Uniform,Open,3,n/a,12,0,Potassium
+gSKv3_1bar_SKv3_1_axonal,1.021945,0.01021945,102.1945,,Uniform,Open,3,n/a,13,0,Potassium
+decay_CaDynamics_E2_axonal,287.198731,287.198731,287.198731,,Uniform,Open,3,n/a,14,0,Constant
+gCa_LVAstbar_Ca_LVAst_axonal,0,0,0,,Uniform,Open,3,n/a,15,0,Calcium
+gamma_CaDynamics_E2_somatic,0.000609,0.000609,0.000609,,Uniform,Open,3,n/a,16,0,Constant
+gSKv3_1bar_SKv3_1_somatic,0.303472,0.00303472,30.3472,,Uniform,Open,3,n/a,17,0,Potassium
+gSK_E2bar_SK_E2_somatic,0,0,0,,Uniform,Open,3,n/a,18,0,Calcium
+gCa_HVAbar_Ca_HVA_somatic,0,0,0,,Uniform,Open,3,n/a,19,0,Calcium
+gNaTs2_tbar_NaTs2_t_somatic,0,0,0,,Uniform,Open,3,n/a,20,0,Sodium
+gIhbar_Ih_somatic,0.00008,0.00008,0.00008,,Uniform,Open,3,n/a,21,0,Passive
+decay_CaDynamics_E2_somatic,210.485284,210.485284,210.485284,,Uniform,Open,3,n/a,22,0,Constant
+gCa_LVAstbar_Ca_LVAst_somatic,0,0,0,,Uniform,Open,3,n/a,23,0,Calcium
+g_pas,3.00E-05,3.00E-05,3.00E-05,,Uniform,Open,3,n/a,24,0,Passive

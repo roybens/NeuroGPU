@@ -1,0 +1,6 @@
+Param name,Base value,Lower bound,Upper bound,Unit,Unit type,Const,Base variation estimation,Description,index in vector,
+c_m,0.75,0.0075,75,uF/cm^2,Uniform,Open,2,membrane capicitance,1,
+cm_myelin,0.04,0.0004,4,uF/cm^2,Uniform,Open,4,Myelin capicitance,2,
+g_pas_node,0.02,0.0002,2,,Uniform,Open,3,,3,
+ra,150,1.5,15000,[ohm cm],Uniform,Open,5,Cytoplasmic resestivity,4,3
+rm (1/gpas),30000,300,3000000,Ohm,Uniform,Open,3,Passive permability (capacitance),5,

@@ -1,0 +1,15 @@
+Param name,Base value,Lower bound,Upper bound,Unit,Unit type,Const,Base variation estimation,Description,index in vector,
+g_pas_all,3.56E-06,3.56E-07,3.56E-05,,Uniform,Open,2,n/a,1,0
+e_pas_all,-6.66E+01,-6.66E+01,-6.66E+01,,Uniform,Open,3,n/a,2,0
+gNaTa_tbar_NaTa_t_axonal,5.25E+00,5.25E-01,5.25E+01,,Uniform,Open,2,n/a,3,0
+gK_Tstbar_K_Tst_axonal,3.85E-01,3.85E-02,3.85E+00,,Uniform,Open,3,n/a,4,0
+gNap_Et2bar_Nap_Et2_axonal,3.85E-02,3.85E-03,3.85E-01,,Uniform,Open,3,n/a,5,0
+gK_Pstbar_K_Pst_axonal,3.81E+00,3.81E-01,3.81E+01,,Uniform,Open,3,n/a,6,0
+gSKv3_1bar_SKv3_1_axonal,8.87E+00,8.87E-01,8.87E+01,,Uniform,Open,3,n/a,7,0
+gCa_LVAstbar_Ca_LVAst_axonal,2.09E-02,2.09E-03,2.09E-01,,Uniform,Open,3,n/a,8,0
+gCa_HVAbar_Ca_HVA_axonal,2.71E-04,2.71E-05,2.71E-03,,Uniform,Open,3,n/a,9,0
+gSKv3_1bar_SKv3_1_somatic,3.26E-02,3.26E-03,3.26E-01,,Uniform,Open,3,n/a,10,0
+gCa_HVAbar_Ca_HVA_somatic,4.01E-04,4.01E-05,4.01E-03,,Uniform,Open,3,n/a,11,0
+gNaTs2_tbar_NaTs2_t_somatic,1.48E+00,1.48E-01,1.48E+01,,Uniform,Open,3,n/a,12,0
+gCa_LVAstbar_Ca_LVAst_somatic,6.98E-04,6.98E-05,6.98E-03,,Uniform,Open,3,n/a,13,0
+gIh_dend,3.14E-04,3.14E-05,3.14E-03,,Uniform,Open,3,n/a,14,0

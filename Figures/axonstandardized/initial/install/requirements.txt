@@ -1,0 +1,13 @@
+numpy==1.16.2
+scipy==1.2.1
+matplotlib
+ipython==5.0.0
+pandas
+sympy
+nose
+ipykernel
+tqdm
+bluepyopt
+seaborn
+pynwb==1.0.2
+tables

@@ -1,0 +1,67 @@
+#!/bin/bash
+
+#SBATCH -q debug
+#SBATCH -N 1
+#SBATCH -t 00:30:00
+#SBATCH -C haswell
+#SBATCH -L SCRATCH
+#SBATCH --mail-user=zladd@berkeley.edu
+#SBATCH --mail-type=ALL
+
+
+
+CURRENTDATE=`date +%m_%d_%Y`
+startTIME=`date +%T`
+custom=''
+input="input.txt"
+while IFS= read -r line
+do
+    IFS='=' read -ra inputs <<< "$line"
+    name="${inputs[0]}"
+    data="${inputs[1]}"
+    printf -v $name "$data"
+done < "$input"
+true=True
+
+
+echo running analyze p parallel
+
+export OMP_NUM_THREADS=1
+srcDir=`pwd`
+
+
+wrkDir=${srcDir}/'runs'/${model}_${peeling}_${CURRENTDATE}${custom}
+mkdir ${wrkDir}/'genetic_alg'
+echo 'my wrkDir='${wrkDir}
+
+dirToRun="genetic_alg"
+
+cp -rp ${dirToRun} ${wrkDir}
+
+
+
+if [ ${makeOpt} == ${true} ]
+  then
+    srun -n 68 python analyze_p_bbp_full/analyze_p_parallel.py --model ${model} --peeling ${peeling} --CURRENTDATE ${CURRENTDATE}
+  fi
+
+
+
+
+shopt -s nullglob
+found=0
+target_files=1
+
+while [ $found -ne $target_files ]
+do
+        found=`ls -lR ${wrkDir}/genetic_alg/optimization_results/*.hdf5 | wc -l`
+done
+
+echo finished optimzation
+shopt -u nullglob
+
+if [ ${makeObj} == ${true} ]
+  then
+    srun python analyze_p_bbp_full/analyze_p_multistims.py --model ${model} --peeling ${peeling} \
+    --CURRENTDATE ${CURRENTDATE}
+  fi

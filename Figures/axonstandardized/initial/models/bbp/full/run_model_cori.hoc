@@ -1,0 +1,23 @@
+strdef fitFile,timesFile,paramsFile,stimFile,outFile,modelFile
+modelFile = "./mosinit.hoc"
+load_file(modelFile)
+objref st,stims,fin,fout,pmat,vecOut,stimtime,curr_stim
+ntimestep = 0
+//create soma
+proc runStim(){
+	//access soma
+	st = new IClamp(0.5)
+	st.del=0
+	st.dur=1e9
+	vecOut = new Vector(ntimestep)
+	tfunc()
+	counter = 0
+	for(timeSteps=0; timeSteps<stimtime.ncol; timeSteps+=1){
+		dt = stimtime.x(0,timeSteps)
+		st.amp = curr_stim.x(timeSteps)
+		vecOut.x(counter)=v(0.5)
+		counter+=1
+		fadvance()
+	}
+	printf("finshed run matrix\n")
+}

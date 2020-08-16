@@ -1,0 +1,13 @@
+Param name,Base value,Lower bound,Upper bound,Unit,Unit type,Const,Base variation estimation,Description,index in vector,
+gna_dend,20,0,1000,Siemens\cm^2,Uniform,Open,2,sodium conductance at the dendrites,1,Sodium
+gna_node,30000,0,300000,Siemens\cm^2,Uniform,Open,3,sodium conductance at the node of ranvier,2,Sodium
+gna_soma,20,0,10000,Siemens\cm^2,Uniform,Open,2,sodium conductance at the soma,3,Sodium
+gkv_axon,2000,0,10000,Siemens\cm^2,Uniform,Open,3,pottasium delayed rectifier conductance at the dendrites,4,Potassium
+gkv_soma,200,0,1000,Siemens\cm^2,Uniform,Open,3,pottasium delayed rectifier conductance at the soma,5,Potassium
+gca_dend,0.3,0.03,10,Siemens\cm^2,Uniform,Open,3,calcium conductance at the dendrites,6,Calcium
+gkm_dend,0.1,0.01,10,Siemens\cm^2,Uniform,Open,3,potassium conductance at the dendrites,7,Potassium
+gkca_dend,3,0.3,100,Siemens\cm^2,Uniform,Open,3,potassium dependent calcium channel conductance at the dendrites,8,Calcium
+gca_soma,0.3,0.03,10,Siemens\cm^2,Uniform,Open,3,calcium conductance at the dendrites,9,Calcium
+gkm_soma,0.1,0.01,10,Siemens\cm^2,Uniform,Open,3,potassium conductance at the dendrites,10,Potassium
+gkca_soma,3,0.3,100,Siemens\cm^2,Uniform,Open,3,potassium dependent calcium channel conductance at the dendrites,11,Calcium
+depth_cad,0.1,0.01,100,(um),Uniform,Open,3,: depth of shell,12,Calcium

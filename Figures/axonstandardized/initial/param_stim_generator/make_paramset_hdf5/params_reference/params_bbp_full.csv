@@ -1,0 +1,24 @@
+Param name,Base value,Lower bound,Upper bound,Unit,Unit type,Const,Base variation estimation,Description,index in vector,
+gIhbar_Ih,0.00008,0.000008,0.0008,,Uniform,Open,2,n/a,1,0
+gNaTs2_tbar_NaTs2_t,0.026145,0.0026145,0.26145,,Uniform,Open,3,n/a,2,0
+gSKv3_1bar_SKv3_1,0.004226,0.0004226,0.04226,,Uniform,Open,2,n/a,3,0
+gIhbar_Ih,0.00008,0.000008,0.0008,,Uniform,Open,3,n/a,4,0
+gImbar_Im,0.000143,0.0000143,0.00143,,Uniform,Open,3,n/a,5,0
+gNaTa_tbar_NaTa_t,3.137968,0.3137968,31.37968,,Uniform,Open,3,n/a,6,0
+gK_Tstbar_K_Tst,0.089259,0.0089259,0.89259,,Uniform,Open,3,n/a,7,0
+gamma_CaDynamics_E2,0.00291,0.000291,0.0291,,Uniform,Open,3,n/a,8,0
+gNap_Et2bar_Nap_Et2,0.006827,0.0006827,0.06827,,Uniform,Open,3,n/a,9,0
+gSK_E2bar_SK_E2,0.007104,0.0007104,0.07104,,Uniform,Open,3,n/a,10,0
+gCa_HVAbar_Ca_HVA,0.00099,0.000099,0.0099,,Uniform,Open,3,n/a,11,0
+gK_Pstbar_K_Pst,0.973538,0.0973538,9.73538,,Uniform,Open,3,n/a,12,0
+gSKv3_1bar_SKv3_1,1.021945,0.1021945,10.21945,,Uniform,Open,3,n/a,13,0
+decay_CaDynamics_E2,287.198731,28.7198731,2871.98731,,Uniform,Open,3,n/a,14,0
+gCa_LVAstbar_Ca_LVAst,0.008752,0.0008752,0.08752,,Uniform,Open,3,n/a,15,0
+gamma_CaDynamics_E2,0.000609,0.0000609,0.00609,,Uniform,Open,3,n/a,16,0
+gSKv3_1bar_SKv3_1,0.303472,0.0303472,3.03472,,Uniform,Open,3,n/a,17,0
+gSK_E2bar_SK_E2,0.008407,0.0008407,0.08407,,Uniform,Open,3,n/a,18,0
+gCa_HVAbar_Ca_HVA,0.000994,0.0000994,0.00994,,Uniform,Open,3,n/a,19,0
+gNaTs2_tbar_NaTs2_t,0.983955,0.0983955,9.83955,,Uniform,Open,3,n/a,20,0
+gIhbar_Ih,0.00008,0.000008,0.0008,,Uniform,Open,3,n/a,21,0
+decay_CaDynamics_E2,210.485284,21.0485284,2104.85284,,Uniform,Open,3,n/a,22,0
+gCa_LVAstbar_Ca_LVAst,0.000333,0.0000333,0.00333,,Uniform,Open,3,n/a,23,0

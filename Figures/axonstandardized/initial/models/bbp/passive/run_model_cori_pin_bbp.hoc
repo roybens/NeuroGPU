@@ -1,0 +1,84 @@
+strdef fitFile,timesFile,paramsFile,stimFile,outFile,modelFile
+modelFile = "./mosinit.hoc"
+timesFile = ""
+paramsFile = "./params/pin_200.csv"
+stimFile = ""
+outFile = ""
+ntimestep =10000
+nparams =23
+psize = 200
+ntraces =1
+objref st,fin,fout,pmat,matOut,PC,currSim,transvec, root
+fin = new File()
+fout = new File()
+currSim = new Vector(ntimestep*ntraces)
+load_file(modelFile)
+root = new SectionRef()
+if (root.has_parent()){
+	print secname()
+	root = root.root()
+	}
+access root.sec
+PC= new ParallelContext()
+//access soma
+st = new IClamp(0.5)
+st.del=0
+st.dur=1e9
+
+proc runMatrix(){local loc
+	matOut = new Matrix($o1.nrow,(ntraces*ntimestep))
+	PC.runworker()
+	for(sim=0;sim<$o1.nrow;sim+=1){
+		counter=0
+		transvec = pmat.getrow(sim)
+		PC.post("TASK",currSim,sim,transvec,stimFile,timesFile,outFile)
+		//printf(stimFile)
+		PC.submit("tfunc()\n")
+	}
+	 while(PC.working()){
+        PC.take("DONE",currSim,&loc)
+		matOut.setrow(loc,currSim)
+	}
+}
+proc readCSVMatrix(){
+	fin = new File($s1)
+	fin.ropen()
+	$o2.scanf(fin,$o2.nrow(),$o2.ncol())
+	fin.close()
+}
+proc readMatrix(){localobj temp
+	temp = new Vector()
+	fin.ropen($s1)
+	for (i=0;i<$o2.nrow;i+=1){
+		temp.vread(fin)
+		$o2.setrow(i,temp)
+	}
+	fin.close()
+}
+proc writeMatrix(){localobj temp
+	fout.wopen($s1)
+	temp = new Vector()
+	for (i=0;i<$o2.nrow;i+=1){
+		temp = $o2.getrow(i)
+		temp.printf(fout, "%f ")
+	}
+	fout.close()
+}
+proc runModel(){
+	pmat = new Matrix(psize,nparams)
+	readCSVMatrix(paramsFile,pmat)
+	runMatrix(pmat)
+	writeMatrix(outFile,matOut)
+}
+
+//stimtime = new Matrix(1,ntimestep)
+//readCSVMatrix(timesFile,stimtime)
+//pmat = new Matrix(psize,nparams)
+//readCSVMatrix(paramsFile,pmat)
+//stims = new Matrix(ntraces,ntimestep)
+//readCSVMatrix(stimFile,stims)
+//PC.runworker()
+//runMatrix(pmat,stims)
+//PC.done()
+//writeMatrix(outFile,matOut)
+//quit()

@@ -1,0 +1,13 @@
+#!/bin/sh
+if test "x${NRNHOME}" = "x" ; then
+	NRNHOME="/global/homes/k/kyoungh/bin/nrn-7.6"
+fi
+if test "x${NRNBIN}" = "x" ; then
+	NRNBIN="/global/homes/k/kyoungh/bin/nrn-7.6/x86_64/bin/"
+fi
+if test "" = "yes" ; then
+	NRNIV="${NRNBIN}nrniv.app/Contents/MacOS/nrniv"
+else
+	NRNIV="${NRNBIN}nrniv"
+fi
+"${NRNIV}" -dll "/global/cscratch1/sd/kyoungh/paper-sp19/sandbox/run_model_BBP_K/x86_64/.libs/libnrnmech.so" "$@"
