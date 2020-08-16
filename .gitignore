@@ -1,2 +1,5 @@
 
-GUI/Plot Volts.ipynb
+
+GUI/.ipynb_checkpoints/
+GUI/__pycache__/
+*.pyc

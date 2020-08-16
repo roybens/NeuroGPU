@@ -15,7 +15,7 @@ import glob
 import math
 import numpy.matlib
 from file_io import get_lines, put_lines
-from proc_add_param_to_hoc_for_opt import proc_add_param_to_hoc_for_opt
+from proc_add_param_to_hoc_for_opt import proc_add_param_to_hoc_for_opt,proc_add_param_to_hoc_for_map
 import scipy.io as sio
 from collections import OrderedDict
 from io import StringIO
@@ -24,6 +24,8 @@ from create_auxilliary_data_3 import create_auxilliary_data_3
 import pickle as pkl
 
 # Definitions
+global map_flag
+map_flag = False
 ModData = collections.namedtuple('ModData', 'mod_per_seg,available_mechs')
 ParsedModel = collections.namedtuple('ParsedModel', 'Writes,Reads')
 ModNeuron = collections.namedtuple('ModNeuron', 'Suffix,UseIon,NonspecificCurrent,Reads,Writes,Range,Global')
@@ -34,7 +36,7 @@ not_states = ['ica','cai']
 global vs_dir
 #vs_dir = '../../VS/pyNeuroGPU_win2/NeuroGPU6'
 #vs_root = '../../VS/pyNeuroGPU_win2/'
-run_dir = 'C:/pyNeuroGPU_win2'
+run_dir = 'C:/pyNeuroGPU_win62'
 unix_dir = 'C:/pyNeuroGPU_unix'
 data_dir = './Data/'
 split_flg = 0
@@ -329,6 +331,7 @@ def get_bool_model(available_mechs, NX, comp_mechs, comp_map, seg_start, seg_end
 ### Functions for Parsing Mod/C files ###
 
 def parse_models():
+    global map_flag
     global StateStartVal
     c_parsed_folder = './CParsed/'
     model_name = []
@@ -613,8 +616,12 @@ def parse_models():
     with open(hocmodel_name, 'wb') as f:  # Python 3: open(..., 'wb')
         pkl.dump([all_params_non_global_list_non_flat, modelFile, base_p, available_mechs, reversals, reversals, cs_names,comp_mechs, g_globals, nglobals_flat, sec_list, ftypestr, p_size_set, param_set, data_dir,all_states_names_list,kin_models_inds], f)
 
-
-    params_m, runModel_hoc_object = proc_add_param_to_hoc_for_opt(all_params_non_global_list_non_flat, modelFile,base_p, available_mechs, reversals, reversals,cs_names, comp_mechs, g_globals, nglobals_flat,sec_list, ftypestr, p_size_set, param_set, data_dir,all_states_names_list,kin_models_inds)
+    if (map_flag):
+        params_m, runModel_hoc_object = proc_add_param_to_hoc_for_map(all_params_non_global_list_non_flat, modelFile,base_p, available_mechs, reversals, reversals,cs_names, comp_mechs, g_globals, nglobals_flat,sec_list, ftypestr, p_size_set, param_set, data_dir,all_states_names_list,kin_models_inds)
+    else:
+        params_m, runModel_hoc_object = proc_add_param_to_hoc_for_opt(all_params_non_global_list_non_flat, modelFile,base_p, available_mechs, reversals, reversals,cs_names, comp_mechs, g_globals, nglobals_flat,sec_list, ftypestr, p_size_set, param_set, data_dir,all_states_names_list,kin_models_inds,map_flag)
+    
+    
 
     # subprocess.call("matlab -nosplash -nodisplay -nodesktop -r \"ProcAddParamToHocForOpt()\"",shell=True);
     # subprocess.call('matlab -nosplash -nodisplay -nodesktop -r \"ProcAddParamToHocForOpt(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)\"' % (all_params_non_global_flat, modelFile, base_p, available_mechs, reversals,reversals, cs_names, comp_mechs, g_globals, nglobals_flat, sec_list, ftypestr,p_size_set, param_set),shell=True);
@@ -1999,6 +2006,8 @@ def handle_deriv_block(mod_fn, lines, model_name, states_params_str, states, loc
     # add_params_to_func_call(input,func_names,input_vars_c,all_param_line_call):
     call_to_deriv = 'DerivModel_' + model_name + '(dt, V[seg]' + states_params_str_seg + ');';
     tmp_lines_cu = [re.sub('\t', '   ', s) for s in tmp_lines_cu]
+    if '{'  in tmp_lines_cu[0]:
+        tmp_lines_cu = tmp_lines_cu[1:]
     has_any_func_call = False
     for i in range(len(tmp_lines_cu)):
         for j in range(len(func_names)):
@@ -2414,11 +2423,11 @@ def handle_mod_function(lines, model_name):
         func_names_cu.append('Cu' + output[0])
         c_func_lines.append(output[1])
         input_vars.append(output[2])
-        c_func_lines_cu.append(copy.deepcopy(output[1]))
-
-        for i in range(len(c_func_lines_cu)):
-            c_func_lines_cu[i][0] = (
-                        '__device__ ' + re.sub(output[0], 'Cu' + output[0] + '_' + model_name, output[1][0]))
+        tmp_cu_func_lines = copy.deepcopy(output[1])
+        tmp_cu_func_lines[0] = '__device__ ' + re.sub(output[0], 'Cu' + output[0] + '_' + model_name, output[1][0])
+        c_func_lines_cu.append(tmp_cu_func_lines)
+        #for i in range(len(c_func_lines_cu)):
+         
     return [func_names, c_func_lines, input_vars, c_func_lines_cu]
 
 
@@ -2665,14 +2674,14 @@ def add_model_name_to_function(input, src, trg):
 
 def remove_globals_recalculation(input, nglobals):
     output = input
-    for i in range(len(input)):
-
-        if output[i]:
-            if isinstance(input[i], str):
-                for g in nglobals:
-                    output[i] = re.sub('(^|\W)' + g + '\W*=.*?;', '/* removed ' + g + ' recalculation */', output[i])
-            else:
-                output[i] = remove_globals_recalculation(output[i], nglobals)
+#    for i in range(len(input)):
+#
+#        if output[i]:
+#            if isinstance(input[i], str):
+#                for g in nglobals:
+#                    output[i] = re.sub('(^|\W)' + g + '\W*=.*?;', '/* removed ' + g + ' recalculation */', output[i])
+#            else:
+#                output[i] = remove_globals_recalculation(output[i], nglobals)
     return output
 
 def replace_pow(input):
@@ -2855,42 +2864,65 @@ def linux_packing():
 
 
 
-
-def main():
+	
+# ========================================================================
+# AllParams_refence.csv generation utility function
+def make_allparams_reference():
+    global map_flag
+    if map_flag:
+        ref_file = data_dir + '/AllParams_for_params.csv'
+    else:
+        ref_file = data_dir + '/AllParams_reference.csv'
+        
+    allparams = data_dir + '/AllParams.csv'
+    old_ref_exists = os.path.exists(ref_file)
+    new_ref_exists = os.path.exists(allparams)
+    if old_ref_exists:
+        os.system('rm ' + ref_file)
+    os.system('cp ' + allparams + ' ' + ref_file)
+# ========================================================================
+def run_extract(to_map):
+    global map_flag
     global sec_list
     global baseDir
     global vs_dir
     global vs_root
+    map_flag = to_map
     nrn.h.load_file(1, modelFile)
     if not os.path.exists(data_dir):
         os.makedirs(data_dir)
-
     vs_dir = nrn.h.base + '/VS/pyNeuroGPU_win/NeuroGPU6'
     vs_root = nrn.h.base + '/VS/pyNeuroGPU_win/'
     baseDir = nrn.h.base
     vs_root = baseDir + '/VS/pyNeuroGPU_win/'
+    # -----------------------------------------------------------------------------------------
+    # nrn.h.base = "C:/Users/mdera/OneDrive/Desktop/Neuro/NeuroGPU_Base"
+    #nrn.h.base = "C:/Users/Maxwell Chen/Desktop/NeuroGPU/NeuroGPU_Base"
+    vs_dir = nrn.h.base + '/VS/pyNeuroGPU_win/NeuroGPU6'
+    vs_root = nrn.h.base + '/VS/pyNeuroGPU_win/'
+    baseDir = nrn.h.base
+    vs_root = baseDir + '/VS/pyNeuroGPU_win/'
+    # -----------------------------------------------------------------------------------------
     # thread = nrn_dll_sym('nrn_threads', ctypes.POINTER(NrnThread))
     sec_list = create_sec_list()
     rec_sites = write_sim()
-
     # topo = get_topo()  # dictionary whose keys are section names
     # output = get_topo_mdl()  # dictionary whose keys are section names, and available mechanisms
     # topo_mdl = output[0]
     p_size_set = nrn.h.psize
     param_set = nrn.h.paramsFile
-    # recsites = get_recsites()  # list of section names
+    #recsites = get_recsites()  # list of section names
     # mod_file_map = get_mod_file_map(topo_mdl.available_mechs) # dictionary whose keys are mechanisms suffixs and values are their .mod file name=
     mechanisms = parse_models()
     seg_start = mechanisms[-2]
     seg_end = mechanisms[-1]
-
-
     write_stim(rec_sites,seg_start,seg_end)
     print ("done with parse_models")
     
     # def tail_end(f, n_params, call_to_init_str_cu, call_to_deriv_str_cu, call_to_break_str_cu, call_to_break_dv_str_cu,params_m, n_segs_mat, cm_vec, vs_dir, has_f, nd, nrhs):
     runPyNeuroGPU()
     linux_packing()
-
+    make_allparams_reference()
+    print('created new reference file')
 if __name__ == '__main__':
-    main()
+    run_extract(False)

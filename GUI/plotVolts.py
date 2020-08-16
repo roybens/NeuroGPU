@@ -1,4 +1,3 @@
-import neuron as nrn
 import numpy as np
 import ipywidgets as widgets
 import shutil
@@ -80,7 +79,7 @@ def on_button_clicked0_1(b):
     button.on_click(on_button_clicked0_1)
 
 
-def readOutput(folder):
+def readOutput(folder,vhot_fn):
     global base
     global all_volts
     global times
@@ -91,13 +90,7 @@ def readOutput(folder):
     Nt = time_steps.size
     stimFN = folder + 'Stim_raw.csv'
     stim = np.genfromtxt(stimFN, delimiter=',')
-    # nrn_volt = nrn.h.Vector()
-    all_volts = nrnMread(folder + 'VHotP.dat')
-    # nrn_fn = nrn.h.File(folder + 'VHotP.dat')
-    # nrn_fn.wopen(folder + 'VHotP.dat')
-    # nrn_volt.vread(nrn_fn)
-    # print nrn_volt
-    # all_volts = nrn_volt.to_python()
+    all_volts = nrnMread(folder + vhot_fn)
     all_volts = np.array(all_volts)
     if stim.ndim == 2:
         Nstim = params.shape[0]
