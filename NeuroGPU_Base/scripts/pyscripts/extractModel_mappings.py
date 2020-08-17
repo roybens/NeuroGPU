@@ -6,12 +6,14 @@ from neuron import h
 import time
 from extractModel import run_extract
 import importlib
+import os
 
 # DEFINE
 data_dir =          'Data'                                          # data directory (folder)
 params_dir =        'params'                                        # params directory (folder)
 all_params_for_params_fn = f'./{data_dir}/AllParams_for_params.csv'
-params_file =       f'./{params_dir}/best_inds.csv'                    # 12 parameters
+params_file =       f'./{params_dir}/params_map.csv'                    # 12 parameters
+#params_file =       f'./{params_dir}/params.csv'                    # 12 parameters
 param_map =         f'./{data_dir}/ParamMappings.txt'               # mappings from new created in add_param_to_hoc_for_opt
 template =          f'./{data_dir}/ParamTemplate.csv'  
 model_data =        '64MDL.csv'                                     # the model data to be extracted and placed into allparams
@@ -367,6 +369,7 @@ output[1]:
     
 def main():
     #run_extract(True) # create params template and allparamsreference
+    os.system('cp ' + reference + ' ' + all_params_fn)
     time.sleep(5)
     allparams = allparams_from_mapping()
     # check allparams 
