@@ -36,7 +36,7 @@ not_states = ['ica','cai']
 global vs_dir
 #vs_dir = '../../VS/pyNeuroGPU_win2/NeuroGPU6'
 #vs_root = '../../VS/pyNeuroGPU_win2/'
-run_dir = 'C:/pyNeuroGPU_win62'
+run_dir = 'C:/pyNeuroGPU_win66'
 unix_dir = 'C:/pyNeuroGPU_unix'
 data_dir = './Data/'
 split_flg = 0
@@ -618,8 +618,9 @@ def parse_models():
 
     if (map_flag):
         params_m, runModel_hoc_object = proc_add_param_to_hoc_for_map(all_params_non_global_list_non_flat, modelFile,base_p, available_mechs, reversals, reversals,cs_names, comp_mechs, g_globals, nglobals_flat,sec_list, ftypestr, p_size_set, param_set, data_dir,all_states_names_list,kin_models_inds)
+        params_m, runModel_hoc_object = proc_add_param_to_hoc_for_opt(all_params_non_global_list_non_flat, modelFile,base_p, available_mechs, reversals, reversals,cs_names, comp_mechs, g_globals, nglobals_flat,sec_list, ftypestr, p_size_set, param_set, data_dir,all_states_names_list,kin_models_inds,True)
     else:
-        params_m, runModel_hoc_object = proc_add_param_to_hoc_for_opt(all_params_non_global_list_non_flat, modelFile,base_p, available_mechs, reversals, reversals,cs_names, comp_mechs, g_globals, nglobals_flat,sec_list, ftypestr, p_size_set, param_set, data_dir,all_states_names_list,kin_models_inds,map_flag)
+        params_m, runModel_hoc_object = proc_add_param_to_hoc_for_opt(all_params_non_global_list_non_flat, modelFile,base_p, available_mechs, reversals, reversals,cs_names, comp_mechs, g_globals, nglobals_flat,sec_list, ftypestr, p_size_set, param_set, data_dir,all_states_names_list,kin_models_inds,False)
     
     
 
