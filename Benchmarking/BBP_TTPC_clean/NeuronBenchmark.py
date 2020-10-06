@@ -22,15 +22,6 @@ class Cell():
     pc.set_gid2node(gid, pc.id())
     h.transvec = h.Vector(param_list[gid])
     h.tfunc()
-    #h.transvec = pa
-    #self.r = h.Random()
-    #self.r.Random123(gid, 0, 0)
-    #self.syn = h.ForNetConTest(self.soma(.5))
-    #pc.cell(gid, h.NetCon(self.syn, None))
-    # random start times for the internal events
-    #self.syn.tbegin = self.r.discunif(0,100)*h.dt
-
-# setup model
 
 ncell = len(param_list)
 gids = range(pc.id(), ncell) # round robin
