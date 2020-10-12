@@ -9,6 +9,8 @@ import sys
 from neuron import h, gui
 import numpy as np
 import matplotlib.pyplot as plt
+import logging
+logging.warning('Watch out!')
 h.nrnmpi_init()
 pc = h.ParallelContext()
 print(f'First: the mpi_id is {pc.id()} ')
@@ -19,7 +21,7 @@ param_list = np.loadtxt('./params/params.csv')
 #root_name = h.secname(sec=h.cell.soma[0])
 class Cell:
     def __init__(self, gid):
-        print(f'BEGIN: the mpi_id is {pc.id()} and gid is {gid}')
+        logging.warning(f'BEGIN: the mpi_id is {pc.id()} and gid is {gid}')
         self.hoc_cell = h.cADpyr232_L5_TTPC1_0fb1ca4724()
         self.gid = gid
         pc.set_gid2node(gid, pc.id())
@@ -30,7 +32,7 @@ class Cell:
         self.ic.dur = 100
         self.ic.amp = 0.5
         self.v = h.Vector().record(self.soma[0](.5)._ref_v,sec=self.soma[0])
-        print(f'INITIALIZE END: the mpi_id is {pc.id()} and gid is {gid}')
+        logging.warning(f'INITIALIZE END: the mpi_id is {pc.id()} and gid is {gid}')
     
     def __getattr__(self, name):
         # we don't have it, see if the hoc_cell has it?

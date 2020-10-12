@@ -13,7 +13,7 @@ h.load_file("runModel.hoc")
 param_list = np.loadtxt('./params/params.csv')
 pc = h.ParallelContext()
 h.dt = 0.1
-ntimesteps = 5000
+ntimesteps = 3168
 tstop = ntimesteps*h.dt
 pc.set_maxstep(10)
 #root_name = h.secname(sec=h.cell.soma[0])
