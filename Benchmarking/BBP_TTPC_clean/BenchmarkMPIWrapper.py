@@ -15,9 +15,9 @@ file1.close()
 import time
 times=[]
 nneurons = [1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192]
-#nneurons = [1,2,4,8,16]
+nneurons = [1,2,4,8,16]
 for N in nneurons:
-    file1 = open("timenrnpar2.txt", "a")  
+    file1 = open("timenrnparnocvode.txt", "a")  
     start_time = time.time()
     ip.run_cell(f'!mpiexec -n 8 python RunTTPC1Parallel.py {N}')
     curr_time = time.time() - start_time
