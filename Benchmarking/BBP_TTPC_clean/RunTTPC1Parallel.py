@@ -29,7 +29,8 @@ tstop = ntimesteps*h.dt
 pc.set_maxstep(10 * ms)
 # make sure to enable cache efficiency
 h.cvode.cache_efficient(True)
-
+h.cvode.active(False)
+h.dt = 0.1
 logging.warning(f'only run is left: the mpi_id is {pc.id()} ')
 #print(pc.dt())
 def prun():    
