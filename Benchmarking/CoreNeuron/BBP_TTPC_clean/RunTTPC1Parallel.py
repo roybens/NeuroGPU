@@ -16,7 +16,8 @@ import numpy as np
 cell_to_plot = 0
 param_list = np.loadtxt('./params/params.csv')
 #ncell = len(param_list)
-ncell = int(sys.argv[1])
+#ncell = int(sys.argv[1])
+ncell = 10
 pc = h.ParallelContext()
 gids = range(pc.id(), ncell,pc.nhost()) # round robin
 #print(f'the mpi_id is {pc.id()} and gids are {gids}')

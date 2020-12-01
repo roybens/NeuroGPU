@@ -266,7 +266,7 @@ if(ext_num>0){
 //****************************************************
 forall{nseg=1}
 //******************************************************
-hinesDisperseBranching()
+//hinesDisperseBranching()
 
 mul32()
 access root.sec
