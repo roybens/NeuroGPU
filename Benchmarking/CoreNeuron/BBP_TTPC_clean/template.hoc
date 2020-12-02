@@ -247,6 +247,9 @@ proc re_init_rng() {local channelID
         }
     }
 }
-
+proc connect2target() { //$o1 target point process, $o2 returned NetCon
+  soma $o2 = new NetCon(&v(1), $o1)
+  $o2.threshold = -30
+}
 
 endtemplate cADpyr232_L5_TTPC1_0fb1ca4724
