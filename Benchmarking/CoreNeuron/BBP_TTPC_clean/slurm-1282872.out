@@ -1,0 +1,120 @@
+ncells = 1
+NEURON -- VERSION 8.0.dev-244-ge68a6901+ master (e68a6901+) 2020-11-15
+Duke, Yale, and the BlueBrain Project -- Copyright 1984-2019
+See http://neuron.yale.edu/neuron/credits
+
+Additional mechanisms from files
+ ./moddir//CaDynamics_E2.mod ./moddir//Ca_HVA.mod ./moddir//Ca_LVAst.mod ./moddir//Ih.mod ./moddir//Im.mod ./moddir//K_Pst.mod ./moddir//K_Tst.mod ./moddir//NaTa_t.mod ./moddir//NaTs2_t.mod ./moddir//Nap_Et2.mod ./moddir//SK_E2.mod ./moddir//SKv3_1.mod
+numprocs=1
+WARNING:root:Watch out!
+	1 
+	1 
+Setting temperature to 34.000000 C
+Setting simulation time step to 0.025000 ms
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+**********************
+cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0]
+1 
+24 
+1 
+	1 
+0	0.983955	0	8e-05	0.000143	
+0.303472	
+	1 
+	1 
+ 
+ Duke, Yale, and the BlueBrain Project -- Copyright 1984-2020
+ Version : 0.21.0 2e39624 (2020-11-11 16:38:11 +0100)
+ 
+ Additional mechanisms from files
+ CaDynamics_E2.mod Ca_HVA.mod Ca_LVAst.mod Ih.mod Im.mod K_Pst.mod K_Tst.mod NaTa_t.mod NaTs2_t.mod Nap_Et2.mod SK_E2.mod SKv3_1.mod exp2syn.mod expsyn.mod hh.mod netstim.mod passive.mod pattern.mod stim.mod svclmp.mod
+
+ num_mpi=1
+ num_omp_thread=2
+
+ Info : 1 GPUs shared by 1 ranks per node
+ Memory (MBs) :             After mk_mech : Max 550.4531, Min 550.4531, Avg 550.4531 
+ Memory (MBs) :            After MPI_Init : Max 550.4531, Min 550.4531, Avg 550.4531 
+ Memory (MBs) :          Before nrn_setup : Max 550.6836, Min 550.6836, Avg 550.6836 
+ Setup Done   : 0.00 seconds 
+ Memory (MBs) :          After nrn_setup  : Max 551.7461, Min 551.7461, Avg 551.7461 
+GENERAL PARAMETERS
+--mpi=true
+--gpu=true
+--dt=0.1
+--tstop=316.8
+
+GPU
+--nwarp=0
+--cell-permute=1
+
+INPUT PARAMETERS
+--voltage=1000
+--seed=-1
+--datpath=.
+--filesdat=files.dat
+--pattern=
+--report-conf=
+--restore=     
+
+PARALLEL COMPUTATION PARAMETERS
+--threading=false
+--skip_mpi_finalize=true
+
+SPIKE EXCHANGE
+--ms_phases=2
+--ms_subintervals=2
+--multisend=false
+--spk_compress=0
+--binqueue=false
+
+CONFIGURATION
+--spikebuf=100000
+--prcellgid=-1
+--forwardskip=0
+--celsius=34
+--mindelay=10
+--report-buffer-size=4
+
+OUTPUT PARAMETERS
+--dt_io=0.1
+--outpath=.
+--checkpoint=
+
+ Start time (t) = 0
+
+ Memory (MBs) :  After mk_spikevec_buffer : Max 551.7461, Min 551.7461, Avg 551.7461 
+ Memory (MBs) :     After nrn_finitialize : Max 552.3047, Min 552.3047, Avg 552.3047 
+
+ psolve |                                                        | t: 0.00   ETA: 0h00m00s psolve |========================================================| t: 316.80 ETA: 0h00m03sFirst: the mpi_id is 0 
+['x86_64/special', '-python', '-mpi', './gpuCN_RunTTPC1Parallel.py', '1']
+
+
+Solver Time : 2.92834
+
+
+ Simulation Statistics
+ Number of cells: 2
+ Number of compartments: 1236
+ Number of presyns: 2
+ Number of input presyns: 0
+ Number of synapses: 0
+ Number of point processes: 2
+ Number of transfer (gap) targets: 0
+ Number of spikes: 0
+ Number of spikes with non negative gid-s: 0
+
+real	0m10.723s
+user	0m0.006s
+sys	0m0.037s
