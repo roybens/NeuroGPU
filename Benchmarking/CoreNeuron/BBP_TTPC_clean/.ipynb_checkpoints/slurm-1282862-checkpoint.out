@@ -1,0 +1,47 @@
+/var/spool/slurmd/job1282862/slurm_script: line 9: ncells: command not found
+ncells = 
+NEURON -- VERSION 8.0.dev-244-ge68a6901+ master (e68a6901+) 2020-11-15
+Duke, Yale, and the BlueBrain Project -- Copyright 1984-2019
+See http://neuron.yale.edu/neuron/credits
+
+Additional mechanisms from files
+ ./moddir//CaDynamics_E2.mod ./moddir//Ca_HVA.mod ./moddir//Ca_LVAst.mod ./moddir//Ih.mod ./moddir//Im.mod ./moddir//K_Pst.mod ./moddir//K_Tst.mod ./moddir//NaTa_t.mod ./moddir//NaTs2_t.mod ./moddir//Nap_Et2.mod ./moddir//SK_E2.mod ./moddir//SKv3_1.mod
+numprocs=1
+WARNING:root:Watch out!
+	1 
+	1 
+Setting temperature to 34.000000 C
+Setting simulation time step to 0.025000 ms
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+**********************
+cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0]
+1 
+24 
+1 
+	1 
+0	0.983955	0	8e-05	0.000143	
+0.303472	
+	1 
+	1 
+First: the mpi_id is 0 
+['x86_64/special', '-python', '-mpi', './gpuCN_RunTTPC1Parallel.py']
+>>> Traceback (most recent call last):
+  File "./gpuCN_RunTTPC1Parallel.py", line 22, in <module>
+    ncell = int(sys.argv[4])
+IndexError: list index out of range
+
+
+real	0m2.642s
+user	0m0.027s
+sys	0m0.006s

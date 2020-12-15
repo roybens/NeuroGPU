@@ -1,2 +1,3 @@
-export PYTHONPATH=/project/projectdirs/m2043/roybens/neuron7_7_2/nrn/lib/python/
-python3 RunTTPC1Parallel.py $1
+
+
+srun -n 8 x86_64/special -python -mpi ./CN_RunTTPC1Parallel.py 
