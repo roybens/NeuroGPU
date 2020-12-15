@@ -497,9 +497,20 @@ void callKernel(Stim stim, Sim sim, MYFTYPE* ParamsM, MYFTYPE* InitStatesM, HMat
 	}
 #endif
 //#ifndef NKIN_STATES
-	printf("kernel not ran yet\n");
+	cudaEvent_t solver_start, solver_stop;
+	cudaEventCreate(&solver_start);
+	cudaEventCreate(&solver_stop);
+	cudaEventRecord(solver_start);
+	
+	float milliseconds = 0;
+	
 	NeuroGPUKernel << <currKernelRun, blockDim >> >(stim_d, d_modelParams, d_modelStates, sim_d, Mat_d, V_d, VHotsGlobal, CompDepth, CompFDepth); // RRR	
+	cudaEventRecord(solver_stop);
+	cudaEventSynchronize(solver_stop);
+	cudaEventElapsedTime(&milliseconds, solver_start, solver_stop);
+	printf("solver took %f ms\n", milliseconds);
 	printf("kernel ran before memcpyasync currkernel run is %d\n", currKernelRun);
+	//printf("kernel ran before memcpyasync currkernel run is %d\n", currKernelRun);
 	CUDA_RT_CALL(cudaMemcpyAsync(VHotsHost, VHotsGlobal, currKernelRun * Nt * sim.NRecSites * stim.NStimuli * sizeof(MYFTYPE), cudaMemcpyDeviceToHost));
 	printf("done copying*&*&*&*&*&*&*\n");
 }
@@ -515,6 +526,10 @@ void stEfork2Main(Stim stim, Sim sim, MYFTYPE* ParamsM, MYFTYPE* InitStatesM, HM
 	if (np2p == 0) {
 		np2p = 1;
 	}
+	cudaEvent_t total_start, total_stop;
+	cudaEventCreate(&total_start);
+	cudaEventCreate(&total_stop);
+	cudaEventRecord(total_start);
 	for (int i = 0; i < np2p; i++) {
 		printf("calling initframework p2pCapableGPUs[i] is %d\n", p2pCapableGPUs[i]);
 		CUDA_RT_CALL(cudaSetDevice(p2pCapableGPUs[i]));
@@ -529,11 +544,7 @@ void stEfork2Main(Stim stim, Sim sim, MYFTYPE* ParamsM, MYFTYPE* InitStatesM, HM
 	else { currRun = NSets; };
 
 	printf("done initframework dev0 curr Kernel is %d\n", currRun);
-	cudaEvent_t start, stop;
-	cudaEventCreate(&start);
-	cudaEventCreate(&stop);
-	cudaEventRecord(start);
-
+	
 	for (int i = 0; i < np2p; i++) {
 		if (prevRuns >= NSets)  break;
 		CUDA_RT_CALL(cudaSetDevice(p2pCapableGPUs[i]));
@@ -555,11 +566,11 @@ void stEfork2Main(Stim stim, Sim sim, MYFTYPE* ParamsM, MYFTYPE* InitStatesM, HM
 			memcpy(&Vhots[(currRun*i)*stim.NStimuli*Nt*sim.NRecSites], vhots_dev[i], stim.NStimuli*Nt*sim.NRecSites*currRun * sizeof(MYFTYPE));
 		}
 	}
-	cudaEventRecord(stop);
-	cudaEventSynchronize(stop);
+	cudaEventRecord(total_stop);
+	cudaEventSynchronize(total_stop);
 	float milliseconds = 0;
-	cudaEventElapsedTime(&milliseconds, start, stop);
-	printf("it took %f ms\n", milliseconds);
+	cudaEventElapsedTime(&milliseconds, total_start, total_stop);
+	printf("total took %f ms\n", milliseconds);
 	FILE *file = fopen(TIMES_FN, "w");
 	if (file) {
 		fprintf(file, "%d,%f\n", NSets, milliseconds);
@@ -574,6 +585,7 @@ void stEfork2Main(Stim stim, Sim sim, MYFTYPE* ParamsM, MYFTYPE* InitStatesM, HM
 	sprintf(FileName, "%s%d.dat", VHOT_OUT_FN_P,curr_dev);
 	SaveArrayToFile(FileName, NSets*Nt*stim.NStimuli*sim.NRecSites, Vhots);
 }
+
 
 
 
