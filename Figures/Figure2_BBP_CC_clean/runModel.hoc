@@ -1,0 +1,289 @@
+strdef fitFile,timesFile,paramsFile,stimFile,outFile,modelFile,outFPre,base
+objref st,stims,fin,fout,pmat,matOut,stimtime,somaref,secref,extVec,strFunc,most,root,transvec
+
+ntimestep = 3168 
+nparams = 3 
+psize = 1
+ntraces = 1 
+v_init = -80 
+calc_eca = 1 
+
+
+   stLoc = 0.47 
+base = "C:/Users/bensr/Dropbox/NeuroGPU/NeuroGPULast" 
+paramsFile = "./params/params.csv" 
+stimFile = "./Stims/Step_8_.csv" 
+modelFile = "./mosinit.hoc" 
+timesFile = "./Stims/times.csv" 
+
+transvec = new Vector(nparams)
+
+fin = new File()
+fout = new File()
+load_file(modelFile)
+
+
+root = new SectionRef()
+if (root.has_parent()){
+	print secname()
+	root = root.root()
+	}
+access dNAC222_L5_ChC_75c658c9b8[0].soma
+
+create Exts[1]
+objref recSites
+recSites = new SectionList()
+outFPre = "./volts/orig_step"
+access root.sec
+print "**********************"
+print secname()
+root.sec recSites.append()
+
+
+ 
+secondorder=0
+proc runMatrix(){
+
+	//access dend[1]
+	sprint(outFile,"%s_%s.dat",outFPre,secname())
+
+	st.del=0 
+	st.dur=1e9
+	//printf ("$o1.nrow,$o2.nrow,$o2.ncol,%d,%d,%d",$o1.nrow,$o2.nrow,$o2.ncol)
+	matOut = new Matrix($o1.nrow,($o2.nrow*$o2.ncol))
+	for(sim=0;sim<$o1.nrow;sim+=1){
+	//printf("running sim %d\n",sim)
+		counter=0
+		transvec = $o1.getrow(sim)
+		tfunc()
+		for(i=0;i<stims.nrow;i+=1){
+			finitialize(-65)
+			for(tt =0;tt<stimtime.ncol;tt+=1){
+			dt  =stimtime.x(0,tt)
+
+				st.amp = 1*stims.x(i,tt)
+
+				matOut.x(sim,counter)=v(0.5)
+				counter+=1
+				fadvance()
+				
+			}
+		}
+	}
+	//printf("finshed run matrix %s\n",outFile)
+}
+strFunc = new StringFunctions()
+proc readMatrix(){localobj temp
+	csv_ind = strFunc.substr($s1,"csv")
+	if (csv_ind==-1){
+		temp = new Vector()
+		fin.ropen($s1)
+		for (i=0;i<$o2.nrow;i+=1){
+			temp.vread(fin)
+			$o2.setrow(i,temp)
+			//print i
+		}
+		fin.close()
+	} else {
+	readCSVMatrix($s1,$o2)
+	}
+}
+
+proc readCSVMatrix(){
+	fin = new File($s1)
+	fin.ropen()
+	print $o2.nrow()
+	$o2.scanf(fin,$o2.nrow(),$o2.ncol())
+	fin.close()
+}
+proc writeMatrix(){localobj temp
+	fout.wopen($s1)
+	temp = new Vector()
+	for (i=0;i<$o2.nrow;i+=1){
+		temp = $o2.getrow(i)
+		temp.vwrite(fout,3)
+	}
+	fout.close()
+}
+proc mul32(){localobj thisone
+	countSegs()
+	segsMat = segs+comps+1 
+	//printf("1we have a matrix in the size of %d \n",segsMat )
+	segsToAdd = 32-segsMat%32
+	forall {
+		thisone = new SectionRef()   
+		if (thisone.nchild == 0 ) {
+			break
+			}
+	}
+	access thisone.sec
+	nseg = nseg+segsToAdd
+	fcurrent()
+	countSegs()
+	//printf("we have a matrix in the size of %d \n",segs+comps+1 )
+	
+}
+proc writeVector(){
+	fout.aopen($s1)
+	$o2.vwrite(fout,3)
+	fout.close()
+	
+}
+proc printChildren(){localobj sl
+	sl = new SectionList()
+	sl.children()
+	u=0
+	forsec sl{
+	print secname()
+	u+=1
+	}
+	print u
+}	
+proc printparent(){localobj sref
+	sref = new SectionRef()
+	sref.parent
+	print secname()
+}		
+
+
+proc countSegs(){
+segs=0
+comps=0
+	forall{
+		segs+=nseg
+		comps+=1
+	}
+}
+create Exts[1]		
+proc hinesDisperseBranching(){local i localobj sl,secRef, clist, avec, bvec		
+	counter = 0		
+	forsec most{		
+		secRef = new SectionRef()		
+		if(secRef.nchild>2){		
+clist = new List()		
+  for i=0, secRef.nchild-1 {		
+    secRef.child[i] clist.append(new SectionRef())		
+  }		
+			Exts[counter]{		
+				L = 1e-9		
+				diam = 1		
+				Ra = secRef.sec.Ra		
+				cm = secRef.sec.cm	
+				nseg = secRef.nchild-1		
+			}		
+			i=0		
+			Exts[counter]{		
+				for(x){ 		
+					if (x > 0) {		
+						avec =new Vector()		
+						bvec =new Vector()		
+						//printf("x is %f i is %d\n",x,i)		
+						clist.o(i).sec{		
+							avec =new Vector()		
+							bvec =new Vector()		
+							for(y){		
+								avec.append(GetA(y))		
+								bvec.append(GetB(y))		
+							}		
+						}		
+						connect clist.o(i).sec(0), x		
+						 k=0		
+					  clist.o(i).sec{		
+							for(y){		
+								SetA(y,avec.x(k))		
+								SetB(y,bvec.x(k))		
+							}		
+						}		
+						i +=1		
+							
+					}		
+							
+							
+				}		
+						
+			}		
+			fcurrent()		
+			secRef {		
+				connect Exts[counter](0), 1		
+			}		
+			Exts[counter]{		
+				for(x){ 		
+			//printf("x is %f and sec is %s\n",x,secname())		
+					SetA(x,0)		
+					SetB(x,0)		
+					}		
+				}		
+					
+	counter+=1				
+		}		
+	}
+		//print "printing counter"
+		//print counter
+		
+		
+}
+
+proc countExts(){
+ext_num=0
+forsec most {
+	somaref= new SectionRef()
+	if (somaref.nchild>2){
+		ext_num+=1
+	}
+	}
+	
+	//printf("ext_num is %d", ext_num)
+}
+
+
+
+proc PrintRecSites(){localobj sref
+	recSites.printnames()
+}	
+stimtime = new Matrix(1,ntimestep)
+readMatrix(timesFile,stimtime)
+pmat = new Matrix(psize,nparams)
+readMatrix(paramsFile,pmat)
+stims = new Matrix(ntraces,ntimestep)
+readCSVMatrix(stimFile,stims)
+forsec "dend" nseg=1
+forsec "apic" nseg=1
+	
+//topology()
+most = new SectionList()
+forall most.append()
+countExts()
+fcurrent()
+//fmatrix()
+//printf("Creating Exts %d\n",ext_num)
+//printf("Creating Exts %d\n",ext_num)
+if(ext_num>0){
+	create Exts[ext_num]
+	}	else{
+	access Exts[0]
+		delete_section()
+	}
+//****************************************************
+forall{nseg=1}
+//******************************************************
+hinesDisperseBranching()
+
+mul32()
+access root.sec
+transvec = pmat.getrow(0)
+tfunc()
+st = new IClamp(0.5)
+
+
+
+ 
+finitialize(v_init)
+
+
+
+runMatrix(pmat,stims)
+writeMatrix(outFile,matOut)
+finitialize(v_init)
+//ADD STUFF HERE
+
+//quit()

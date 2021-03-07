@@ -1,0 +1,44 @@
+
+
+
+    
+
+proc distribute2(){local x localobj sl
+		
+        strdef stmp,distfunc,mech
+        sl = $o1
+        mech = $s2
+        distfunc = $s3
+		print distfunc
+        sprint(distfunc,"%%s %s(%%f) = %s",mech, distfunc)
+		//print distfunc
+        forsec sl for(x) {
+			secname()
+            sprint (stmp,distfunc,secname(),x,distance(x))
+			print stmp
+            execute(stmp)
+        }
+    }
+proc tfunc(){
+
+strdef tmp_str,const_str
+const_str = "(0.0 * %g + 1.0)*"
+transvec.printf()
+    // Initialise distance function to soma
+
+    // Run the biophysics function from the template
+	//print transvec.x(0)
+	//axonal na 1.6
+	//sprint(tmp_str,"%s%f",const_str,transvec.x(0))
+	//distribute2(cell.axonal,"gNaTa_tbar_NaTa_t",tmp_str)
+	//somatic na 1.2
+	//print transvec.x(1)
+	//sprint(tmp_str,"%s%f",const_str,transvec.x(1))
+	//distribute2(cell.somatic,"gNaTs2_tbar_NaTs2_t",tmp_str)
+	//axonal potassium
+	//print transvec.x(2)
+	//sprint(tmp_str,"%s%f",const_str,transvec.x(2))
+	//distribute2(cell.axonal,"gK_Tstbar_K_Tst",tmp_str)
+	
+}
+	

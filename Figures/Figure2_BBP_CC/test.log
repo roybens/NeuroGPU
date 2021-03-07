@@ -1,0 +1,387 @@
+NEURON -- VERSION 7.7.2 7.7 (2b7985ba) 2019-06-20
+Duke, Yale, and the BlueBrain Project -- Copyright 1984-2018
+See http://neuron.yale.edu/neuron/credits
+
+	1 
+	1 
+Setting temperature to 34.000000 C
+Setting simulation time step to 0.025000 ms
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+**********************
+dNAC222_L5_ChC_75c658c9b8[0].soma[0]
+1 
+1 
+1 
+	1 
+5	0.9	0.0892	
+	1 
+	1 
+	1 
+	0 
+	1 
+	0 
+5	0.9	0.0892	
+	1 
+	1 
+	1 
+dNAC222_L5_ChC_75c658c9b8[0].soma[0]
+Additional mechanisms from files
+ Ca.mod CaDynamics_E2.mod Ca_LVAst.mod Ih.mod Im.mod K_Pst.mod K_Tst.mod KdShu2007.mod NaTa_t.mod NaTs2_t.mod Nap_Et2.mod SK_E2.mod SKv3_1.mod branching.mod
+Notice: dNAC222_L5_ChC_75c658c9b8[0].dend[50](0) had previously been connected to parent dNAC222_L5_ChC_75c658c9b8[0].soma[0](0.5)
+Notice: dNAC222_L5_ChC_75c658c9b8[0].dend[0](0) had previously been connected to parent dNAC222_L5_ChC_75c658c9b8[0].soma[0](0.5)
+Notice: dNAC222_L5_ChC_75c658c9b8[0].axon[0](0) had previously been connected to parent dNAC222_L5_ChC_75c658c9b8[0].soma[0](1)
+E:\GitHub\NeuroGPU\Figures\Figure2_BBP_CC\proc_add_param_to_hoc_for_opt.py:74: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
+  param_start_i += list(np.cumsum(cell_numel(np.array(all_parameters_non_global_c))))
+E:\GitHub\NeuroGPU\Figures\Figure2_BBP_CC\proc_add_param_to_hoc_for_opt.py:126: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
+  reversals_c = np.array(reversals_c)
+E:\GitHub\NeuroGPU\Figures\Figure2_BBP_CC\make_tree_from_parent_vec.py:21: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
+  Related = np.array([np.where(Fathers[i] == Ks)[0] for i in range(Fathers.size)])
+E:\GitHub\NeuroGPU\Figures\Figure2_BBP_CC\create_auxilliary_data_3.py:195: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
+  LRelated = np.array(LRelated)
+	1 
+	1 
+Setting temperature to 34.000000 C
+Setting simulation time step to 0.025000 ms
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+	1 
+**********************
+dNAC222_L5_ChC_75c658c9b8[0].soma[0]
+1 
+1 
+1 
+	1 
+5	0.9	0.0892	
+	1 
+	1 
+	1 
+parsing Ca.mod
+parsing Ca_LVAst.mod
+parsing CaDynamics_E2.mod
+parsing Ih.mod
+parsing Im.mod
+parsing K_Pst.mod
+parsing K_Tst.mod
+parsing KdShu2007.mod
+unknown     THREADSAFE
+unknown	
+parsing Nap_Et2.mod
+parsing NaTa_t.mod
+parsing NaTs2_t.mod
+parsing passive.mod2
+parsing SK_E2.mod
+parsing SKv3_1.mod
+parsing Ca
+Solve method not cnexp/sparse! in Ca
+parsing Ca_LVAst
+Solve method not cnexp/sparse! in Ca_LVAst
+parsing CaDynamics_E2
+Solve method not cnexp/sparse! in CaDynamics_E2
+parsing Ih
+Solve method not cnexp/sparse! in Ih
+parsing Im
+Solve method not cnexp/sparse! in Im
+parsing K_Pst
+Solve method not cnexp/sparse! in K_Pst
+parsing K_Tst
+Solve method not cnexp/sparse! in K_Tst
+parsing KdShu2007
+Solve method not cnexp/sparse! in KdShu2007
+parsing Nap_Et2
+Solve method not cnexp/sparse! in Nap_Et2
+parsing NaTa_t
+Solve method not cnexp/sparse! in NaTa_t
+parsing NaTs2_t
+Solve method not cnexp/sparse! in NaTs2_t
+parsing pas
+no solve in breakpoint
+parsing SK_E2
+Solve method not cnexp/sparse! in SK_E2
+parsing SKv3_1
+Solve method not cnexp/sparse! in SKv3_1
+5	0.9	0.0892	
+./Data/mosinit.pkl
+in procadd
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+running runmodel_param
+	1 
+	1 
+2,223
+3,222
+4,221
+5,220
+6,219
+7,218
+8,217
+9,216
+10,215
+11,214
+12,213
+13,212
+14,211
+15,210
+16,209
+17,208
+18,207
+19,206
+20,205
+21,204
+22,203
+23,202
+24,201
+25,200
+26,199
+27,198
+28,197
+29,196
+30,195
+31,194
+32,193
+33,192
+34,191
+35,190
+36,189
+37,188
+38,187
+39,186
+40,185
+41,184
+42,183
+43,182
+44,181
+45,180
+46,179
+47,178
+48,177
+49,176
+50,175
+51,174
+52,173
+53,172
+54,171
+55,170
+56,169
+57,168
+58,167
+59,166
+60,165
+61,164
+62,163
+63,162
+64,161
+65,160
+66,159
+67,158
+68,157
+69,156
+70,155
+71,154
+72,153
+73,152
+74,151
+75,150
+76,149
+77,148
+78,147
+79,146
+80,145
+81,144
+82,143
+83,142
+84,141
+85,140
+86,139
+87,138
+88,137
+89,136
+90,135
+91,134
+92,133
+93,132
+94,131
+95,130
+96,129
+97,128
+98,127
+99,126
+100,125
+101,124
+102,123
+103,122
+104,121
+105,120
+106,119
+107,118
+108,117
+109,116
+110,115
+111,114
+112,113
+113,112
+114,111
+115,110
+116,109
+117,108
+118,107
+119,106
+120,105
+121,104
+122,103
+123,102
+124,101
+125,100
+126,99
+127,98
+128,97
+129,96
+130,95
+131,94
+132,93
+133,92
+134,91
+135,90
+136,89
+137,88
+138,87
+139,86
+140,85
+141,84
+142,83
+143,82
+144,81
+145,80
+146,79
+147,78
+148,77
+149,76
+150,75
+151,74
+152,73
+153,72
+154,71
+155,70
+156,69
+157,68
+158,67
+159,66
+160,65
+161,64
+162,63
+163,62
+164,61
+165,60
+166,59
+167,58
+168,57
+169,56
+170,55
+171,54
+172,53
+173,52
+174,51
+175,50
+176,49
+177,48
+178,47
+179,46
+180,45
+181,44
+182,43
+183,42
+184,41
+185,40
+186,39
+187,38
+188,37
+189,36
+190,35
+191,34
+192,33
+193,32
+194,31
+195,30
+196,29
+197,28
+198,27
+199,26
+200,25
+201,24
+202,23
+203,22
+204,21
+205,20
+206,19
+207,18
+208,17
+209,16
+210,15
+211,14
+212,13
+213,12
+214,11
+215,10
+216,9
+217,8
+218,7
+219,6
+220,5
+221,4
+222,3
+223,2
+224,1
+Finished writing AllModels.h,cpp,cu,cuh
+what to do?
+Finished NMODLtoC_Main.
+done with parse_models
+E:/GitHub/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win/
+C:/pyNeuroGPU_win66
+./Data/BasicConst*.csv
+./Data\BasicConstSeg.csv
+./Data\BasicConstSegP.csv
+E:/GitHub/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win//NeuroGPU6/kernel.cu
+E:/GitHub/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win//NeuroGPU6/MainC.cu
+E:/GitHub/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win//NeuroGPU6/Makefile
+E:/GitHub/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win//NeuroGPU6/Util.cu
+E:/GitHub/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win//NeuroGPU6/Util.h
+E:/GitHub/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win//NeuroGPU6/CudaStuff.cu
+E:/GitHub/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win//NeuroGPU6/CudaStuff.cuh
+./Data/BasicConst*.csv
+./Data\BasicConstSeg.csv
+./Data\BasicConstSegP.csv
+created new reference file
+Notice: dNAC222_L5_ChC_75c658c9b8[0].dend[50](0) had previously been connected to parent dNAC222_L5_ChC_75c658c9b8[0].soma[0](0.5)
+Notice: dNAC222_L5_ChC_75c658c9b8[0].dend[0](0) had previously been connected to parent dNAC222_L5_ChC_75c658c9b8[0].soma[0](0.5)
+Notice: dNAC222_L5_ChC_75c658c9b8[0].axon[0](0) had previously been connected to parent dNAC222_L5_ChC_75c658c9b8[0].soma[0](1)
