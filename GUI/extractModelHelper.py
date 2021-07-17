@@ -11,7 +11,7 @@ import sys
 import io
 import time
 # for Python3
-
+import shutil
 from tkinter import *
 import numpy as np
 from tkinter.filedialog import askopenfilename
@@ -37,71 +37,144 @@ def test():
 style = {'description_width': 'initial'}
 
 
+
+def make_wrkdir():
+    global working
+    global template
+#         working = text.value.replace('/', '\\')
+    copy_tree(template, working)
+    hoctemplate = open(working + '/runModel-template.hoc')
+    thefile = open(working + '/runModel.hoc', 'w')
+    thefile.write(hoctemplate.read())
+    thefile.close()
+    print ("Working files generated at: " + working)
+    print (working + '/runModel.hoc has been reset')
+
+
 def init_working_dir():
     global template
     global working
-    text_neurogpu_dir = widgets.Text(description="NeuroGPU location:", style=style, layout=widgets.Layout(width='600px'))
-    text_neurogpu_dir.value = 'choose where NeuroGPU is located'
-    text_neurogpu_dir.value = '../NeuroGPU_Base'
-    
-    base = text_neurogpu_dir.value
-    base = text_neurogpu_dir.value.replace('/', '\\')
     global template
-    template = base + "\\scripts\\template"
-    text_neurogpu_dir.width = '50%'
-    display(text_neurogpu_dir)
+    global base
 
-    # button = widgets.Button(description="Select NeurGPU Directory:", layout=Layout(width='300px'))
-    button = widgets.Button(description="Select NeuroGPU Directory:", layout=widgets.Layout(width='300px'))
+    base_text = " Enter NeuroGPU location or enter nothing to use default location ../NeuroGPU_Base"\
+                 "\n NeuroGPU location: "
+    base_passed = False
+    
+    working_text = "Enter working directory or use default location ../Figures/Figure3_passive" \
+                   "\n Working directory location: "
+    working_passed = False
+    
+    
+    while not base_passed:
+        base = input(base_text)
+        if not base: # nothing passed in
+            base = "../NeuroGPU_Base"
+            base_passed = True
+        elif not os.path.isdir(base): # directory structure is wrong
+            print(("Please enter a valid path to NeuroGPU Base directory \n"))
+        elif not os.path.isdir(os.path.join(base,'scripts','template')):
+            print("\n You entered a valid directory but it does not have the correct file structure "\
+                         "this prompt is because we expect to see NeuroGPU_base/scripts/template \n ")
+        else: # valid input provided
+            base_passed = True
+    base = os.path.abspath(os.path.normpath(base))
+    assert os.path.isdir(base), "not a valid path for base: {}".format(base)
+    template = os.path.abspath(os.path.join(base,'scripts','template'))
+    assert os.path.isdir(base), "not a valid path for template: {}".format(template)
+    
+    
+    while not working_passed:
+        working = input(working_text)
+        if not working:
+            working = "../Figures/Figure3_passive"
+            working_passed = True
+        elif not os.path.isdir(working):
+            print("Please enter a valid working directory \n ")
+        else:
+            working_passed = True
+            
+    working = os.path.abspath(working)
+    assert os.path.isdir(working), "not valid path for working directory: {}".format(working)
+        
+    generate = input("\n Generate rest of working directory? y/n ?: ")
+    while generate != 'y' and generate != 'n':
+        generate = input("Please choose y or n. Generate rest of working directory? y/n ?: ")
+    
+    if generate == 'y':
+        make_wrkdir()
+    else:
+        print("You've chosen not to generate the rest of working directory, this can cause issues."\
+             "\n If you decide to generate working directory, just call make_wrkdir().")
 
-    display(button)
 
-    def on_button_clicked0_1(b):
-        global template
-        global base
-        text_neurogpu_dir.value = test()
-        base = text_neurogpu_dir.value.replace('/', '\\')
-        template = base + "\\scripts\\template"
 
-    button.on_click(on_button_clicked0_1)
-    text = widgets.Text(description="Working Filepath:", style=style, layout=widgets.Layout(width='600px'))
-    text.value = 'choose where is the NEURON model'
-    text.value = '../Figures/Figure3_passive'
-    global working
+# def init_working_dir():
+   
+#     global template
+#     global working
+#     text_neurogpu_dir = widgets.Text(description="NeuroGPU location:", style=style, layout=widgets.Layout(width='600px'))
+#     text_neurogpu_dir.value = 'choose where NeuroGPU is located'
+#     text_neurogpu_dir.value = '../NeuroGPU_Base'
+    
+#     base = text_neurogpu_dir.value
+#     base = text_neurogpu_dir.value.replace('/', '\\')
+#     global template
+#     template = base + "\\scripts\\template"
+#     text_neurogpu_dir.width = '50%'
+#     display(text_neurogpu_dir)
+
+#     # button = widgets.Button(description="Select NeurGPU Directory:", layout=Layout(width='300px'))
+#     button = widgets.Button(description="Select NeuroGPU Directory:", layout=widgets.Layout(width='300px'))
+
+#     display(button)
+
+#     def on_button_clicked0_1(b):
+#         global template
+#         global base
+#         text_neurogpu_dir.value = test()
+#         base = text_neurogpu_dir.value.replace('/', '\\')
+#         template = base + "\\scripts\\template"
+
+#     button.on_click(on_button_clicked0_1)
+#     text = widgets.Text(description="Working Filepath:", style=style, layout=widgets.Layout(width='600px'))
+#     text.value = 'choose where is the NEURON model'
+#     text.value = '../Figures/Figure3_passive'
+#     global working
     
 
-    text.width = '50%'
-    display(text)
-    button = widgets.Button(description="Select Working Directory:", layout=widgets.Layout(width='300px'))
-    working = text.value
-    display(button)
+#     text.width = '50%'
+#     display(text)
+#     button = widgets.Button(description="Select Working Directory:", layout=widgets.Layout(width='300px'))
+#     working = text.value
+#     display(button)
 
-    def on_button_clicked_1(b):
-        global working
-        text.value = test()
-        working = text.value
+#     def on_button_clicked_1(b):
+#         global working
+#         text.value = test()
+#         working = text.value
 
-    button.on_click(on_button_clicked_1)
+#     button.on_click(on_button_clicked_1)
 
 
 
-    button = widgets.Button(description="Generate/Rest Working Files:", layout=widgets.Layout(width='300px'))
-    display(button)
+#     button = widgets.Button(description="Generate/Rest Working Files:", layout=widgets.Layout(width='300px'))
+#     display(button)
 
-    def on_button_clicked2_1(b):
-        global working
-        global template
-        working = text.value.replace('/', '\\')
+#     def on_button_clicked2_1(b):
+#         global working
+#         global template
+#         working = text.value.replace('/', '\\')
 
-        copy_tree(template, working)
-        hoctemplate = open(working + '/runModel-template.hoc')
-        thefile = open(working + '/runModel.hoc', 'w')
-        thefile.write(hoctemplate.read())
-        thefile.close()
-        print ("Working files generated at: " + working)
-        print (working + '/runModel.hoc has been reset')
+#         copy_tree(template, working)
+#         hoctemplate = open(working + '/runModel-template.hoc')
+#         thefile = open(working + '/runModel.hoc', 'w')
+#         thefile.write(hoctemplate.read())
+#         thefile.close()
+#         print ("Working files generated at: " + working)
+#         print (working + '/runModel.hoc has been reset')
 
-    button.on_click(on_button_clicked2_1)
+#     button.on_click(on_button_clicked2_1)
 
 
 def init_compile_mod():
@@ -156,8 +229,6 @@ def show_comp_button():
 # SELECT INPUT FILES
 
 
-global file_values
-file_values = ["", "", "", ""]
 global time_file
 global stim_file
 global param_file
@@ -171,97 +242,123 @@ def replace_line(file_name, line_num, text):
     out.close()
 
 
-def get_file_dialog():
-    global working
-    root = Tk()
-    root.withdraw()
-    root.call('wm', 'attributes', '.', '-topmost', True)
-    infiles = askopenfilename(initialdir=working, multiple=False)
-    return infiles
 
 
-def init_input_files(label, fill, index):
-    global time_file
-    global stim_file
-    global param_file
-    global working
-    file_values[index] = widgets.Text(description=label + ":", layout=widgets.Layout(width='400px'))
-    file_values[index].value = fill
-    display(file_values[index])
-    button3_1 = widgets.Button(description="Select " + label + "File:", style=style, layout=widgets.Layout(width='50%'))
-    display(button3_1)
-    if index == 0:
-        param_file = fill
-    if index == 1:
-        stim_file = fill
-    if index == 3:
-        time_file = fill
 
-    def on_button_clicked(b):
-        global working
-        tmpfile= get_file_dialog()
-        tmpfile= tmpfile.replace(working.replace('\\','/'),'./')
-        file_values[index].value = tmpfile
 
-    button3_1.on_click(on_button_clicked)
+def y_or_n_input(text):
+    y_or_n = False
+    while not y_or_n:
+        result = input(text)
+        if result == 'y' or result == 'n':
+            y_or_n = True
+        else:
+            print("please enter y or n")
+    return result
 
+def input_file(text, default=None):
+    y_or_n = False
+    while not y_or_n:
+        if default:
+            print("If you hit enter then you will use default file: {}".format(default))
+            result = input(text)
+        else:
+            result = input(text)
+        if not result or result == '' and default:
+            result = default
+            y_or_n = True
+        if os.path.isfile(result):
+            y_or_n = True
+        else:
+            print("please enter a valid file")
+    return result
+
+def input_var(text, default=None):
+    if default:
+        print("If you hit enter then you will use default value: {}".format(default))
+        result = input(text)
+    else:
+        result = input(text)
+        
+    if not result or result == '' and default:
+        result = default
+        
+    return result
+
+        
 
 def show_input_file_panel():
     global time_file
     global stim_file
     global param_file
-    init_input_files("Parameter ", './params/params.csv', 0)
-    init_input_files("Stimulation ", './Stims/Step_8_.csv', 1)
-    init_input_files("Model ", './mosinit.hoc', 2)
-    init_input_files("Times ", './Stims/times.csv', 3)
-    button3_2 = widgets.Button(description="Integrate Files", layout=widgets.Layout(width='50%'))
-    display(button3_2)
-    def on_button_clicked2(b):
-        integrate1()
+    global model_file
+    # set defaults
+    param_file = os.path.join(template,'params','params.csv')
+    stim_file = os.path.join(template,'Stims', 'Step_8_.csv')
+    model_file = os.path.join(template,'mosinit.hoc')
+    time_file = os.path.join(template,'Stims','times.csv')
+    use_custom_files = y_or_n_input("would you like to use custom input? y/n: ")
+    while use_custom_files != 'y' and  use_custom_files != 'n':
+        print("please type y or n")
+        use_custom_files = y_or_n_input("would you like to use custom input? y/n: ")
+    if use_custom_files == "y":
+        param_file = input_file("Parameter filepath: ", param_file)
+        stim_file = input_file("Stimulation filepath:  ", stim_file)
+        model_file = input_file("Model filepath", model_file)
+        time_file = input_file("Times filepath", time_file)
 
-    button3_2.on_click(on_button_clicked2)
+    print("making", os.path.join(working, 'params'))
+    os.makedirs(os.path.join(working, 'params'), exist_ok=True)
+    os.makedirs(os.path.join(working, 'Stims'), exist_ok=True)
+    
+    param_dest =  os.path.join(working, 'params', os.path.basename(param_file))
+    stim_dest = os.path.join(working, 'Stims', os.path.basename(stim_file))
+    time_dest = os.path.join(working, 'Stims', os.path.basename(time_file))
+    model_dest = os.path.join(working, os.path.basename(model_file))
+    
+    shutil.copyfile(param_file, param_dest)
+    shutil.copyfile(stim_file, stim_dest)
+    shutil.copyfile(time_file, time_dest)
+    shutil.copyfile(model_file, model_dest)
 
-    param_file = file_values[0].value
-    stim_file = file_values[1].value
-    time_file = file_values[3].value
+    file_values = [os.path.abspath(param_dest), os.path.abspath(stim_dest), \
+                   os.path.abspath(model_dest), os.path.abspath(time_dest)]
+    integrate1(file_values)
 
 
-def integrate1():
+
+def integrate1(file_values):
+    prev_dir = os.getcwd()
     os.chdir(working)
     global base
+    print("base is : ",base)
     replace_line('runModel.hoc', 11, 'base = "%s" \n' % base.replace('\\','/'))
-    replace_line('runModel.hoc', 12, 'paramsFile = "%s" \n' % (file_values[0].value))
-    replace_line('runModel.hoc', 13, 'stimFile = "%s" \n' % (file_values[1].value))
-    replace_line('runModel.hoc', 14, 'modelFile = "%s" \n' % (file_values[2].value))
-    replace_line('runModel.hoc', 15, 'timesFile = "%s" \n' % (file_values[3].value))
+    replace_line('runModel.hoc', 12, 'paramsFile = "%s" \n' % (file_values[0]))
+    replace_line('runModel.hoc', 13, 'stimFile = "%s" \n' % (file_values[1]))
+    replace_line('runModel.hoc', 14, 'modelFile = "%s" \n' % (file_values[2]))
+    replace_line('runModel.hoc', 15, 'timesFile = "%s" \n' % (file_values[3]))
     replace_line('runModel_topo.hoc', 11, 'base = "%s" \n' % base.replace('\\','/'))
-    replace_line('runModel_topo.hoc', 12, 'paramsFile = "%s" \n' % (file_values[0].value))
-    replace_line('runModel_topo.hoc', 13, 'stimFile = "%s" \n' % (file_values[1].value))
-    replace_line('runModel_topo.hoc', 14, 'modelFile = "%s" \n' % (file_values[2].value))
-    replace_line('runModel_topo.hoc', 15, 'timesFile = "%s" \n' % (file_values[3].value))
+    replace_line('runModel_topo.hoc', 12, 'paramsFile = "%s" \n' % (file_values[0]))
+    replace_line('runModel_topo.hoc', 13, 'stimFile = "%s" \n' % (file_values[1]))
+    replace_line('runModel_topo.hoc', 14, 'modelFile = "%s" \n' % (file_values[2]))
+    replace_line('runModel_topo.hoc', 15, 'timesFile = "%s" \n' % (file_values[3]))
     global time_file
     global stim_file
     global param_file
-    param_file = file_values[0].value
-    stim_file = file_values[1].value
-    time_file = file_values[3].value
+    param_file = file_values[0]
+    stim_file = file_values[1]
+    time_file = file_values[3]
     print ("time file is " + time_file)
 
     print("Input files successfully integrated")
+    # lets not stay in workdir, it's really confusing to change file paths like this
+    os.chdir(prev_dir)
 
 
 
 
-global run_var_values
-run_var_values = ["", "", "", "", "", ""]
 
-
-def init_vals(label, fill, index):
-    run_var_values[index] = widgets.Text(description=label, width="600px")
-    run_var_values[index].value = fill
-
-    display(run_var_values[index])
-
+    
 
 def show_run_var_panel():
     global time_file
@@ -291,42 +388,52 @@ def show_run_var_panel():
     else:
         nmodels=1
         nparams = 1
+        
+    run_var_values = ["", "", "", "", "", ""]
 
-    init_vals("# Timestep ", str(timeSteps), 0)
-    init_vals("# Parameters", str(nparams), 1)
-    init_vals("# Models", str(nmodels), 2)
-    init_vals("# Traces ", str(nstims), 3)
-    init_vals("V_init ", str(-80), 4)
-    init_vals("Recalculate ECa? ", str(1), 5)
-    button = widgets.Button(description="Integrate Running Variables", layout=widgets.Layout(width='500px'))
-    display(button)
+    run_var_values[0] = input_var("# Timestep ", str(timeSteps))
+    run_var_values[1] = input_var("# Parameters", str(nparams))
+    run_var_values[2] = input_var("# Models", str(nmodels))
+    run_var_values[3] = input_var("# Traces ", str(nstims))
+    run_var_values[4] = input_var("V_init ", str(-80))
+    run_var_values[5] = input_var("Recalculate ECa? If not, press enter. If so type value here:", str(1))
 
-    def on_button_clicked2_5(b):
-        integrate2()
-
-    button.on_click(on_button_clicked2_5)
+    integrate2(run_var_values)
 
 
-def integrate2():
-    replace_line('runModel.hoc', 2, 'ntimestep = %s \n' % run_var_values[0].value)
-    replace_line('runModel.hoc', 3, 'nparams = %s \n' % run_var_values[1].value)
-    replace_line('runModel.hoc', 4, 'psize = %s \n' % run_var_values[2].value)
-    replace_line('runModel.hoc', 5, 'ntraces = %s \n' % run_var_values[3].value)
-    replace_line('runModel.hoc', 6, 'v_init = %s \n' % run_var_values[4].value)
-    replace_line('runModel.hoc', 7, 'calc_eca = %s \n' % run_var_values[5].value)
-    replace_line('runModel_topo.hoc', 2, 'ntimestep = %s \n' % run_var_values[0].value)
-    replace_line('runModel_topo.hoc', 3, 'nparams = %s \n' % run_var_values[1].value)
-    replace_line('runModel_topo.hoc', 4, 'psize = %s \n' % run_var_values[2].value)
-    replace_line('runModel_topo.hoc', 5, 'ntraces = %s \n' % run_var_values[3].value)
-    replace_line('runModel_topo.hoc', 6, 'v_init = %s \n' % run_var_values[4].value)
-    replace_line('runModel_topo.hoc', 7, 'calc_eca = %s \n' % run_var_values[5].value)
+
+def integrate2(run_var_values):
+    prev_dir = os.getcwd()
+    # go into working dir
+    os.chdir(working)
+    replace_line('runModel.hoc', 2, 'ntimestep = %s \n' % run_var_values[0])
+    replace_line('runModel.hoc', 3, 'nparams = %s \n' % run_var_values[1])
+    replace_line('runModel.hoc', 4, 'psize = %s \n' % run_var_values[2])
+    replace_line('runModel.hoc', 5, 'ntraces = %s \n' % run_var_values[3])
+    replace_line('runModel.hoc', 6, 'v_init = %s \n' % run_var_values[4])
+    replace_line('runModel.hoc', 7, 'calc_eca = %s \n' % run_var_values[5])
+    replace_line('runModel_topo.hoc', 2, 'ntimestep = %s \n' % run_var_values[0])
+    replace_line('runModel_topo.hoc', 3, 'nparams = %s \n' % run_var_values[1])
+    replace_line('runModel_topo.hoc', 4, 'psize = %s \n' % run_var_values[2])
+    replace_line('runModel_topo.hoc', 5, 'ntraces = %s \n' % run_var_values[3])
+    replace_line('runModel_topo.hoc', 6, 'v_init = %s \n' % run_var_values[4])
+    replace_line('runModel_topo.hoc', 7, 'calc_eca = %s \n' % run_var_values[5])
     print("Input files successfully integrated")
+    # change back to previous dir
+    os.chdir(prev_dir)
 
 
 def select_inj_site():
     global working
     working.replace('/', '\\')
-    os.chdir(working)
+    prev_dir = os.getcwd()
+    # check that we are in the right spot
+    if not os.path.basename(os.getcwd()) ==  os.path.basename(os.path.abspath(working)):
+        os.chdir(working)
+    sys.path.insert(0,os.getcwd())
+    
+#     import test2
+#     test2.main()
     p = subprocess.Popen("python test2.py", stdout=subprocess.PIPE, stderr=None, shell=True)
     for line in iter(p.stdout.readline, ""):
         #print(line)
@@ -377,10 +484,11 @@ def select_inj_site():
 
     o = widgets.interact(f, c=widgets.Dropdown(options=n, value=n[0], description='Section:', disabled=False));
 
-    # button = widgets.Button(description="Create Injection Site", width="100%")
+#     button = widgets.Button(description="Create Injection Site", width="100%")
     def on_button_clicked2_7(b):
+        os.chdir(working)
+        print("adding st loc at", os.getcwd())
         linex = 'access %s' % (prefix + pop)
-
         if has_subset == True:
             linex = linex + ('[%s]' % a.value)
         replace_line('runModel.hoc', 29, linex + '\n')
@@ -389,13 +497,16 @@ def select_inj_site():
         # thefile.close()
         print("Injection site successfully integrated")
         # print a.value, pop, e.value, has_subset
-
+    
     button.on_click(on_button_clicked2_7)
+    os.chdir(prev_dir)
 
 
 def run_trans_script_gui():
     global working
     global base
+    prev_dir = os.getcwd()
+    
     
     def translate():
         global template
@@ -410,13 +521,16 @@ def run_trans_script_gui():
                 print (full_file_name)
                 shutil.copy(full_file_name, working)
         create_topo()
-        # os.chdir(working)
+        os.chdir(working)
+        print(os.getcwd())
+        print(os.listdir())
+        print(os.path.isfile('extractModel.py'))
         # result = run(['python','extractModel.py'], stdout=PIPE)
         
         command = 'python extractModel.py'
         filename = 'test.log'
         with io.open(filename, 'wb') as writer, io.open(filename, 'rb', 1) as reader:
-            process = subprocess.Popen(command, stdout=writer, stderr=writer)
+            process = subprocess.Popen(['python', 'extractModel.py'], stdout=writer, stderr=writer)
             while process.poll() is None:
                 sys.stdout.write(reader.read())
                 time.sleep(0.5)
@@ -432,6 +546,8 @@ def run_trans_script_gui():
         #     print (line)
     button = widgets.Button(description="Translate to CUDA Code", width="100%")
     display(button)
+    
+    
 
     def on_button_clicked2_8(b):
         translate()
@@ -446,3 +562,8 @@ def run_trans_script_gui():
         thefile.write(template1.read())
         thefile.write(template.read())
         thefile.close()
+   
+    os.chdir(prev_dir)
+        
+if __name__ == "__main__":
+    init_working_dir()

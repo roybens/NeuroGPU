@@ -1,0 +1,13 @@
+#!/bin/sh
+if test "x${NRNHOME}" = "x" ; then
+	NRNHOME="/global/homes/z/zladd/nrn-7.6/bin"
+fi
+if test "x${NRNBIN}" = "x" ; then
+	NRNBIN="/global/homes/z/zladd/nrn-7.6/bin/x86_64/bin/"
+fi
+if test "" = "yes" ; then
+	NRNIV="${NRNBIN}nrniv.app/Contents/MacOS/nrniv"
+else
+	NRNIV="${NRNBIN}nrniv"
+fi
+"${NRNIV}" -dll "/global/project/projectdirs/m2043/zladd/NeuroGPU/Figures/Figure2_BBP_TTPC/x86_64/.libs/libnrnmech.so" "$@"
