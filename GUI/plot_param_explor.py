@@ -7,21 +7,29 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
 import numpy
+import os
 import struct
 import math
 from scipy.signal import find_peaks 
 import os
 NPARAMS = 6
 HIGH_NUMBER = 10000
-model_dir = 'E:/Workspace/BBP_new_PE/'
-data_dir = model_dir + 'Data/'
-param_file = model_dir + 'params/gen.csv'
-run_dir = 'C:/Users/bensr/Documents/NeuroGPUBackups/paramexplor/pyNeuroGPU_win2/'
-vs_fn = run_dir + 'Data/VHotP.dat'
-orig_volts = model_dir + 'volts/orig_step_cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0].dat'
+# model_dir = 'E:/Workspace/BBP_new_PE/'
+# data_dir = model_dir + 'Data/'
+# param_file = model_dir + 'params/gen.csv'
+# run_dir = 'C:/Users/bensr/Documents/NeuroGPUBackups/paramexplor/pyNeuroGPU_win2/'
+# vs_fn = run_dir + 'Data/VHotP.dat'
+# orig_volts = model_dir + 'volts/orig_step_cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0].dat'
+
+model_dir = 'pyNeuroGPU_unix/'
+data_dir = os.path.join(model_dir, 'Data')
+param_file = os.path.join(model_dir,'params','gen.csv')
+run_dir = model_dir
+vs_fn = os.path.join(run_dir,'Data', 'VHotP3.dat')
+orig_volts = os.path.join(model_dir, 'Data', 'volts' , 'orig_step.dat')
+
 nbins = 100
 psize = nbins * nbins
-modelFile = model_dir + "runModel.hoc"
 dt = 0.1
 
 def nrnMread(fileName,type):
@@ -51,6 +59,10 @@ def calc_scores(vs_fn):
     map_2d = []
     #volts = volts[3168*200:3168*400]
     Nt = int(len(volts) / psize)
+    no_overhang = len(volts) - (len(volts) - Nt * psize)
+    volts = volts[: no_overhang]
+    plt.figure()
+    plt.plot(volts)
     all_volts = numpy.reshape(volts, [psize, Nt])
     scores = numpy.ndarray(shape=(nbins,nbins))
     curr_ind = 0
@@ -74,7 +86,9 @@ def calc_scores(vs_fn):
 
 def plot_scores(scores):
     fig = plt.figure()
-    ax = fig.gca(projection='3d')
+    ax = fig.gca()
+
+#     ax = fig.gca(projection='3d')
     #scores = numpy.reshape(scores, [100, 100])
     param1 = numpy.linspace(0, 7, nbins)
     param2 = numpy.linspace(0, 7, nbins)

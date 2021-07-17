@@ -1,0 +1,8 @@
+#!/bin/bash -l
+#SBATCH  --account m2043
+
+#SBATCH -N 1 -n 80
+#SBATCH --gres=gpu:8  --exclusive -C gpu  -t 7:59:00
+#
+# - - -  no SBATCH commands below this line - - - - 
+srun --pty python optimize_parameters_genetic_alg_SG.py 
