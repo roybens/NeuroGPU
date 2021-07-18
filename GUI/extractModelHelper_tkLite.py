@@ -106,6 +106,8 @@ def init_working_dir():
     else:
         print("You've chosen not to generate the rest of working directory, this can cause issues."\
              "\n If you decide to generate working directory, just call make_wrkdir().")
+        
+    return working
 
 
 
