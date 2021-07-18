@@ -5,4 +5,4 @@ GUI/__pycache__/
 *.pyc
 *ipynb_checkpoints*
 *pycache*
-
+*.DS_Store*
