@@ -9,12 +9,12 @@ v_init = -80
 calc_eca = 1 
 
 
-   stLoc = 0.14 
-base = "/global/project/projectdirs/m2043/zladd/NeuroGPU/NeuroGPU_Base" 
-paramsFile = "/global/project/projectdirs/m2043/zladd/NeuroGPU/Figures/Figure3_passive/params/params.csv" 
-stimFile = "/global/project/projectdirs/m2043/zladd/NeuroGPU/Figures/Figure3_passive/Stims/Step_8_.csv" 
-modelFile = "/global/project/projectdirs/m2043/zladd/NeuroGPU/Figures/Figure3_passive/mosinit.hoc" 
-timesFile = "/global/project/projectdirs/m2043/zladd/NeuroGPU/Figures/Figure3_passive/Stims/times.csv" 
+   stLoc = 0.36 
+base = "/Users/xander/NeuroGPU/NeuroGPU_Base" 
+paramsFile = "/Users/xander/NeuroGPU/Figures/Figure3_passive/params/params.csv" 
+stimFile = "/Users/xander/NeuroGPU/Figures/Figure3_passive/Stims/Step_8_.csv" 
+modelFile = "/Users/xander/NeuroGPU/Figures/Figure3_passive/mosinit.hoc" 
+timesFile = "/Users/xander/NeuroGPU/Figures/Figure3_passive/Stims/times.csv" 
 
 transvec = new Vector(nparams)
 
@@ -28,7 +28,7 @@ if (root.has_parent()){
 	print secname()
 	root = root.root()
 	}
-access cADpyr232_L5_TTPC1_0fb1ca4724[0].soma
+access cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0]
 
 create Exts[1]
 objref recSites

@@ -13,8 +13,8 @@ Notice: cADpyr232_L5_TTPC1_0fb1ca4724[0].axon[0](0) had previously been connecte
 Notice: cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[100](0) had previously been connected to parent cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[93](1)
 Notice: cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[99](0) had previously been connected to parent cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[93](1)
 Notice: cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[94](0) had previously been connected to parent cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[93](1)
-NEURON -- VERSION 7.6.7 HEAD (603da174) 2019-04-19
-Duke, Yale, and the BlueBrain Project -- Copyright 1984-2018
+NEURON -- VERSION 7.8.1 release/7.8.1 (47cd8c85) 2020-07-18
+Duke, Yale, and the BlueBrain Project -- Copyright 1984-2019
 See http://neuron.yale.edu/neuron/credits
 
 Additional mechanisms from files
@@ -23,21 +23,6 @@ Additional mechanisms from files
 	1 
 Setting temperature to 34.000000 C
 Setting simulation time step to 0.025000 ms
-Notice: cADpyr232_L5_TTPC1_0fb1ca4724[0].apic[0](0) had previously been connected to parent cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0](0.5)
-Notice: cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[73](0) had previously been connected to parent cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0](0.5)
-Notice: cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[68](0) had previously been connected to parent cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0](0.5)
-Notice: cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[63](0) had previously been connected to parent cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0](0.5)
-Notice: cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[60](0) had previously been connected to parent cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0](0.5)
-Notice: cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[57](0) had previously been connected to parent cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0](0.5)
-Notice: cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[32](0) had previously been connected to parent cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0](0.5)
-Notice: cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[17](0) had previously been connected to parent cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0](0.5)
-Notice: cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[10](0) had previously been connected to parent cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0](0.5)
-Notice: cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[3](0) had previously been connected to parent cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0](0.5)
-Notice: cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[0](0) had previously been connected to parent cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0](0.5)
-Notice: cADpyr232_L5_TTPC1_0fb1ca4724[0].axon[0](0) had previously been connected to parent cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0](1)
-Notice: cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[100](0) had previously been connected to parent cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[93](1)
-Notice: cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[99](0) had previously been connected to parent cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[93](1)
-Notice: cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[94](0) had previously been connected to parent cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[93](1)
 	1 
 	1 
 	1 
@@ -48,29 +33,15 @@ Notice: cADpyr232_L5_TTPC1_0fb1ca4724[0].dend[94](0) had previously been connect
 	1 
 	1 
 	1 
-	1 
-	1 
-**********************
-cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0]
-1 
-1024 
-1 
-	1 
-	1 
-	1 
-	1 
-	0 
-	1 
-	0 
-	1 
-	1 
-	1 
-cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0]
-/global/project/projectdirs/m2043/zladd/NeuroGPU/Figures/Figure3_passive/make_tree_from_parent_vec.py:21: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+INTEL MKL ERROR: dlopen(/usr/local/anaconda3/lib/libmkl_intel_thread.dylib, 9): Library not loaded: @rpath/libiomp5.dylib
+  Referenced from: /usr/local/anaconda3/lib/libmkl_intel_thread.dylib
+  Reason: image not found.
+Intel MKL FATAL ERROR: Cannot load libmkl_intel_thread.dylib.
+/Users/xander/NeuroGPU/Figures/Figure3_passive/make_tree_from_parent_vec.py:21: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
   Related = np.array([np.where(Fathers[i] == Ks)[0] for i in range(Fathers.size)])
-/global/project/projectdirs/m2043/zladd/NeuroGPU/Figures/Figure3_passive/create_auxilliary_data_3.py:195: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+/Users/xander/NeuroGPU/Figures/Figure3_passive/create_auxilliary_data_3.py:195: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
   LRelated = np.array(LRelated)
-/global/project/projectdirs/m2043/zladd/NeuroGPU/Figures/Figure3_passive/create_auxilliary_data_3.py:196: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+/Users/xander/NeuroGPU/Figures/Figure3_passive/create_auxilliary_data_3.py:196: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
   FLRelated = np.array(FLRelated).astype(object)
 	1 
 	1 
@@ -620,19 +591,19 @@ Finished writing AllModels.h,cpp,cu,cuh
 what to do?
 Finished NMODLtoC_Main.
 done with parse_models
-/global/project/projectdirs/m2043/zladd/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win/
+/Users/xander/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win/
 C:/pyNeuroGPU_win66
 ./Data/BasicConst*.csv
-./Data/BasicConstSegP.csv
 ./Data/BasicConstSeg.csv
-/global/project/projectdirs/m2043/zladd/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win//NeuroGPU6/kernel.cu
-/global/project/projectdirs/m2043/zladd/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win//NeuroGPU6/MainC.cu
-/global/project/projectdirs/m2043/zladd/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win//NeuroGPU6/Makefile
-/global/project/projectdirs/m2043/zladd/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win//NeuroGPU6/Util.cu
-/global/project/projectdirs/m2043/zladd/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win//NeuroGPU6/Util.h
-/global/project/projectdirs/m2043/zladd/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win//NeuroGPU6/CudaStuff.cu
-/global/project/projectdirs/m2043/zladd/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win//NeuroGPU6/CudaStuff.cuh
+./Data/BasicConstSegP.csv
+/Users/xander/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win//NeuroGPU6/kernel.cu
+/Users/xander/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win//NeuroGPU6/MainC.cu
+/Users/xander/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win//NeuroGPU6/Makefile
+/Users/xander/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win//NeuroGPU6/Util.cu
+/Users/xander/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win//NeuroGPU6/Util.h
+/Users/xander/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win//NeuroGPU6/CudaStuff.cu
+/Users/xander/NeuroGPU/NeuroGPU_Base/VS/pyNeuroGPU_win//NeuroGPU6/CudaStuff.cuh
 ./Data/BasicConst*.csv
-./Data/BasicConstSegP.csv
 ./Data/BasicConstSeg.csv
+./Data/BasicConstSegP.csv
 created new reference file

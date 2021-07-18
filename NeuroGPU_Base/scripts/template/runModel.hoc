@@ -23,10 +23,6 @@ fout = new File()
 load_file(modelFile)
 
 
-FUNCTION GetA(x) {
-VERBATIM {
-#if defined(t)
-	_NrnThread* _nt = nrn_threads;
 
 root = new SectionRef()
 if (root.has_parent()){
