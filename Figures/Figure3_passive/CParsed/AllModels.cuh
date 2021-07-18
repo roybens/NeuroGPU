@@ -1,4 +1,4 @@
-// Automatically generated CUH for /Users/xander/NeuroGPU/Figures/Figure3_passive./runModel.hoc
+// Automatically generated CUH for /global/project/projectdirs/m2043/zladd/NeuroGPU/Figures/Figure3_passive./runModel.hoc
 
 #ifndef __ALLMODELSCU__
 #define __ALLMODELSCU__

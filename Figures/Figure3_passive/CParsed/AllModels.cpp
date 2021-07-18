@@ -1,4 +1,4 @@
-// Automatically generated C for /Users/xander/NeuroGPU/Figures/Figure3_passive./runModel.hoc
+// Automatically generated C for /global/project/projectdirs/m2043/zladd/NeuroGPU/Figures/Figure3_passive./runModel.hoc
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
