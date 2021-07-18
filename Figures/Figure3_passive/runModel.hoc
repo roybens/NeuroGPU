@@ -9,7 +9,7 @@ v_init = -80
 calc_eca = 1 
 
 
-   stLoc = 0.21 
+   stLoc = 0.14 
 base = "/global/project/projectdirs/m2043/zladd/NeuroGPU/NeuroGPU_Base" 
 paramsFile = "/global/project/projectdirs/m2043/zladd/NeuroGPU/Figures/Figure3_passive/params/params.csv" 
 stimFile = "/global/project/projectdirs/m2043/zladd/NeuroGPU/Figures/Figure3_passive/Stims/Step_8_.csv" 
