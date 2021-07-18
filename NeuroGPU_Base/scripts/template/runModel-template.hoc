@@ -40,10 +40,6 @@ print secname()
 root.sec recSites.append()
 
 
-FUNCTION GetA(x) {
-VERBATIM {
-#if defined(t)
-	_NrnThread* _nt = nrn_threads;
  
 secondorder=0
 proc runMatrix(){

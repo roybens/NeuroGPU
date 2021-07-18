@@ -1,13 +1,17 @@
 #!/bin/sh
 if test "x${NRNHOME}" = "x" ; then
-	NRNHOME="/global/homes/z/zladd/nrn-7.6/bin"
+    NRNHOME="/Applications/NEURON-7.8"
+fi
+if test "${NEURONHOME}" = "" ; then
+    NEURONHOME=${NRNHOME}/share/nrn
+    export NEURONHOME
 fi
 if test "x${NRNBIN}" = "x" ; then
-	NRNBIN="/global/homes/z/zladd/nrn-7.6/bin/x86_64/bin/"
+    NRNBIN="/Applications/NEURON-7.8/bin"
 fi
 if test "" = "yes" ; then
-	NRNIV="${NRNBIN}nrniv.app/Contents/MacOS/nrniv"
+    NRNIV="${NRNBIN}/nrniv.app/Contents/MacOS/nrniv"
 else
-	NRNIV="${NRNBIN}nrniv"
+    NRNIV="${NRNBIN}/nrniv"
 fi
-"${NRNIV}" -dll "/project/projectdirs/m2043/zladd/NeuroGPU/Figures/Figure3_passive/x86_64/.libs/libnrnmech.so" "$@"
+"${NRNIV}" -dll "/Users/xander/NeuroGPU/Figures/Figure3_passive/x86_64/.libs/libnrnmech.so" "$@"
