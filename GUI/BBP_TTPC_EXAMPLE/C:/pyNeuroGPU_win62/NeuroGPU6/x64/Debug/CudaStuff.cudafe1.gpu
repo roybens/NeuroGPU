@@ -1,0 +1,1801 @@
+typedef char __nv_bool;
+#line 523 "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17763.0\\ucrt\\corecrt.h"
+struct __crt_locale_pointers;
+#line 2074 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\driver_types.h"
+struct CUstream_st;
+#line 2079 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\driver_types.h"
+struct CUevent_st;
+#line 25 "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17763.0\\ucrt\\corecrt_wstdio.h"
+struct _iobuf;
+#line 149 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\vadefs.h"
+struct _Z39__vcrt_assert_va_start_is_not_referenceIKPKcE;
+#line 30 "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17763.0\\ucrt\\locale.h"
+struct lconv;
+#line 71 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo.h"
+struct _Cvtvec;
+#line 70 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+struct HMat;
+#line 115 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+struct Stim;
+#line 130 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+struct Sim;
+#line 333 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\yvals.h"
+enum _ZSt14_Uninitialized {
+#line 335 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\yvals.h"
+_ZSt7_Noinit};
+#line 339 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\yvals.h"
+struct _ZSt7_Lockit;
+#line 441 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\iosfwd"
+struct _ZSt11char_traitsIcE;
+#line 254 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt26_Zero_then_variadic_args_t;
+#line 258 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt25_One_then_variadic_args_t;
+#line 722 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt17_Distance_unknown;
+#line 17 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xatomic0.h"
+enum _ZSt12memory_order {
+#line 18 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xatomic0.h"
+_ZSt20memory_order_relaxed,
+#line 19 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xatomic0.h"
+_ZSt20memory_order_consume,
+#line 20 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xatomic0.h"
+_ZSt20memory_order_acquire,
+#line 21 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xatomic0.h"
+_ZSt20memory_order_release,
+#line 22 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xatomic0.h"
+_ZSt20memory_order_acq_rel,
+#line 23 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xatomic0.h"
+_ZSt20memory_order_seq_cst};
+#line 547 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\iosfwd"
+struct _ZSaIcE;
+#line 1790 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xstring"
+enum _ZNSt11_String_valISt13_Simple_typesIcEEUt_E {
+#line 1791 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xstring"
+_ZNSt11_String_valISt13_Simple_typesIcEE9_BUF_SIZEE = 16};
+#line 2064 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xstring"
+struct _ZSs;
+#line 4082 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt5_YarnIcE;
+#line 4082 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt5_YarnIwE;
+#line 54 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo"
+struct _ZSt8_Locinfo;
+#line 772 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+struct _ZSt15_Ref_count_base;
+#line 22 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xfacet"
+struct _ZSt11_Facet_base;
+#line 62 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZSt15_Crt_new_delete;
+#line 25 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZSt8_LocbaseIiE;
+#line 106 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZNSt6locale2idE;
+#line 141 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZNSt6locale5facetE;
+#line 185 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZNSt6locale7_LocimpE;
+#line 99 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZSt6locale;
+#line 961 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+enum _ZSt13_Codecvt_mode {
+#line 962 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+_ZSt15_Consume_header = 4,
+#line 963 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+_ZSt16_Generate_header = 2};
+#line 21 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\system_error"
+enum _ZSt7io_errc {
+#line 22 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\system_error"
+_ZNSt7io_errc6streamE = 1};
+#line 213 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xiosbase"
+enum _ZNSt8ios_base5eventE {
+#line 215 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xiosbase"
+_ZNSt8ios_base11erase_eventE,
+#line 215 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xiosbase"
+_ZNSt8ios_base11imbue_eventE,
+#line 215 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xiosbase"
+_ZNSt8ios_base13copyfmt_eventE};
+#line 199 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xiosbase"
+struct _ZSt8ios_base;
+#line 111 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+struct _ZSt8numpunctIcE;
+#line 111 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+struct _ZSt8numpunctIwE;
+#line 1790 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xstring"
+enum _ZNSt11_String_valISt13_Simple_typesIwEEUt_E {
+#line 1791 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xstring"
+_ZNSt11_String_valISt13_Simple_typesIwEE9_BUF_SIZEE = 8};
+#line 1790 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xstring"
+enum _ZNSt11_String_valISt13_Simple_typesIDsEEUt_E {
+#line 1791 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xstring"
+_ZNSt11_String_valISt13_Simple_typesIDsEE9_BUF_SIZEE = 8};
+#line 1790 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xstring"
+enum _ZNSt11_String_valISt13_Simple_typesIDiEEUt_E {
+#line 1791 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xstring"
+_ZNSt11_String_valISt13_Simple_typesIDiEE9_BUF_SIZEE = 4};
+#line 317 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xtr1common"
+struct _ZSt16remove_referenceISt14default_deleteISt11_Facet_baseEE;
+#line 2070 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+struct _ZSt14default_deleteISt11_Facet_baseE;
+#line 2113 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+struct _ZSt25_Get_deleter_pointer_typeISt11_Facet_baseSt14default_deleteIS0_EvE;
+#line 265 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt16_Compressed_pairISt14default_deleteISt11_Facet_baseEPS1_Lb1EE;
+#line 2128 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+struct _ZSt16_Unique_ptr_baseISt11_Facet_baseSt14default_deleteIS0_EE;
+#line 85 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xtr1common"
+struct _ZSt7is_sameISt14default_deleteISt11_Facet_baseES2_E;
+#line 2177 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+struct _ZSt10unique_ptrISt11_Facet_baseSt14default_deleteIS0_EE;
+#line 180 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\vcruntime.h"
+typedef unsigned long long size_t;
+#include "crt/device_runtime.h"
+#line 39 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\vadefs.h"
+typedef char *va_list;
+#line 529 "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17763.0\\ucrt\\corecrt.h"
+typedef struct __crt_locale_pointers *_locale_t;
+#line 28 "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17763.0\\ucrt\\corecrt_wstdio.h"
+typedef struct _iobuf FILE;
+#pragma pack(8)
+#line 149 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\vadefs.h"
+struct _Z39__vcrt_assert_va_start_is_not_referenceIKPKcE {char __nv_no_debug_dummy_end_padding_0;};
+#pragma pack()
+#pragma pack(8)
+#line 71 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo.h"
+struct _Cvtvec {
+#line 73 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo.h"
+unsigned _Page;
+#line 74 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo.h"
+unsigned _Mbcurmax;
+#line 75 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo.h"
+int _Isclocale;
+#line 76 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo.h"
+unsigned char _Isleadbyte[32];};
+#pragma pack()
+#line 70 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+struct HMat {
+#line 71 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+double *e;
+#line 72 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+double *f;
+#line 73 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short N;
+#line 75 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short *Ks;
+#line 76 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+double *Cms;
+#line 77 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short NModels;
+#line 78 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short NComps;
+#line 79 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short *boolModel;
+#line 81 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short Depth;
+#line 82 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short LognDepth;
+#line 83 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short nFathers;
+#line 84 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short nCallForFather;
+#line 85 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short *Fathers;
+#line 87 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short *SonNoVec;
+#line 89 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short *RelStarts;
+#line 90 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short *RelEnds;
+#line 91 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short *RelVec;
+#line 92 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short *SegStartI;
+#line 93 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short *SegEndI;
+#line 94 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short *SegToComp;
+#line 95 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short *MidComps;
+#line 97 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short *FIdxs;
+#line 100 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short *CompByLevel32;
+#line 101 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short *CompByFLevel32;
+#line 102 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short nLRel;
+#line 103 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short *LRelStarts;
+#line 104 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short *LRelEnds;
+#line 105 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short nFLRel;
+#line 106 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short *FLRelStarts;
+#line 107 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short *FLRelEnds;};
+#line 112 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+typedef struct HMat HMat;
+#line 115 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+struct Stim {
+#line 116 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short NStimuli;
+#line 117 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short loc;
+#line 118 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short comp;
+#line 119 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short numofdts;
+#line 120 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+double area;
+#line 121 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short *dtInds;
+#line 122 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+double *amps;
+#line 123 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+double *durs;
+#line 124 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+double *dels;
+#line 125 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+double Nt;};
+#line 126 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+typedef struct Stim Stim;
+#line 130 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+struct Sim {
+#line 131 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+double *Vs;
+#line 132 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+double dt;
+#line 133 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+double TFinal;
+#line 134 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+double Celsius;
+#line 135 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short NRecSites;
+#line 136 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+short *RecSites;};
+#line 137 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\Util.h"
+typedef struct Sim Sim; typedef void *_ZSt9nullptr_t;
+#pragma pack(8)
+#line 339 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\yvals.h"
+struct _ZSt7_Lockit {
+#line 378 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\yvals.h"
+int _Locktype;};
+#pragma pack()
+#pragma pack(8)
+#line 254 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt26_Zero_then_variadic_args_t {char __nv_no_debug_dummy_end_padding_0;};
+#pragma pack()
+#pragma pack(8)
+#line 258 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt25_One_then_variadic_args_t {char __nv_no_debug_dummy_end_padding_0;};
+#pragma pack()
+#line 26 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xatomic0.h"
+typedef unsigned long _ZSt8_Uint4_t;
+#line 27 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xatomic0.h"
+typedef _ZSt8_Uint4_t _ZSt18_Atomic_integral_t;
+#line 48 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xatomic0.h"
+typedef _ZSt18_Atomic_integral_t _ZSt17_Atomic_counter_t;
+#line 4373 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xstring"
+typedef struct _ZSs _ZSt6string;
+#pragma pack(8)
+#line 4082 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt5_YarnIcE {
+#line 4181 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+char *_Myptr;
+#line 4182 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+char _Nul;char __nv_no_debug_dummy_end_padding_0[7];};
+#pragma pack()
+#pragma pack(8)
+#line 4082 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt5_YarnIwE {
+#line 4181 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+unsigned short *_Myptr;
+#line 4182 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+unsigned short _Nul;char __nv_no_debug_dummy_end_padding_0[6];};
+#pragma pack()
+#line 59 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo"
+typedef struct _Cvtvec _ZNSt8_Locinfo7_CvtvecE;
+#pragma pack(8)
+#line 54 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo"
+struct _ZSt8_Locinfo {
+#line 225 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo"
+struct _ZSt7_Lockit _Lock;
+#line 228 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo"
+struct _ZSt5_YarnIcE _Days;
+#line 229 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo"
+struct _ZSt5_YarnIcE _Months;
+#line 230 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo"
+struct _ZSt5_YarnIwE _W_Days;
+#line 231 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo"
+struct _ZSt5_YarnIwE _W_Months;
+#line 232 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo"
+struct _ZSt5_YarnIcE _Oldlocname;
+#line 233 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo"
+struct _ZSt5_YarnIcE _Newlocname;};
+#pragma pack()
+#pragma pack(8)
+#line 22 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xfacet"
+struct _ZSt11_Facet_base { const long long *__vptr;};
+#pragma pack()
+#pragma pack(8)
+#line 62 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZSt15_Crt_new_delete {char __nv_no_debug_dummy_end_padding_0;};
+#pragma pack()
+#pragma pack(8)
+#line 25 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZSt8_LocbaseIiE {char __nv_no_debug_dummy_end_padding_0;};
+#pragma pack()
+#pragma pack(8)
+#line 106 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZNSt6locale2idE {
+#line 129 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+size_t _Id;};
+#pragma pack()
+#pragma pack(8)
+#line 141 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZNSt6locale5facetE { struct _ZSt11_Facet_base __b_St11_Facet_base;
+#line 167 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+_ZSt17_Atomic_counter_t _Myrefs;char __nv_no_debug_dummy_end_padding_0[4];};
+#pragma pack()
+#pragma pack(8)
+#line 99 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZSt6locale {
+#line 488 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZNSt6locale7_LocimpE *_Ptr;};
+#pragma pack()
+#pragma pack(8)
+#line 111 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+struct _ZSt8numpunctIcE { struct _ZNSt6locale5facetE __b_NSt6locale5facetE;
+#line 260 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+const char *_Grouping;
+#line 261 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+char _Dp;
+#line 262 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+char _Kseparator;
+#line 263 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+const char *_Falsename;
+#line 264 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+const char *_Truename;};
+#pragma pack()
+#pragma pack(8)
+#line 111 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+struct _ZSt8numpunctIwE { struct _ZNSt6locale5facetE __b_NSt6locale5facetE;
+#line 260 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+const char *_Grouping;
+#line 261 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+unsigned short _Dp;
+#line 262 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+unsigned short _Kseparator;
+#line 263 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+const unsigned short *_Falsename;
+#line 264 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+const unsigned short *_Truename;};
+#pragma pack()
+#line 319 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xtr1common"
+typedef struct _ZSt14default_deleteISt11_Facet_baseE _ZNSt16remove_referenceISt14default_deleteISt11_Facet_baseEE4typeE;
+#pragma pack(8)
+#line 317 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xtr1common"
+struct _ZSt16remove_referenceISt14default_deleteISt11_Facet_baseEE {char __nv_no_debug_dummy_end_padding_0;};
+#pragma pack()
+#line 335 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xtr1common"
+typedef _ZNSt16remove_referenceISt14default_deleteISt11_Facet_baseEE4typeE _ZSt18remove_reference_tISt14default_deleteISt11_Facet_baseEE;
+#pragma pack(8)
+#line 2070 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+struct _ZSt14default_deleteISt11_Facet_baseE {char __nv_no_debug_dummy_end_padding_0;};
+#pragma pack()
+#line 2115 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+typedef struct _ZSt11_Facet_base *_ZNSt25_Get_deleter_pointer_typeISt11_Facet_baseSt14default_deleteIS0_EvE4typeE;
+#pragma pack(8)
+#line 2113 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+struct _ZSt25_Get_deleter_pointer_typeISt11_Facet_baseSt14default_deleteIS0_EvE {char __nv_no_debug_dummy_end_padding_0;};
+#pragma pack()
+#line 2132 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+typedef _ZNSt25_Get_deleter_pointer_typeISt11_Facet_baseSt14default_deleteIS0_EvE4typeE _ZNSt16_Unique_ptr_baseISt11_Facet_baseSt14default_deleteIS0_EE7pointerE;
+#pragma pack(8)
+#line 265 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt16_Compressed_pairISt14default_deleteISt11_Facet_baseEPS1_Lb1EE {
+#line 269 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+_ZNSt16_Unique_ptr_baseISt11_Facet_baseSt14default_deleteIS0_EE7pointerE _Myval2;};
+#pragma pack()
+#line 2131 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+typedef _ZSt18remove_reference_tISt14default_deleteISt11_Facet_baseEE _ZNSt16_Unique_ptr_baseISt11_Facet_baseSt14default_deleteIS0_EE9_Dx_norefE;
+#pragma pack(8)
+#line 2128 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+struct _ZSt16_Unique_ptr_baseISt11_Facet_baseSt14default_deleteIS0_EE {
+#line 2167 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+struct _ZSt16_Compressed_pairISt14default_deleteISt11_Facet_baseEPS1_Lb1EE _Mypair;};
+#pragma pack()
+#line 2182 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+typedef _ZNSt16_Unique_ptr_baseISt11_Facet_baseSt14default_deleteIS0_EE7pointerE _ZNSt10unique_ptrISt11_Facet_baseSt14default_deleteIS0_EE7pointerE;
+#pragma pack(8)
+#line 2177 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+struct _ZSt10unique_ptrISt11_Facet_baseSt14default_deleteIS0_EE { struct _ZSt16_Unique_ptr_baseISt11_Facet_baseSt14default_deleteIS0_EE __b_St16_Unique_ptr_baseISt11_Facet_baseSt14default_deleteIS0_EE;};
+#pragma pack()
+#line 75 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaMalloc(void **, size_t);
+#line 80 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaFuncGetAttributes(struct cudaFuncAttributes *, const void *);
+#line 85 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaDeviceGetAttribute(int *, enum cudaDeviceAttr, int);
+#line 90 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaGetDevice(int *);
+#line 95 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaOccupancyMaxActiveBlocksPerMultiprocessor(int *, const void *, int, size_t);
+#line 100 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFlags(int *, const void *, int, size_t, unsigned);
+#line 127 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaDeviceSynchronize(void);
+#line 130 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) const char *cudaGetErrorString(enum cudaError);
+#line 139 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaEventRecord(struct CUevent_st *, struct CUstream_st *);
+#line 145 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaMemcpyAsync(void *, const void *, size_t, enum cudaMemcpyKind, struct CUstream_st *);
+#if !defined(__CUDABE__)
+#line 40 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\vcruntime_string.h"
+ __device_builtin__ ___device__(extern  __no_sc__) void *memcpy(void *, const void *, size_t);
+#endif
+#line 97 "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17763.0\\ucrt\\corecrt_malloc.h"
+___device__(extern  __no_sc__) void *malloc(size_t);
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#line 496 "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17763.0\\ucrt\\corecrt_math.h"
+ __device_builtin__ ___device__(extern  __no_sc__) double ceil(double);
+#endif
+#if !defined(__CUDABE__)
+#line 948 "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17763.0\\ucrt\\stdio.h"
+ __device_builtin__ ___device__(extern  __no_sc__) int printf(const char *const, ...);
+#endif
+#line 3296 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\crt/device_functions.h"
+___device__(extern  __no_sc__) unsigned __cudaPushCallConfiguration(struct dim3, struct dim3, size_t, struct CUstream_st *);
+#line 25 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z18CuInitModel_Ca_HVAdRdS_dS_S_S_(double, double *, double *, double, double *, double *, double *);
+#line 26 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z20CuInitModel_Ca_LVAstdRdS_dS_S_S_(double, double *, double *, double, double *, double *, double *);
+#line 27 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z25CuInitModel_CaDynamics_E2dRddddddS_(double, double *, double, double, double, double, double, double *);
+#line 28 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z14CuInitModel_IhdRddd(double, double *, double, double);
+#line 29 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z14CuInitModel_ImdRdd(double, double *, double);
+#line 30 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z17CuInitModel_K_PstdRdS_d(double, double *, double *, double);
+#line 31 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z17CuInitModel_K_TstdRdS_d(double, double *, double *, double);
+#line 32 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z19CuInitModel_Nap_Et2dRdS_d(double, double *, double *, double);
+#line 33 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z18CuInitModel_NaTa_tdRdS_d(double, double *, double *, double);
+#line 34 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z19CuInitModel_NaTs2_tdRdS_d(double, double *, double *, double);
+#line 35 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z15CuInitModel_pasddd(double, double, double);
+#line 36 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z17CuInitModel_SK_E2dRddddS_(double, double *, double, double, double, double *);
+#line 37 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z18CuInitModel_SKv3_1dRdd(double, double *, double);
+#line 38 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z19CuDerivModel_Ca_HVAddRdS_dS_(double, double, double *, double *, double, double *);
+#line 39 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z21CuDerivModel_Ca_LVAstddRdS_dS_(double, double, double *, double *, double, double *);
+#line 40 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z26CuDerivModel_CaDynamics_E2ddRddddddS_(double, double, double *, double, double, double, double, double, double *);
+#line 41 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z15CuDerivModel_IhddRddd(double, double, double *, double, double);
+#line 42 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z15CuDerivModel_ImddRdd(double, double, double *, double);
+#line 43 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z18CuDerivModel_K_PstddRdS_d(double, double, double *, double *, double);
+#line 44 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z18CuDerivModel_K_TstddRdS_d(double, double, double *, double *, double);
+#line 45 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z20CuDerivModel_Nap_Et2ddRdS_d(double, double, double *, double *, double);
+#line 46 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z19CuDerivModel_NaTa_tddRdS_d(double, double, double *, double *, double);
+#line 47 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z20CuDerivModel_NaTs2_tddRdS_d(double, double, double *, double *, double);
+#line 48 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z18CuDerivModel_SK_E2ddRddddS_(double, double, double *, double, double, double, double *);
+#line 49 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z19CuDerivModel_SKv3_1ddRdd(double, double, double *, double);
+#line 50 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z24CuBreakpointModel_Ca_HVARdS_dS_S_dS_S_S_(double *, double *, double, double *, double *, double, double *, double *, double *);
+#line 52 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z26CuBreakpointModel_Ca_LVAstRdS_dS_S_dS_S_S_(double *, double *, double, double *, double *, double, double *, double *, double *);
+#line 54 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z31CuBreakpointModel_CaDynamics_E2RdS_dS_dddddS_(double *, double *, double, double *, double, double, double, double, double, double *);
+#line 56 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z20CuBreakpointModel_IhRdS_dS_dd(double *, double *, double, double *, double, double);
+#line 58 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z20CuBreakpointModel_ImRdS_dS_d(double *, double *, double, double *, double);
+#line 60 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z23CuBreakpointModel_K_PstRdS_dS_S_d(double *, double *, double, double *, double *, double);
+#line 62 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z23CuBreakpointModel_K_TstRdS_dS_S_d(double *, double *, double, double *, double *, double);
+#line 64 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z25CuBreakpointModel_Nap_Et2RdS_dS_S_d(double *, double *, double, double *, double *, double);
+#line 66 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z24CuBreakpointModel_NaTa_tRdS_dS_S_d(double *, double *, double, double *, double *, double);
+#line 68 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z25CuBreakpointModel_NaTs2_tRdS_dS_S_d(double *, double *, double, double *, double *, double);
+#line 70 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z21CuBreakpointModel_pasRdS_ddd(double *, double *, double, double, double);
+#line 72 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z23CuBreakpointModel_SK_E2RdS_dS_dddS_(double *, double *, double, double *, double, double, double, double *);
+#line 74 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\AllModels.cuh"
+___device__(extern  __no_sc__) void _Z24CuBreakpointModel_SKv3_1RdS_dS_d(double *, double *, double, double *, double);
+#line 31 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+___device__(extern  __no_sc__) void _Z8BeforeLU4HMatPdS0_s(HMat, double *, double *, short);
+#line 72 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+___device__(extern  __no_sc__) void _Z5BkSub4HMatPdS0_S0_S0_s(HMat, double *, double *, double *, double *, short);
+#line 142 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+___device__(extern  __no_sc__) void _Z13runSimulation4HMatPKdPdS2_4Stim3SimS2_(HMat, const double *__restrict__, double *, double *, Stim, Sim, double *);
+#line 336 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__global__ __var_used__ extern void _Z14NeuroGPUKernel4StimPdS0_3Sim4HMatS0_S0_ss(Stim, double *, double *, Sim, HMat, double *, double *, short, short);
+#line 423 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\vector_types.h"
+___device__(extern  __no_sc__) void _ZN4dim3C1Ejjj(struct dim3 *const, unsigned, unsigned, unsigned);
+___device__(extern  __no_sc__) void _ZN4dim3C2Ejjj(struct dim3 *const, unsigned, unsigned, unsigned);
+#line 9 "e:\\workspace\\singleprec\\pyneurogpu_win2\\neurogpu6\\CudaStuff.cuh"
+extern  __shared__ char smem[];
+#line 5 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ __constant__  __var_used__ double cCm[512];
+#line 6 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ __constant__  __var_used__ double cE[512];
+#line 7 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ __constant__  __var_used__ double cF[512];
+#line 8 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ __constant__  __var_used__ short cFIdxs[3072];
+#line 9 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ __constant__  __var_used__ short cKs[512];
+#line 10 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ __constant__  __var_used__ short cSegToComp[512];
+#line 11 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ __constant__  __var_used__ short cBoolModel[6656];
+#line 12 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ __constant__  __var_used__ short cRelStarts[128];
+#line 13 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ __constant__  __var_used__ short cRelEnds[128];
+#line 14 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ __constant__  __var_used__ short cFathers[128];
+#line 15 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ __constant__  __var_used__ short cRelVec[252];
+#line 16 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ __constant__  __var_used__ short cSegStartI[253];
+#line 17 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ __constant__  __var_used__ short cSegEndI[253];
+#line 19 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ __constant__  __var_used__ short cCompByLevel32[928];
+#line 20 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ __constant__  __var_used__ short cCompByFLevel32[928];
+#line 21 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ __constant__  __var_used__ short cLRelStarts[25];
+#line 22 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ __constant__  __var_used__ short cLRelEnds[25];
+#line 23 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ __constant__  __var_used__ short cFLRelStarts[24];
+#line 24 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ __constant__  __var_used__ short cFLRelEnds[24];
+#line 25 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ __constant__  __var_used__ short cSonNoVec[512];
+#line 145 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+static  __shared__  __var_used__ double _ZZ13runSimulation4HMatPKdPdS2_4Stim3SimS2_E7uHP_all[514];
+#line 146 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+static  __shared__  __var_used__ double _ZZ13runSimulation4HMatPKdPdS2_4Stim3SimS2_E7bHP_all[514];
+#line 147 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+static  __shared__  __var_used__ double _ZZ13runSimulation4HMatPKdPdS2_4Stim3SimS2_E12SMemVHot_all[32];
+#include "common_functions.h"
+#line 75 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__( __no_sc__) enum cudaError cudaMalloc(
+#line 75 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+void **p, 
+#line 75 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+size_t s){
+#line 76 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+{
+#line 77 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+return cudaErrorUnknown;
+#line 78 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+}}
+#line 80 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__( __no_sc__) enum cudaError cudaFuncGetAttributes(
+#line 80 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+struct cudaFuncAttributes *p, 
+#line 80 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+const void *c){
+#line 81 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+{
+#line 82 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+return cudaErrorUnknown;
+#line 83 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+}}
+#line 85 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__( __no_sc__) enum cudaError cudaDeviceGetAttribute(
+#line 85 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+int *value, 
+#line 85 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+enum cudaDeviceAttr attr, 
+#line 85 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+int device){
+#line 86 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+{
+#line 87 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+return cudaErrorUnknown;
+#line 88 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+}}
+#line 90 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__( __no_sc__) enum cudaError cudaGetDevice(
+#line 90 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+int *device){
+#line 91 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+{
+#line 92 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+return cudaErrorUnknown;
+#line 93 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+}}
+#line 95 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__( __no_sc__) enum cudaError cudaOccupancyMaxActiveBlocksPerMultiprocessor(
+#line 95 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+int *numBlocks, 
+#line 95 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+const void *func, 
+#line 95 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+int blockSize, 
+#line 95 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+size_t dynamicSmemSize){
+#line 96 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+{
+#line 97 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+return cudaErrorUnknown;
+#line 98 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+}}
+#line 100 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__( __no_sc__) enum cudaError cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFlags(
+#line 100 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+int *numBlocks, 
+#line 100 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+const void *func, 
+#line 100 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+int blockSize, 
+#line 100 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+size_t dynamicSmemSize, 
+#line 100 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+unsigned flags){
+#line 101 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+{
+#line 102 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+return cudaErrorUnknown;
+#line 103 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+}}
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#line 31 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+___device__( __no_sc__) void _Z8BeforeLU4HMatPdS0_s(
+#line 31 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+HMat InMat, 
+#line 31 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+double *uHP, 
+#line 31 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+double *bHP, 
+#line 31 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+short Depth){
+#line 32 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 33 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420570_8_non_const_PIdx;
+#line 34 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420571_8_non_const_i;
+#line 34 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420571_11_non_const_j;
+#line 34 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420571_14_non_const_CurJ;
+#line 34 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420571_20_non_const_CurB;
+#line 34 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420571_26_non_const_t;
+#line 34 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420571_29_non_const_CurLevel;
+#line 34 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420571_39_non_const_LRelIndex;
+#line 35 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420572_8_non_const_JumctionI;
+#line 33 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420570_8_non_const_PIdx = ((short)(threadIdx.x));
+#line 36 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420571_39_non_const_LRelIndex = ((cLRelStarts)[__cuda_local_var_420571_29_non_const_CurLevel]);
+#line 37 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420571_39_non_const_LRelIndex = ((short)(((int)__cuda_local_var_420571_39_non_const_LRelIndex) + ((int)((cLRelEnds)[__cuda_local_var_420571_29_non_const_CurLevel]))));
+#line 38 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (__cuda_local_var_420571_29_non_const_CurLevel = ((short)0); (((int)__cuda_local_var_420571_29_non_const_CurLevel) <= ((int)Depth)); __cuda_local_var_420571_29_non_const_CurLevel++)
+#line 38 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 40 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (__cuda_local_var_420571_39_non_const_LRelIndex = ((cLRelStarts)[__cuda_local_var_420571_29_non_const_CurLevel]); (((int)__cuda_local_var_420571_39_non_const_LRelIndex) <= ((int)((cLRelEnds)[__cuda_local_var_420571_29_non_const_CurLevel]))); __cuda_local_var_420571_39_non_const_LRelIndex++)
+#line 40 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 42 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420572_8_non_const_JumctionI = ((short)(((int)((cCompByLevel32)[((((int)__cuda_local_var_420571_39_non_const_LRelIndex) * 32) + ((int)__cuda_local_var_420570_8_non_const_PIdx))])) - 1));
+#line 43 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (__cuda_local_var_420571_8_non_const_i = ((short)(((int)((cSegStartI)[__cuda_local_var_420572_8_non_const_JumctionI])) - 1)); (((int)__cuda_local_var_420571_8_non_const_i) < ((int)((cSegEndI)[__cuda_local_var_420572_8_non_const_JumctionI]))); __cuda_local_var_420571_8_non_const_i++)
+#line 43 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 44 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420581_12_non_const_uHPm1;
+#line 48 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420585_12_non_const_bHPm1;
+#line 44 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420581_12_non_const_uHPm1 = (uHP[(((int)__cuda_local_var_420571_8_non_const_i) - 1)]);
+#line 46 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+(uHP[__cuda_local_var_420571_8_non_const_i]) = ((uHP[__cuda_local_var_420571_8_non_const_i]) - (((cF)[(((int)__cuda_local_var_420571_8_non_const_i) - 1)]) * ( fdivide(((cE)[(((int)__cuda_local_var_420571_8_non_const_i) - 1)]) , __cuda_local_var_420581_12_non_const_uHPm1))));
+#line 47 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420581_12_non_const_uHPm1 = (uHP[(((int)__cuda_local_var_420571_8_non_const_i) - 1)]);
+#line 48 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420585_12_non_const_bHPm1 = (bHP[(((int)__cuda_local_var_420571_8_non_const_i) - 1)]);
+#line 49 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+(bHP[__cuda_local_var_420571_8_non_const_i]) = ((bHP[__cuda_local_var_420571_8_non_const_i]) - ( fdivide((__cuda_local_var_420585_12_non_const_bHPm1 * ((cE)[(((int)__cuda_local_var_420571_8_non_const_i) - 1)])) , __cuda_local_var_420581_12_non_const_uHPm1)));
+#line 50 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 51 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 52 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if (((int)__cuda_local_var_420571_29_non_const_CurLevel) < ((int)Depth))
+#line 52 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 53 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (__cuda_local_var_420571_39_non_const_LRelIndex = ((cFLRelStarts)[__cuda_local_var_420571_29_non_const_CurLevel]); (((int)__cuda_local_var_420571_39_non_const_LRelIndex) <= ((int)((cFLRelEnds)[__cuda_local_var_420571_29_non_const_CurLevel]))); __cuda_local_var_420571_39_non_const_LRelIndex++)
+#line 53 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 56 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420593_11_non_const_St;
+#line 57 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420594_11_non_const_En;
+#line 54 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420571_20_non_const_CurB = ((short)(((int)((cCompByFLevel32)[((((int)__cuda_local_var_420571_39_non_const_LRelIndex) * 32) + ((int)__cuda_local_var_420570_8_non_const_PIdx))])) - 1));
+#line 55 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420571_14_non_const_CurJ = ((short)(((int)((cFathers)[__cuda_local_var_420571_20_non_const_CurB])) - 1));
+#line 56 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420593_11_non_const_St = ((cRelStarts)[__cuda_local_var_420571_20_non_const_CurB]);
+#line 57 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420594_11_non_const_En = ((cRelEnds)[__cuda_local_var_420571_20_non_const_CurB]);
+#line 58 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (__cuda_local_var_420571_11_non_const_j = __cuda_local_var_420593_11_non_const_St; (((int)__cuda_local_var_420571_11_non_const_j) <= ((int)__cuda_local_var_420594_11_non_const_En)); __cuda_local_var_420571_11_non_const_j++)
+#line 58 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 60 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420597_13_non_const_uHPm1;
+#line 63 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420600_13_non_const_bHPm1;
+#line 59 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420571_26_non_const_t = ((short)(((int)((cRelVec)[(((int)__cuda_local_var_420571_11_non_const_j) - 1)])) - 1));
+#line 60 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420597_13_non_const_uHPm1 = (uHP[(((int)__cuda_local_var_420571_26_non_const_t) - 1)]);
+#line 61 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+(uHP[__cuda_local_var_420571_14_non_const_CurJ]) -= (((cF)[(((int)__cuda_local_var_420571_26_non_const_t) - 1)]) * ( fdivide(((cE)[(((int)__cuda_local_var_420571_26_non_const_t) - 1)]) , __cuda_local_var_420597_13_non_const_uHPm1)));
+#line 62 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420597_13_non_const_uHPm1 = (uHP[(((int)__cuda_local_var_420571_26_non_const_t) - 1)]);
+#line 63 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420600_13_non_const_bHPm1 = (bHP[(((int)__cuda_local_var_420571_26_non_const_t) - 1)]);
+#line 64 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+(bHP[__cuda_local_var_420571_14_non_const_CurJ]) -= ( fdivide((__cuda_local_var_420600_13_non_const_bHPm1 * ((cE)[(((int)__cuda_local_var_420571_26_non_const_t) - 1)])) , __cuda_local_var_420597_13_non_const_uHPm1));
+#line 65 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 66 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 67 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 68 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+} 
+#line 69 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}}
+#line 72 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+___device__( __no_sc__) void _Z5BkSub4HMatPdS0_S0_S0_s(
+#line 72 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+HMat InMat, 
+#line 72 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+double *PX, 
+#line 72 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+double *PF, 
+#line 72 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+double *uHP, 
+#line 72 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+double *bHP, 
+#line 72 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+short LognDepth){
+#line 73 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 75 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420612_8_non_const_PIdx[17];
+#line 76 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420613_8_non_const_NextID[17];
+#line 83 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420620_9_non_const_OldPXj[17];
+#line 84 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420621_9_non_const_OldPXNextID[17];
+#line 85 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420622_9_non_const_OldPFj[17];
+#line 86 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420623_9_non_const_OldPFNextID[17];
+#line 87 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420624_8_non_const_i;
+#line 77 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 77 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ int count;
+#line 77 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+count = 1;
+#line 77 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (; (count < 17); count++)
+#line 77 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 78 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420612_8_non_const_PIdx)[count]) = ((short)((threadIdx.x) + ((unsigned)(32 * (count - 1)))));
+#line 80 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+(PX[((__cuda_local_var_420612_8_non_const_PIdx)[count])]) = ( fdivide((PX[((__cuda_local_var_420612_8_non_const_PIdx)[count])]) , (PF[((__cuda_local_var_420612_8_non_const_PIdx)[count])])));
+#line 81 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+(PF[((__cuda_local_var_420612_8_non_const_PIdx)[count])]) = ( fdivide((-((cF)[((__cuda_local_var_420612_8_non_const_PIdx)[count])])) , (PF[((__cuda_local_var_420612_8_non_const_PIdx)[count])])));
+#line 82 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+} }
+#line 88 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+(PX[(InMat.N)]) = (0.0);
+#line 89 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+(PF[(InMat.N)]) = (1.0);
+#line 90 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (__cuda_local_var_420624_8_non_const_i = ((short)0); (((int)__cuda_local_var_420624_8_non_const_i) < ((int)LognDepth)); __cuda_local_var_420624_8_non_const_i++)
+#line 90 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 91 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 91 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ int count;
+#line 91 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+count = 1;
+#line 91 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (; (count < 17); count++)
+#line 91 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 92 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420613_8_non_const_NextID)[count]) = ((short)(((int)((cFIdxs)[((((int)__cuda_local_var_420624_8_non_const_i) * ((int)(InMat.N))) + ((int)((__cuda_local_var_420612_8_non_const_PIdx)[count])))])) - 1));
+#line 93 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420620_9_non_const_OldPXj)[count]) = (PX[((__cuda_local_var_420612_8_non_const_PIdx)[count])]);
+#line 94 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420621_9_non_const_OldPXNextID)[count]) = (PX[((__cuda_local_var_420613_8_non_const_NextID)[count])]);
+#line 95 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+(PX[((__cuda_local_var_420612_8_non_const_PIdx)[count])]) = (((__cuda_local_var_420620_9_non_const_OldPXj)[count]) + (((__cuda_local_var_420621_9_non_const_OldPXNextID)[count]) * (PF[((__cuda_local_var_420612_8_non_const_PIdx)[count])])));
+#line 96 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+} }
+#line 97 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 97 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ int count;
+#line 97 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+count = 1;
+#line 97 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (; (count < 17); count++)
+#line 97 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 98 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420622_9_non_const_OldPFj)[count]) = (PF[((__cuda_local_var_420612_8_non_const_PIdx)[count])]);
+#line 99 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420623_9_non_const_OldPFNextID)[count]) = (PF[((__cuda_local_var_420613_8_non_const_NextID)[count])]);
+#line 100 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+(PF[((__cuda_local_var_420612_8_non_const_PIdx)[count])]) = (((__cuda_local_var_420622_9_non_const_OldPFj)[count]) * ((__cuda_local_var_420623_9_non_const_OldPFNextID)[count]));
+#line 101 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+} }
+#line 102 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+} 
+#line 103 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}}
+#line 142 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+___device__( __no_sc__) void _Z13runSimulation4HMatPKdPdS2_4Stim3SimS2_(
+#line 142 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+HMat InMat, 
+#line 142 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+const double *__restrict__ ParamsM, 
+#line 142 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+double *ModelStates, 
+#line 142 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+double *V, 
+#line 142 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+Stim stim, 
+#line 142 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+Sim sim, 
+#line 142 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+double *VHotGlobal){
+#line 143 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 148 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double *__cuda_local_var_420685_10_non_const_uHP;
+#line 149 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double *__cuda_local_var_420686_10_non_const_bHP;
+#line 150 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double *__cuda_local_var_420687_10_non_const_SMemVHot;
+#line 151 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420688_8_non_const_StimID;
+#line 158 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420695_8_non_const_NeuronID;
+#line 159 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ int __cuda_local_var_420696_6_non_const_Nt;
+#line 160 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420697_9_non_const_t;
+#line 161 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double *__cuda_local_var_420698_10_non_const_PX;
+#line 161 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double *__cuda_local_var_420698_15_non_const_PF;
+#line 164 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420701_8_non_const_PIdx[17];
+#line 168 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ int __cuda_local_var_420705_6_non_const_perBlockStatesSize;
+#line 170 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420707_9_non_const_Vmid[17];
+#line 171 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420708_9_non_const_v[17];
+#line 172 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420709_9_non_const_dv[17];
+#line 173 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420710_9_non_const_sumCurrents[17];
+#line 174 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420711_9_non_const_sumCurrentsDv[17];
+#line 175 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420712_9_non_const_sumConductivity[17];
+#line 176 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420713_9_non_const_sumConductivityDv[17];
+#line 177 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420714_8_non_const_parentIndex[17];
+#line 178 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420715_8_non_const_Eidx[17];
+#line 179 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420716_9_non_const_rhs[17];
+#line 180 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420717_9_non_const_D[17];
+#line 181 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420718_9_non_const_gModel[17];
+#line 182 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420719_9_non_const_cai[17];
+#line 183 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420720_9_non_const_ica[17];
+#line 184 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420721_9_non_const_eca[17];
+#line 185 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420722_9_non_const_StimCurrent[17];
+#line 210 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420747_8_non_const_perThreadParamMSize;
+#line 222 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420759_8_non_const_stimLoc;
+#line 223 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420760_9_non_const_stimArea;
+#line 224 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420761_8_non_const_dtCounter;
+#line 225 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420762_10_non_const_dt;
+#line 226 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ double __cuda_local_var_420763_9_non_const_temp;
+#line 148 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420685_10_non_const_uHP = ((_ZZ13runSimulation4HMatPKdPdS2_4Stim3SimS2_E7uHP_all) + (514U * (threadIdx.y)));
+#line 149 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420686_10_non_const_bHP = ((_ZZ13runSimulation4HMatPKdPdS2_4Stim3SimS2_E7bHP_all) + (514U * (threadIdx.y)));
+#line 150 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420687_10_non_const_SMemVHot = ((_ZZ13runSimulation4HMatPKdPdS2_4Stim3SimS2_E12SMemVHot_all) + (32U * (threadIdx.y)));
+#line 151 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420688_8_non_const_StimID = ((short)(threadIdx.y));
+#line 158 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420695_8_non_const_NeuronID = ((short)(blockIdx.x));
+#line 159 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420696_6_non_const_Nt = ((int)(stim.Nt));
+#line 160 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420697_9_non_const_t = (0.0);
+#line 162 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420698_10_non_const_PX = __cuda_local_var_420686_10_non_const_bHP;
+#line 163 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420698_15_non_const_PF = __cuda_local_var_420685_10_non_const_uHP;
+#line 165 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 165 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ int count;
+#line 165 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+count = 1;
+#line 165 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (; (count < 17); count++)
+#line 165 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 166 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420701_8_non_const_PIdx)[count]) = ((short)((threadIdx.x) + ((unsigned)(32 * (count - 1)))));
+#line 167 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+} }
+#line 168 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420705_6_non_const_perBlockStatesSize = 10240;
+#line 186 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 186 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ int count;
+#line 186 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+count = 1;
+#line 186 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (; (count < 17); count++)
+#line 186 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 187 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420708_9_non_const_v)[count]) = (V[((__cuda_local_var_420701_8_non_const_PIdx)[count])]);
+#line 188 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420710_9_non_const_sumCurrents)[count]) = (0.0);
+#line 189 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420711_9_non_const_sumCurrentsDv)[count]) = (0.0);
+#line 190 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420712_9_non_const_sumConductivity)[count]) = (0.0);
+#line 191 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420713_9_non_const_sumConductivityDv)[count]) = (0.0);
+#line 192 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+(__cuda_local_var_420686_10_non_const_bHP[count]) = (0.0);
+#line 193 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420709_9_non_const_dv)[count]) = (0.0);
+#line 194 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420715_8_non_const_Eidx)[count]) = ((short)((((int)(InMat.N)) - ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count]))) - 1));
+#line 195 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420714_8_non_const_parentIndex)[count]) = ((short)(((int)(InMat.N)) - ((int)((cKs)[(((int)(InMat.N)) - ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))]))));
+#line 196 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420719_9_non_const_cai)[count]) = (0.0);
+#line 197 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420720_9_non_const_ica)[count]) = (0.0);
+#line 198 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420721_9_non_const_eca)[count]) = (0.0);
+#line 199 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if (((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) == 0)
+#line 199 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 200 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420714_8_non_const_parentIndex)[count]) = ((short)0);
+#line 201 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 201 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+;
+#line 202 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 202 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ int count1;
+#line 202 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+count1 = 0;
+#line 202 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (; (count1 < 19); count1++)
+#line 202 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 203 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+(ModelStates[((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + (count1 * 512)) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))]) = (0.0);
+#line 204 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+} }
+#line 205 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+} }
+#line 207 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if (((int)((__cuda_local_var_420715_8_non_const_Eidx)[1])) > (((int)(InMat.N)) - 1))
+#line 207 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 208 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420715_8_non_const_Eidx)[1]) = ((short)(((int)(InMat.N)) - 1));
+#line 209 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 210 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420747_8_non_const_perThreadParamMSize = ((short)(((int)(InMat.NComps)) * 19));
+#line 219 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 219 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ int count;
+#line 219 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+count = 1;
+#line 219 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (; (count < 17); count++)
+#line 219 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 0)])
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z18CuInitModel_Ca_HVAdRdS_dS_S_S_(((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 0) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 512) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (0 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), ((__cuda_local_var_420720_9_non_const_ica) + count), ((__cuda_local_var_420721_9_non_const_eca) + count), ((__cuda_local_var_420719_9_non_const_cai) + count));
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 512)])
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z20CuInitModel_Ca_LVAstdRdS_dS_S_S_(((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 1024) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 1536) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (1 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), ((__cuda_local_var_420720_9_non_const_ica) + count), ((__cuda_local_var_420721_9_non_const_eca) + count), ((__cuda_local_var_420719_9_non_const_cai) + count));
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 1024)])
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z25CuInitModel_CaDynamics_E2dRddddddS_(((__cuda_local_var_420708_9_non_const_v)[count]), ((__cuda_local_var_420719_9_non_const_cai) + count), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (2 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (3 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (4 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (5 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), ((__cuda_local_var_420720_9_non_const_ica)[count]), ((__cuda_local_var_420721_9_non_const_eca) + count));
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 1536)])
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z14CuInitModel_IhdRddd(((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 2560) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (6 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (7 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 2048)])
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z14CuInitModel_ImdRdd(((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 3072) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (8 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 2560)])
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z17CuInitModel_K_PstdRdS_d(((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 3584) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 4096) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (9 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 3072)])
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z17CuInitModel_K_TstdRdS_d(((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 4608) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 5120) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (10 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 3584)])
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z19CuInitModel_Nap_Et2dRdS_d(((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 5632) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 6144) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (11 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 4096)])
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z18CuInitModel_NaTa_tdRdS_d(((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 6656) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 7168) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (12 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 4608)])
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z19CuInitModel_NaTs2_tdRdS_d(((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 7680) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 8192) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (13 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 5120)])
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z15CuInitModel_pasddd(((__cuda_local_var_420708_9_non_const_v)[count]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (14 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (15 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 5632)])
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z17CuInitModel_SK_E2dRddddS_(((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 8704) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (16 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (17 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), ((__cuda_local_var_420719_9_non_const_cai)[count]), ((__cuda_local_var_420721_9_non_const_eca) + count));
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 6144)])
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z18CuInitModel_SKv3_1dRdd(((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 9216) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (18 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 220 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 221 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+} }
+#line 222 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420759_8_non_const_stimLoc = (stim.loc);
+#line 223 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420760_9_non_const_stimArea = (stim.area);
+#line 224 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420761_8_non_const_dtCounter = ((short)0);
+#line 225 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420762_10_non_const_dt = (sim.dt);
+#line 227 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 227 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ int i;
+#line 227 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+i = 0;
+#line 227 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (; (i < __cuda_local_var_420696_6_non_const_Nt); i++)
+#line 227 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 229 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420762_10_non_const_dt = ((stim.durs)[i]);
+#line 232 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420697_9_non_const_t += ((0.5) * __cuda_local_var_420762_10_non_const_dt);
+#line 234 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((i % 32) == 0)
+#line 234 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 235 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if (i > 0)
+#line 235 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 236 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 236 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ int recInd;
+#line 236 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+recInd = 0;
+#line 236 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (; (recInd < ((int)(sim.NRecSites))); recInd++)
+#line 236 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 237 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+(VHotGlobal[(((((((unsigned)__cuda_local_var_420695_8_non_const_NeuronID) * (((unsigned)(((int)(sim.NRecSites)) * __cuda_local_var_420696_6_non_const_Nt)) * (blockDim.y))) + (((threadIdx.y) * ((unsigned)__cuda_local_var_420696_6_non_const_Nt)) * ((unsigned)(sim.NRecSites)))) + ((unsigned)(recInd * __cuda_local_var_420696_6_non_const_Nt))) + ((unsigned)(i - 32))) + ((unsigned)((__cuda_local_var_420701_8_non_const_PIdx)[1])))]) = (__cuda_local_var_420687_10_non_const_SMemVHot[((32 * recInd) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[1])))]);
+#line 238 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+} }
+#line 239 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 242 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 243 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 243 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ int recInd;
+#line 243 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+recInd = 0;
+#line 243 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (; (recInd < ((int)(sim.NRecSites))); recInd++)
+#line 243 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 244 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if (((unsigned)(((int)((sim.RecSites)[recInd])) % 32)) == (threadIdx.x)) {
+#line 246 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+(__cuda_local_var_420687_10_non_const_SMemVHot[((recInd * 32) + (i % 32))]) = ((__cuda_local_var_420708_9_non_const_v)[1]); }
+#line 248 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+} }
+#line 249 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 249 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ int count;
+#line 249 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+count = 1;
+#line 249 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (; (count < 17); count++)
+#line 249 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 250 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420716_9_non_const_rhs)[count]) = (0.0);
+#line 251 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420717_9_non_const_D)[count]) = (0.0);
+#line 252 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420710_9_non_const_sumCurrents)[count]) = (0.0);
+#line 253 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420712_9_non_const_sumConductivity)[count]) = (0.0);
+#line 254 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420711_9_non_const_sumCurrentsDv)[count]) = (0.0);
+#line 255 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420713_9_non_const_sumConductivityDv)[count]) = (0.0);
+#line 256 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420722_9_non_const_StimCurrent)[count]) = (0.0);
+#line 257 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420720_9_non_const_ica)[count]) = (0.0);
+#line 258 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if (((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) == ((int)__cuda_local_var_420759_8_non_const_stimLoc))
+#line 258 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 259 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420722_9_non_const_StimCurrent)[count]) = ( fdivide(((100.0) * ((stim.amps)[(((threadIdx.y) * ((unsigned)__cuda_local_var_420696_6_non_const_Nt)) + ((unsigned)i))])) , __cuda_local_var_420760_9_non_const_stimArea));
+#line 260 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 261 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+} }
+#line 262 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 262 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ int count;
+#line 262 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+count = 1;
+#line 262 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (; (count < 17); count++)
+#line 262 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 0)])
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z24CuBreakpointModel_Ca_HVARdS_dS_S_dS_S_S_(((__cuda_local_var_420711_9_non_const_sumCurrentsDv) + count), ((__cuda_local_var_420713_9_non_const_sumConductivityDv) + count), (((__cuda_local_var_420708_9_non_const_v)[count]) + (0.001000000000000000021)), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 0) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 512) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (0 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (&__cuda_local_var_420763_9_non_const_temp), ((__cuda_local_var_420721_9_non_const_eca) + count), ((__cuda_local_var_420719_9_non_const_cai) + count));
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 512)])
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z26CuBreakpointModel_Ca_LVAstRdS_dS_S_dS_S_S_(((__cuda_local_var_420711_9_non_const_sumCurrentsDv) + count), ((__cuda_local_var_420713_9_non_const_sumConductivityDv) + count), (((__cuda_local_var_420708_9_non_const_v)[count]) + (0.001000000000000000021)), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 1024) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 1536) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (1 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (&__cuda_local_var_420763_9_non_const_temp), ((__cuda_local_var_420721_9_non_const_eca) + count), ((__cuda_local_var_420719_9_non_const_cai) + count));
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 1024)])
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z31CuBreakpointModel_CaDynamics_E2RdS_dS_dddddS_(((__cuda_local_var_420711_9_non_const_sumCurrentsDv) + count), ((__cuda_local_var_420713_9_non_const_sumConductivityDv) + count), (((__cuda_local_var_420708_9_non_const_v)[count]) + (0.001000000000000000021)), ((__cuda_local_var_420719_9_non_const_cai) + count), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (2 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (3 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (4 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (5 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), __cuda_local_var_420763_9_non_const_temp, ((__cuda_local_var_420721_9_non_const_eca) + count));
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 1536)])
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z20CuBreakpointModel_IhRdS_dS_dd(((__cuda_local_var_420711_9_non_const_sumCurrentsDv) + count), ((__cuda_local_var_420713_9_non_const_sumConductivityDv) + count), (((__cuda_local_var_420708_9_non_const_v)[count]) + (0.001000000000000000021)), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 2560) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (6 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (7 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 2048)])
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z20CuBreakpointModel_ImRdS_dS_d(((__cuda_local_var_420711_9_non_const_sumCurrentsDv) + count), ((__cuda_local_var_420713_9_non_const_sumConductivityDv) + count), (((__cuda_local_var_420708_9_non_const_v)[count]) + (0.001000000000000000021)), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 3072) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (8 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 2560)])
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z23CuBreakpointModel_K_PstRdS_dS_S_d(((__cuda_local_var_420711_9_non_const_sumCurrentsDv) + count), ((__cuda_local_var_420713_9_non_const_sumConductivityDv) + count), (((__cuda_local_var_420708_9_non_const_v)[count]) + (0.001000000000000000021)), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 3584) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 4096) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (9 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 3072)])
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z23CuBreakpointModel_K_TstRdS_dS_S_d(((__cuda_local_var_420711_9_non_const_sumCurrentsDv) + count), ((__cuda_local_var_420713_9_non_const_sumConductivityDv) + count), (((__cuda_local_var_420708_9_non_const_v)[count]) + (0.001000000000000000021)), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 4608) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 5120) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (10 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 3584)])
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z25CuBreakpointModel_Nap_Et2RdS_dS_S_d(((__cuda_local_var_420711_9_non_const_sumCurrentsDv) + count), ((__cuda_local_var_420713_9_non_const_sumConductivityDv) + count), (((__cuda_local_var_420708_9_non_const_v)[count]) + (0.001000000000000000021)), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 5632) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 6144) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (11 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 4096)])
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z24CuBreakpointModel_NaTa_tRdS_dS_S_d(((__cuda_local_var_420711_9_non_const_sumCurrentsDv) + count), ((__cuda_local_var_420713_9_non_const_sumConductivityDv) + count), (((__cuda_local_var_420708_9_non_const_v)[count]) + (0.001000000000000000021)), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 6656) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 7168) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (12 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 4608)])
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z25CuBreakpointModel_NaTs2_tRdS_dS_S_d(((__cuda_local_var_420711_9_non_const_sumCurrentsDv) + count), ((__cuda_local_var_420713_9_non_const_sumConductivityDv) + count), (((__cuda_local_var_420708_9_non_const_v)[count]) + (0.001000000000000000021)), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 7680) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 8192) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (13 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 5120)])
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z21CuBreakpointModel_pasRdS_ddd(((__cuda_local_var_420711_9_non_const_sumCurrentsDv) + count), ((__cuda_local_var_420713_9_non_const_sumConductivityDv) + count), (((__cuda_local_var_420708_9_non_const_v)[count]) + (0.001000000000000000021)), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (14 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (15 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 5632)])
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z23CuBreakpointModel_SK_E2RdS_dS_dddS_(((__cuda_local_var_420711_9_non_const_sumCurrentsDv) + count), ((__cuda_local_var_420713_9_non_const_sumConductivityDv) + count), (((__cuda_local_var_420708_9_non_const_v)[count]) + (0.001000000000000000021)), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 8704) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (16 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (17 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), ((__cuda_local_var_420719_9_non_const_cai)[count]), ((__cuda_local_var_420721_9_non_const_eca) + count));
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 6144)])
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z24CuBreakpointModel_SKv3_1RdS_dS_d(((__cuda_local_var_420711_9_non_const_sumCurrentsDv) + count), ((__cuda_local_var_420713_9_non_const_sumConductivityDv) + count), (((__cuda_local_var_420708_9_non_const_v)[count]) + (0.001000000000000000021)), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 9216) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (18 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 263 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 0)])
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z24CuBreakpointModel_Ca_HVARdS_dS_S_dS_S_S_(((__cuda_local_var_420710_9_non_const_sumCurrents) + count), ((__cuda_local_var_420712_9_non_const_sumConductivity) + count), ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 0) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 512) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (0 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), ((__cuda_local_var_420720_9_non_const_ica) + count), ((__cuda_local_var_420721_9_non_const_eca) + count), ((__cuda_local_var_420719_9_non_const_cai) + count));
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 512)])
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z26CuBreakpointModel_Ca_LVAstRdS_dS_S_dS_S_S_(((__cuda_local_var_420710_9_non_const_sumCurrents) + count), ((__cuda_local_var_420712_9_non_const_sumConductivity) + count), ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 1024) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 1536) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (1 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), ((__cuda_local_var_420720_9_non_const_ica) + count), ((__cuda_local_var_420721_9_non_const_eca) + count), ((__cuda_local_var_420719_9_non_const_cai) + count));
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 1024)])
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z31CuBreakpointModel_CaDynamics_E2RdS_dS_dddddS_(((__cuda_local_var_420710_9_non_const_sumCurrents) + count), ((__cuda_local_var_420712_9_non_const_sumConductivity) + count), ((__cuda_local_var_420708_9_non_const_v)[count]), ((__cuda_local_var_420719_9_non_const_cai) + count), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (2 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (3 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (4 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (5 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), ((__cuda_local_var_420720_9_non_const_ica)[count]), ((__cuda_local_var_420721_9_non_const_eca) + count));
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 1536)])
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z20CuBreakpointModel_IhRdS_dS_dd(((__cuda_local_var_420710_9_non_const_sumCurrents) + count), ((__cuda_local_var_420712_9_non_const_sumConductivity) + count), ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 2560) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (6 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (7 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 2048)])
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z20CuBreakpointModel_ImRdS_dS_d(((__cuda_local_var_420710_9_non_const_sumCurrents) + count), ((__cuda_local_var_420712_9_non_const_sumConductivity) + count), ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 3072) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (8 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 2560)])
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z23CuBreakpointModel_K_PstRdS_dS_S_d(((__cuda_local_var_420710_9_non_const_sumCurrents) + count), ((__cuda_local_var_420712_9_non_const_sumConductivity) + count), ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 3584) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 4096) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (9 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 3072)])
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z23CuBreakpointModel_K_TstRdS_dS_S_d(((__cuda_local_var_420710_9_non_const_sumCurrents) + count), ((__cuda_local_var_420712_9_non_const_sumConductivity) + count), ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 4608) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 5120) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (10 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 3584)])
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z25CuBreakpointModel_Nap_Et2RdS_dS_S_d(((__cuda_local_var_420710_9_non_const_sumCurrents) + count), ((__cuda_local_var_420712_9_non_const_sumConductivity) + count), ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 5632) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 6144) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (11 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 4096)])
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z24CuBreakpointModel_NaTa_tRdS_dS_S_d(((__cuda_local_var_420710_9_non_const_sumCurrents) + count), ((__cuda_local_var_420712_9_non_const_sumConductivity) + count), ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 6656) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 7168) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (12 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 4608)])
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z25CuBreakpointModel_NaTs2_tRdS_dS_S_d(((__cuda_local_var_420710_9_non_const_sumCurrents) + count), ((__cuda_local_var_420712_9_non_const_sumConductivity) + count), ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 7680) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 8192) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (13 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 5120)])
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z21CuBreakpointModel_pasRdS_ddd(((__cuda_local_var_420710_9_non_const_sumCurrents) + count), ((__cuda_local_var_420712_9_non_const_sumConductivity) + count), ((__cuda_local_var_420708_9_non_const_v)[count]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (14 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (15 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 5632)])
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z23CuBreakpointModel_SK_E2RdS_dS_dddS_(((__cuda_local_var_420710_9_non_const_sumCurrents) + count), ((__cuda_local_var_420712_9_non_const_sumConductivity) + count), ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 8704) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (16 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (17 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), ((__cuda_local_var_420719_9_non_const_cai)[count]), ((__cuda_local_var_420721_9_non_const_eca) + count));
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 6144)])
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z24CuBreakpointModel_SKv3_1RdS_dS_d(((__cuda_local_var_420710_9_non_const_sumCurrents) + count), ((__cuda_local_var_420712_9_non_const_sumConductivity) + count), ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 9216) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (18 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 264 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 267 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+} }
+#line 268 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 268 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ int count;
+#line 268 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+count = 1;
+#line 268 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (; (count < 17); count++)
+#line 268 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 269 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420718_9_non_const_gModel)[count]) = ( fdivide((((__cuda_local_var_420711_9_non_const_sumCurrentsDv)[count]) - ((__cuda_local_var_420710_9_non_const_sumCurrents)[count])) , (0.001000000000000000021)));
+#line 270 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420716_9_non_const_rhs)[count]) = (((__cuda_local_var_420722_9_non_const_StimCurrent)[count]) - ((__cuda_local_var_420710_9_non_const_sumCurrents)[count]));
+#line 271 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420717_9_non_const_D)[count]) = (((__cuda_local_var_420718_9_non_const_gModel)[count]) + ( fdivide(((cCm)[((__cuda_local_var_420701_8_non_const_PIdx)[count])]) , (__cuda_local_var_420762_10_non_const_dt * (1000.0)))));
+#line 272 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420717_9_non_const_D)[count]) -= ((cF)[((((int)(InMat.N)) - ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count]))) - 1)]);
+#line 273 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420709_9_non_const_dv)[count]) += ((__cuda_local_var_420686_10_non_const_bHP[((((int)(InMat.N)) - ((int)((__cuda_local_var_420714_8_non_const_parentIndex)[count]))) - 1)]) - (__cuda_local_var_420686_10_non_const_bHP[((((int)(InMat.N)) - ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count]))) - 1)]));
+#line 275 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+} }
+#line 276 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 276 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ int count;
+#line 276 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+count = 1;
+#line 276 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (; (count < 17); count++)
+#line 276 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 277 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420716_9_non_const_rhs)[count]) -= (((cF)[((((int)(InMat.N)) - ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count]))) - 1)]) * ((__cuda_local_var_420709_9_non_const_dv)[count]));
+#line 278 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+(__cuda_local_var_420686_10_non_const_bHP[((((int)(InMat.N)) - ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count]))) - 1)]) = ((__cuda_local_var_420716_9_non_const_rhs)[count]);
+#line 279 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+(__cuda_local_var_420685_10_non_const_uHP[((((int)(InMat.N)) - ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count]))) - 1)]) = ((__cuda_local_var_420717_9_non_const_D)[count]);
+#line 280 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+} }
+#line 282 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 282 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ int count;
+#line 282 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+count = 1;
+#line 282 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (; (count < 17); count++)
+#line 282 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 283 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if (((int)((cSonNoVec)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])) == 1)
+#line 283 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 284 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+(__cuda_local_var_420686_10_non_const_bHP[((((int)(InMat.N)) - ((int)((__cuda_local_var_420714_8_non_const_parentIndex)[count]))) - 1)]) += (((cE)[((__cuda_local_var_420715_8_non_const_Eidx)[count])]) * ((__cuda_local_var_420709_9_non_const_dv)[count]));
+#line 285 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+(__cuda_local_var_420685_10_non_const_uHP[((((int)(InMat.N)) - ((int)((__cuda_local_var_420714_8_non_const_parentIndex)[count]))) - 1)]) -= ((cE)[((__cuda_local_var_420715_8_non_const_Eidx)[count])]);
+#line 286 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 287 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if (((int)((cSonNoVec)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])) == 2)
+#line 287 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 288 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+(__cuda_local_var_420686_10_non_const_bHP[((((int)(InMat.N)) - ((int)((__cuda_local_var_420714_8_non_const_parentIndex)[count]))) - 1)]) += (((cE)[((__cuda_local_var_420715_8_non_const_Eidx)[count])]) * ((__cuda_local_var_420709_9_non_const_dv)[count]));
+#line 289 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+(__cuda_local_var_420685_10_non_const_uHP[((((int)(InMat.N)) - ((int)((__cuda_local_var_420714_8_non_const_parentIndex)[count]))) - 1)]) -= ((cE)[((__cuda_local_var_420715_8_non_const_Eidx)[count])]);
+#line 290 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 291 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+} }
+#line 293 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z8BeforeLU4HMatPdS0_s(InMat, __cuda_local_var_420685_10_non_const_uHP, __cuda_local_var_420686_10_non_const_bHP, (InMat.Depth));
+#line 296 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z5BkSub4HMatPdS0_S0_S0_s(InMat, __cuda_local_var_420698_10_non_const_PX, __cuda_local_var_420698_15_non_const_PF, __cuda_local_var_420685_10_non_const_uHP, __cuda_local_var_420686_10_non_const_bHP, (InMat.LognDepth));
+#line 298 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 298 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ int count;
+#line 298 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+count = 1;
+#line 298 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (; (count < 17); count++)
+#line 298 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 299 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420707_9_non_const_Vmid)[count]) = (__cuda_local_var_420698_10_non_const_PX[((((int)(InMat.N)) - ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count]))) - 1)]);
+#line 300 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+((__cuda_local_var_420708_9_non_const_v)[count]) += ((__cuda_local_var_420707_9_non_const_Vmid)[count]);
+#line 301 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+} }
+#line 319 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420697_9_non_const_t += ((0.5) * __cuda_local_var_420762_10_non_const_dt);
+#line 324 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 324 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ int count;
+#line 324 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+count = 1;
+#line 324 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (; (count < 17); count++)
+#line 324 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 0)])
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z19CuDerivModel_Ca_HVAddRdS_dS_(__cuda_local_var_420762_10_non_const_dt, ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 0) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 512) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (0 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), ((__cuda_local_var_420720_9_non_const_ica) + count));
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 512)])
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z21CuDerivModel_Ca_LVAstddRdS_dS_(__cuda_local_var_420762_10_non_const_dt, ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 1024) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 1536) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (1 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), ((__cuda_local_var_420720_9_non_const_ica) + count));
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 1024)])
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z26CuDerivModel_CaDynamics_E2ddRddddddS_(__cuda_local_var_420762_10_non_const_dt, ((__cuda_local_var_420708_9_non_const_v)[count]), ((__cuda_local_var_420719_9_non_const_cai) + count), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (2 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (3 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (4 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (5 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), ((__cuda_local_var_420720_9_non_const_ica)[count]), ((__cuda_local_var_420721_9_non_const_eca) + count));
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 1536)])
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z15CuDerivModel_IhddRddd(__cuda_local_var_420762_10_non_const_dt, ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 2560) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (6 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (7 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 2048)])
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z15CuDerivModel_ImddRdd(__cuda_local_var_420762_10_non_const_dt, ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 3072) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (8 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 2560)])
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z18CuDerivModel_K_PstddRdS_d(__cuda_local_var_420762_10_non_const_dt, ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 3584) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 4096) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (9 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 3072)])
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z18CuDerivModel_K_TstddRdS_d(__cuda_local_var_420762_10_non_const_dt, ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 4608) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 5120) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (10 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 3584)])
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z20CuDerivModel_Nap_Et2ddRdS_d(__cuda_local_var_420762_10_non_const_dt, ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 5632) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 6144) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (11 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 4096)])
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z19CuDerivModel_NaTa_tddRdS_d(__cuda_local_var_420762_10_non_const_dt, ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 6656) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 7168) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (12 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 4608)])
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z20CuDerivModel_NaTs2_tddRdS_d(__cuda_local_var_420762_10_non_const_dt, ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 7680) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 8192) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (13 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 5120)])
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 5632)])
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z18CuDerivModel_SK_E2ddRddddS_(__cuda_local_var_420762_10_non_const_dt, ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 8704) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (16 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (17 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]), ((__cuda_local_var_420719_9_non_const_cai)[count]), ((__cuda_local_var_420721_9_non_const_eca) + count));
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+if ((cBoolModel)[(((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])) + 6144)])
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z19CuDerivModel_SKv3_1ddRdd(__cuda_local_var_420762_10_non_const_dt, ((__cuda_local_var_420708_9_non_const_v)[count]), (ModelStates + ((((((int)__cuda_local_var_420695_8_non_const_NeuronID) + ((int)__cuda_local_var_420688_8_non_const_StimID)) * __cuda_local_var_420705_6_non_const_perBlockStatesSize) + 9216) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[count])))), (ParamsM[(((((int)__cuda_local_var_420695_8_non_const_NeuronID) * ((int)__cuda_local_var_420747_8_non_const_perThreadParamMSize)) + (18 * ((int)(InMat.NComps)))) + ((int)((cSegToComp)[((__cuda_local_var_420701_8_non_const_PIdx)[count])])))]));
+#line 325 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}
+#line 326 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+} }
+#line 330 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+} }
+#line 332 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 332 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ int recInd;
+#line 332 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+recInd = 0;
+#line 332 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+for (; (recInd < ((int)(sim.NRecSites))); recInd++)
+#line 332 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 333 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+(VHotGlobal[((((((((unsigned)__cuda_local_var_420695_8_non_const_NeuronID) * (((unsigned)(((int)(sim.NRecSites)) * __cuda_local_var_420696_6_non_const_Nt)) * (blockDim.y))) + (((threadIdx.y) * ((unsigned)__cuda_local_var_420696_6_non_const_Nt)) * ((unsigned)(sim.NRecSites)))) + ((unsigned)(recInd * __cuda_local_var_420696_6_non_const_Nt))) + ((unsigned)__cuda_local_var_420696_6_non_const_Nt)) - 32U) + ((unsigned)((__cuda_local_var_420701_8_non_const_PIdx)[1])))]) = (__cuda_local_var_420687_10_non_const_SMemVHot[((32 * recInd) + ((int)((__cuda_local_var_420701_8_non_const_PIdx)[1])))]);
+#line 334 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+} } 
+#line 335 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}}
+#line 336 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__global__ __var_used__ void _Z14NeuroGPUKernel4StimPdS0_3Sim4HMatS0_S0_ss(
+#line 336 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+Stim stim, 
+#line 336 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+double *ParamsM, 
+#line 336 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+double *ModelStates, 
+#line 336 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+Sim sim, 
+#line 336 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+HMat InMat, 
+#line 336 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+double *V, 
+#line 336 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+double *VHotGlobal, 
+#line 336 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+short CompDepth, 
+#line 336 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+short CompFDepth){
+#line 337 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+{
+#line 340 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+ short __cuda_local_var_420877_8_non_const_offset;
+#line 340 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+__cuda_local_var_420877_8_non_const_offset = ((short)0);
+#line 341 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+_Z13runSimulation4HMatPKdPdS2_4Stim3SimS2_(InMat, ((const double *)ParamsM), ModelStates, V, stim, sim, VHotGlobal); 
+#line 342 "E:/Workspace/SinglePrec/pyNeuroGPU_win2/NeuroGPU6/CudaStuff.cu"
+}}
+#line 423 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\vector_types.h"
+ __attribute__((nv_linkonce_odr)) ___device__( __no_sc__) __inline__ void _ZN4dim3C1Ejjj( struct dim3 *const this, 
+#line 423 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\vector_types.h"
+unsigned vx, 
+#line 423 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\vector_types.h"
+unsigned vy, 
+#line 423 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\vector_types.h"
+unsigned vz){
+#line 423 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\vector_types.h"
+{
+#line 423 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\vector_types.h"
+(this->x) = vx;
+#line 423 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\vector_types.h"
+(this->y) = vy;
+#line 423 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\vector_types.h"
+(this->z) = vz; 
+#line 423 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\vector_types.h"
+}}
+ __attribute__((nv_linkonce_odr)) ___device__( __no_sc__) __inline__ void _ZN4dim3C2Ejjj( struct dim3 *const this,  unsigned __T0,  unsigned __T1,  unsigned __T2){ {  _ZN4dim3C1Ejjj(this, __T0, __T1, __T2);  }}
