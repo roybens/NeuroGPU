@@ -1,4 +1,4 @@
-working = '../Figures/Figure3_passive'
+working = 'BBP_TTPC_EXAMPLE_DEMO'
 #working.replace('/', '\\')
 base = '../NeuroGPU_Base'
 #base.replace('/', '\\')
@@ -61,7 +61,7 @@ def init_working_dir():
                  "\n NeuroGPU location: "
     base_passed = False
     
-    working_text = "Enter working directory or use default location ../Figures/Figure3_passive" \
+    working_text = "Enter working directory or use default location BBP_TTPC_EXAMPLE_DEMO" \
                    "\n Working directory location: "
     working_passed = False
     
@@ -87,7 +87,7 @@ def init_working_dir():
     while not working_passed:
         working = input(working_text)
         if not working:
-            working = "../Figures/Figure3_passive"
+            working = "BBP_TTPC_EXAMPLE_DEMO"
             working_passed = True
         elif not os.path.isdir(working):
             print("Please enter a valid working directory \n ")
@@ -276,6 +276,8 @@ def integrate1(file_values):
     stim_file = file_values[1]
     time_file = file_values[3]
     print ("time file is " + time_file)
+    print ("stim_file is " + stim_file)
+    print ("param_file is " + param_file)
 
     print("Input files successfully integrated")
     # lets not stay in workdir, it's really confusing to change file paths like this
@@ -460,10 +462,14 @@ def run_trans_script_gui():
         with io.open(filename, 'wb') as writer, io.open(filename, 'rb', 1) as reader:
             process = subprocess.Popen(['python', 'extractModel.py'], stdout=writer, stderr=writer)
             while process.poll() is None:
-                sys.stdout.write(reader.read())
+                line = reader.read()
+                sys.stdout.write(line)
                 time.sleep(0.5)
     # Read the remaining
-            sys.stdout.write(reader.read())
+            line = reader.read()
+            sys.stdout.write(line)
+            process.wait()
+            print("SUCESSFULLY CREATED MODEL")
         # line = result.stdout.readline()
         # while line:
         #     print(line)

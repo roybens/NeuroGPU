@@ -1,0 +1,5 @@
+﻿  NeuroGPU6.vcxproj -> E:\Workspace\SinglePrec\pyNeuroGPU_win2\x64\Debug\NeuroGPU6.exe
+  copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\bin\cudart*.dll" "E:\Workspace\SinglePrec\pyNeuroGPU_win2\x64\Debug\"
+  C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\bin\cudart32_101.dll
+  C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\bin\cudart64_101.dll
+          2 file(s) copied.

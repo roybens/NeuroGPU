@@ -74,9 +74,10 @@ def input_var(text, default=None):
 def init_working_dir():
     global base
     neuroGPU_dir_text = 'choose where simulation output is located'
-    default_dir = 'pyNeuroGPU_unix/Data/'
+    default_dir = 'BBP_TTPC_EXAMPLE/pyNeuroGPU_unix/Data/'
     
     base = input_dir(neuroGPU_dir_text, default_dir)
+    print("chose: ", base)
 # def init_working_dir():
 #     global base
 #     text_neurogpu_dir = widgets.Text(description="location:", style=style, layout=Layout(width='600px'))
@@ -99,6 +100,7 @@ def init_working_dir():
 #     button.on_click(on_button_clicked0_1)
 
 
+    
 def nrnMread(fileName):
     f = open(fileName, "rb")
     nparam = struct.unpack('i', f.read(4))[0]
@@ -106,11 +108,11 @@ def nrnMread(fileName):
     typeFlg = struct.unpack('i', f.read(4))[0]
     return np.fromfile(f, np.double)
 
-def plotModel(model_ind, stim_ind):
+def plotModel(model_ind):
     volts = all_volts[int(model_ind), :]
     plt.xlabel('timestep')
     plt.ylabel('Volts [mV]')
-    plt.title('Stimulation')
+    plt.title('Model # {}'.format(model_ind))
     plt.plot(times, volts)
     plt.show()
     
@@ -132,11 +134,13 @@ def on_button_clicked0_1(b):
     button.on_click(on_button_clicked0_1)
 
 
-def readOutput(folder,vhot_fn):
+def readOutput(vhot_fn, folder=None):
     global base
     global all_volts
     global times
     global stim
+    if not folder:
+        folder = base
     timesFN = folder + 'times.csv'
     time_steps = np.genfromtxt(timesFN, delimiter=',')
     times = np.cumsum(time_steps)
@@ -154,7 +158,7 @@ def readOutput(folder,vhot_fn):
         all_volts = np.reshape(all_volts, [psize, Nt])
         stim = stim[:Nt]
 
-        plotModel(0,0)
+#         plotModel(0,0)
 #         saveModel(1e,folder)
 
 

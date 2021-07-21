@@ -245,7 +245,9 @@ def integrate1():
     param_file = file_values[0].value
     stim_file = file_values[1].value
     time_file = file_values[3].value
-    print ("time file is " + time_file)
+    print ("time file is:  " + time_file)
+    print ("param file is:  " + param_file)
+    print ("stim file is:  " + stim_file)
 
     print("Input files successfully integrated")
 

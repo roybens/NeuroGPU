@@ -1,3 +1,0 @@
-salloc -C gpu -N 1 -n 10 -t 240 --gres=gpu:8 -A m2043 
-srun -n 5 -l -u python optimize_parameters_genetic_alg.py
-salloc -C gpu -N 1 -t 240 --gres=gpu:8 -A m2043 
