@@ -216,7 +216,7 @@ def get_topo_mdl():
                 mech_params['e_pas'] = s.e_pas
             except:
                 mech_params['g_pas'] = -75
-                 mech_params['e_pas'] =  .000003
+                mech_params['e_pas'] =  .000003
 
         curr_comp_mechs = []
         for mech_name in mech_names:
