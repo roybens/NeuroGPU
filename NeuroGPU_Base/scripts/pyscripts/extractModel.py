@@ -36,8 +36,8 @@ not_states = ['ica','cai']
 global vs_dir
 #vs_dir = '../../VS/pyNeuroGPU_win2/NeuroGPU6'
 #vs_root = '../../VS/pyNeuroGPU_win2/'
-run_dir = 'C:/pyNeuroGPU_win66'
-unix_dir = 'C:/pyNeuroGPU_unix'
+run_dir = 'pyNeuroGPU_unix/'
+unix_dir = 'pyNeuroGPU_unix/'
 data_dir = './Data/'
 split_flg = 0
 baseDir = ''
@@ -211,8 +211,13 @@ def get_topo_mdl():
 
         comp_map.append(index_containing_substring(sec_list, name))
         if nrn.h.ismembrane("pas"):
-            mech_params['g_pas'] = s.g_pas
-            mech_params['e_pas'] = s.e_pas
+            try:
+                mech_params['g_pas'] = s.g_pas
+                mech_params['e_pas'] = s.e_pas
+            except:
+                print('using default g pas and epas')
+                mech_params['g_pas'] = -75
+                mech_params['e_pas'] =  .000003
 
         curr_comp_mechs = []
         for mech_name in mech_names:
@@ -367,6 +372,8 @@ def parse_models():
     for i in range(len(mod_files)):
         mod_f = mod_files[i]
         print ('parsing ' + mod_f)
+        if mod_f == "pas":
+            print(1/0)
         lines_list.append(file_to_list_no_comments(mod_f))
         # print 'parsing ' + mod_f + 'i is ' + repr(i)
         output = parse_model(lines_list[i])
@@ -615,7 +622,6 @@ def parse_models():
     print (hocmodel_name)
     with open(hocmodel_name, 'wb') as f:  # Python 3: open(..., 'wb')
         pkl.dump([all_params_non_global_list_non_flat, modelFile, base_p, available_mechs, reversals, reversals, cs_names,comp_mechs, g_globals, nglobals_flat, sec_list, ftypestr, p_size_set, param_set, data_dir,all_states_names_list,kin_models_inds], f)
-
     if (map_flag):
         params_m, runModel_hoc_object = proc_add_param_to_hoc_for_map(all_params_non_global_list_non_flat, modelFile,base_p, available_mechs, reversals, reversals,cs_names, comp_mechs, g_globals, nglobals_flat,sec_list, ftypestr, p_size_set, param_set, data_dir,all_states_names_list,kin_models_inds)
         params_m, runModel_hoc_object = proc_add_param_to_hoc_for_opt(all_params_non_global_list_non_flat, modelFile,base_p, available_mechs, reversals, reversals,cs_names, comp_mechs, g_globals, nglobals_flat,sec_list, ftypestr, p_size_set, param_set, data_dir,all_states_names_list,kin_models_inds,True)
@@ -2897,8 +2903,6 @@ def run_extract(to_map):
     baseDir = nrn.h.base
     vs_root = baseDir + '/VS/pyNeuroGPU_win/'
     # -----------------------------------------------------------------------------------------
-    # nrn.h.base = "C:/Users/mdera/OneDrive/Desktop/Neuro/NeuroGPU_Base"
-    #nrn.h.base = "C:/Users/Maxwell Chen/Desktop/NeuroGPU/NeuroGPU_Base"
     vs_dir = nrn.h.base + '/VS/pyNeuroGPU_win/NeuroGPU6'
     vs_root = nrn.h.base + '/VS/pyNeuroGPU_win/'
     baseDir = nrn.h.base
