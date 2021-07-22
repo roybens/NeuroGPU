@@ -56,8 +56,8 @@ def gen_params():
 
 def nrnMread(fileName,type):
     f = open(fileName, "rb")
-    numpyaram = struct.unumpyack('i', f.read(4))[0]
-    typeFlg = struct.unumpyack('i', f.read(4))[0]
+    nparam = struct.unpack('i', f.read(4))[0]
+    typeFlg = struct.unpack('i', f.read(4))[0]
     return numpy.fromfile(f, type)
 
 
