@@ -211,12 +211,8 @@ def get_topo_mdl():
 
         comp_map.append(index_containing_substring(sec_list, name))
         if nrn.h.ismembrane("pas"):
-            try:
-                mech_params['g_pas'] = s.g_pas
-                mech_params['e_pas'] = s.e_pas
-            except:
-                mech_params['g_pas'] = -75
-                 mech_params['e_pas'] =  .000003
+            mech_params['g_pas'] = s.g_pas
+            mech_params['e_pas'] = s.e_pas
 
         curr_comp_mechs = []
         for mech_name in mech_names:

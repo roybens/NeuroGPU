@@ -69,11 +69,6 @@ proc biophys() {
 		insert Ih
 		insert NaTs2_t
 		insert CaDynamics_E2
-        insert K_Pst
-		insert K_Tst
-        insert Im
-        insert Nap_Et2
-        insert NaTa_t
 	}
 
 	forsec $o1.axonal {
