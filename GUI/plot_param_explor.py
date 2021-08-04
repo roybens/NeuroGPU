@@ -7,22 +7,52 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
 import numpy
+import os
 import struct
 import math
 from scipy.signal import find_peaks 
 import os
-NPARAMS = 6
+import pandas as pd
+numpyARAMS = 6
 HIGH_NUMBER = 10000
-model_dir = 'E:/Workspace/BBP_new_PE/'
-data_dir = model_dir + 'Data/'
-param_file = model_dir + 'params/gen.csv'
-run_dir = 'C:/Users/bensr/Documents/NeuroGPUBackups/paramexplor/pyNeuroGPU_win2/'
-vs_fn = run_dir + 'Data/VHotP.dat'
-orig_volts = model_dir + 'volts/orig_step_cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0].dat'
+# model_dir = 'E:/Workspace/BBP_new_PE/'
+# data_dir = model_dir + 'Data/'
+# param_file = model_dir + 'params/gen.csv'
+# run_dir = 'C:/Users/bensr/Documents/NeuroGPUBackups/paramexplor/pyNeuroGPU_win2/'
+# vs_fn = run_dir + 'Data/VHotP.dat'
+# orig_volts = model_dir + 'volts/orig_step_cADpyr232_L5_TTPC1_0fb1ca4724[0].soma[0].dat'
+
+model_dir = 'BBP_TTPC_EXAMPLE/pyNeuroGPU_unix/'
+data_dir = os.path.join(model_dir, 'Data')
+param_file = os.path.join(model_dir,'params','gen.csv')
+opt_table_fn = os.path.join(data_dir,'params','opt_table.csv')
+run_dir = model_dir
+vs_fn = os.path.join(run_dir,'Data', 'VHotP0.dat')
+orig_volts = os.path.join(model_dir, 'Data', 'volts' , 'orig_step.dat')
+
 nbins = 100
 psize = nbins * nbins
-modelFile = model_dir + "runModel.hoc"
 dt = 0.1
+
+def gen_params():    
+    opt_table_fn = os.path.join(data_dir,'opt_table.csv')
+    table = numpy.genfromtxt(opt_table_fn, dtype=float, delimiter=',', names=True) 
+    df = pd.read_csv(opt_table_fn)
+    lb = table[0]
+    ub = table[1]
+    base = table[2].tolist()
+    param1 = numpy.linspace(0, 10, 100)
+    param2 = numpy.linspace(0, 20, 100)
+    params = []
+    for p1 in param1:
+        for p2 in param2:
+            curr_param =numpy.copy(base)
+            curr_param[0] = p1
+            curr_param[2] = p2
+            params.append(curr_param)
+#     numpy.savetxt(os.path.join(data_dir, 'params', 'params_explor10000bigK.csv'),params,delimiter=',')
+    return params
+
 
 def nrnMread(fileName,type):
     f = open(fileName, "rb")
@@ -34,7 +64,7 @@ def nrnMread(fileName,type):
 def getOrig(fileName):
     nrn.h.paramsFile = fileName
     nrn.h.psize = 1
-    nrn.h("pmat = new Matrix(psize, nparams)")
+    nrn.h("pmat = new Matrix(psize, numpyarams)")
     nrn.h("readMatrix(paramsFile, pmat)")
     nrn.h("runMatrix(pmat,stims)")
     nrn.h("print matOut")
@@ -42,8 +72,8 @@ def getOrig(fileName):
     orig_volts = nrn.h.matOut.to_python()
     return orig_volts
 
-orig_volts = nrnMread(orig_volts,numpy.float32)
-print (orig_volts)
+# orig_volts = nrnMread(orig_volts,numpy.float32)
+# print (orig_volts)
 
 def calc_scores(vs_fn):
     global all_volts
@@ -51,6 +81,10 @@ def calc_scores(vs_fn):
     map_2d = []
     #volts = volts[3168*200:3168*400]
     Nt = int(len(volts) / psize)
+    no_overhang = len(volts) - (len(volts) - Nt * psize)
+    volts = volts[: no_overhang]
+#     plt.figure()
+#     plt.plot(volts)
     all_volts = numpy.reshape(volts, [psize, Nt])
     scores = numpy.ndarray(shape=(nbins,nbins))
     curr_ind = 0
@@ -74,7 +108,9 @@ def calc_scores(vs_fn):
 
 def plot_scores(scores):
     fig = plt.figure()
-    ax = fig.gca(projection='3d')
+    ax = fig.gca()
+
+#     ax = fig.gca(projection='3d')
     #scores = numpy.reshape(scores, [100, 100])
     param1 = numpy.linspace(0, 7, nbins)
     param2 = numpy.linspace(0, 7, nbins)
@@ -101,3 +137,4 @@ def plot_volts(param1_index,param2_index):
     ax = fig.gca()
     ans = ax.plot(times,all_volts[volts_ind])
     return fig
+

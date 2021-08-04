@@ -1,0 +1,1260 @@
+﻿Build started 8/12/2016 3:43:27 PM.
+     1>Project "C:\Users\bensr\Documents\GitHub\NeuroGPU\VS\NeuroGPULast7_5\NeuroGPU6\NeuroGPU6.vcxproj" on node 2 (Build target(s)).
+     1>CudaBuild:
+         Compiling CUDA source file CudaStuff.cu...
+         cmd.exe /C "C:\Users\bensr\AppData\Local\Temp\tmp876e3b5632474c7ba3df35bb70771238.cmd"
+         "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2013 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Ox /Zi  /MDd " -o Debug\CudaStuff.cu.obj "C:\Users\bensr\Documents\GitHub\NeuroGPU\VS\NeuroGPULast7_5\NeuroGPU6\CudaStuff.cu"
+         
+         C:\Users\bensr\Documents\GitHub\NeuroGPU\VS\NeuroGPULast7_5\NeuroGPU6>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2013 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Ox /Zi  /MDd " -o Debug\CudaStuff.cu.obj "C:\Users\bensr\Documents\GitHub\NeuroGPU\VS\NeuroGPULast7_5\NeuroGPU6\CudaStuff.cu" 
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(16): warning C4005: 'celsius' : macro redefinition
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(17): warning C4005: 'stoprun' : macro redefinition
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(18): warning C4005: 'clamp_resist' : macro redefinition
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(19): warning C4005: 'secondorder' : macro redefinition
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(59): warning : variable "sum" was set but never used
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(59): warning : variable "q10" was set but never used
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(84): warning : declaration does not declare anything
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(94): warning : declaration does not declare anything
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(93): warning : variable "ik" was declared but never referenced
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(93): warning : variable "il" was declared but never referenced
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(104): warning : variable "il" was set but never used
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(104): warning : variable "ina" was set but never used
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(185): warning : variable "CurLevel" is used before its value is set
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(291): warning : variable "StimID" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_1" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_1" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_2" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_2" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_3" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_3" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_4" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_4" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_5" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_5" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_6" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_6" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_7" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_7" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_8" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_8" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_9" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_9" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_10" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_10" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_11" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_11" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_12" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_12" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_13" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_13" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_1" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_2" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_3" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_4" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_5" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_6" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_7" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_8" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_9" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_10" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_11" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_12" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_13" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(485): warning : variable "SMemVHot" is used before its value is set
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(485): warning : variable "amps" is used before its value is set
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(485): warning : variable "offset" is used before its value is set
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(501): warning : variable "FileName" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(835): warning : expression has no effect
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(545): warning : variable "i" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(545): warning : variable "j" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(545): warning : variable "t" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(548): warning : variable "uHPOut_d" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(548): warning : variable "bHPOut_d" was declared but never referenced
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(16): warning C4005: 'celsius' : macro redefinition
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(17): warning C4005: 'stoprun' : macro redefinition
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(18): warning C4005: 'clamp_resist' : macro redefinition
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(19): warning C4005: 'secondorder' : macro redefinition
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(59): warning : variable "sum" was set but never used
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(59): warning : variable "q10" was set but never used
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(84): warning : declaration does not declare anything
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(94): warning : declaration does not declare anything
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(93): warning : variable "ik" was declared but never referenced
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(93): warning : variable "il" was declared but never referenced
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(104): warning : variable "il" was set but never used
+     1>c:\users\bensr\documents\github\neurogpu\vs\neurogpulast7_5\neurogpu6\AllModels.cu(104): warning : variable "ina" was set but never used
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(185): warning : variable "CurLevel" is used before its value is set
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(334): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(351): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(407): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(408): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(466): warning : subscript out of range
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(291): warning : variable "StimID" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_1" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_1" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_2" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_2" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_3" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_3" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_4" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_4" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_5" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_5" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_6" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_6" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_7" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_7" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_8" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_8" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_9" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_9" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_10" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_10" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_11" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_11" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_12" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_12" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "isModel_13" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(329): warning : variable "dVec_13" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_1" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_2" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_3" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_4" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_5" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_6" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_7" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_8" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_9" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_10" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_11" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_12" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(336): warning : variable "SonNo_13" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(485): warning : variable "SMemVHot" is used before its value is set
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(485): warning : variable "amps" is used before its value is set
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(485): warning : variable "offset" is used before its value is set
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(501): warning : variable "FileName" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(835): warning : expression has no effect
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(545): warning : variable "i" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(545): warning : variable "j" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(545): warning : variable "t" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(548): warning : variable "uHPOut_d" was declared but never referenced
+     1>C:/Users/bensr/Documents/GitHub/NeuroGPU/VS/NeuroGPULast7_5/NeuroGPU6/CudaStuff.cu(548): warning : variable "bHPOut_d" was declared but never referenced
+         ptxas fatal   : Unresolved extern function '_Z14CuInitModel_cafRfS_fffS_'
+         CudaStuff.cu
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\BuildCustomizations\CUDA 7.5.targets(604,9): error MSB3721: The command ""C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2013 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Ox /Zi  /MDd " -o Debug\CudaStuff.cu.obj "C:\Users\bensr\Documents\GitHub\NeuroGPU\VS\NeuroGPULast7_5\NeuroGPU6\CudaStuff.cu"" exited with code 255.
+     1>Done Building Project "C:\Users\bensr\Documents\GitHub\NeuroGPU\VS\NeuroGPULast7_5\NeuroGPU6\NeuroGPU6.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:04.39

@@ -1,0 +1,418 @@
+typedef char __nv_bool;
+#line 523 "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17763.0\\ucrt\\corecrt.h"
+struct __crt_locale_pointers;
+#line 25 "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17763.0\\ucrt\\corecrt_wstdio.h"
+struct _iobuf;
+#line 149 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\vadefs.h"
+struct _Z39__vcrt_assert_va_start_is_not_referenceIKPKcE;
+#line 30 "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17763.0\\ucrt\\locale.h"
+struct lconv;
+#line 71 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo.h"
+struct _Cvtvec;
+#line 333 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\yvals.h"
+enum _ZSt14_Uninitialized {
+#line 335 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\yvals.h"
+_ZSt7_Noinit};
+#line 339 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\yvals.h"
+struct _ZSt7_Lockit;
+#line 441 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\iosfwd"
+struct _ZSt11char_traitsIcE;
+#line 254 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt26_Zero_then_variadic_args_t;
+#line 258 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt25_One_then_variadic_args_t;
+#line 722 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt17_Distance_unknown;
+#line 17 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xatomic0.h"
+enum _ZSt12memory_order {
+#line 18 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xatomic0.h"
+_ZSt20memory_order_relaxed,
+#line 19 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xatomic0.h"
+_ZSt20memory_order_consume,
+#line 20 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xatomic0.h"
+_ZSt20memory_order_acquire,
+#line 21 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xatomic0.h"
+_ZSt20memory_order_release,
+#line 22 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xatomic0.h"
+_ZSt20memory_order_acq_rel,
+#line 23 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xatomic0.h"
+_ZSt20memory_order_seq_cst};
+#line 547 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\iosfwd"
+struct _ZSaIcE;
+#line 1790 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xstring"
+enum _ZNSt11_String_valISt13_Simple_typesIcEEUt_E {
+#line 1791 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xstring"
+_ZNSt11_String_valISt13_Simple_typesIcEE9_BUF_SIZEE = 16};
+#line 2064 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xstring"
+struct _ZSs;
+#line 4082 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt5_YarnIcE;
+#line 4082 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt5_YarnIwE;
+#line 54 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo"
+struct _ZSt8_Locinfo;
+#line 772 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+struct _ZSt15_Ref_count_base;
+#line 22 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xfacet"
+struct _ZSt11_Facet_base;
+#line 62 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZSt15_Crt_new_delete;
+#line 25 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZSt8_LocbaseIiE;
+#line 106 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZNSt6locale2idE;
+#line 141 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZNSt6locale5facetE;
+#line 185 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZNSt6locale7_LocimpE;
+#line 99 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZSt6locale;
+#line 961 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+enum _ZSt13_Codecvt_mode {
+#line 962 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+_ZSt15_Consume_header = 4,
+#line 963 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+_ZSt16_Generate_header = 2};
+#line 21 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\system_error"
+enum _ZSt7io_errc {
+#line 22 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\system_error"
+_ZNSt7io_errc6streamE = 1};
+#line 213 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xiosbase"
+enum _ZNSt8ios_base5eventE {
+#line 215 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xiosbase"
+_ZNSt8ios_base11erase_eventE,
+#line 215 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xiosbase"
+_ZNSt8ios_base11imbue_eventE,
+#line 215 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xiosbase"
+_ZNSt8ios_base13copyfmt_eventE};
+#line 199 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xiosbase"
+struct _ZSt8ios_base;
+#line 111 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+struct _ZSt8numpunctIcE;
+#line 111 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+struct _ZSt8numpunctIwE;
+#line 1790 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xstring"
+enum _ZNSt11_String_valISt13_Simple_typesIwEEUt_E {
+#line 1791 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xstring"
+_ZNSt11_String_valISt13_Simple_typesIwEE9_BUF_SIZEE = 8};
+#line 1790 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xstring"
+enum _ZNSt11_String_valISt13_Simple_typesIDsEEUt_E {
+#line 1791 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xstring"
+_ZNSt11_String_valISt13_Simple_typesIDsEE9_BUF_SIZEE = 8};
+#line 1790 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xstring"
+enum _ZNSt11_String_valISt13_Simple_typesIDiEEUt_E {
+#line 1791 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xstring"
+_ZNSt11_String_valISt13_Simple_typesIDiEE9_BUF_SIZEE = 4};
+#line 317 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xtr1common"
+struct _ZSt16remove_referenceISt14default_deleteISt11_Facet_baseEE;
+#line 2070 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+struct _ZSt14default_deleteISt11_Facet_baseE;
+#line 2113 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+struct _ZSt25_Get_deleter_pointer_typeISt11_Facet_baseSt14default_deleteIS0_EvE;
+#line 265 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt16_Compressed_pairISt14default_deleteISt11_Facet_baseEPS1_Lb1EE;
+#line 2128 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+struct _ZSt16_Unique_ptr_baseISt11_Facet_baseSt14default_deleteIS0_EE;
+#line 85 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xtr1common"
+struct _ZSt7is_sameISt14default_deleteISt11_Facet_baseES2_E;
+#line 2177 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+struct _ZSt10unique_ptrISt11_Facet_baseSt14default_deleteIS0_EE;
+#line 180 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\vcruntime.h"
+typedef unsigned long long size_t;
+#include "crt/device_runtime.h"
+#line 39 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\vadefs.h"
+typedef char *va_list;
+#line 529 "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17763.0\\ucrt\\corecrt.h"
+typedef struct __crt_locale_pointers *_locale_t;
+#line 28 "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17763.0\\ucrt\\corecrt_wstdio.h"
+typedef struct _iobuf FILE;
+#pragma pack(8)
+#line 149 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\vadefs.h"
+struct _Z39__vcrt_assert_va_start_is_not_referenceIKPKcE {char __nv_no_debug_dummy_end_padding_0;};
+#pragma pack()
+#pragma pack(8)
+#line 71 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo.h"
+struct _Cvtvec {
+#line 73 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo.h"
+unsigned _Page;
+#line 74 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo.h"
+unsigned _Mbcurmax;
+#line 75 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo.h"
+int _Isclocale;
+#line 76 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo.h"
+unsigned char _Isleadbyte[32];};
+#pragma pack()
+typedef void *_ZSt9nullptr_t;
+#pragma pack(8)
+#line 339 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\yvals.h"
+struct _ZSt7_Lockit {
+#line 378 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\yvals.h"
+int _Locktype;};
+#pragma pack()
+#pragma pack(8)
+#line 254 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt26_Zero_then_variadic_args_t {char __nv_no_debug_dummy_end_padding_0;};
+#pragma pack()
+#pragma pack(8)
+#line 258 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt25_One_then_variadic_args_t {char __nv_no_debug_dummy_end_padding_0;};
+#pragma pack()
+#line 26 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xatomic0.h"
+typedef unsigned long _ZSt8_Uint4_t;
+#line 27 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xatomic0.h"
+typedef _ZSt8_Uint4_t _ZSt18_Atomic_integral_t;
+#line 48 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xatomic0.h"
+typedef _ZSt18_Atomic_integral_t _ZSt17_Atomic_counter_t;
+#line 4373 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xstring"
+typedef struct _ZSs _ZSt6string;
+#pragma pack(8)
+#line 4082 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt5_YarnIcE {
+#line 4181 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+char *_Myptr;
+#line 4182 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+char _Nul;char __nv_no_debug_dummy_end_padding_0[7];};
+#pragma pack()
+#pragma pack(8)
+#line 4082 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt5_YarnIwE {
+#line 4181 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+unsigned short *_Myptr;
+#line 4182 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+unsigned short _Nul;char __nv_no_debug_dummy_end_padding_0[6];};
+#pragma pack()
+#line 59 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo"
+typedef struct _Cvtvec _ZNSt8_Locinfo7_CvtvecE;
+#pragma pack(8)
+#line 54 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo"
+struct _ZSt8_Locinfo {
+#line 225 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo"
+struct _ZSt7_Lockit _Lock;
+#line 228 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo"
+struct _ZSt5_YarnIcE _Days;
+#line 229 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo"
+struct _ZSt5_YarnIcE _Months;
+#line 230 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo"
+struct _ZSt5_YarnIwE _W_Days;
+#line 231 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo"
+struct _ZSt5_YarnIwE _W_Months;
+#line 232 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo"
+struct _ZSt5_YarnIcE _Oldlocname;
+#line 233 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocinfo"
+struct _ZSt5_YarnIcE _Newlocname;};
+#pragma pack()
+#pragma pack(8)
+#line 22 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xfacet"
+struct _ZSt11_Facet_base { const long long *__vptr;};
+#pragma pack()
+#pragma pack(8)
+#line 62 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZSt15_Crt_new_delete {char __nv_no_debug_dummy_end_padding_0;};
+#pragma pack()
+#pragma pack(8)
+#line 25 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZSt8_LocbaseIiE {char __nv_no_debug_dummy_end_padding_0;};
+#pragma pack()
+#pragma pack(8)
+#line 106 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZNSt6locale2idE {
+#line 129 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+size_t _Id;};
+#pragma pack()
+#pragma pack(8)
+#line 141 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZNSt6locale5facetE { struct _ZSt11_Facet_base __b_St11_Facet_base;
+#line 167 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+_ZSt17_Atomic_counter_t _Myrefs;char __nv_no_debug_dummy_end_padding_0[4];};
+#pragma pack()
+#pragma pack(8)
+#line 99 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZSt6locale {
+#line 488 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocale"
+struct _ZNSt6locale7_LocimpE *_Ptr;};
+#pragma pack()
+#pragma pack(8)
+#line 111 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+struct _ZSt8numpunctIcE { struct _ZNSt6locale5facetE __b_NSt6locale5facetE;
+#line 260 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+const char *_Grouping;
+#line 261 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+char _Dp;
+#line 262 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+char _Kseparator;
+#line 263 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+const char *_Falsename;
+#line 264 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+const char *_Truename;};
+#pragma pack()
+#pragma pack(8)
+#line 111 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+struct _ZSt8numpunctIwE { struct _ZNSt6locale5facetE __b_NSt6locale5facetE;
+#line 260 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+const char *_Grouping;
+#line 261 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+unsigned short _Dp;
+#line 262 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+unsigned short _Kseparator;
+#line 263 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+const unsigned short *_Falsename;
+#line 264 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xlocnum"
+const unsigned short *_Truename;};
+#pragma pack()
+#line 319 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xtr1common"
+typedef struct _ZSt14default_deleteISt11_Facet_baseE _ZNSt16remove_referenceISt14default_deleteISt11_Facet_baseEE4typeE;
+#pragma pack(8)
+#line 317 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xtr1common"
+struct _ZSt16remove_referenceISt14default_deleteISt11_Facet_baseEE {char __nv_no_debug_dummy_end_padding_0;};
+#pragma pack()
+#line 335 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xtr1common"
+typedef _ZNSt16remove_referenceISt14default_deleteISt11_Facet_baseEE4typeE _ZSt18remove_reference_tISt14default_deleteISt11_Facet_baseEE;
+#pragma pack(8)
+#line 2070 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+struct _ZSt14default_deleteISt11_Facet_baseE {char __nv_no_debug_dummy_end_padding_0;};
+#pragma pack()
+#line 2115 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+typedef struct _ZSt11_Facet_base *_ZNSt25_Get_deleter_pointer_typeISt11_Facet_baseSt14default_deleteIS0_EvE4typeE;
+#pragma pack(8)
+#line 2113 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+struct _ZSt25_Get_deleter_pointer_typeISt11_Facet_baseSt14default_deleteIS0_EvE {char __nv_no_debug_dummy_end_padding_0;};
+#pragma pack()
+#line 2132 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+typedef _ZNSt25_Get_deleter_pointer_typeISt11_Facet_baseSt14default_deleteIS0_EvE4typeE _ZNSt16_Unique_ptr_baseISt11_Facet_baseSt14default_deleteIS0_EE7pointerE;
+#pragma pack(8)
+#line 265 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+struct _ZSt16_Compressed_pairISt14default_deleteISt11_Facet_baseEPS1_Lb1EE {
+#line 269 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\xutility"
+_ZNSt16_Unique_ptr_baseISt11_Facet_baseSt14default_deleteIS0_EE7pointerE _Myval2;};
+#pragma pack()
+#line 2131 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+typedef _ZSt18remove_reference_tISt14default_deleteISt11_Facet_baseEE _ZNSt16_Unique_ptr_baseISt11_Facet_baseSt14default_deleteIS0_EE9_Dx_norefE;
+#pragma pack(8)
+#line 2128 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+struct _ZSt16_Unique_ptr_baseISt11_Facet_baseSt14default_deleteIS0_EE {
+#line 2167 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+struct _ZSt16_Compressed_pairISt14default_deleteISt11_Facet_baseEPS1_Lb1EE _Mypair;};
+#pragma pack()
+#line 2182 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+typedef _ZNSt16_Unique_ptr_baseISt11_Facet_baseSt14default_deleteIS0_EE7pointerE _ZNSt10unique_ptrISt11_Facet_baseSt14default_deleteIS0_EE7pointerE;
+#pragma pack(8)
+#line 2177 "C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\include\\memory"
+struct _ZSt10unique_ptrISt11_Facet_baseSt14default_deleteIS0_EE { struct _ZSt16_Unique_ptr_baseISt11_Facet_baseSt14default_deleteIS0_EE __b_St16_Unique_ptr_baseISt11_Facet_baseSt14default_deleteIS0_EE;};
+#pragma pack()
+#line 75 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaMalloc(void **, size_t);
+#line 80 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaFuncGetAttributes(struct cudaFuncAttributes *, const void *);
+#line 85 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaDeviceGetAttribute(int *, enum cudaDeviceAttr, int);
+#line 90 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaGetDevice(int *);
+#line 95 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaOccupancyMaxActiveBlocksPerMultiprocessor(int *, const void *, int, size_t);
+#line 100 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFlags(int *, const void *, int, size_t, unsigned);
+#line 130 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) const char *cudaGetErrorString(enum cudaError);
+#line 132 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__(extern  __no_sc__) enum cudaError cudaGetDeviceCount(int *);
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#line 948 "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.17763.0\\ucrt\\stdio.h"
+ __device_builtin__ ___device__(extern  __no_sc__) int printf(const char *const, ...);
+#endif
+#include "common_functions.h"
+#line 75 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__( __no_sc__) enum cudaError cudaMalloc(
+#line 75 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+void **p, 
+#line 75 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+size_t s){
+#line 76 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+{
+#line 77 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+return cudaErrorUnknown;
+#line 78 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+}}
+#line 80 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__( __no_sc__) enum cudaError cudaFuncGetAttributes(
+#line 80 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+struct cudaFuncAttributes *p, 
+#line 80 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+const void *c){
+#line 81 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+{
+#line 82 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+return cudaErrorUnknown;
+#line 83 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+}}
+#line 85 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__( __no_sc__) enum cudaError cudaDeviceGetAttribute(
+#line 85 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+int *value, 
+#line 85 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+enum cudaDeviceAttr attr, 
+#line 85 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+int device){
+#line 86 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+{
+#line 87 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+return cudaErrorUnknown;
+#line 88 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+}}
+#line 90 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__( __no_sc__) enum cudaError cudaGetDevice(
+#line 90 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+int *device){
+#line 91 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+{
+#line 92 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+return cudaErrorUnknown;
+#line 93 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+}}
+#line 95 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__( __no_sc__) enum cudaError cudaOccupancyMaxActiveBlocksPerMultiprocessor(
+#line 95 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+int *numBlocks, 
+#line 95 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+const void *func, 
+#line 95 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+int blockSize, 
+#line 95 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+size_t dynamicSmemSize){
+#line 96 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+{
+#line 97 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+return cudaErrorUnknown;
+#line 98 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+}}
+#line 100 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+___device__( __no_sc__) enum cudaError cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFlags(
+#line 100 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+int *numBlocks, 
+#line 100 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+const void *func, 
+#line 100 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+int blockSize, 
+#line 100 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+size_t dynamicSmemSize, 
+#line 100 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+unsigned flags){
+#line 101 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+{
+#line 102 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+return cudaErrorUnknown;
+#line 103 "c:\\program files\\nvidia gpu computing toolkit\\cuda\\v10.1\\include\\cuda_device_runtime_api.h"
+}}
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif
+#if !defined(__CUDABE__)
+#endif

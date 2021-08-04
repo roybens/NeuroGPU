@@ -1,0 +1,28 @@
+#line 1 "C:/pyNeuroGPU_winnew/NeuroGPU6/MainC.cu"
+#line 16 "C:/pyNeuroGPU_winnew/NeuroGPU6/MainC.cu"
+HMat TheMMat = {0};
+Stim stim = {0};
+Sim sim = {0};
+extern char debugFN[10];
+FILE *fdebug = 0;
+#line 20 "C:/pyNeuroGPU_winnew/NeuroGPU6/MainC.cu"
+FILE *fdebug2 = 0;
+#line 20 "C:/pyNeuroGPU_winnew/NeuroGPU6/MainC.cu"
+FILE *fdebug3 = 0;
+float **ParamsMSerial = 0;
+float *ParamsM = 0;
+unsigned short NSets = 0;
+unsigned short FParams = 0;
+unsigned short comp = 0;
+float *V = 0;
+
+double *VV = 0;
+float **StatesM = 0;
+#line 74 "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.10240.0\\ucrt\\corecrt_stdio_config.h"
+ /* COMDAT group: _ZZ28__local_stdio_printf_optionsE15_OptionsStorage */ unsigned __int64 _ZZ28__local_stdio_printf_optionsE15_OptionsStorage;
+#line 120 "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\include\\xlocnum"
+extern __declspec( dllimport ) struct _ZNSt6locale2idE _ZNSt8numpunctIcE2idE;
+#line 120 "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\include\\xlocnum"
+extern __declspec( dllimport ) struct _ZNSt6locale2idE _ZNSt8numpunctIwE2idE;
+#line 19 "C:/pyNeuroGPU_winnew/NeuroGPU6/MainC.cu"
+char debugFN[10] = "Debug.dat";
