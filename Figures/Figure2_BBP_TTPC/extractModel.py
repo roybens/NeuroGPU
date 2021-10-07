@@ -59,49 +59,6 @@ kin_helper = []
 
 ### Helper functions for loading NEURON C library ###
 
-def nrn_dll(printpath=False):
-    """Return a ctypes object corresponding to the NEURON library.
-    """
-    import ctypes
-    import os
-    import platform
-
-    # neuron_home = os.path.split(os.path.split(nrn.h.neuronhome())[0])[0]
-
-    success = False
-    # base_path = os.path.join(neuron_home, 'lib' , 'python2.7', 'site-packages', 'neuron', 'hoc')
-    # base_path = '/home/devloop0/neuron/nrn/lib/python/neuron/hoc'
-    base_path = os.path.join(os.path.expanduser('~'), 'neuron', 'nrn', 'lib', 'python', 'neuron', 'hoc')
-    for extension in ['', '.dll', '.so', '.dylib']:
-        try:
-            the_dll = ctypes.cdll[base_path + extension]
-            if printpath: print (base_path + extension)
-            success = True
-        except:
-            pass
-        if success: break
-    else:
-        raise Exception('unable to connect to the NEURON library')
-    return the_dll
-
-
-def nrn_dll_sym(name, type=None):
-    """return the specified object from the NEURON dlls.
-
-    Parameters
-    ----------
-    name : string
-        the name of the object (function, integer, etc...)
-    type : None or ctypes type (e.g. ctypes.c_int)
-        the type of the object (if None, assumes function pointer)
-    """
-    import os
-    dll = nrn_dll()
-    if type is None:
-        return dll.__getattr__(name)
-    else:
-        return type.in_dll(dll, name)
-
 
 ### Model extraction functions ###
 
